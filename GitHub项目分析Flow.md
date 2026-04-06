@@ -105,6 +105,19 @@ https://github.com/owner/repo
 如果一个仓库里的 skill 不是显式叫 skill，  
 那就要先把 command / agent / workflow / reference / template 这类 skill-like 单元识别出来，再按同样逻辑评。
 
+full 评估必须满足这几个最低标准：
+
+- 先说清楚正在评估哪些 skill-like 单元
+- 说清楚它们分别在哪里，不要只写抽象结论
+- 先给评估框架，再开始评
+- 至少给出代表性 skill 或 skill 类别的逐项细评
+- 最后再给总体判断，而不是一上来就空泛总结
+
+也就是说：
+
+- 不允许只写“这个仓库很强/很系统”
+- 必须写出“我评估的对象是谁、路径在哪、结构长什么样、为什么这么评”
+
 ## 标准目录结构
 
 当只收到一个 GitHub URL 时，我默认要先搭出下面这套结构：
@@ -125,16 +138,16 @@ https://github.com/owner/repo
     ├── 03-核心机制.md
     ├── 04-优缺点.md
     ├── 05-评分总表.md
-    └── full-eval.md
+    └── <repo-name>-全量评估.md
 ```
 
 如果后面需要多模型版本，就继续追加：
 
 ```text
 eval_skills/
-├── full-eval_codex.md
-├── full-eval_opus.md
-└── full-eval_gpt.md
+├── <repo-name>-全量评估_codex.md
+├── <repo-name>-全量评估_opus.md
+└── <repo-name>-全量评估_gpt.md
 ```
 
 ## 四层职责
@@ -208,6 +221,10 @@ Commit: <commit-sha>
 
 这一层不是泛评估目录，  
 而是专门放 **skill 类型内容评估** 的目录。
+
+其中最重要的总评文件，默认命名为：
+
+- `<repo-name>-全量评估.md`
 
 ## 默认执行流程
 
@@ -321,7 +338,7 @@ Commit: <commit-sha>
 - `03-核心机制.md`
 - `04-优缺点.md`
 - `05-评分总表.md`
-- `full-eval.md`
+- `<repo-name>-全量评估.md`
 
 这样单个项目最后都会有一套一致的分析格式，方便后续继续补分析。
 
@@ -330,7 +347,10 @@ Commit: <commit-sha>
 - 不是泛讲项目
 - 而是优先讲 skill
 - 如果 skill 是变形形态，就先把它识别出来
-- full-eval 要尽量接近“skill 全量评估”的写法
+- `<repo-name>-全量评估.md` 要尽量接近“skill 全量评估”的写法
+- 必须先盘点 skill 版面，再进入评估
+- 必须把 skill 的位置、数量、结构写清楚
+- 必须让读者看得出“你到底在评估什么”
 
 ### Step 8：如果需要，补多模型评估
 
@@ -467,7 +487,7 @@ Commit: <commit-sha>
 - 核心机制分析
 - 优缺点评估
 - 评分总表
-- 最终评估
+- `<repo-name>-全量评估.md`
 
 ## 默认命名规则
 
@@ -486,7 +506,7 @@ source_snapshot/<repo-name>
 ### 评估目录命名
 
 ```text
-eval/
+eval_skills/
 ```
 
 ### 过程记录目录命名
