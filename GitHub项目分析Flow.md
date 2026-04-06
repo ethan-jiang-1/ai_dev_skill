@@ -89,13 +89,7 @@ https://github.com/owner/repo
 这个 flow 最重要的不是做一篇泛泛的仓库介绍，  
 而是先把仓库里的 skill 找出来，再按 skill 的方式去评估。
 
-评估时要尽量贴近这个参考产物的思路：
-
-- `/Users/bowhead/ai_dev_skill/addyosmani-agent-skills/eval_skills/agent-skills-全量评估.md`
-- `/Users/bowhead/ai_dev_skill/addyosmani-agent-skills/eval_skills/agent-skills-独立评估_opus.md`
-
-这里的意思不是机械照抄格式，  
-而是要继承它的分析精神：
+评估时要尽量继承下面这种分析精神：
 
 - 先盘点这个仓库里到底有哪些 skill
 - 再总结这些 skill 的共同结构
@@ -137,9 +131,7 @@ full 评估必须满足这几个最低标准：
 - 再做细评
 - 最后总结
 
-另外，**全量评估的尾巴怎么收口**，尽量往这个参考靠：
-
-- `/Users/bowhead/ai_dev_skill/addyosmani-agent-skills/eval_skills/agent-skills-独立评估_opus.md`
+另外，**全量评估的尾巴怎么收口**，也要单独立规矩。  
 
 这里要记住两件事：
 
@@ -296,7 +288,7 @@ Commit: <commit-sha>
 
 例如：
 
-- `https://github.com/addyosmani/agent-skills`
+- `https://github.com/owner/agent-skills`
 - 对应目录：`agent-skills-analysis/`
 
 ### Step 2：搭建分析骨架
@@ -401,6 +393,9 @@ Commit: <commit-sha>
 - 必须先盘点 skill 版面，再进入评估
 - 必须把 skill 的位置、数量、结构写清楚
 - 必须让读者看得出“你到底在评估什么”
+- 尾部总评必须单独收口，不能没有最终总分
+- 尾部尽量用 1-10 分六维结构做更高区分度的最终评分
+- 尾部除了表格，还要写清楚为什么这么打，以及最终梯队、换算分、评级
 
 ### Step 8：如果需要，补多模型评估
 
