@@ -84,6 +84,27 @@ https://github.com/owner/repo
 - 它们通过什么 front matter 或结构暴露能力
 - 它们之间如何被编排
 
+## skill 评估原则
+
+这个 flow 最重要的不是做一篇泛泛的仓库介绍，  
+而是先把仓库里的 skill 找出来，再按 skill 的方式去评估。
+
+评估时要尽量贴近这个参考产物的思路：
+
+- `/Users/bowhead/ai_dev_skill/addyosmani-agent-skills/eval_skills/agent-skills-全量评估.md`
+
+这里的意思不是机械照抄格式，  
+而是要继承它的分析精神：
+
+- 先盘点这个仓库里到底有哪些 skill
+- 再总结这些 skill 的共同结构
+- 再给出评估框架
+- 再对最关键的 skill 或 skill 类别做细评
+- 最后给总体判断
+
+如果一个仓库里的 skill 不是显式叫 skill，  
+那就要先把 command / agent / workflow / reference / template 这类 skill-like 单元识别出来，再按同样逻辑评。
+
 ## 标准目录结构
 
 当只收到一个 GitHub URL 时，我默认要先搭出下面这套结构：
@@ -247,6 +268,18 @@ Commit: <commit-sha>
 
 如果是只读分析任务，这一层默认当作原始材料区。
 
+拉完之后有一个额外约束：
+
+- snapshot 里的内部 `.git` 不再需要，应该删除
+- 顶层大仓库自己的 `.git` 必须保留
+
+也就是说：
+
+- 保留主仓库 git
+- 去掉 snapshot 自带 git 元数据
+
+这样整个分析目录就是一个大的工作区，而不是 repo 里再套 repo。
+
 ### Step 5：做第一轮仓库盘点
 
 优先读取这些内容：
@@ -291,13 +324,16 @@ Commit: <commit-sha>
 
 这样单个项目最后都会有一套一致的分析格式，方便后续继续补分析。
 
+但内容重点要始终记住：
+
+- 不是泛讲项目
+- 而是优先讲 skill
+- 如果 skill 是变形形态，就先把它识别出来
+- full-eval 要尽量接近“skill 全量评估”的写法
+
 ### Step 8：如果需要，补多模型评估
 
-如果要比较模型视角，就追加：
 
-- `full-eval_codex.md`
-- `full-eval_opus.md`
-- `full-eval_gpt.md`
 
 ## 如何分析一个 GitHub 项目
 
