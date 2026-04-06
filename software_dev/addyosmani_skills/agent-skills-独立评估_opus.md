@@ -269,3 +269,202 @@ Security Boundaries 一节是亮点——把浏览器内容定义为 untrusted d
 #### 20. shipping-and-launch（18 分）
 
 独立可执行性最低（2 分）——需要 feature flag 系统、分阶段发布能力、监控告警、回滚基础设施。没有这些基础设施，这个 skill 就是一张无法执行的 checklist。认知增量 2 分——pre-launch checklist、staged rollout、rollback plan 都是标准 DevOps 知识。**理念正确但落地前提太重。**
+
+## 六维横切分析
+
+### 规则密度 Top 5
+
+| 排名 | Skill | 分数 | 关键证据 |
+|---:|---|---:|---|
+| 1 | incremental-implementation | 9 | Rule 0-5 命名规则 + 3 种切片策略 + Rationalization 表 5 行 + Red Flags 9 条 |
+| 2 | debugging-and-error-recovery | 8 | 6 步主流程 + 3 种错误类型诊断树 + 非可复现 bug 4 分支策略 |
+| 2 | test-driven-development | 8 | Red-Green-Refactor + Prove-It + Test Pyramid + Test Sizes 表 + Anti-Pattern 6 行 |
+| 2 | security-and-hardening | 8 | Three-Tier Boundary 22 条 + OWASP 6 条代码示例 + npm audit 决策树 |
+| 5 | code-review-and-quality | 7 | 五轴框架 + change sizing 3 级 + severity 5 级 + disagreement 4 级 |
+
+### 规则密度 Bottom 5
+
+| 排名 | Skill | 分数 | 为什么低 |
+|---:|---|---:|---|
+| 20 | documentation-and-adrs | 3 | 本质只有一条规则"写 ADR"加一个模板 |
+| 19 | using-agent-skills | 4 | 路由表，不是规则集 |
+| 18 | shipping-and-launch | 4 | 大量 checklist 但缺少条件判断逻辑 |
+| 17 | deprecation-and-migration | 4 | 原则好但规则稀疏 |
+| 16 | spec-driven-development | 5 | 描述了 gated workflow 但每个 gate 的判断标准不够具体 |
+
+### 认知增量 Top 5
+
+| 排名 | Skill | 分数 | 什么内容是新的 |
+|---:|---|---:|---|
+| 1 | context-engineering | 9 | Context Hierarchy、trust levels、confusion management——全新 AI 原生概念 |
+| 2 | security-and-hardening | 7 | Three-Tier Boundary System 分类法 + npm audit triage 决策树 |
+| 3 | incremental-implementation | 6 | Risk-First Slicing、Rule 0 Simplicity Check 的具体判断清单 |
+| 3 | debugging-and-error-recovery | 6 | 非可复现 bug 的分类调查策略（Timing / Environment / State / Random） |
+| 3 | code-simplification | 6 | Chesterton's Fence 应用到代码简化语境 |
+| 3 | frontend-ui-engineering | 6 | AI Aesthetic 对照表——识别和对抗 AI 生成 UI 的同质化模式 |
+
+### 认知增量 Bottom 5
+
+| 排名 | Skill | 分数 | 为什么低 |
+|---:|---|---:|---|
+| 20 | git-workflow-and-versioning | 2 | 原子提交 + trunk-based = 教科书 |
+| 19 | ci-cd-and-automation | 2 | Shift Left + GitHub Actions 模板 = 通行知识 |
+| 19 | shipping-and-launch | 2 | pre-launch checklist + staged rollout = 标准 DevOps |
+| 17 | performance-optimization | 3 | N+1 / React.memo / image optimization = 常识 |
+| 17 | documentation-and-adrs | 3 | "explain why not what" = 常识 |
+
+### 失败模式覆盖 Top 5
+
+| 排名 | Skill | 分数 | 关键证据 |
+|---:|---|---:|---|
+| 1 | incremental-implementation | 9 | Rationalization 表 5 行每条精准切中 agent 真实借口 + Red Flags 9 条可操作 |
+| 2 | debugging-and-error-recovery | 8 | 3 种错误类型的独立诊断树 + "error output as untrusted data" |
+| 2 | test-driven-development | 8 | Rationalization 6 行 + Anti-Pattern 6 行 + Prove-It 对抗虚假修复 |
+| 4 | context-engineering | 7 | Anti-Pattern 表 6 行（starvation/flooding/stale）+ confusion management |
+| 4 | code-review-and-quality | 7 | Anti-sycophancy 指导 + "Don't accept 'I'll clean it up later'" |
+| 4 | security-and-hardening | 7 | "Never Do"列表 = 7 条硬性失败防线 + Rationalization 表 5 行 |
+
+### 失败模式覆盖 Bottom 5
+
+| 排名 | Skill | 分数 | 为什么低 |
+|---:|---|---:|---|
+| 20 | documentation-and-adrs | 3 | Rationalization 表薄，Red Flags 是正面指导的简单反转 |
+| 19 | deprecation-and-migration | 3 | 失败模式描述笼统 |
+| 18 | idea-refine | 4 | Anti-patterns 节存在但多是"不要做太多""不要跳步骤"级别 |
+| 17 | git-workflow-and-versioning | 4 | "不要大提交""不要混合 refactor 和 feature"——常识级 |
+| 16 | browser-testing-with-devtools | 4 | Security Boundaries 节很好但其余失败模式覆盖不够 |
+
+### 独立可执行性 Top 5
+
+| 排名 | Skill | 分数 | 为什么高 |
+|---:|---|---:|---|
+| 1 | incremental-implementation | 9 | 只需编辑器 + 测试 + 版本控制 |
+| 1 | code-simplification | 9 | 零外部依赖，纯纪律 |
+| 1 | using-agent-skills | 9 | 纯路由逻辑，无工具依赖 |
+| 1 | idea-refine | 9 | 纯对话 + 写 markdown |
+| 5 | context-engineering | 8 | 直接用于组织信息 |
+
+### 独立可执行性 Bottom 5
+
+| 排名 | Skill | 分数 | 需要什么 |
+|---:|---|---:|---|
+| 20 | shipping-and-launch | 2 | feature flag + 监控 + 灰度 + 回滚基础设施 |
+| 19 | browser-testing-with-devtools | 3 | Chrome DevTools MCP server |
+| 19 | ci-cd-and-automation | 3 | GitHub Actions 或类似 CI 平台 |
+| 17 | deprecation-and-migration | 4 | usage metrics + 替代方案 + 迁移能力 |
+| 16 | performance-optimization | 5 | profiling 工具 + Lighthouse + APM |
+
+### AI Agent 特异性 Top 5
+
+| 排名 | Skill | 分数 | 为什么 AI 特有 |
+|---:|---|---:|---|
+| 1 | context-engineering | 10 | 没有 AI agent 这个 skill 不会存在 |
+| 2 | using-agent-skills | 9 | 纯 agent routing |
+| 3 | incremental-implementation | 8 | 对抗 agent 过度生成 |
+| 3 | test-driven-development | 8 | Prove-It 对抗 agent 虚假自信 |
+| 5 | debugging-and-error-recovery | 7 | Stop-the-Line 对抗 agent "边错边继续" |
+
+### AI Agent 特异性 Bottom 5
+
+| 排名 | Skill | 分数 | 为什么和 AI 无关 |
+|---:|---|---:|---|
+| 20 | deprecation-and-migration | 2 | 放到人类手册里零改动 |
+| 20 | documentation-and-adrs | 2 | 同上 |
+| 18 | api-and-interface-design | 3 | 通用接口设计原则 |
+| 17 | shipping-and-launch | 3 | 标准 DevOps |
+| 16 | git-workflow-and-versioning | 4 | 标准 git 实践 |
+
+### 使用频率 Top 5
+
+| 排名 | Skill | 分数 | 频率 |
+|---:|---|---:|---|
+| 1 | incremental-implementation | 9 | 几乎每个多文件任务 |
+| 1 | debugging-and-error-recovery | 9 | 每次出错 |
+| 1 | test-driven-development | 9 | 每次行为变更 |
+| 1 | context-engineering | 9 | 每个 session 开始 |
+| 5 | code-review-and-quality | 8 | 每次 merge 前 |
+
+### 使用频率 Bottom 5
+
+| 排名 | Skill | 分数 | 频率 |
+|---:|---|---:|---|
+| 20 | deprecation-and-migration | 2 | 一个季度一次 |
+| 19 | idea-refine | 3 | 项目初期 |
+| 19 | shipping-and-launch | 3 | 部署时 |
+| 17 | documentation-and-adrs | 4 | 架构决策时 |
+| 16 | using-agent-skills | 5 | session 开始或失焦时 |
+
+## 与旧评估的对比
+
+### 排名变动最大的 skill
+
+| Skill | 旧排名 | 新排名 | 变动 | 原因 |
+|---|---:|---:|---|---|
+| context-engineering | 11 | 2 | +9 | 旧评估没有"AI 特异性"和"认知增量"维度，无法识别这个 skill 的独特价值 |
+| using-agent-skills | 1 | 8 | -7 | 旧评估在每个维度都给了它 5 分（满分），但它本质是路由表，规则密度和认知增量都很低 |
+| shipping-and-launch | 5 | 20 | -15 | 旧评估没有"独立可执行性"维度，无法识别它对基础设施的高依赖 |
+| ci-cd-and-automation | 4 | 17 | -13 | 同上，加上认知增量低（全是标准 CI/CD 知识） |
+| git-workflow-and-versioning | 3 | 14 | -11 | 认知增量 2 分拖了后腿——内容全是教科书级 |
+
+### 为什么旧评估的维度失效
+
+| 旧维度 | 失效原因 |
+|---|---|
+| 结构化程度 | 20 个 skill 用同一模板，天花板效应——全部 4-5 分 |
+| 验证强度 | 模板自带 Verification section，几乎无法区分 |
+| 复用范围 | 和"协作价值"高度相关，不是独立信号 |
+| 工具依赖 | 方向对但刻度反了——旧评估里高分=高依赖=实际上是缺点 |
+| 协作价值 | 太抽象，任何"好的工程实践"都有协作价值 |
+
+### 新旧评估的本质区别
+
+旧评估问的是：**"这个 skill 像不像一个好的 skill？"** 答案几乎全是"像"——因为它们都遵循了好的模板。
+
+新评估问的是：**"这个 skill 的内容值不值得我花时间读？读完之后我能得到什么我原来没有的东西？我能直接用起来吗？"** 这些问题才能把"真正优秀"和"格式正确但内容平庸"区分开。
+
+## 采纳建议
+
+### 必借鉴（无论项目类型和规模）
+
+| Skill | 从中提取什么 |
+|---|---|
+| incremental-implementation | Rule 0-5 + Scope Discipline 的"NOTICED BUT NOT TOUCHING"模式 + 薄切片的具体执行规范 |
+| context-engineering | Context Hierarchy + Trust Levels + Confusion Management 模板 + Inline Planning Pattern |
+| debugging-and-error-recovery | Stop-the-Line 规则 + 6 步 triage + 非可复现 bug 调查框架 |
+| test-driven-development | Prove-It Pattern + "Test State, Not Interactions" + DAMP over DRY in tests |
+
+**这四个 skill 是这个仓库的真正精华。** 它们的共同特点是：规则具体、AI 特异性高、使用频率高、可以直接执行。
+
+### 按需借鉴（特定场景高价值）
+
+| Skill | 什么场景用 | 提取什么 |
+|---|---|---|
+| code-review-and-quality | 每次 code review | 五轴审查 + Severity 标签 + Anti-sycophancy + Multi-Model Review |
+| security-and-hardening | 涉及外部输入时 | Three-Tier Boundary System（可推广到安全以外的 agent 行为约束） |
+| code-simplification | 实现后整理时 | Chesterton's Fence + "Clarity Over Cleverness" |
+| frontend-ui-engineering | 前端开发时 | AI Aesthetic 对照表（只需要这一张表） |
+| spec-driven-development | 复杂新功能开发前 | gated workflow 的概念（但具体模板需要你自己补充） |
+
+### 仅参考（理念可取但内容价值有限）
+
+| Skill | 为什么仅参考 | 还有什么价值 |
+|---|---|---|
+| planning-and-task-breakdown | 被 incremental-implementation 完全覆盖且后者更具体 | 垂直切片概念（但后者讲得更好） |
+| using-agent-skills | 路由表，不是技能 | skill 分流的思路可以参考 |
+| idea-refine | 使用频率太低 | examples.md 的餐厅案例作为 ideation 示范很好 |
+| api-and-interface-design | 通用参考文档，AI 特异性低 | Contract First 作为理念提醒 |
+| browser-testing-with-devtools | 工具绑定太深 | Security Boundaries 模型值得单独提取 |
+| performance-optimization | 标准知识为主 | symptom triage tree 可以借鉴 |
+| git-workflow-and-versioning | 教科书内容 | 如果团队没有 git 规范，可以直接用 |
+| ci-cd-and-automation | 配置模板集 | 如果你用 GitHub Actions 且没有现成模板，有参考价值 |
+| documentation-and-adrs | 一个模板的价值 | ADR 模板本身值得保留 |
+| shipping-and-launch | 基础设施依赖太重 | 如果你有灰度能力，checklist 可以参考 |
+| deprecation-and-migration | 低频 + 非 AI 特有 | 大型系统退场时翻看 |
+
+## 结语
+
+这 20 个 skill 的质量差异远比旧评估呈现的大。最好的 4 个 skill（incremental-implementation、context-engineering、debugging-and-error-recovery、test-driven-development）提供了真正的 AI 工程纪律框架——具体规则、AI 特有失败模式的精准反制、高频使用场景。它们的价值不在于"理念正确"，而在于"规则到位，可以直接变成 agent 行为约束"。
+
+最弱的几个 skill 不是"坏"的——它们的理念大多正确——但内容上要么是标准知识的重新包装（git-workflow、ci-cd），要么是无法独立执行的理想化 checklist（shipping-and-launch），要么是低频的利基场景（deprecation-and-migration）。
+
+**对你来说最重要的判断标准是：从每个 skill 中你能提取出什么具体的、可操作的、你原来不会自然做到的规则。** 用这个标准去读，前 4 个 skill 每个都能给你 5-10 条立即可用的规则；后 6 个每个最多给你 1 条。
