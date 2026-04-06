@@ -34,7 +34,7 @@ https://github.com/owner/repo
 ├── github_src/
 ├── source_snapshot/
 ├── worklog/
-└── eval/
+└── eval_skills/
 ```
 
 ## 单项目原则
@@ -119,7 +119,7 @@ https://github.com/owner/repo
 │   ├── 01-file-inventory.md
 │   ├── 02-first-impression.md
 │   └── 03-analysis-plan.md
-└── eval/
+└── eval_skills/
     ├── 01-总览.md
     ├── 02-结构拆解.md
     ├── 03-核心机制.md
@@ -131,7 +131,7 @@ https://github.com/owner/repo
 如果后面需要多模型版本，就继续追加：
 
 ```text
-eval/
+eval_skills/
 ├── full-eval_codex.md
 ├── full-eval_opus.md
 └── full-eval_gpt.md
@@ -193,7 +193,7 @@ Commit: <commit-sha>
 - 可以追踪分析路径
 - 可以区分过程判断和最终结论
 
-### 4. eval
+### 4. eval_skills
 
 这一层只放最终分析产物。
 
@@ -206,7 +206,8 @@ Commit: <commit-sha>
 - 评分
 - 最终评估
 
-这一层是给你拿来复盘、比较、沉淀方法论的。
+这一层不是泛评估目录，  
+而是专门放 **skill 类型内容评估** 的目录。
 
 ## 默认执行流程
 
@@ -240,7 +241,7 @@ Commit: <commit-sha>
 ├── github_src/
 ├── source_snapshot/
 ├── worklog/
-└── eval/
+└── eval_skills/
 ```
 
 这一步先搭空结构，再开始填内容。
@@ -311,7 +312,7 @@ Commit: <commit-sha>
 
 这一步就是你说的“如何分析的这个事儿规划一下”。
 
-### Step 7：开始 eval 产出
+### Step 7：开始 eval_skills 产出
 
 产出顺序固定如下：
 
