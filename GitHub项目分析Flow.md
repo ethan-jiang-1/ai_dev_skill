@@ -51,6 +51,39 @@ https://github.com/owner/repo
 不默认同时处理多个项目，  
 也不默认做多项目并行对比。
 
+## 核心关注点
+
+这个 flow 虽然会盘点整个仓库，  
+但真正最优先分析的，不是所有代码和所有文档，而是仓库里那些 **skill 类内容**。
+
+这里的 skill 不一定真的叫 `skill`，也不一定一定在 `skills/` 目录里。  
+它也可能是：
+
+- command
+- workflow
+- agent
+- prompt module
+- reference-driven capability
+- template-backed execution unit
+
+判断标准不是名字，而是它是不是一个“可复用的能力单元”。
+
+## skill 类内容的识别规则
+
+分析时优先找这些东西：
+
+- 带 front matter 的 Markdown 文件
+- front matter 里有 `name`、`description`、`allowed-tools`、`tools`、`model`、`color` 之类字段
+- 明显在描述角色、流程、约束、输入输出、验证方式的文件
+- 虽然不叫 skill，但本质上在承担 skill 职责的命令、workflow、agent、reference
+
+也就是说，后续分析时最重要的问题是：
+
+- 这个仓库里的“skill-like 单元”有哪些
+- 它们分别承担什么职责
+- 它们通过什么 front matter 或结构暴露能力
+- 它们之间如何被编排
+
 ## 标准目录结构
 
 当只收到一个 GitHub URL 时，我默认要先搭出下面这套结构：
@@ -221,7 +254,7 @@ Commit: <commit-sha>
 - README
 - docs
 - package / config / root files
-- 主要源码目录
+- skill-like 文件最集中的目录
 - 测试目录
 - CI 配置
 
@@ -229,7 +262,8 @@ Commit: <commit-sha>
 
 - 项目类型是什么
 - 入口文件在哪里
-- 核心模块在哪里
+- skill-like 单元主要藏在哪些目录
+- 哪些 front matter 文件最值得优先拆
 - 工程规范主要靠什么表达
 
 ### Step 6：写 worklog
@@ -283,7 +317,7 @@ Commit: <commit-sha>
 必须拆清楚：
 
 - 根目录结构
-- 核心源码目录
+- skill-like 内容所在目录
 - 配置和脚本目录
 - 文档和规范目录
 - 测试与 CI 目录
@@ -293,7 +327,7 @@ Commit: <commit-sha>
 必须追：
 
 - 主流程是什么
-- 关键模块怎么协作
+- skill-like 单元怎么协作
 - 状态如何流动
 - 扩展点在哪里
 - 验证机制是什么
@@ -315,6 +349,7 @@ Commit: <commit-sha>
 
 - 哪些做法可以迁移
 - 哪些依赖原项目上下文
+- 哪些其实就是 skill 设计
 - 哪些只是局部技巧
 - 哪些能形成方法论
 
@@ -363,6 +398,8 @@ Commit: <commit-sha>
 
 重点看：
 
+- front matter 设计
+- skill-like 单元划分
 - 流程设计
 - 触发条件
 - 约束机制
@@ -387,6 +424,7 @@ Commit: <commit-sha>
 - 来源记录文件
 - source snapshot
 - 分析过程规划
+- skill-like 单元识别结果
 - 第一版总览
 - 结构拆解
 - 核心机制分析
