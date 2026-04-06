@@ -92,6 +92,7 @@ https://github.com/owner/repo
 评估时要尽量贴近这个参考产物的思路：
 
 - `/Users/bowhead/ai_dev_skill/addyosmani-agent-skills/eval_skills/agent-skills-全量评估.md`
+- `/Users/bowhead/ai_dev_skill/addyosmani-agent-skills/eval_skills/agent-skills-独立评估_opus.md`
 
 这里的意思不是机械照抄格式，  
 而是要继承它的分析精神：
@@ -135,6 +136,37 @@ full 评估必须满足这几个最低标准：
 - 再给标尺
 - 再做细评
 - 最后总结
+
+另外，**全量评估的尾巴怎么收口**，尽量往这个参考靠：
+
+- `/Users/bowhead/ai_dev_skill/addyosmani-agent-skills/eval_skills/agent-skills-独立评估_opus.md`
+
+这里要记住两件事：
+
+- 前文可以用一套较宽的分析框架帮助读者理解
+- 但尾部总评要用一套**更有区分度**的评分结构收口
+
+推荐尾部总评使用 1-10 分的六维结构：
+
+- 规则密度
+- 认知增量
+- 失败模式覆盖
+- 独立可执行性
+- AI Agent 特异性
+- 使用频率期望
+
+尾部评分时的要求：
+
+- 不要只是把前文 1-5 分维度再抄一遍
+- 要让尾部评分真正拉开层次，不然总评没有意义
+- 要给出“为什么是这个分”的短评，不要只有表格
+- 最好做出梯队或排名，而不是所有对象都显得差不多强
+- 最后要给出仓库级总分、换算分和评级
+
+也就是说，最终的全量评估通常应该是：
+
+- 前面：帮助读者理解仓库结构与 skill 系统
+- 尾巴：用更苛刻、更有区分度的方式完成最终打分
 
 ## 标准目录结构
 
