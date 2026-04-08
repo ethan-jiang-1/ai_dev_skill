@@ -320,6 +320,7 @@ Wave 2 的最低标准：
 
 命名建议：
 
+- `00-shared-<source-slug>.md` (Wave 0 共享地基)
 - `01-<topic>-<source-slug>.md`
 - `02-<topic>-<source-slug>.md`
 - `03-<topic>-<source-slug>.md`
@@ -567,6 +568,7 @@ Wave 2 的最低标准：
 
 为了避免写冲突，建议按前缀分工：
 
+- 主线程写 Wave 0 共享地基：`00-shared-*`
 - 线程 A 只写 `01-host-*`
 - 线程 B 只写 `02-dist-*`
 - 线程 C 只写 `03-supply-*`

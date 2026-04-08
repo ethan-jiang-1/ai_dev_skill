@@ -1,6 +1,10 @@
 # SDLC 方法论框架与工程治理
 
-## 这份片段在讲什么
+## 第一轮摘要（保留，不修改）
+
+<!-- 下方为第一轮摘要原文，仅调整标题层级以适配二轮追加结构，不改动正文内容 -->
+
+### 这份片段在讲什么
 
 这份上下文聚焦在最重的一类对象：  
 不是单个 skill，而是会重塑整个软件开发流程的框架。
@@ -8,9 +12,9 @@
 原始研究认为，真正高杠杆的能力包有时并不是单点技能，  
 而是把方法学、工程纪律、角色分工、验证闭环和状态治理一起编码进去的系统。
 
-## 从原始研究提炼出的核心结论
+### 从原始研究提炼出的核心结论
 
-### 1. 这里研究的是“工程操作系统”，不是普通 skill
+#### 1. 这里研究的是“工程操作系统”，不是普通 skill
 
 原始研究覆盖了几种代表性框架：
 
@@ -30,7 +34,7 @@
 - 而是在规定人和 agent 应该怎么协作
 - 并试图控制漂移、幻觉、漏验证、流程失序等问题
 
-### 2. 这些框架的差异，本质上是治理思路不同
+#### 2. 这些框架的差异，本质上是治理思路不同
 
 原始研究里可以提炼出几种典型流派：
 
@@ -44,7 +48,7 @@
 - `Roo Code`：强调模式隔离和上下文污染控制
 - `Aider`：强调 conventions 挂载和轻量刚性约束
 
-### 3. 这一类框架最适合研究“工程能力是怎么被写进 skill 的”
+#### 3. 这一类框架最适合研究“工程能力是怎么被写进 skill 的”
 
 原始研究里最有价值的，不只是项目名单，  
 而是这些框架分别把哪种工程能力写进了能力包：
@@ -61,7 +65,7 @@
 
 也就是说，这类框架是研究“skill 如何承载工程方法学”的最好样本。
 
-## 这一片段里最值得继续研究的对象
+### 这一片段里最值得继续研究的对象
 
 - Superpowers
 - GSD
@@ -73,7 +77,7 @@
 - Roo Code
 - Aider
 
-## 适合继续 Deep Research 的问题
+### 适合继续 Deep Research 的问题
 
 - 哪些框架最适合个人开发者，哪些更适合团队
 - 哪些框架在防漂移、防漏验证、防跑偏上最强
@@ -82,10 +86,31 @@
 - 哪些框架最适合作为“让工程师通过读 skill 学会方法学”的样本
 - Brownfield、Greenfield、多角色协作、长周期项目分别更适合哪类框架
 
-## 这一片段的用途
+### 这一片段的用途
 
 如果下一轮 Deep Research 想回答下面这些问题，这份片段最适合直接当上下文：
 
 - “现在最值得研究的软件开发 agent 方法论框架有哪些？”
 - “哪些框架在把工程纪律写进 skill / workflow / rules？”
 - “如何比较 Superpowers、GSD、Gstack、Spec Kit、OpenSpec 这些框架的治理差异？”
+
+## 二轮新增证据
+
+<!-- 每条新增事实都带 ../reference_src/*.md 回指 -->
+
+- Agent Skills 规范明确：`SKILL.md` 的 body（frontmatter 之后的 Markdown 指令区）没有格式限制，推荐写“分步指令”等能帮助 agent 高质量执行任务的内容。（Ref: ../reference_src/00-shared-agentskills-specification.md）
+- `gsd-build/get-shit-done` README 将其定位为跨宿主的 meta-prompting/context engineering/spec-driven system，并明确列出多 runtime 支持与安装入口（`npx get-shit-done-cc@latest`）。（Ref: ../reference_src/00-shared-gsd-readme.md）
+- `gsd-build/get-shit-done` README 明确描述跨宿主落盘格式差异（例如 Claude Code 2.1.88+ 与 Codex 安装为 `skills/gsd-*/SKILL.md`；旧版本 Claude Code 使用 `commands/gsd/`；Cline 使用 `.clinerules`），并宣称安装器会处理多格式。（Ref: ../reference_src/00-shared-gsd-readme.md）
+- OWASP LLM Top 10 v1.1 的 “Excessive Agency”“Insecure Plugin Design”“Supply Chain Vulnerabilities” 等条目，为“工程治理型框架提升自主性后带来的风险面”提供通用安全分类参考。（Ref: ../reference_src/00-shared-owasp-llm-top10-v1-1.md）
+
+## 二轮新增机制理解
+
+<!-- 从“描述”上升到“为什么这样设计”的解释；每条带 ../reference_src/*.md 回指 -->
+
+## 二轮新增趋势与难点
+
+<!-- 趋势：有时间维度的证据；难点：个人/团队/维护；每条带 ../reference_src/*.md 回指 -->
+
+## 当前判断（二轮综合后）
+
+<!-- 综合第一轮和第二轮的判断；每条判断带 ../reference_src/*.md 回指；如推翻/修正需注明 -->

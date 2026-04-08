@@ -1,6 +1,10 @@
 # 企业官方来源、社区索引与 MCP 共生
 
-## 这份片段在讲什么
+## 第一轮摘要（保留，不修改）
+
+<!-- 下方为第一轮摘要原文，仅调整标题层级以适配二轮追加结构，不改动正文内容 -->
+
+### 这份片段在讲什么
 
 这份上下文聚焦在软件开发智能体能力包的“内容供给层”。
 
@@ -12,9 +16,9 @@
 
 这三类来源加在一起，才构成了真正的能力发现网络。
 
-## 从原始研究提炼出的核心结论
+### 从原始研究提炼出的核心结论
 
-### 1. 企业第一方仓库是垂直领域最精准的来源
+#### 1. 企业第一方仓库是垂直领域最精准的来源
 
 原始研究特别点名了几类企业官方仓库：
 
@@ -31,7 +35,7 @@
 如果后续研究偏向某个技术栈，  
 这类官方仓库往往比综合市场更值得优先追踪。
 
-### 2. Awesome 类索引是发现长尾实验的关键入口
+#### 2. Awesome 类索引是发现长尾实验的关键入口
 
 原始研究认为，`awesome-claude-skills`、`awesome-agent-skills`、`awesome-copilot` 这类列表的价值，在于人工策展。
 
@@ -46,7 +50,7 @@
 
 也就是说，Awesome 清单更像生态雷达。
 
-### 3. MCP 不是 skill 的替代，而是运行时共生层
+#### 3. MCP 不是 skill 的替代，而是运行时共生层
 
 原始研究里一个很强的判断是：
 
@@ -67,7 +71,7 @@
 - Slack / 外部服务集成
 - 设备控制
 
-## 这一片段里最值得继续研究的对象
+### 这一片段里最值得继续研究的对象
 
 - Expo / Cloudflare / Hugging Face 这类企业第一方 skill 仓库
 - `awesome-claude-skills`
@@ -76,7 +80,7 @@
 - `awesome-mcp-servers`
 - Glama 这类 MCP 目录与检查器
 
-## 适合继续 Deep Research 的问题
+### 适合继续 Deep Research 的问题
 
 - 哪些企业官方仓库最值得长期追踪
 - Awesome 类索引里有哪些真正高价值的软件开发 skill
@@ -84,10 +88,30 @@
 - 哪些 skill 实际上是“MCP 编排器”
 - 如果目标是拿 skill 来解决开发问题，应该先研究 skill 本体还是先研究 MCP 能力面
 
-## 这一片段的用途
+### 这一片段的用途
 
 如果下一轮 Deep Research 想回答下面这些问题，这份片段最适合直接当上下文：
 
 - “除了官方平台市场，哪里还有高价值软件开发 skill 来源？”
 - “企业官方仓库、Awesome 清单和 MCP 生态之间是什么关系？”
 - “怎么从长尾社区资源里筛出值得继续跟踪的开发能力包？”
+
+## 二轮新增证据
+
+<!-- 每条新增事实都带 ../reference_src/*.md 回指 -->
+
+- Agent Skills 概览页把 skills 定义为“instructions, scripts, and resources”的文件夹，并明确强调可移植与可版本控制，用于沉淀团队/组织上下文（portable, version-controlled packages）。（Ref: ../reference_src/00-shared-agentskills-overview.md）
+- `anthropics/skills` 仓库说明其包含从创意到企业工作流的示例技能，并同时展示“开源 + source-available”的第一方供给形态（尤其是文档处理类生产技能）。（Ref: ../reference_src/00-shared-anthropic-skills-readme.md）
+- Claude 官方说明提到 Partner skills，并明确其被设计为与各自的 MCP connectors 协同使用，支持更强的集成工作流。（Ref: ../reference_src/01-host-claude-what-are-skills.md）
+
+## 二轮新增机制理解
+
+<!-- 从“描述”上升到“为什么这样设计”的解释；每条带 ../reference_src/*.md 回指 -->
+
+## 二轮新增趋势与难点
+
+<!-- 趋势：有时间维度的证据；难点：长尾发现/列表质量/MCP边界；每条带 ../reference_src/*.md 回指 -->
+
+## 当前判断（二轮综合后）
+
+<!-- 综合第一轮和第二轮的判断；每条判断带 ../reference_src/*.md 回指；如推翻/修正需注明 -->
