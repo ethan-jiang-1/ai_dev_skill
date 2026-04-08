@@ -10,6 +10,9 @@
 - `../reference_src/02-dist-sundial-docs-cli.md`
 - `../reference_src/02-dist-sundial-docs-push-publish.md`
 - `../reference_src/02-dist-sundial-docs-specification.md`
+- `../reference_src/02-dist-vercel-skills-docs-source-formats.md`
+- `../reference_src/02-dist-lobehub-github-readme.md`
+- `../reference_src/02-dist-lobehub-market-cli-npm.md`
 
 ## 关键判断 -> 证据回指
 

@@ -18,6 +18,11 @@
 - `../reference_src/01-host-claude-what-are-skills.md`
 - `../reference_src/01-host-claude-using-skills-in-claude.md`
 - `../reference_src/01-host-claude-creating-custom-skills.md`
+- `../reference_src/01-host-opencode-agent-skills-docs.md`
+- `../reference_src/01-host-windsurf-skills-docs.md`
+- `../reference_src/01-host-cursor-plugins-blog-2026-02-17.md`
+- `../reference_src/01-host-cursor-forum-plugins-2-5.md`
+- `../reference_src/01-host-cursor-forum-cli-mode-plugins-bug.md`
 
 ## 关键判断 -> 证据回指
 
