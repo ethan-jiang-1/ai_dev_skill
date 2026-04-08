@@ -119,9 +119,9 @@
 
 ## 输出
 
-本轮执行后应至少形成三类资产：
+本轮执行后应形成以下资产与协议（不满足则视为未完成）：
 
-### 1. Ground truth 参考材料
+### 1. Ground truth 参考材料（`reference_cap`）
 
 存放位置：`/Users/bowhead/ai_dev_skill/SDLC_SKILL/reference_cap`
 
@@ -152,14 +152,25 @@
 - 社区争议和失败模式在哪里
 - 哪些对象最值得继续追踪
 
-### 3. 跨维度综合结论
+### 3. 过程性 artifacts（便于复用与验收）
 
-最终需要能够横向回答：
+这些文件的目标不是“写得好看”，而是降低集成债，确保每个判断都能在 30 秒内回指证据：
 
+跨维度综合结论（落盘于 `digested_cap/_artifacts/W2-cross-dimension-synthesis.md`）需要横向回答：
 - 哪些能力单元是跨框架通用的工程抽象
 - 哪些只是框架专有的风格化实现
 - 哪些阶段的能力单元已经成熟，哪些仍是空白
 - 能力地图的每一行评级都有 `reference_cap` 文档回指
+
+- `digested_cap/_artifacts/01-planning-evidence-summary.md`
+- `digested_cap/_artifacts/01-planning-question-list.md`
+- `digested_cap/_artifacts/02-build-debug-evidence-summary.md`
+- `digested_cap/_artifacts/02-build-debug-question-list.md`
+- `digested_cap/_artifacts/03-review-ship-ops-evidence-summary.md`
+- `digested_cap/_artifacts/03-review-ship-ops-question-list.md`
+- `digested_cap/_artifacts/04-map-migration-evidence-summary.md`
+- `digested_cap/_artifacts/04-map-migration-question-list.md`
+- `reference_cap/_INDEX.md`（证据入口索引，便于快速定位）
 
 ### 4. digested_cap 更新协议
 
@@ -290,11 +301,11 @@ Wave 2 的最低标准：
 
 这轮实际执行过程中验证有效的做法，建议固化为 cap 的默认动作：
 
-- 以“探索宽度持续增长”为常态：每次围绕一个能力单元/机制同时扩张对象清单（框架、SDLC 阶段、能力单元、实现手段、失败模式），直到清单稳定
+- 以“探索宽度持续增长”为常态：每次围绕一个能力单元/机制同时扩张对象清单（框架、SDLC 阶段、能力单元、实现手段、失败模式）；扩张必须服务于补新事实/澄清机制差异/提供反例，不做无意义的框架堆叠；直到清单稳定
 - 以“下钻到机制落地证据”为止：对每个关键描述必须回答“是确定性实现还是 prompt 约束”，优先下钻到 schema/代码/脚本/模板/CI 规则与实际运行接口
 - 以“证据落库”为单位推进：每一次有效探索都必须落为 `reference_cap/*.md`（可复用 ground truth），并写清版本/commit/hash（如适用）、`claims_supported`、`date_scope` 与局限
-- 以“边取证边回填”避免集成债：新增 evidence 落库后立刻回填到对应 `digested_cap/*.md` 的二轮章节，并维护 `digested_cap/_artifacts/<dimension>-evidence-summary.md` 与 `digested_cap/_artifacts/<dimension>-question-list.md`；跨维度结论维护 `digested_cap/_artifacts/W2-cross-dimension-synthesis.md`
-- 以“持续自校验”保证 30 秒可回指：每波次结束做一次回指完整性检查，并维护 `reference_cap/_INDEX.md` 作为快速入口
+- 以“边取证边回填”避免集成债：新增 evidence 落库后立刻回填到对应 `digested_cap/*.md` 的二轮章节，并维护 `digested_cap/_artifacts/<dim_prefix>-evidence-summary.md` 与 `digested_cap/_artifacts/<dim_prefix>-question-list.md`（`<dim_prefix>` ∈ {`01-planning`,`02-build-debug`,`03-review-ship-ops`,`04-map-migration`}）；跨维度结论维护 `digested_cap/_artifacts/W2-cross-dimension-synthesis.md`
+- 以“持续自校验”保证 30 秒可回指：每波次结束做一次回指完整性检查；新增/更新 `reference_cap/*.md` 后同步补到 `reference_cap/_INDEX.md` 作为快速入口
 - 执行节奏默认不等反馈：除非遇到必须由报告口径决定的关键取舍，否则按 Wave/Step 检查点持续推进到 Report Readiness Check
 
 ## 什么值得存进 reference_cap
@@ -495,22 +506,23 @@ Wave 2 的最低标准：
 主线程职责：
 
 - 统一证据采集格式
-- 维护 `reference_cap` 命名规范
+- 维护 `reference_cap` 命名规范与 `reference_cap/_INDEX.md`
 - 避免不同线程重复下载同一来源
-- 在 Wave 2 做跨研究线综合
+- 在 Wave 2 做跨研究线综合（落盘到 `digested_cap/_artifacts/W2-cross-dimension-synthesis.md`）
 
 各研究线线程职责：
 
 - 深挖自己对应的 `digested_cap` 文件
 - 把高价值来源落为 `reference_cap/*.md`
 - 在研究中明确记录：证据、根本、趋势、难点、争议
+- 回填到对应 `digested_cap/*.md` 二轮章节，并维护本研究线的 evidence summary 与 question list
 
 为了避免写冲突，建议按前缀分工：
 
-- 线程 01 只写 `01-*`
-- 线程 02 只写 `02-*`
-- 线程 03 只写 `03-*`
-- 线程 04 只写 `04-*`
+- 线程 01：`reference_cap/01-*` + `digested_cap/01-*.md` + `digested_cap/_artifacts/01-planning-*.md`
+- 线程 02：`reference_cap/02-*` + `digested_cap/02-*.md` + `digested_cap/_artifacts/02-build-debug-*.md`
+- 线程 03：`reference_cap/03-*` + `digested_cap/03-*.md` + `digested_cap/_artifacts/03-review-ship-ops-*.md`
+- 线程 04：`reference_cap/04-*` + `digested_cap/04-*.md` + `digested_cap/_artifacts/04-map-migration-*.md`
 
 ## 执行节奏
 
@@ -520,9 +532,10 @@ Wave 2 的最低标准：
 
 ### Step 2
 
-先充实 `reference_cap`，不要一边浏览一边直接写结论。
+先初始化可回指入口并充实 `reference_cap`，不要一边浏览一边直接写结论。
 
 检查点：
+- 已初始化 `reference_cap/_INDEX.md` 与 `digested_cap/_artifacts/`（evidence summaries / question lists / W2 synthesis 的落盘位置明确）
 - 每新增一份 `reference_cap` 文档，都要能回答"为什么值得保存"
 - 如果只是浏览，没有形成可复用的本地文档，这一步不算完成
 
@@ -597,6 +610,6 @@ Wave 2 的最低标准：
 
 这一轮研究应该鼓励深挖机制，而不是追求框架数量的堆砌。
 
-原始材料已经列出了 8 个能力单元和 4 个核心抽象，这轮的任务不是再找更多框架，而是把已有框架的机制挖透、把迁移价值的评估做实、把跨框架的横向对比做清楚。
+原始材料已经列出了 8 个能力单元和 4 个核心抽象，这轮任务不是为了堆“框架数量”。但为了对照、反例与迁移评估，允许引入少量必要的新框架/新案例。主线仍是：把关键框架的机制挖透、把迁移价值的评估做实、把跨框架的横向对比做清楚。
 
 调研的终点不是"搜够了"，而是"能写出一份专业人士愿意看、看得懂、挑不出大漏洞的报告"。这是每一轮调研的最高约束。

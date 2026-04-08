@@ -141,9 +141,9 @@ Cursor vs Windsurf 的对比（显式控制 vs 隐式自动化）是有价值的
 
 ## 输出
 
-本轮执行后应至少形成三类资产：
+本轮执行后应形成以下资产与协议（不满足则视为未完成）：
 
-### 1. Ground truth 参考材料
+### 1. Ground truth 参考材料（`reference_eng`）
 
 存放位置：`/Users/bowhead/ai_dev_skill/SDLC_SKILL/reference_eng`
 
@@ -151,7 +151,7 @@ Cursor vs Windsurf 的对比（显式控制 vs 隐式自动化）是有价值的
 - 每个高价值来源单独存成一个 `md`
 - 不追求全文镜像，重点保存结构化摘录、关键信息、来源链接、研究价值判断
 
-### 2. 每个主题的二轮研究结果
+### 2. 主题二轮研究结果（回填到 `digested_eng/*.md`）
 
 每个主题都应形成更深版本，至少能回答：
 
@@ -170,14 +170,25 @@ Cursor vs Windsurf 的对比（显式控制 vs 隐式自动化）是有价值的
 - 社区争议和失败模式在哪里
 - 哪些对象最值得继续追踪
 
-### 3. 跨主题综合结论
+### 3. 过程性 artifacts（便于复用与验收）
 
-最终需要能够横向回答：
+这些文件的目标不是“写得好看”，而是降低集成债，确保每个判断都能在 30 秒内回指证据：
 
+跨主题综合结论（落盘于 `digested_eng/_artifacts/W2-cross-topic-synthesis.md`）需要横向回答：
 - "认知脚手架"主张的实证强度如何，在哪些条件下成立
 - 四阶段跃迁路径的哪些部分有实证，哪些是理论推演
 - 工具选择对学习路径的实际影响有多大
 - 团队治理的关键成功要素是什么
+
+- `digested_eng/_artifacts/01-scaffold-evidence-summary.md`
+- `digested_eng/_artifacts/01-scaffold-question-list.md`
+- `digested_eng/_artifacts/02-tier-evidence-summary.md`
+- `digested_eng/_artifacts/02-tier-question-list.md`
+- `digested_eng/_artifacts/03-devlife-evidence-summary.md`
+- `digested_eng/_artifacts/03-devlife-question-list.md`
+- `digested_eng/_artifacts/04-path-evidence-summary.md`
+- `digested_eng/_artifacts/04-path-question-list.md`
+- `reference_eng/_INDEX.md`（证据入口索引，便于快速定位）
 
 ### 4. digested_eng 更新协议
 
@@ -311,7 +322,8 @@ Wave 2 的最低标准：
 - 以“探索宽度持续增长”为常态：每次围绕一个主张（认知脚手架/认知卸载/逆向学习/治理策略）同时扩张至少三条证据线（学术研究、工具机制、真实案例/社区反馈），直到核心对象与证据链条稳定
 - 以“下钻到可验证细节”为止：学术主张下钻到论文方法/样本/指标/局限；工具主张下钻到官方 docs/schema/code；企业/社区案例下钻到一手记录与可复核数据（时间、上下文、反例）
 - 以“证据落库”为单位推进：每一次有效探索都必须落为 `reference_eng/*.md`（可复用 ground truth），并写清 `claims_supported` 与 `date_scope`，避免靠记忆写结论
-- 以“边取证边回填”避免集成债：新增 evidence 落库后立刻回填到对应主题的二轮章节，并维护 `digested_eng/_artifacts/<topic>-evidence-summary.md` 与 `digested_eng/_artifacts/<topic>-question-list.md`；跨主题结论维护 `digested_eng/_artifacts/W2-cross-topic-synthesis.md`
+- 以“边取证边回填”避免集成债：新增 evidence 落库后立刻回填到对应主题的二轮章节，并维护 `digested_eng/_artifacts/<topic_prefix>-evidence-summary.md` 与 `digested_eng/_artifacts/<topic_prefix>-question-list.md`（`<topic_prefix>` ∈ {`01-scaffold`,`02-tier`,`03-devlife`,`04-path`}）；跨主题结论维护 `digested_eng/_artifacts/W2-cross-topic-synthesis.md`
+- 同步维护证据入口：新增/更新 `reference_eng/*.md` 后，同步补到 `reference_eng/_INDEX.md`，确保“30 秒可回指”可操作
 - 用 Claim Strength Policy 强制诚实表述：任何跨域类比都必须显式标注边界；证据不足时降级表述，不硬凑强结论
 - 执行节奏默认不等反馈：除非遇到必须由报告 scope 决定的关键取舍，否则按 Wave/Step 检查点持续推进到 Report Readiness Check
 
@@ -521,22 +533,23 @@ Wave 2 的最低标准：
 主线程职责：
 
 - 统一证据采集格式
-- 维护 `reference_eng` 命名规范
+- 维护 `reference_eng` 命名规范与 `reference_eng/_INDEX.md`
 - 避免不同线程重复下载同一来源
-- 在 Wave 2 做跨主题综合
+- 在 Wave 2 做跨主题综合（落盘到 `digested_eng/_artifacts/W2-cross-topic-synthesis.md`）
 
 各主题线程职责：
 
 - 深挖自己主题
 - 把高价值来源落为 `reference_eng/*.md`
 - 在研究中明确记录：证据、根本、趋势、难点、争议
+- 回填到对应 `digested_eng/*.md` 二轮章节，并维护本主题的 evidence summary 与 question list
 
 为了避免写冲突，建议按前缀分工：
 
-- 线程 A 只写 `01-scaffold-*`
-- 线程 B 只写 `02-tier-*`
-- 线程 C 只写 `03-devlife-*`
-- 线程 D 只写 `04-path-*`
+- 线程 A：`reference_eng/01-scaffold-*` + `digested_eng/01-*.md` + `digested_eng/_artifacts/01-scaffold-*.md`
+- 线程 B：`reference_eng/02-tier-*` + `digested_eng/02-*.md` + `digested_eng/_artifacts/02-tier-*.md`
+- 线程 C：`reference_eng/03-devlife-*` + `digested_eng/03-*.md` + `digested_eng/_artifacts/03-devlife-*.md`
+- 线程 D：`reference_eng/04-path-*` + `digested_eng/04-*.md` + `digested_eng/_artifacts/04-path-*.md`
 
 ## 执行节奏
 
@@ -546,9 +559,10 @@ Wave 2 的最低标准：
 
 ### Step 2
 
-先充实 `reference_eng`，不要一边浏览一边直接写结论。
+先初始化可回指入口并充实 `reference_eng`，不要一边浏览一边直接写结论。
 
 检查点：
+- 已初始化 `reference_eng/_INDEX.md` 与 `digested_eng/_artifacts/`（evidence summaries / question lists / W2 synthesis 的落盘位置明确）
 - 每新增一份 `reference_eng` 文档，都要能回答"为什么值得保存"
 - 如果只是浏览，没有形成可复用的本地文档，这一步不算完成
 
