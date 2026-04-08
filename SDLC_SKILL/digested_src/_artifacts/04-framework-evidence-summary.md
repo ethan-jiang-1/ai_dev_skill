@@ -13,6 +13,8 @@
 - `../reference_src/04-framework-bmad-method-github-readme.md`
 - `../reference_src/04-framework-spec-kit-github-readme.md`
 - `../reference_src/04-framework-spec-kit-templates-and-commands.md`
+- `../reference_src/04-framework-spec-kit-integration-manifest-sha256.md`
+- `../reference_src/04-framework-spec-kit-hook-executor-extensions-yml.md`
 - `../reference_src/04-framework-openspec-github-readme.md`
 - `../reference_src/04-framework-feature-driven-flow-github-readme.md`
 - `../reference_src/04-framework-feature-driven-flow-specification.md`
@@ -30,6 +32,8 @@
 - [hard_fact] Superpowers 的强约束不仅存在于 README，而是被写入具体 skills：启动型 `using-superpowers` 要求任何响应（含澄清问题）前先调用 Skill tool 检查并加载相关 skills；`test-driven-development` 把“先红后绿”的 TDD 写成不可协商门禁；`verification-before-completion` 把“无新鲜验证证据不做完成声明”写成 completion gate。（Ref: ../reference_src/04-framework-superpowers-using-superpowers-skill.md；../reference_src/04-framework-superpowers-test-driven-development-skill.md；../reference_src/04-framework-superpowers-verification-before-completion-skill.md）
 - “轻规则集”路线同样能产生治理效果：通过 read-only conventions 或 repo rules 的持续注入，降低采用摩擦并减少规则在长对话中的稀释。（Ref: ../reference_src/04-framework-aider-conventions-docs.md；../reference_src/04-framework-roo-code-custom-instructions-docs.md）
 - [hard_fact] Spec Kit 将 spec-driven workflow 固化为“可版本控制模板 + 命令契约”：spec/plan/tasks/checklist/constitution 等工件模板明确 mandatory sections 与 gates；命令模板支持 `.specify/extensions.yml` hooks，并在 implement 前对 checklists 完成度做门禁检查（未完成则需用户确认是否继续）。（Ref: ../reference_src/04-framework-spec-kit-templates-and-commands.md；../reference_src/04-framework-spec-kit-github-readme.md）
+- [hard_fact] Spec Kit 在“安装治理”层引入了 hash-tracked manifest：为每个安装 integration 记录创建文件的 SHA-256，并在卸载时仅删除 hash 仍匹配的文件（被修改则跳过并报告），同时包含 path traversal 防护与 symlink 处理策略。（Ref: ../reference_src/04-framework-spec-kit-integration-manifest-sha256.md）
+- [hard_fact] Spec Kit 的 extension hooks 存在实现级运行时语义：HookExecutor 读取 `.specify/extensions.yml`（默认 `auto_execute_hooks: true`），支持基于 config/env 的 condition 表达式求值（异常与未知格式默认不执行），并按宿主/skills mode 渲染不同调用形式（Codex `$speckit-*` vs Claude `/<speckit-*>` 等）。（Ref: ../reference_src/04-framework-spec-kit-hook-executor-extensions-yml.md）
 - 框架扩展生态与插件化会扩大供应链与过度代理风险面，必须将权限收敛与审计边界明确化（例如 Spec Kit 的“不审计 extensions”声明 + OWASP 风险分类 + Roo Code mode 权限约束）。（Ref: ../reference_src/04-framework-spec-kit-github-readme.md；../reference_src/00-shared-owasp-llm-top10-v1-1.md；../reference_src/04-framework-roo-code-custom-modes-docs.md）
 
 ## 6 个固定问题覆盖情况

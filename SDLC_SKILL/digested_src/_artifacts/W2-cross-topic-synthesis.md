@@ -56,6 +56,9 @@
 - `../reference_src/04-framework-feature-driven-flow-specification.md`
 - `../reference_src/04-framework-feature-driven-flow-effective-matrix-schema.md`
 - `../reference_src/04-framework-spec-kit-github-readme.md`
+- `../reference_src/04-framework-spec-kit-templates-and-commands.md`
+- `../reference_src/04-framework-spec-kit-integration-manifest-sha256.md`
+- `../reference_src/04-framework-spec-kit-hook-executor-extensions-yml.md`
 - `../reference_src/04-framework-roo-code-custom-instructions-docs.md`
 - `../reference_src/04-framework-roo-code-custom-modes-docs.md`
 
@@ -105,7 +108,7 @@
 ### 主题 2（dist）
 
 - dist × host：分发层的“包管理器化能力”在现实中要落到宿主的 discovery scopes 与目录扫描规则上，否则更新/禁用/冲突处理都无法闭环。（Ref: ../reference_src/02-dist-vercel-skills-docs-source-formats.md；../reference_src/01-host-opencode-agent-skills-docs.md；../reference_src/01-host-openai-codex-agent-skills-docs.md）
-- dist × framework：方法论框架与扩展生态天然引入 supply chain 风险与责任边界，因此分发层除了安装与更新，还需要版本快照、可审计与安全扫描/风险提示等治理能力。（Ref: ../reference_src/04-framework-spec-kit-github-readme.md；../reference_src/02-dist-sundial-docs-push-publish.md；../reference_src/02-dist-sundial-docs-security.md；../reference_src/02-dist-vercel-skills-cli-security-audit-api.md）
+- dist × framework：方法论框架与扩展生态天然引入 supply chain 风险与责任边界，同时框架自身往往携带安装器/脚本/hooks/manifest（例如 Spec Kit 的 extension hooks 与 hash-tracked manifest），因此分发层除了安装与更新，还需要版本快照、可审计与安全扫描/风险提示等治理能力。（Ref: ../reference_src/04-framework-spec-kit-github-readme.md；../reference_src/04-framework-spec-kit-templates-and-commands.md；../reference_src/04-framework-spec-kit-integration-manifest-sha256.md；../reference_src/02-dist-sundial-docs-push-publish.md；../reference_src/02-dist-sundial-docs-security.md；../reference_src/02-dist-vercel-skills-cli-security-audit-api.md）
 
 ### 主题 3（supply）
 

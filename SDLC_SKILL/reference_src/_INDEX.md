@@ -94,6 +94,8 @@
 | 04-framework-roo-code-custom-modes-docs.md | framework | official | Roo Code modes: tool/file permissions + import/export |
 | 04-framework-spec-kit-github-readme.md | framework | official | Spec Kit: spec-driven phases + commands + extension boundaries |
 | 04-framework-spec-kit-templates-and-commands.md | framework | official | Spec Kit templates/command contracts: spec/plan/tasks/checklist artifacts + hooks + gates |
+| 04-framework-spec-kit-integration-manifest-sha256.md | framework | official | Spec Kit integrity: hash-tracked install manifest + safe uninstall + path traversal protection |
+| 04-framework-spec-kit-hook-executor-extensions-yml.md | framework | official | Spec Kit extension hooks runtime: extensions.yml parsing + conditions + per-agent invocation rendering |
 | 04-framework-superpowers-github-readme.md | framework | official | Superpowers: mandatory skill-driven SDLC workflow + TDD gates |
 | 04-framework-superpowers-using-superpowers-skill.md | framework | official | Superpowers startup discipline: invoke Skill tool before any response; instruction priority |
 | 04-framework-superpowers-verification-before-completion-skill.md | framework | official | Superpowers verification gate: evidence before completion claims |
