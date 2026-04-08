@@ -340,6 +340,17 @@ Wave 2 的最低标准：
 - `03-supply-awesome-agent-skills.md`
 - `04-framework-superpowers.md`
 
+## 已验证的高杠杆执行行为（写入计划，必须遵守）
+
+这轮实际执行过程中验证有效的做法，固化为默认动作：
+
+- 以“探索宽度持续增长”为常态：每次搜索不只找同类材料，而是刻意扩张对象清单（新宿主 / 新分发器 / 新框架 / 新规范 / 新术语 / 新失败模式），直到“核心对象清单稳定”停止条件达成
+- 以“下钻到机制实现”为止：对每个关键对象，不停留在 README/营销页，沿 docs → schema → code/模板 → 打包产物（tarball 等）→ 论坛/issue 反例逐级下钻，尽量把判断升级为可引用的 contract 级证据（schema/代码）
+- 以“证据落库”为单位推进：每一次有效探索都必须落为 `reference_src/*.md`（可复用 ground truth），否则视为未完成，避免只“看过”但不可复用
+- 以“边取证边回填”避免集成债：新增证据落库后立刻回填到对应主题的二轮章节，并同步更新 `digested_src/_artifacts/<topic>-evidence-summary.md` 与 `digested_src/_artifacts/<topic>-question-list.md`；跨主题结论同步进入 `digested_src/_artifacts/W2-cross-topic-synthesis.md`
+- 以“持续自校验”保证 30 秒可回指：每波次结束做一次回指完整性检查（确保 `digested_src` 中所有 `../reference_src/*.md` 链接可解析），并维护 `reference_src/_INDEX.md` 作为快速入口
+- 执行节奏默认不等反馈：只要没有外部依赖或关键不确定性阻断，就按 Wave/Step 检查点持续推进，直到通过 Report Readiness Check
+
 ## 什么值得存进 reference_src
 
 不是所有搜到的页面都值得存。  

@@ -286,6 +286,17 @@ Wave 2 的最低标准：
 - `03-<source-slug>.md`：审查发布运维与状态持久化
 - `04-<source-slug>.md`：能力地图与迁移价值判断
 
+## 已验证的高杠杆执行行为（从 digested_src 计划迁移）
+
+这轮实际执行过程中验证有效的做法，建议固化为 cap 的默认动作：
+
+- 以“探索宽度持续增长”为常态：每次围绕一个能力单元/机制同时扩张对象清单（框架、SDLC 阶段、能力单元、实现手段、失败模式），直到清单稳定
+- 以“下钻到机制落地证据”为止：对每个关键描述必须回答“是确定性实现还是 prompt 约束”，优先下钻到 schema/代码/脚本/模板/CI 规则与实际运行接口
+- 以“证据落库”为单位推进：每一次有效探索都必须落为 `reference_cap/*.md`（可复用 ground truth），并写清版本/commit/hash（如适用）、`claims_supported`、`date_scope` 与局限
+- 以“边取证边回填”避免集成债：新增 evidence 落库后立刻回填到对应 `digested_cap/*.md` 的二轮章节，并维护 `digested_cap/_artifacts/<dimension>-evidence-summary.md` 与 `digested_cap/_artifacts/<dimension>-question-list.md`；跨维度结论维护 `digested_cap/_artifacts/W2-cross-dimension-synthesis.md`
+- 以“持续自校验”保证 30 秒可回指：每波次结束做一次回指完整性检查，并维护 `reference_cap/_INDEX.md` 作为快速入口
+- 执行节奏默认不等反馈：除非遇到必须由报告口径决定的关键取舍，否则按 Wave/Step 检查点持续推进到 Report Readiness Check
+
 ## 什么值得存进 reference_cap
 
 优先保留：

@@ -304,6 +304,17 @@ Wave 2 的最低标准：
 - `03-devlife-<source-slug>.md`：Skill 开发生命周期与工具生态
 - `04-path-<source-slug>.md`：工程师跃迁路径与团队治理
 
+## 已验证的高杠杆执行行为（从 digested_src 计划迁移）
+
+这轮实际执行过程中验证有效的做法，建议固化为 eng 的默认动作：
+
+- 以“探索宽度持续增长”为常态：每次围绕一个主张（认知脚手架/认知卸载/逆向学习/治理策略）同时扩张至少三条证据线（学术研究、工具机制、真实案例/社区反馈），直到核心对象与证据链条稳定
+- 以“下钻到可验证细节”为止：学术主张下钻到论文方法/样本/指标/局限；工具主张下钻到官方 docs/schema/code；企业/社区案例下钻到一手记录与可复核数据（时间、上下文、反例）
+- 以“证据落库”为单位推进：每一次有效探索都必须落为 `reference_eng/*.md`（可复用 ground truth），并写清 `claims_supported` 与 `date_scope`，避免靠记忆写结论
+- 以“边取证边回填”避免集成债：新增 evidence 落库后立刻回填到对应主题的二轮章节，并维护 `digested_eng/_artifacts/<topic>-evidence-summary.md` 与 `digested_eng/_artifacts/<topic>-question-list.md`；跨主题结论维护 `digested_eng/_artifacts/W2-cross-topic-synthesis.md`
+- 用 Claim Strength Policy 强制诚实表述：任何跨域类比都必须显式标注边界；证据不足时降级表述，不硬凑强结论
+- 执行节奏默认不等反馈：除非遇到必须由报告 scope 决定的关键取舍，否则按 Wave/Step 检查点持续推进到 Report Readiness Check
+
 ---
 
 ## 四条研究线的具体目标
