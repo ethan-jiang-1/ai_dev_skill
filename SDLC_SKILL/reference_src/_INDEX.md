@@ -44,6 +44,7 @@
 | 02-dist-vercel-skills-docs-source-formats.md | dist | official | Source detection logic + well-known endpoint for skills CLI |
 | 02-dist-vercel-skills-docs-lock-files.md | dist | official | Global/local lock files + skillFolderHash/computedHash + team-friendly design |
 | 02-dist-vercel-skills-docs-update-system.md | dist | official | Update system: skills check/update + remote API hash comparison |
+| 02-dist-vercel-skills-cli-security-audit-api.md | dist | official | Security advisory: audit API + pre-install Security Risk Assessments (advisory only) |
 | 02-dist-vercel-skills-well-known-index-schema.md | dist | official | Well-known index.json schema + agent-skills preferred + validation rules |
 | 02-dist-x-docs-skill-md.md | dist | official | X docs: skills CLI install + well-known endpoints (agent-skills 0.2.0 + legacy skills) |
 | 02-dist-x-well-known-agent-skills-index-json.md | dist | official | X well-known agent-skills index.json (v0.2.0 with $schema/type/url/digest) |
@@ -54,6 +55,7 @@
 | 02-dist-cognite-well-known-skills-index-json.md | dist | official | Cognite well-known skills index.json (legacy files format) |
 | 02-dist-lobehub-github-readme.md | dist | official | “10,000+ Skills” scale claim + MCP-compatible plugins |
 | 02-dist-lobehub-market-cli-npm.md | dist | practitioner | Marketplace CLI package existence (name/version/homepage) |
+| 02-dist-lobehub-market-cli-tarball-0-0-28.md | dist | practitioner | LobeHub Market CLI (`lhm`) commands: skills search/view/install + MCP plugins browsing + install targets |
 | 03-supply-expo-docs-expo-skills.md | supply | official | Expo official skills + install via Claude/Cursor/skills CLI + MCP |
 | 03-supply-expo-site-expo-skills.md | supply | official | Expo skills official landing + CLI command |
 | 03-supply-expo-skills-github-readme.md | supply | official | expo/skills install + Cursor auto-discovery vs / commands |
@@ -84,9 +86,15 @@
 | 04-framework-aider-conventions-github-readme.md | framework | official | Conventions template repo; project-level governance via CONVENTIONS.md |
 | 04-framework-bmad-method-github-readme.md | framework | official | BMAD: scale-adaptive agile framework + modules + installer |
 | 04-framework-feature-driven-flow-github-readme.md | framework | official | FDF: fixed 7 phases + rule matrix + gates + overlays |
+| 04-framework-feature-driven-flow-specification.md | framework | official | FDF runtime spec: phases + rules/profiles + effective matrix/instructions + gates + precedence + packs/persistence |
+| 04-framework-feature-driven-flow-effective-matrix-schema.md | framework | official | Effective Rule Matrix JSON schema: required fields + 7-phase keys + strict additionalProperties |
 | 04-framework-gstack-github-readme.md | framework | official | gstack: role-based virtual team + team mode + host targeting |
 | 04-framework-openspec-github-readme.md | framework | official | OpenSpec: artifact-guided workflow for brownfield changes |
 | 04-framework-roo-code-custom-instructions-docs.md | framework | official | Roo Code rules: file locations + load order + AGENTS.md |
 | 04-framework-roo-code-custom-modes-docs.md | framework | official | Roo Code modes: tool/file permissions + import/export |
 | 04-framework-spec-kit-github-readme.md | framework | official | Spec Kit: spec-driven phases + commands + extension boundaries |
+| 04-framework-spec-kit-templates-and-commands.md | framework | official | Spec Kit templates/command contracts: spec/plan/tasks/checklist artifacts + hooks + gates |
 | 04-framework-superpowers-github-readme.md | framework | official | Superpowers: mandatory skill-driven SDLC workflow + TDD gates |
+| 04-framework-superpowers-using-superpowers-skill.md | framework | official | Superpowers startup discipline: invoke Skill tool before any response; instruction priority |
+| 04-framework-superpowers-verification-before-completion-skill.md | framework | official | Superpowers verification gate: evidence before completion claims |
+| 04-framework-superpowers-test-driven-development-skill.md | framework | official | Superpowers TDD gate: no production code without failing test; mandatory verify red/green |

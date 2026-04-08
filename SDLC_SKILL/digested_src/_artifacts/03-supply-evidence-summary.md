@@ -12,6 +12,7 @@
 - `../reference_src/03-supply-cloudflare-skills-github-readme.md`
 - `../reference_src/03-supply-huggingface-docs-agent-skills.md`
 - `../reference_src/03-supply-huggingface-skills-github-readme.md`
+- `../reference_src/03-supply-cognite-docs-ide-ai-integration.md`
 - `../reference_src/03-supply-mcp-base-protocol-2025-06-18.md`
 - `../reference_src/03-supply-cloudflare-mcp-guide.md`
 - `../reference_src/03-supply-mcp-servers-github-readme.md`
@@ -23,6 +24,7 @@
 - `../reference_src/03-supply-mcp-registry-moderation-policy.md`
 - `../reference_src/03-supply-mcp-registry-versioning.md`
 - `../reference_src/03-supply-mcp-registry-server-schema-2025-12-11.md`
+- `../reference_src/03-supply-servicenow-ai-gateway-mcp-registry-consumption-2026-03.md`
 - `../reference_src/03-supply-mcp-server-features-overview-2025-06-18.md`
 - `../reference_src/03-supply-mcp-server-prompts-2025-06-18.md`
 - `../reference_src/03-supply-mcp-server-resources-2025-06-18.md`
@@ -38,6 +40,7 @@
 - skills 与 MCP 是分层共生：skills 倾向过程编排；MCP 以 JSON-RPC 的 host/client/server 模式把外部能力标准化并引入授权/部署边界（remote OAuth vs local stdio）。（Ref: ../reference_src/03-supply-mcp-base-protocol-2025-06-18.md；../reference_src/03-supply-cloudflare-mcp-guide.md）
 - [hard_fact] MCP server features 不是单一“工具调用”：prompts/resources/tools 三类原语有不同控制权层级与配套 methods/notifications，并且 tools/resources/prompts 各自有明确安全要求与治理前提。（Ref: ../reference_src/03-supply-mcp-server-features-overview-2025-06-18.md；../reference_src/03-supply-mcp-server-prompts-2025-06-18.md；../reference_src/03-supply-mcp-server-resources-2025-06-18.md；../reference_src/03-supply-mcp-server-tools-2025-06-18.md）
 - [hard_fact] MCP Registry 的发布与消费模型是“metadata-only + 可验证 + 可聚合”：发布通过 `mcp-publisher`，认证决定命名空间（GitHub 或域名 reverse-DNS），并对不同包类型定义 ownership verification；同时 registry 本身不承诺 uptime/durability，且 moderation policy 相当 permissive，增值治理预期下放到 subregistries/aggregators。（Ref: ../reference_src/03-supply-mcp-registry-quickstart-publish.md；../reference_src/03-supply-mcp-registry-authentication.md；../reference_src/03-supply-mcp-registry-package-types.md；../reference_src/03-supply-mcp-registry-aggregators.md；../reference_src/03-supply-mcp-registry-moderation-policy.md）
+- [hard_fact] MCP Registry 已出现企业级消费侧集成样本：ServiceNow AI Gateway/AI Control Tower 支持直接从 MCP community registry（`registry.modelcontextprotocol.io`）浏览并导入 MCP servers。（Ref: ../reference_src/03-supply-servicenow-ai-gateway-mcp-registry-consumption-2026-03.md）
 - 社区索引主要是“线索库”，不能直接当作证据库；关键条目需回到官方 docs/仓库核验。（Ref: ../reference_src/03-supply-awesome-mcp-servers.md；../reference_src/03-supply-awesome-agent-skills-voltagent.md）
 - 供给层引入 plugins/MCP servers 后，风险面扩大到供应链与过度代理，需要把权限/描述/回归验证纳入供给与治理。（Ref: ../reference_src/03-supply-cloudflare-mcp-guide.md；../reference_src/00-shared-owasp-llm-top10-v1-1.md；../reference_src/03-supply-huggingface-skills-github-readme.md）
 
@@ -53,4 +56,4 @@
 ## 缺口与下一步补搜
 
 - 需要把“跨宿主适配”的关键外链抓成一手证据（例如 Gemini extensions docs、Cursor plugins/remote rules 细则），避免只引用企业 README 的二手描述。（Ref: ../reference_src/03-supply-huggingface-skills-github-readme.md；../reference_src/01-host-openai-codex-agent-skills-docs.md）
-- 需要补齐“宿主/客户端对 MCP Registry 的真实消费证据”：目前已覆盖 registry 的发布、schema、聚合器/子注册表与治理口径；官方也收录了一批 community consumers 作为线索，但仍需更多一手证据说明哪些 host/installer 在生产中消费 registry API 或 subregistry 元数据（以避免把愿景当现状）。（缺口；Ref: ../reference_src/03-supply-mcp-registry-aggregators.md；../reference_src/03-supply-mcp-registry-github-readme.md；../reference_src/03-supply-mcp-registry-community-projects.md）
+- 需要补齐“宿主/客户端对 MCP Registry 的真实消费证据”：目前已覆盖 registry 的发布、schema、聚合器/子注册表与治理口径；并补到至少一个企业级平台消费侧集成样本（ServiceNow）。但对“主流 coding 宿主/企业安装器是否在生产中消费 registry/subregistry、以及其安全与更新策略如何落地”仍需进一步核验。（缺口；Ref: ../reference_src/03-supply-mcp-registry-aggregators.md；../reference_src/03-supply-mcp-registry-github-readme.md；../reference_src/03-supply-mcp-registry-community-projects.md；../reference_src/03-supply-servicenow-ai-gateway-mcp-registry-consumption-2026-03.md）

@@ -15,7 +15,7 @@
 
 ## 待验证 / 待补搜
 
-- Cursor plugins 的运行时语义：已补齐官方仓库的 manifest/JSON Schema、marketplace 结构与本地默认 plugins 目录 `~/.cursor/plugins/local/` 的证据，并补齐官方示例 plugin 的 hooks 运行时契约（`stop/afterAgentResponse` + `followup_message`）；但权限模型（hooks/commands 的执行授权）、多插件加载顺序与 IDE/CLI 一致性仍缺更直接的一手说明或实现级核验。（Ref: ../reference_src/01-host-cursor-plugins-json-schemas.md；../reference_src/01-host-cursor-plugins-github-readme.md；../reference_src/01-host-cursor-plugins-create-plugin-scaffold-skill.md；../reference_src/01-host-cursor-plugins-hooks-runtime-contract.md；../reference_src/01-host-cursor-forum-cli-mode-plugins-bug.md）
+- Cursor plugins 的运行时语义：已补齐官方仓库的 manifest/JSON Schema、marketplace 结构与本地默认 plugins 目录 `~/.cursor/plugins/local/` 的证据，并补齐官方示例 plugin 的 hooks 运行时契约（`stop/afterAgentResponse` + `followup_message`）；且已知 manifest schema 层未出现显式权限声明字段（例如 `permissions`）。但权限模型（hooks/commands 的执行授权与审计）、多插件加载顺序与 IDE/CLI 一致性仍缺更直接的一手说明或实现级核验。（Ref: ../reference_src/01-host-cursor-plugins-json-schemas.md；../reference_src/01-host-cursor-plugins-github-readme.md；../reference_src/01-host-cursor-plugins-create-plugin-scaffold-skill.md；../reference_src/01-host-cursor-plugins-hooks-runtime-contract.md；../reference_src/01-host-cursor-forum-cli-mode-plugins-bug.md）
 - Windsurf “Claude Code config reading” 的开关语义与兼容扫描边界（官方说明）。
 
 ## 停止条件自检

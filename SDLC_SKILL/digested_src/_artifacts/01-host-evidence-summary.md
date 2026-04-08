@@ -47,6 +47,7 @@
 - [hard_fact] Cursor plugins 的本地落盘路径在官方仓库中被显式写明：`~/.cursor/plugins/local/<plugin-name>/` 可使 plugin 无需安装步骤即可立即可用（至少在本地开发/落盘语义上）。（Ref: ../reference_src/01-host-cursor-plugins-create-plugin-scaffold-skill.md）
 - [hard_fact] Cursor plugins 的 hooks 运行时语义存在实现级证据：官方示例 plugin 通过 `hooks.json` 声明 `stop/afterAgentResponse` 等事件并执行命令，且 `stop` hook 可通过输出 `followup_message` 驱动 agent 继续下一轮；示例中也出现 `CURSOR_PROJECT_DIR/CURSOR_PLUGIN_ROOT` 等环境变量约定。（Ref: ../reference_src/01-host-cursor-plugins-hooks-runtime-contract.md）
 - [hard_fact] Cursor plugins 的 marketplace index（`marketplace.json` schema）把每个 plugin entry 的 `source` 定义为“相对路径或 remote URL”，意味着 marketplace 形态在模型层可同时覆盖“多插件仓库索引”与“索引远端来源”。（Ref: ../reference_src/01-host-cursor-plugins-json-schemas.md）
+- [hard_fact] Cursor plugin manifest schema 未定义显式权限/授权声明字段（例如 `permissions`），即便其可声明 `hooks/commands/mcpServers` 等可执行组件入口。（Ref: ../reference_src/01-host-cursor-plugins-json-schemas.md）
 - [hard_fact] Copilot CLI 明确支持 skills（`SKILL.md`）与多目录 discovery（含 `.agents/skills` 与 `~/.agents/skills`），并提供 repo/local settings scopes、slash commands（`/skills`、`/mcp`、`/plugin`）等治理入口。（Ref: ../reference_src/01-host-github-copilot-cli-command-reference.md）
 - [hard_fact] 权限/治理能力存在显著分层：Copilot CLI 有 trusted folders + allow/deny tools + `--yolo`/reset；OpenCode 有 allow/ask/deny 与 tool 禁用；Codex 可通过 `~/.codex/config.toml` 禁用 skills；Gemini extensions 支持按 user/workspace scope 启停并可通过 `excludeTools` 限制工具；Claude 有 Team/Enterprise 的组织预置与分享机制。（Ref: ../reference_src/01-host-github-copilot-cli-configure.md；../reference_src/01-host-github-copilot-cli-allowing-tools.md；../reference_src/01-host-opencode-agent-skills-docs.md；../reference_src/01-host-openai-codex-agent-skills-docs.md；../reference_src/01-host-google-gemini-cli-extensions-reference.md；../reference_src/01-host-claude-using-skills-in-claude.md）
 - [trend] 企业治理方向正在产品化：Cursor 明确提出 private team marketplaces（central governance + security controls），意味着“宿主平台”将成为企业分发与风险控制的关键抓手。（Ref: ../reference_src/01-host-cursor-plugins-blog-2026-02-17.md）
@@ -63,5 +64,5 @@
 
 ## 缺口与下一步补搜
 
-- Cursor plugins 的运行时与权限模型证据：已补齐官方仓库的 manifest/JSON Schema、marketplace 结构与本地默认 plugins 目录 `~/.cursor/plugins/local/`，并补齐了官方示例 plugin 的 hooks 运行时契约（`stop`/`afterAgentResponse` + `followup_message`）；但多插件加载顺序、权限边界（hooks/commands 的执行授权）、以及 IDE/CLI 一致性仍需更直接的一手说明或实现级核验。（缺口）
+- Cursor plugins 的运行时与权限模型证据：已补齐官方仓库的 manifest/JSON Schema、marketplace 结构与本地默认 plugins 目录 `~/.cursor/plugins/local/`，并补齐了官方示例 plugin 的 hooks 运行时契约（`stop`/`afterAgentResponse` + `followup_message`）；且已知 manifest schema 层未出现显式权限声明字段（例如 `permissions`）。但多插件加载顺序、权限边界（hooks/commands 的执行授权与审计）、以及 IDE/CLI 一致性仍需更直接的一手说明或实现级核验。（缺口；Ref: ../reference_src/01-host-cursor-plugins-json-schemas.md；../reference_src/01-host-cursor-plugins-hooks-runtime-contract.md；../reference_src/01-host-cursor-forum-cli-mode-plugins-bug.md）
 - Windsurf “Claude Code config reading” 的开关语义与兼容扫描边界（官方说明）。（缺口）

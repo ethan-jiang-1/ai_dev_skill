@@ -22,9 +22,15 @@
 - `../reference_src/01-host-opencode-agent-skills-docs.md`
 - `../reference_src/02-dist-vercel-skills-docs-source-formats.md`
 - `../reference_src/02-dist-vercel-skills-well-known-index-schema.md`
+- `../reference_src/02-dist-vercel-skills-cli-security-audit-api.md`
 - `../reference_src/02-dist-sundial-docs-cli.md`
 - `../reference_src/02-dist-sundial-docs-push-publish.md`
 - `../reference_src/02-dist-sundial-docs-security.md`
+- `../reference_src/02-dist-x-well-known-agent-skills-index-json.md`
+- `../reference_src/02-dist-x-well-known-skills-index-json.md`
+- `../reference_src/02-dist-backstage-well-known-skills-index-json.md`
+- `../reference_src/02-dist-cognite-well-known-agent-skills-index-json.md`
+- `../reference_src/02-dist-cognite-well-known-skills-index-json.md`
 - `../reference_src/03-supply-mcp-base-protocol-2025-06-18.md`
 - `../reference_src/03-supply-cloudflare-mcp-guide.md`
 - `../reference_src/03-supply-mcp-servers-github-readme.md`
@@ -38,10 +44,17 @@
 - `../reference_src/03-supply-mcp-registry-server-schema-2025-12-11.md`
 - `../reference_src/03-supply-mcp-server-features-overview-2025-06-18.md`
 - `../reference_src/03-supply-expo-docs-expo-skills.md`
+- `../reference_src/03-supply-cognite-docs-ide-ai-integration.md`
+- `../reference_src/03-supply-servicenow-ai-gateway-mcp-registry-consumption-2026-03.md`
 - `../reference_src/03-supply-cloudflare-skills-github-readme.md`
 - `../reference_src/03-supply-huggingface-skills-github-readme.md`
 - `../reference_src/04-framework-superpowers-github-readme.md`
+- `../reference_src/04-framework-superpowers-using-superpowers-skill.md`
+- `../reference_src/04-framework-superpowers-verification-before-completion-skill.md`
+- `../reference_src/04-framework-superpowers-test-driven-development-skill.md`
 - `../reference_src/04-framework-feature-driven-flow-github-readme.md`
+- `../reference_src/04-framework-feature-driven-flow-specification.md`
+- `../reference_src/04-framework-feature-driven-flow-effective-matrix-schema.md`
 - `../reference_src/04-framework-spec-kit-github-readme.md`
 - `../reference_src/04-framework-roo-code-custom-instructions-docs.md`
 - `../reference_src/04-framework-roo-code-custom-modes-docs.md`
@@ -50,7 +63,7 @@
 
 - `Skill (Agent Skills open standard)`：最小单元是目录 + `SKILL.md`（YAML frontmatter + body），`name/description` 是跨宿主可交换的最小元数据；其余“触发/权限/落盘/组合”属于宿主语义。（Ref: ../reference_src/00-shared-agentskills-specification.md；../reference_src/01-host-opencode-agent-skills-docs.md；../reference_src/01-host-openai-codex-agent-skills-docs.md）
 - `Progressive Disclosure (PD)`：将“可发现”与“可执行”分层，典型是 startup 只预加载 `name/description`，当判定相关才加载完整 `SKILL.md`，需要时再加载 `references/` 等附属文件。（Ref: ../reference_src/00-shared-anthropic-engineering-agent-skills-2025.md；../reference_src/01-host-windsurf-skills-docs.md；../reference_src/01-host-openai-codex-agent-skills-docs.md）
-- `Plugin (Cursor/Codex)`：面向分发与安装的“能力打包单位”。Cursor 在官方仓库把插件落地为 `marketplace.json`（索引）+ 每插件 `plugin.json`（manifest）并提供 JSON Schema；并给出本地默认 plugins 目录 `~/.cursor/plugins/local/` 的约定；manifest 可声明 `skills/rules/hooks/agents/commands/mcpServers` 等组件。官方示例 plugin 进一步给出 hooks 运行时契约（`stop/afterAgentResponse` + `followup_message`），说明 plugin 不只是静态打包，还能以 hooks 驱动 agent 执行流。与 `skill`（内容/工作流）是不同层抽象。（Ref: ../reference_src/01-host-cursor-plugins-blog-2026-02-17.md；../reference_src/01-host-cursor-plugins-github-readme.md；../reference_src/01-host-cursor-plugins-json-schemas.md；../reference_src/01-host-cursor-plugins-create-plugin-scaffold-skill.md；../reference_src/01-host-cursor-plugins-hooks-runtime-contract.md；../reference_src/01-host-openai-codex-agent-skills-docs.md）
+- `Plugin (Cursor/Codex)`：面向分发与安装的“能力打包单位”。Cursor 在官方仓库把插件落地为 `marketplace.json`（索引）+ 每插件 `plugin.json`（manifest）并提供 JSON Schema；并给出本地默认 plugins 目录 `~/.cursor/plugins/local/` 的约定；manifest 可声明 `skills/rules/hooks/agents/commands/mcpServers` 等组件，但 schema 层未出现显式权限/授权声明字段（例如 `permissions`）。官方示例 plugin 进一步给出 hooks 运行时契约（`stop/afterAgentResponse` + `followup_message`），说明 plugin 不只是静态打包，还能以 hooks 驱动 agent 执行流。与 `skill`（内容/工作流）是不同层抽象。（Ref: ../reference_src/01-host-cursor-plugins-blog-2026-02-17.md；../reference_src/01-host-cursor-plugins-github-readme.md；../reference_src/01-host-cursor-plugins-json-schemas.md；../reference_src/01-host-cursor-plugins-create-plugin-scaffold-skill.md；../reference_src/01-host-cursor-plugins-hooks-runtime-contract.md；../reference_src/01-host-openai-codex-agent-skills-docs.md）
 - `Extension (Gemini CLI)`：Gemini 的可安装打包单位（`gemini-extension.json`），可捆绑 MCP servers、agent skills、custom commands、hooks，并提供 `excludeTools` 等治理入口；安装默认拷贝，更新/变更通常需重启会话生效。（Ref: ../reference_src/01-host-google-gemini-cli-extensions-reference.md）
 - `Workflow (Windsurf)`：手动触发（manual-only）的可复用流程文件（slash 命令），与可自动触发的 skill 语义不同，属于宿主特有抽象。（Ref: ../reference_src/00-shared-windsurf-workflows-docs.md）
 - `MCP (protocol/server)`：运行时协议与服务层抽象，host 内嵌 MCP client 连接 MCP server；server features 以 prompts/resources/tools 三类原语对外暴露能力；remote vs local 的 transport/auth 直接影响企业部署边界。（Ref: ../reference_src/03-supply-mcp-base-protocol-2025-06-18.md；../reference_src/03-supply-cloudflare-mcp-guide.md；../reference_src/03-supply-mcp-server-features-overview-2025-06-18.md）
@@ -92,12 +105,12 @@
 ### 主题 2（dist）
 
 - dist × host：分发层的“包管理器化能力”在现实中要落到宿主的 discovery scopes 与目录扫描规则上，否则更新/禁用/冲突处理都无法闭环。（Ref: ../reference_src/02-dist-vercel-skills-docs-source-formats.md；../reference_src/01-host-opencode-agent-skills-docs.md；../reference_src/01-host-openai-codex-agent-skills-docs.md）
-- dist × framework：方法论框架与扩展生态天然引入 supply chain 风险与责任边界，因此分发层除了安装与更新，还需要版本快照、可审计与安全扫描等治理能力。（Ref: ../reference_src/04-framework-spec-kit-github-readme.md；../reference_src/02-dist-sundial-docs-push-publish.md；../reference_src/02-dist-sundial-docs-security.md）
+- dist × framework：方法论框架与扩展生态天然引入 supply chain 风险与责任边界，因此分发层除了安装与更新，还需要版本快照、可审计与安全扫描/风险提示等治理能力。（Ref: ../reference_src/04-framework-spec-kit-github-readme.md；../reference_src/02-dist-sundial-docs-push-publish.md；../reference_src/02-dist-sundial-docs-security.md；../reference_src/02-dist-vercel-skills-cli-security-audit-api.md）
 
 ### 主题 3（supply）
 
 - supply × host：供给侧正把“skills + MCP + commands/rules”打包在同一仓库/插件里，而这些 primitives 的最终执行边界由宿主决定（plugins/extensions 的语义）。供给侧要同时面对多个宿主封装层。（Ref: ../reference_src/03-supply-cloudflare-skills-github-readme.md；../reference_src/01-host-cursor-plugins-blog-2026-02-17.md；../reference_src/01-host-google-gemini-cli-extensions-reference.md）
-- supply × dist：企业仓库通过 `npx skills add` 等入口进入“通用安装器链路”，这会把供给从“单一宿主 marketplace”扩展为“跨宿主来源”；同时也引入 well-known endpoint/registry 标准化方向。（Ref: ../reference_src/03-supply-expo-docs-expo-skills.md；../reference_src/00-shared-vercel-skills-cli-readme.md；../reference_src/02-dist-vercel-skills-docs-source-formats.md）
+- supply × dist：企业仓库/文档通过 `npx skills add <base-url>` 等入口进入“通用安装器链路”（CLI 自动发现 `SKILL.md`），这会把供给从“单一宿主 marketplace”扩展为“跨宿主来源”；同时也引入 well-known endpoint/registry 标准化方向。（Ref: ../reference_src/03-supply-expo-docs-expo-skills.md；../reference_src/03-supply-cognite-docs-ide-ai-integration.md；../reference_src/00-shared-vercel-skills-cli-readme.md；../reference_src/02-dist-vercel-skills-docs-source-formats.md）
 
 ### 主题 4（framework）
 
@@ -106,6 +119,6 @@
 
 ## 缺口与下一步补证据（优先级）
 
-- 已补齐 MCP Registry 的官方治理口径与契约（发布工具、认证/命名空间验证、分包类型 verification、聚合器/子注册表、moderation policy、不可变版本语义，以及 `server.json` schema）。真实消费侧仍需更强证据：官方清单已收录多种 community consumers（UI/SDK/CLI 等）但“主流宿主/企业安装器是否在生产中消费 registry/subregistry、以及其安全与更新策略如何落地”仍待进一步核验。（缺口；Ref: ../reference_src/03-supply-mcp-registry-aggregators.md；../reference_src/03-supply-mcp-registry-github-readme.md；../reference_src/03-supply-mcp-registry-community-projects.md）
-- Cursor plugins 的运行时语义仍缺证据：已补齐官方仓库的 manifest/JSON Schema 与 marketplace 结构，并获得本地默认 plugins 目录 `~/.cursor/plugins/local/` 的官方仓库级证据；同时已补齐官方示例 plugin 的 hooks 运行时契约（`stop/afterAgentResponse` + `followup_message`）。但多插件加载顺序、权限边界（hooks/commands 的执行授权）与 IDE/CLI 一致性仍需更直接的一手说明或实现级核验。（缺口；Ref: ../reference_src/01-host-cursor-plugins-create-plugin-scaffold-skill.md；../reference_src/01-host-cursor-plugins-hooks-runtime-contract.md）
-- well-known endpoint 的生态采用情况与口径收敛仍缺证据：尽管官方实现已给出 `index.json` schema/校验并出现 `agent-skills` 路径迁移信号，但“多宿主/多 CLI 是否收敛到同一口径”仍待验证。（缺口；Ref: ../reference_src/02-dist-vercel-skills-well-known-index-schema.md）
+- 已补齐 MCP Registry 的官方治理口径与契约（发布工具、认证/命名空间验证、分包类型 verification、聚合器/子注册表、moderation policy、不可变版本语义，以及 `server.json` schema）。真实消费侧仍需更强证据：已补到至少一个企业级平台消费侧集成样本（ServiceNow AI Gateway/AI Control Tower），但“主流 coding 宿主/企业安装器是否在生产中消费 registry/subregistry、以及其安全与更新策略如何落地”仍待进一步核验。（缺口；Ref: ../reference_src/03-supply-mcp-registry-aggregators.md；../reference_src/03-supply-mcp-registry-github-readme.md；../reference_src/03-supply-mcp-registry-community-projects.md；../reference_src/03-supply-servicenow-ai-gateway-mcp-registry-consumption-2026-03.md）
+- Cursor plugins 的运行时语义仍缺证据：已补齐官方仓库的 manifest/JSON Schema 与 marketplace 结构，并获得本地默认 plugins 目录 `~/.cursor/plugins/local/` 的官方仓库级证据；同时已补齐官方示例 plugin 的 hooks 运行时契约（`stop/afterAgentResponse` + `followup_message`），且已知 manifest schema 层未出现显式权限声明字段（例如 `permissions`）。但多插件加载顺序、权限边界（hooks/commands 的执行授权与审计）与 IDE/CLI 一致性仍需更直接的一手说明或实现级核验。（缺口；Ref: ../reference_src/01-host-cursor-plugins-create-plugin-scaffold-skill.md；../reference_src/01-host-cursor-plugins-hooks-runtime-contract.md；../reference_src/01-host-cursor-plugins-json-schemas.md）
+- well-known endpoint 的生态采用情况与口径收敛仍缺证据：发布者侧已出现更多真实采用（X/Cognite 新旧双栈；Backstage legacy-only），且规范侧已给出 v0.2.0（digest）口径；但消费侧（多宿主/多 CLI）是否收敛到同一 schema/versioning/security 语义仍待验证。（缺口；Ref: ../reference_src/00-shared-cloudflare-agent-skills-discovery-rfc-0-2-0.md；../reference_src/02-dist-vercel-skills-well-known-index-schema.md；../reference_src/02-dist-x-well-known-agent-skills-index-json.md；../reference_src/02-dist-cognite-well-known-agent-skills-index-json.md；../reference_src/02-dist-backstage-well-known-skills-index-json.md）
