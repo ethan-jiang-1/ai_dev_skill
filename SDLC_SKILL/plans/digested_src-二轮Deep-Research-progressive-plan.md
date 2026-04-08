@@ -6,6 +6,8 @@
 
 **真正的目的是：为一份面向专业人士的系统性正式报告提供可靠的原材料地基。**
 
+报告主题：**AI Skill 生态的基础规范、分发体系、供给来源与 SDLC 方法论框架——系统性全景评估**
+
 这份最终报告的要求是：
 
 - **系统性**：覆盖 AI 辅助 SDLC 领域的关键维度，不遗漏，不失衡
@@ -260,7 +262,7 @@ Wave 2 的最低标准：
 - source_type:
 - accessed_at:
 - related_topic:
-- trust_level:
+- trust_level: (official / academic / practitioner / community)
 - why_it_matters:
 
 ## 关键事实
