@@ -19,3 +19,8 @@
 | 01-host-claude-what-are-skills.md | host | official | Claude skills model: dynamic load + progressive disclosure |
 | 01-host-claude-using-skills-in-claude.md | host | official | Enable/upload/share/provision skills in Claude UI |
 | 01-host-claude-creating-custom-skills.md | host | official | Custom skill structure; metadata as progressive disclosure |
+| 02-dist-sundial-home.md | dist | official | Hub positioning; scale + “verified” claim |
+| 02-dist-sundial-docs-cli.md | dist | official | CLI install; agent target directories; auth; global/local |
+| 02-dist-sundial-docs-push-publish.md | dist | official | Push/publish; immutable snapshots; auto-bump; visibility |
+| 02-dist-sundial-docs-security.md | dist | official | Scanning pipeline: Cisco AI Skill Scanner + Semgrep + review |
+| 02-dist-sundial-docs-specification.md | dist | official | SKILL.md fields + practice constraints (<=500 lines, refs) |

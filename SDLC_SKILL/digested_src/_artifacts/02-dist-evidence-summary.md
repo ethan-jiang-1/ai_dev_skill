@@ -5,6 +5,11 @@
 - (待补充)
 - `../reference_src/00-shared-vercel-skills-cli-readme.md`
 - `../reference_src/00-shared-owasp-llm-top10-v1-1.md`
+- `../reference_src/02-dist-sundial-home.md`
+- `../reference_src/02-dist-sundial-docs-security.md`
+- `../reference_src/02-dist-sundial-docs-cli.md`
+- `../reference_src/02-dist-sundial-docs-push-publish.md`
+- `../reference_src/02-dist-sundial-docs-specification.md`
 
 ## 关键判断 -> 证据回指
 
