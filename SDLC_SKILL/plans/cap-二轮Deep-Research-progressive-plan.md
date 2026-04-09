@@ -1,5 +1,7 @@
 # cap 二轮 Deep Research Progressive Plan
 
+> 执行状态（动态更新）：见 `cap-二轮Deep-Research-progressive-plan.status.md`
+
 ## 调研的根本目的
 
 这轮 Deep Research 不是为了产出调研报告本身。
