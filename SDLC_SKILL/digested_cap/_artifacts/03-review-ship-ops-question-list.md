@@ -19,3 +19,6 @@
 - 在 release/ops 里引入 agent 的最常见事故模式是什么（误改高风险文件、误报/漏报、环境不可达、权限越界、baseline 漂移）？哪些 guardrails 最有效（hard gates、artifact 落盘、hooks、CI 门禁、人工签字点）？
 - 对抗性审查与多 pass 会带来成本与时延：如何定义“可接受的 review 成本预算”和降级策略（何时只做轻量检查，何时必须 full review）？
 - 运行时验证链条的安全边界：browse daemon/自动化登录/cookie 注入等能力在企业合规下如何治理（审计、最小权限、密钥处理）？
+- MCP/外部工具链的最小可行治理是什么：scopes/progressive authorization、server allowlist、token 隔离、以及把 tool 输出视为不可信输入的“confused deputy”防线，哪些可以强制化、哪些只能靠流程？
+- tool descriptors 的语义攻击（tool poisoning/shadowing/rug pulls）在企业内部最容易发生的切口是什么（内部工具 vs 第三方工具 vs marketplace）？签名/语义 vetting/runtime guardrails 的最小实现怎样落地到 CI/审批链？
+- “shell sandboxed 但 MCP tools 不 sandboxed”这类边界差异，会如何改变 ops 的风险分级与默认门禁？哪些能力单元必须强制 approval/sandbox_mode？

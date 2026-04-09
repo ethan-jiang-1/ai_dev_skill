@@ -22,6 +22,8 @@
 - `AGENTS.md` 互操作趋势是否会形成事实标准？不同宿主对其读取范围/优先级/长度限制的差异会如何影响互操作？
 - Skills/Subagents/Hooks/MCP 的采用是否会从“浅采用（静态指令）”走向“深采用（可执行工作流）”？需要什么触发条件（例如安全/审计/权限模型成熟）？
 - 企业层面会更倾向采用哪类工件形态（context files vs hooks/gates vs workflows），其组织原因是什么（合规、审计、可观测性、变更控制）？
+- 当 `AGENTS.md` 被宿主写成契约（scope/override/fallback/size cap）后，最佳实践应该是“AGENTS.md 作为 TOC + docs/ 作为事实源 + gates/CI 作为强制执行”吗？最小可执行模板是什么？
+- “shell sandboxed 但 MCP tools 不 sandboxed”这类边界差异会如何影响未来的互操作标准？是否会推动 MCP 层出现更强的签名/allowlist/隔离规范？
 
 ### P2（安全与失败模式）
 

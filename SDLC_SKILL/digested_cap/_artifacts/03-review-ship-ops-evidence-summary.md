@@ -34,6 +34,17 @@
 - SWR-Bench（PR-centric + full context + objective eval）（`reference_cap/03-arxiv-2509.01494-swr-bench-llm-code-review-benchmark.md`）
 - CodeReviewQA（CTR/CL/SI probes + contamination mitigation）（`reference_cap/03-arxiv-2503.16167-codereviewqa-code-review-comprehension.md`）
 
+“宿主级执行安全与门禁：approval policy + sandbox_mode + OS/云隔离实现，把 ops 风险从‘口头规范’升级为可配置 contract”：
+- Codex approvals & security（Seatbelt/bubblewrap+seccomp/gVisor）（`reference_cap/03-openai-codex-agent-approvals-security-sandbox.md`）
+
+“组织级可持续协作：docs/ 作为系统事实源 + AGENTS.md 作为 TOC + PR/review loop + doc gardening，是长期防漂移的关键机制”：
+- OpenAI Harness engineering（`reference_cap/03-openai-harness-engineering-agent-first-world.md`）
+
+“MCP/外部工具链进入供应链风险域：confused deputy/SSRF/session hijacking/tool poisoning/rug pulls/多 server 放大，需要 scopes/allowlist/signing/vetting/guardrails”：
+- MCP spec security best practices（`reference_cap/03-mcp-security-best-practices.md`）
+- Breaking the Protocol（multi-server amplification）（`reference_cap/03-arxiv-2601.17549-breaking-the-protocol-mcp-security.md`）
+- Securing MCP（tool poisoning/shadowing/rug pulls + layered defenses）（`reference_cap/03-arxiv-2512.06556-securing-mcp-tool-poisoning.md`）
+
 ## Notes
 
 - 仅记录可回指证据，不在此处做长篇推理。

@@ -37,6 +37,9 @@
 - InspectCoder：interactive debugger control + dual-agent（inspector/coder）（`reference_cap/02-arxiv-2510.18327-inspectcoder-interactive-debugger.md`）
 - DebugHarness：主动查询 live runtime + watchpoints + closed-loop validation（`reference_cap/02-arxiv-2604.03610-debugharness-interactive-debugging-for-apr.md`）
 
+“宿主级机制证据：并发 sessions + output cap + compaction + skills progressive loading，说明 build/debug 的关键护栏可以在运行时层工程化，而不只靠 prompt 自律”：
+- OpenAI agent loop：concurrent sessions、output cap（保留头尾）、compaction、skills 按需加载管道（`reference_cap/02-openai-responses-api-computer-environment-compaction-concurrency.md`）
+
 ## Notes
 
 - 仅记录可回指证据，不在此处做长篇推理。

@@ -30,6 +30,7 @@
 | 02-arxiv-2506.09289-utboost-swebench-test-augmentation.md | 02-build-debug | academic | SWE-Bench 评测失败模式：测试不足导致错误 patch 也能过；UTGenerator/UTBoost 用 test augmentation 改善可靠性 |
 | 02-arxiv-2510.18327-inspectcoder-interactive-debugger.md | 02-build-debug | academic | 交互式 debugger 动态分析 + 双 agent（inspector/coder）将调试从 trial-and-error 变为根因诊断 |
 | 02-arxiv-2604.03610-debugharness-interactive-debugging-for-apr.md | 02-build-debug | academic | 2026 趋势：APR 引入“实时运行时查询/交互调试”模拟人类 debug，弥补静态 agent 易卡在 symptom 的缺陷 |
+| 02-openai-responses-api-computer-environment-compaction-concurrency.md | 02-build-debug | official | 官方 agent loop 机制：并发 sessions、output cap（保留头尾）、compaction、以及 skills progressive loading 管道 |
 | 03-gstack-architecture-browser-daemon-security.md | 03-review-ship-ops | official | 持久化浏览器 daemon、localhost+token 安全模型、ref/locator 交互机制、SKILL.md 防漂移生成 |
 | 03-gstack-skill-browse-qa-routing.md | 03-review-ship-ops | official | gstack 的技能路由规则 + browse/QA 工作流（snapshot/refs/diff/console/network/cookie） |
 | 03-gstack-ship-skill-preflight-telemetry.md | 03-review-ship-ops | official | gstack /ship 的 preflight、测试/审查/PR 流水线、以及遥测/路由注入等治理机制 |
@@ -43,13 +44,24 @@
 | 03-gsd-code-review-command-and-artifact.md | 03-review-ship-ops | official | Phase-scoped code review：quick/standard/deep 深度、config gate、输出 REVIEW.md 产物 |
 | 03-gsd-verify-work-uat-and-verification-artifacts.md | 03-review-ship-ops | official | Conversational UAT：持久化 UAT.md + gaps YAML；VALIDATION 合约与 verification-report 模板 |
 | 03-gsd-pause-work-and-context-monitor.md | 03-review-ship-ops | official | Context-aware stop：hook 注入 WARNING/CRITICAL，pause-work 生成 .continue-here.md 交接文件并 WIP commit |
+| 03-openai-codex-agent-approvals-security-sandbox.md | 03-review-ship-ops | official | 审批策略 + sandbox_mode + OS 隔离实现（Seatbelt/bubblewrap+seccomp/gVisor），把执行安全落到可配置 contract |
+| 03-openai-harness-engineering-agent-first-world.md | 03-review-ship-ops | official | Harness 工程复盘：docs/ 系统事实源 + AGENTS.md 作为 TOC + PR/review loop（1,500 PRs/20+ engineers）+ doc gardening |
+| 03-mcp-security-best-practices.md | 03-review-ship-ops | official | MCP 官方安全最佳实践：confused deputy、tool poisoning、SSRF、session hijacking、least privilege scopes 等 |
 | 03-arxiv-2603.16572-repo-context-skill-security.md | 03-review-ship-ops | academic | 技能生态安全：仅看 SKILL.md 会高误报；引入仓库上下文可显著降假阳性并揭示“弃置仓库劫持”攻击面 |
+| 03-arxiv-2601.17549-breaking-the-protocol-mcp-security.md | 03-review-ship-ops | academic | MCP/A2A 安全风险与对抗评估：多恶意 server 可显著放大攻击成功率；提出协议扩展与验证 |
+| 03-arxiv-2512.06556-securing-mcp-tool-poisoning.md | 03-review-ship-ops | academic | MCP 语义攻击（tool poisoning/shadowing/rug pulls）+ 分层防御（signing/vetting/guardrails）与量化评估 |
 | 03-arxiv-2509.01494-swr-bench-llm-code-review-benchmark.md | 03-review-ship-ops | academic | SWR-Bench：1000 PR + full context；客观评估；multi-review aggregation 可显著提升 issue detection F1 |
 | 03-arxiv-2503.16167-codereviewqa-code-review-comprehension.md | 03-review-ship-ops | academic | CodeReviewQA：把 ACR 拆成 CTR/CL/SI probes；揭示 review comment 理解/定位弱项并缓解数据污染 |
 | 03-arxiv-2402.11436-llm-self-bias-self-refinement.md | 03-review-ship-ops | academic | Self-bias：LLM 倾向偏好自身输出；self-refine 可能放大偏差；外部反馈可缓解 |
 | 04-arxiv-2602.14690-configuring-agentic-ai-coding-tools.md | 04-map-migration | academic | “配置机制谱系”与 OSS 采用基线：Context Files 占主导、AGENTS.md 走向互操作标准、Skills/Subagents 浅采用 |
 | 04-arxiv-2601.20404-impact-of-agents-md-efficiency.md | 04-map-migration | academic | 实证：AGENTS.md 与更低中位数 runtime（-28.64%）与 output tokens（-16.58%）相关（paired design） |
 | 04-community-gsd-copilot-integration-reddit.md | 04-map-migration | community | GSD 向 Copilot/Kilo 等宿主迁移的真实摩擦点：语言依赖、MCP 供应链顾虑、互操作路径讨论 |
+| 04-openai-introducing-codex-cloud-agent-secure-execution.md | 04-map-migration | official | Codex 云端 agent：AGENTS.md 指导、可追溯证据（logs/tests citations）、secure execution 边界与外部早期用例 |
+| 04-openai-unrolling-codex-agent-loop-instruction-aggregation-mcp-sandbox.md | 04-map-migration | official | Codex agent loop 细节：AGENTS.md/override 聚合与 32KiB cap、shell sandbox 边界、MCP tools 非 sandbox 与缓存 caveats |
+| 04-openai-codex-agents-md-scopes-override-fallback.md | 04-map-migration | official | Codex 对 AGENTS.md 的契约：global/project scopes、override、fallback（CODEX/CONTEXT/README）与单文件 32KiB 限制 |
+| 04-openai-codex-rules-prefix-rule-smart-approvals.md | 04-map-migration | official | Codex rules：prefix_rule allow/prompt/forbidden + tests；smart approvals 用 tree-sitter 解析 bash -lc 防命令走私 |
+| 04-openai-codex-managed-configuration-requirements-toml.md | 04-map-migration | official | 企业治理：requirements.toml/managed_config.toml、allowed policies/sandbox/web search、MCP allowlist、prefix_rules 强制与 precedence |
+| 04-anthropic-claude-code-memory-claude-md-imports.md | 04-map-migration | official | Claude Code memory/rules：CLAUDE.md 与 .claude/ 分层 + imports（可导入 AGENTS.md）支持跨工具互操作 |
 | 04-gstack-agents-md-workflow-and-host-portability.md | 04-map-migration | official | gstack skill pack 的可迁移形态：`.agents/skills/` 约定 + 模板生成 + `--host codex` 等宿主差异化输出 |
 | 04-gstack-host-config-system-multi-host-portability.md | 04-map-migration | official | gstack 多宿主适配：HostConfig（frontmatter/paths/tools/suppressed）+ host adapter（语义转换）治理差异 |
 | 04-gsd-multi-runtime-installer-and-format-conversion.md | 04-map-migration | official | GSD 多运行时安装与格式转换：`.github/`/`.codex/`/`.cursor/`/`.windsurf/`/`.clinerules` 目录契约与转换测试 |

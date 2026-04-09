@@ -20,6 +20,23 @@
 “可迁移的 skill pack 需要‘模板→生成物’链路与 host-specific regeneration，才能同时保持单一事实源与多宿主差异化输出”：
 - `reference_cap/04-gstack-agents-md-workflow-and-host-portability.md`
 
+“AGENTS.md 已被主流宿主写成契约：scope/override/fallback/32KiB cap 与逐级聚合规则，决定互操作与漂移治理策略”：
+- `reference_cap/04-openai-codex-agents-md-scopes-override-fallback.md`
+- `reference_cap/04-openai-unrolling-codex-agent-loop-instruction-aggregation-mcp-sandbox.md`
+
+“企业治理控制面也是能力单元：requirements/prefix_rules/approval/sandbox/MCP allowlist 可把安全与合规约束落到可执行 policy（否则迁移难以通过门禁）”：
+- `reference_cap/04-openai-codex-managed-configuration-requirements-toml.md`
+- `reference_cap/04-openai-codex-rules-prefix-rule-smart-approvals.md`
+- `reference_cap/03-openai-codex-agent-approvals-security-sandbox.md`
+
+“跨宿主互操作不仅发生在 Codex：Claude Code 官方 memory/rules 支持 imports（可导入 AGENTS.md），说明 AGENTS.md 可作为跨工具指令中间层”：
+- `reference_cap/04-anthropic-claude-code-memory-claude-md-imports.md`
+
+“MCP/外部工具链进入供应链风险域：confused deputy/SSRF/session hijacking/tool poisoning/rug pulls/多 server 放大，需要 scopes/allowlist/signing/vetting/guardrails”：
+- `reference_cap/03-mcp-security-best-practices.md`
+- `reference_cap/03-arxiv-2512.06556-securing-mcp-tool-poisoning.md`
+- `reference_cap/03-arxiv-2601.17549-breaking-the-protocol-mcp-security.md`
+
 “rules/context files 可以承载 workflow-only guardrail 与工程/安全标准，但天然是宿主特定工件，迁移需要映射与降级策略”：
 - `reference_cap/04-gsd-clinerules-workflow-guardrails.md`
 

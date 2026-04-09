@@ -64,6 +64,24 @@
 - `reference_cap/03-arxiv-2503.16167-codereviewqa-code-review-comprehension.md`
 - `reference_cap/02-arxiv-2604.03610-debugharness-interactive-debugging-for-apr.md`
 
+“硬事实：AGENTS.md 已被宿主写成契约（scope/override/fallback/32KiB cap），并且存在逐级目录聚合规则；因此它更像可执行协议而非随意文档”：
+- `reference_cap/04-openai-codex-agents-md-scopes-override-fallback.md`
+- `reference_cap/04-openai-unrolling-codex-agent-loop-instruction-aggregation-mcp-sandbox.md`
+
+“机制判断：企业落地的关键能力单元之一是‘治理控制面’（requirements/prefix_rules/approval/sandbox/MCP allowlist），把风险从团队自觉升级为可强制 policy”：
+- `reference_cap/04-openai-codex-managed-configuration-requirements-toml.md`
+- `reference_cap/04-openai-codex-rules-prefix-rule-smart-approvals.md`
+- `reference_cap/03-openai-codex-agent-approvals-security-sandbox.md`
+
+“安全边界补强：shell sandboxed 并不自动覆盖 MCP tools；MCP 进入供应链风险域必须用 scopes/allowlist/signing/vetting/guardrails 对抗 confused deputy、SSRF、tool poisoning 与 rug pulls（且存在多 server 放大效应）”：
+- `reference_cap/04-openai-unrolling-codex-agent-loop-instruction-aggregation-mcp-sandbox.md`
+- `reference_cap/03-mcp-security-best-practices.md`
+- `reference_cap/03-arxiv-2512.06556-securing-mcp-tool-poisoning.md`
+- `reference_cap/03-arxiv-2601.17549-breaking-the-protocol-mcp-security.md`
+
+“宿主级实现证据：并发 sessions + output cap + compaction + skills progressive loading，说明 build/debug 的关键护栏（并行、上下文治理、按需加载）可以在运行时层工程化”：
+- `reference_cap/02-openai-responses-api-computer-environment-compaction-concurrency.md`
+
 ## Framework Comparison (4 Core Abstractions)
 
 目标：用“控制流分离 / 验证闭环前置 / 确定性门禁+对抗性审查 / 状态持久化”四大抽象，对齐 GSD、gstack、superpowers、GABBE/Loki Mode 的异同，避免只做名词堆叠。
