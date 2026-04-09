@@ -1,5 +1,7 @@
 # eng 二轮 Deep Research Progressive Plan
 
+> 执行状态（动态更新）：见 `eng-二轮Deep-Research-progressive-plan.status.md`
+
 ## 调研的根本目的
 
 本轮 Deep Research 的起点是第一轮已消化的 4 份文件：
