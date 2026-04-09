@@ -35,3 +35,19 @@
   - `reference_eng/03-devlife-cursor-vs-windsurf-blott-2025.md`
 - 该条需要在最终报告中标注证据强度（practitioner/观点性），并优先用官方 docs 做机制事实兜底。
   - `reference_eng/03-devlife-windsurf-cascade-skills-docs.md`
+
+### E. 工具生态对“长期工程结果”的影响需要被评测：不仅是快
+
+- 大样本、preregistered 的两阶段实验（Phase 2 RCT）显示：AI assistants 可显著加速 Phase 1 的实现，但在后续他人演进（completion time / code quality proxy）上未检测到显著差异；同时论文明确提出未来风险方向（code bloat、cognitive debt）。
+  - `reference_eng/03-devlife-borg-hewett-et-al-echoes-of-ai-maintainability-arxiv-2507-00788.md`
+- 企业自然工作环境的 mixed-method field study 表明：同一工具的不同交互类型/强度（in-code vs chat vs combined）会显著影响效率、准确率与工作负荷；“更强/更全程”的使用不一定更好。
+  - `reference_eng/03-devlife-brandebusemeyer-schimmer-arnrich-genai-dev-experience-field-study-arxiv-2512-19926.md`
+- 行业实践型证据（Cisco）提供了“任务分类 + 日志对照”的评估模板，并给出 underperforming 场景（multi-file、proprietary context、复杂任务、C/C++），适合支撑“落地难点与失败模式”章节（需标注证据强度）。
+  - `reference_eng/03-devlife-pandey-singh-wei-shankar-copilot-real-world-projects-arxiv-2406-17910.md`
+- controlled experiment（Upwork 招募专业开发者，随机分组）显示：Copilot treatment 组在 JS HTTP server 任务上完成时间快 55.8%，且 control 组允许使用搜索/Stack Overflow；论文同时提供了可复用的评测工程脚手架（GitHub Classroom + test suite + 时间戳定义）。
+  - `reference_eng/03-devlife-peng-et-al-impact-ai-developer-productivity-copilot-arxiv-2302-06590.md`
+
+### F. 开发者体验中的“信任校准”是硬约束：需要验证能力支撑
+
+- 研究显示 trust 会随时间演化（1h vs 10 days 的对比），平均信任上升，但学习者仍认为工具需要 competent programmer 才能完成部分任务；并提出教学/管理建议强调 comprehension/debugging/testing（验证能力）来避免 over-trust 风险。
+  - `reference_eng/03-devlife-shah-et-al-evolution-programmers-trust-genai-assistants-arxiv-2509-13253.md`

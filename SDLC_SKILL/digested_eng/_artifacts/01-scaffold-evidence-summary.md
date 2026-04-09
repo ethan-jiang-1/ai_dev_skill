@@ -22,8 +22,21 @@
 - 在 brownfield（不熟悉 legacy codebase）任务中，Copilot 使学生更快完成、推进更多，但也让其减少手写与 web search，并在访谈中表达“不理解建议为何有效”的担忧。
   - 这条是目前最接近“AI 编码助手改变参与方式”的直接 SE 场景实证（但对象是 Copilot，不等价于 Skill）。
   - `reference_eng/01-scaffold-github-copilot-students-brownfield-arxiv-2506-10051.md`
+- 复现实验进一步把“理解”测得更硬：Copilot 显著降低任务耗时、提高通过测试数，但 comprehension scores 无显著变化，揭示 comprehension–performance gap（表现提升不等于理解提升）。
+  - `reference_eng/01-scaffold-qiao-et-al-comprehension-performance-gap-brownfield-arxiv-2511-02922.md`
+- within-subjects usability 研究（n=24）显示：Copilot 不一定提升完成时间或成功率，但多数参与者更偏好它（因为减少在线搜索、提供有用起点）；同时“理解/编辑/调试生成代码”困难显著，直接削弱任务解题效率。
+  - `reference_eng/01-scaffold-vaithilingam-zhang-glassman-expectation-vs-experience-copilot-chi22.md`
+- 新手（CS1）观察+访谈研究给出两个关键交互模式：drifting 与 shepherding，并指出新手在认知与元认知上存在困难；论文显式讨论“如何让工具更好地 support/scaffold 新手体验”。
+  - `reference_eng/01-scaffold-prather-et-al-novice-copilot-interactions-arxiv-2304-02491.md`
+- grounded theory 研究（n=20）提出 Copilot 交互的 bimodal 结构：acceleration（知道下一步，用它加速）与 exploration（不确定，用它探索），并强调比较替代方案与 validation（运行/测试）等行为的重要性。
+  - 这是把“什么时候像脚手架、什么时候像卸载”拆成可观察模式的关键证据。
+  - `reference_eng/01-scaffold-barke-james-polikarpova-grounded-copilot-oopsla-2023.md`
 - 社区经验（高争议但有价值）：部分资深开发者报告“总是开着的自动补全”会带来注意力打断与决策疲劳，提示“更自动化”可能以认知代价换取速度。
   - `reference_eng/01-scaffold-community-experienceddevs-copilot-focus-disruption.md`
+- 专业开发者的 field study 进一步表明：不同交互类型（in-code vs chat vs combined）与使用强度会影响效率、准确率与 perceived workload；“更强/更全程”并不必然更好，这是讨论 offloading/负荷边界的重要直接证据。
+  - `reference_eng/03-devlife-brandebusemeyer-schimmer-arnrich-genai-dev-experience-field-study-arxiv-2512-19926.md`
+- 大样本两阶段实验显示：AI assistant 可显著加速实现阶段，但在他人后续演进的 completion time / code quality 上未检测到显著差异；论文显式提出需要关注 code bloat 与 cognitive debt（与 offloading 风险讨论口径相邻）。
+  - `reference_eng/03-devlife-borg-hewett-et-al-echoes-of-ai-maintainability-arxiv-2507-00788.md`
 
 ### C. “Skill 作为脚手架”在工具设计上的可验证机制（偏官方/工程事实）
 

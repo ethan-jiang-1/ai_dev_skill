@@ -7,10 +7,13 @@
 ### P0（团队采纳落地必须回答）
 
 - “四阶段跃迁路径”有没有真实的工程师成长案例可复核？
-  - 当前状态：我们已有治理控制面与工具机制事实，但缺少“个人成长路径”的一手案例（例如半年到一年维度的日志/复盘）。
+  - 当前状态：我们已有治理控制面与工具机制事实，也已有真实组织层面的 Copilot 采纳纵向研究，但仍缺少“个人成长路径”的一手案例（例如半年到一年维度的日志/复盘，能复核规则资产与行为变化）。
   - 已有证据（工具事实，非成长案例）：
     - `reference_eng/04-path-github-copilot-cloud-agent-about.md`
     - `reference_eng/04-path-github-copilot-cloud-agent-pilot-guide.md`
+  - 已有证据（组织采纳纵向案例，非“成长路径”）：
+    - `reference_eng/04-path-stray-brandtzaeg-wivestad-et-al-copilot-longitudinal-case-study-arxiv-2509-20353.md`
+    - `reference_eng/04-path-zoominfo-copilot-deployment-productivity-arxiv-2501-13282.md`
   - 缺口：公开的个人成长叙事往往偏主观；需要可复核的行为证据（规则资产变化、review 质量、事故率、迁移能力）。
   - 什么证据能关闭：内部 pilot 的量化+质化复盘（PR review 数据、缺陷回归、MTTR、产出质量）或研究论文。
 
@@ -20,6 +23,11 @@
     - `reference_eng/04-path-github-copilot-repo-custom-instructions.md`
     - `reference_eng/04-path-github-copilot-cli-tool-permissions.md`
     - `reference_eng/04-path-github-copilot-policies-concepts.md`
+  - 已有证据（资产质量/维护性约束）：
+    - `reference_eng/04-path-li-et-al-understanding-prompt-management-github-repos-arxiv-2509-12421.md`
+  - 已有证据（rollout/度量模板，部分相关但不覆盖治理全链路）：
+    - `reference_eng/04-path-zoominfo-copilot-deployment-productivity-arxiv-2501-13282.md`
+    - `reference_eng/04-path-ziegler-kalliamvakou-et-al-productivity-assessment-neural-code-completion-arxiv-2205-06537.md`
   - 缺口：企业如何把这些控制面组合成治理 SOP（例如：谁能改指令、如何 code review、如何灰度、如何回滚）。
 
 ### P1（风险与失败模式）

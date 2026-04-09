@@ -7,11 +7,15 @@
 ### P0（决定生命周期是否可复用为“工程方法学”）
 
 - “Skill 开发生命周期（Discovery→Build→Evals→Deploy）”有没有足够多的真实案例可复核？
-  - 当前状态：我们有官方机制与工具原语（skills、lockfile、update、evals），但缺少“从 0 到稳态”的公开复盘案例。
+  - 当前状态：我们有官方机制与工具原语（skills、lockfile、update、evals），也已有多篇“AI assistants 在真实工程中的效率/负荷/下游影响”研究，但仍缺少“结构化 Skill/agent 从 0 到稳态（含 eval/回归/版本策略）”的公开复盘案例。
   - 已有证据（工具原语）：
     - `reference_eng/03-devlife-openai-evals-readme.md`
     - `reference_eng/03-devlife-vercel-skills-lock-files.md`
     - `reference_eng/03-devlife-vercel-skills-update-system.md`
+  - 已有证据（真实工程使用研究，作为背景，不等价 lifecycle 复盘）：
+    - `reference_eng/03-devlife-borg-hewett-et-al-echoes-of-ai-maintainability-arxiv-2507-00788.md`
+    - `reference_eng/03-devlife-brandebusemeyer-schimmer-arnrich-genai-dev-experience-field-study-arxiv-2512-19926.md`
+    - `reference_eng/03-devlife-pandey-singh-wei-shankar-copilot-real-world-projects-arxiv-2406-17910.md`
   - 缺口：至少 2-3 个“连续迭代半年以上”的 skill/agent 项目复盘（失败模式、回归机制、版本策略）。
   - 什么证据能关闭：企业工程博客/开源仓库的 release notes + eval 历史 + 事故/回归记录；或 conference talk 的细节纪要。
 

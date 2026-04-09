@@ -7,9 +7,14 @@
 ### P0（必须补或必须降级表述）
 
 - “Skill 作为认知脚手架能提升工程师长期能力”是否存在直接实证？
-  - 当前状态：暂无直接针对“Skill”体系的长期能力提升实证；目前最接近的是 Copilot 在 brownfield 场景对学生效率/过程/理解担忧的实验（但不等价 Skill）。
+  - 当前状态：暂无直接针对“Skill”体系的长期能力提升实证；目前已有更接近真实工程环境的 Copilot 专业开发者研究（效率/负荷/下游可维护性），但仍不等价于“结构化 Skill 作为脚手架”的学习收益实证。
   - 已有证据：
     - `reference_eng/01-scaffold-github-copilot-students-brownfield-arxiv-2506-10051.md`
+    - `reference_eng/01-scaffold-qiao-et-al-comprehension-performance-gap-brownfield-arxiv-2511-02922.md`
+    - `reference_eng/01-scaffold-vaithilingam-zhang-glassman-expectation-vs-experience-copilot-chi22.md`
+    - `reference_eng/01-scaffold-prather-et-al-novice-copilot-interactions-arxiv-2304-02491.md`
+    - `reference_eng/03-devlife-brandebusemeyer-schimmer-arnrich-genai-dev-experience-field-study-arxiv-2512-19926.md`
+    - `reference_eng/03-devlife-borg-hewett-et-al-echoes-of-ai-maintainability-arxiv-2507-00788.md`
   - 缺口：对“结构化 Skill（强制解释/自检/评审）”相对“自动补全/一键生成”的对照研究；对象最好是专业工程师或至少高阶学生；指标包含理解与迁移，不止速度。
   - 什么证据能关闭：RCT 或准实验 + 明确任务集 + 迁移测验（debug/comprehension/spec quality）+ 延迟后测；或企业内训的可复核 A/B。
   - 下一步去哪找：ICER/TOCE/CHI/CSCW/Empirical SE/ICSE、arXiv cs.SE；关键词 “Copilot learning”, “AI-assisted programming education”, “metacognition”, “agency”, “offloading”.

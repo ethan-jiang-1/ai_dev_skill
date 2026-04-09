@@ -12,6 +12,7 @@
     - `reference_eng/02-tier-vessey-1985-expertise-in-debugging-process-analysis.md`
     - `reference_eng/02-tier-burkhardt-detienne-wiedenbeck-1998-oo-comprehension-expertise.md`
     - `reference_eng/02-tier-dreyfus-five-stage-model-adult-skill-acquisition-2004.md`
+    - `reference_eng/02-tier-al-madi-et-al-longitudinal-eye-tracking-token-effects-icpc-2021.md`（comprehension 的过程性 proxy：token-level eye movement）
   - 缺口：把“需要的心智动作”映射到 Skill 设计特征（是否要求解释/反证/测试/上下文选择/风险评估/治理与版本）。
   - 什么证据能关闭：从 20-50 个真实 Skill/规则仓库抽取特征，做聚类并与“使用门槛/失败模式”对照；或形成企业内部分级标准并在 pilot 中验证。
 
@@ -21,6 +22,7 @@
     - `reference_eng/02-tier-ericsson-1993-deliberate-practice-expert-performance.md`
     - `reference_eng/02-tier-bjork-bjork-2020-desirable-difficulties.md`
     - `reference_eng/02-tier-scott-ghinea-2013-barriers-deliberate-practice-programming.md`
+    - `reference_eng/02-tier-bergersen-et-al-inferring-programming-skill-time-quality-esem-2011.md`（提供“能力变化如何测”的任务化思路，但不等于已验证“Skill 训练有效”）
   - 缺口：纵向研究或企业内训数据，能把“使用模式”与“能力指标变化”关联起来。
 
 ### P1（影响训练矩阵的可测性）
@@ -29,6 +31,7 @@
   - 现有证据提示应关注：system view、chunking、top-down inference、multiple guidance、调试证据链。
     - `reference_eng/02-tier-vessey-1985-expertise-in-debugging-process-analysis.md`
     - `reference_eng/02-tier-burkhardt-detienne-wiedenbeck-1998-oo-comprehension-expertise.md`
+    - `reference_eng/02-tier-kuang-et-al-gazeprinter-expert-gaze-guide-novices-arxiv-2603-19855.md`（阅读路径/注意力分配的可测指标：DTW distance 等）
   - 缺口：把这些能力转成可测 rubrics（例如：问题定位路径质量、证据记录质量、误用 AI 后的纠错速度、审查缺陷发现率）。
 
 - “desirable difficulties” 在企业场景如何落地？

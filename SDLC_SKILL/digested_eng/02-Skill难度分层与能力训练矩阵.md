@@ -121,6 +121,10 @@
 - 调试（debugging）任务中的专家/新手差异可通过过程性指标刻画：chunking 能力、system view、breadth-first vs depth-first 策略等。（ref: `../reference_eng/02-tier-vessey-1985-expertise-in-debugging-process-analysis.md`）
 - 程序理解（OO comprehension）中专家更偏 top-down、inference-driven，并使用 multiple guidance；新手更偏 execution-based guidance，且对继承/组合等 OO 关系利用差。（ref: `../reference_eng/02-tier-burkhardt-detienne-wiedenbeck-1998-oo-comprehension-expertise.md`）
 - Shu-Ha-Ri（实践框架）可作为阶段跃迁的可沟通语言，但证据强度应视为 practitioner/类比。（ref: `../reference_eng/02-tier-shu-ha-ri-agile-leadership-dreyfus-model.md`）
+- 编程 skill 的测量不应仅依赖资历/自评；可用代表性小任务把 time + quality 合并为 ordinal performance，并跨任务聚合作为 skill 近似指标（研究控制与训练评估的可行路线）。（ref: `../reference_eng/02-tier-bergersen-et-al-inferring-programming-skill-time-quality-esem-2011.md`）
+- 程序理解的“过程性差异”可被更细粒度度量：longitudinal eye-tracking 研究显示 token frequency/length effects 在 source code reading 中存在，并且 novices 在课程过程中逐步获得 frequency effect；仅基于眼动特征可将 novice vs experienced 分类到约 72% accuracy（可行性信号）。（ref: `../reference_eng/02-tier-al-madi-et-al-longitudinal-eye-tracking-token-effects-icpc-2021.md`）
+- 专家 attention strategy 可以被建模为可学习对象：概念框架提出用 imitation learning 把 expert gaze-fixation 转成 state-action 序列，训练“如何看代码”的 attention model/agent（机制路线，非收益实证）。（ref: `../reference_eng/02-tier-ikutani-et-al-imitating-visual-attention-experts-arxiv-1903-06320.md`）
+- 以 attention/path 为脚手架的工具介入有实证信号：GazePrinter 研究显示可视化 expert gaze 会显著改变 novices 在新 codebase 中的导航路径，使其更接近专家路径；但 time/performance/cognitive load 指标整体未见显著差异，仅有弱迹象。（ref: `../reference_eng/02-tier-kuang-et-al-gazeprinter-expert-gaze-guide-novices-arxiv-2603-19855.md`）
 
 ## 二轮新增机制理解
 
@@ -143,11 +147,20 @@
 - Scott/Ghinea 指出编程实践的主要困难在于练习与反馈的组织，而非“没有更多理论”。Tier 2（上下文管理、审查、调试）恰好可以通过 Skill 把反馈与步骤固化出来，使练习可持续。（ref: `../reference_eng/02-tier-scott-ghinea-2013-barriers-deliberate-practice-programming.md`）
 - 反面风险是：如果 Tier 2 技能被设计成“自动产出”，就会绕开这些能力训练目标，形成“效率提升但能力不涨”的错配（需要在最终报告中明确此风险为推论）。（ref: `../reference_eng/02-tier-bjork-bjork-2020-desirable-difficulties.md`）
 
+### 4) Tier 2 的“可训练对象”不只在输出，还在阅读路径与注意力分配（可测但成本高）
+
+- 眼动研究提供了一个把 comprehension 能力落到过程指标的路线：first fixation duration、skipping probability、total time 等 token-level 指标能区分 novice vs experienced，并能在纵向数据中观察到 novices 的“阅读技能获得”过程。（ref: `../reference_eng/02-tier-al-madi-et-al-longitudinal-eye-tracking-token-effects-icpc-2021.md`）
+- GazePrinter 的结果提示：即便 time/performance/NASA-TLX 等“短期表现指标”未显著改善，attention/path 的行为也可能被显著塑形（更接近 experts）；这意味着训练矩阵需要显式区分：
+  - 过程性目标（阅读路径、注意力分布、证据链）
+  - 结果性目标（时间、正确率、得分）
+  - 并避免只用单一产出指标替代能力指标。（ref: `../reference_eng/02-tier-kuang-et-al-gazeprinter-expert-gaze-guide-novices-arxiv-2603-19855.md`）
+
 ## 二轮新增趋势与难点
 
 - 趋势：组织会更倾向用“工具化/资产化”方式推动能力一致性，但若缺少明确的反馈与评估闭环，容易把训练退化为“工具使用熟练度”。（ref: `../reference_eng/02-tier-baltes-diehl-theory-software-development-expertise-2018.md`）
 - 难点：deliberate practice 在编程领域的障碍真实存在（反馈成本高、任务难分解、学习者误区等），所以“训练矩阵”需要把反馈机制内建到 Skill/流程里，而不是仅列能力名词。（ref: `../reference_eng/02-tier-scott-ghinea-2013-barriers-deliberate-practice-programming.md`）
 - 难点：如果 AI 自动化让任务过于容易，可能削弱 desirable difficulties；需要引入“摩擦预算”概念，明确哪些步骤必须保留给人完成（解释、审查、测试、证据链）。（ref: `../reference_eng/02-tier-bjork-bjork-2020-desirable-difficulties.md`）
+- 趋势（工具化信号）：研究与工具原型在探索“按 skill level 渐进式支持”和“用 attention/path 做脚手架”的路线（eye tracking 分类、expert gaze 可视化、attention imitation）。这类路线能让 Tier 2 能力更“可测/可引导”，但也带来成本与隐私约束。（ref: `../reference_eng/02-tier-al-madi-et-al-longitudinal-eye-tracking-token-effects-icpc-2021.md`, `../reference_eng/02-tier-ikutani-et-al-imitating-visual-attention-experts-arxiv-1903-06320.md`, `../reference_eng/02-tier-kuang-et-al-gazeprinter-expert-gaze-guide-novices-arxiv-2603-19855.md`）
 
 ## 当前判断（二轮综合后）
 
@@ -162,9 +175,11 @@
 1. 这个主题当前的硬事实是什么
    - SE 任务中存在可观察的 expert-novice 策略差异（debugging 与 comprehension），可作为“分层的可测靶点”。（ref: `../reference_eng/02-tier-vessey-1985-expertise-in-debugging-process-analysis.md`, `../reference_eng/02-tier-burkhardt-detienne-wiedenbeck-1998-oo-comprehension-expertise.md`）
    - 专业度不等价于经验年限，且评估强依赖情境。（ref: `../reference_eng/02-tier-baltes-diehl-theory-software-development-expertise-2018.md`）
+   - skill-level 的 proxy 评估存在可行路线：time+quality 的任务化测量可聚合为 skill 近似；comprehension 的过程差异也可用眼动等指标估计（研究层面可行性）。（ref: `../reference_eng/02-tier-bergersen-et-al-inferring-programming-skill-time-quality-esem-2011.md`, `../reference_eng/02-tier-al-madi-et-al-longitudinal-eye-tracking-token-effects-icpc-2021.md`）
 2. 背后的根本机制是什么
    - 阶段跃迁可用 Dreyfus 描述为从规则驱动走向情境化优先级选择；训练机制需要 deliberate practice 与反馈闭环。（ref: `../reference_eng/02-tier-dreyfus-five-stage-model-adult-skill-acquisition-2004.md`, `../reference_eng/02-tier-ericsson-1993-deliberate-practice-expert-performance.md`）
    - 学习收益与短期表现可分离（desirable difficulties），因此需要刻意设计难度梯度。（ref: `../reference_eng/02-tier-bjork-bjork-2020-desirable-difficulties.md`）
+   - 专家能力的一部分体现在 attention/path 策略上，这些策略可被工具引导或被模型学习（但需要区分“过程塑形”与“学习收益”的证据强度）。（ref: `../reference_eng/02-tier-ikutani-et-al-imitating-visual-attention-experts-arxiv-1903-06320.md`, `../reference_eng/02-tier-kuang-et-al-gazeprinter-expert-gaze-guide-novices-arxiv-2603-19855.md`）
 3. 生态最近在往哪里演化
    - 更可能从“个体经验”走向“流程与资产化训练”，但这要求更强的评估与反馈工程化，否则会退化为工具熟练度训练。（ref: `../reference_eng/02-tier-baltes-diehl-theory-software-development-expertise-2018.md`）
 4. 采用或落地的难点在哪里
