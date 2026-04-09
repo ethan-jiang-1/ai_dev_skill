@@ -3,7 +3,7 @@
 - plan: `SDLC_SKILL/plans/cap-二轮Deep-Research-progressive-plan.md`
 - status_file: `SDLC_SKILL/plans/cap-二轮Deep-Research-progressive-plan.status.md`
 - timezone: Asia/Shanghai
-- last_updated: 2026-04-09 10:49:00 +0800
+- last_updated: 2026-04-09 10:51:30 +0800
 
 > 维护口径：这是“执行落地状态机”，记录哪些已做、哪些未做、以及下一步最短路径。内容允许反复增补，但不应改写原计划的规则口径。
 
@@ -45,13 +45,13 @@
 - [x] >=2 独立第三方：UTBoost / InspectCoder / DebugHarness（学术）
 - [x] >=1 近期趋势来源：`reference_cap/02-arxiv-2604.03610-debugharness-interactive-debugging-for-apr.md`（2026-04）
 - [x] >=1 限制/失败模式来源：`reference_cap/02-arxiv-2506.09289-utboost-swebench-test-augmentation.md`（弱测试导致 false positives）
-- [ ] artifacts 待回填
+- [x] artifacts 已回填
   - `digested_cap/_artifacts/02-build-debug-evidence-summary.md`
   - `digested_cap/_artifacts/02-build-debug-question-list.md`
-- [ ] digested 待回填
-  - `digested_cap/02-构建执行与系统化调试闭环.md`（需要追加二轮固定章节）
+- [x] digested 已回填
+  - `digested_cap/02-构建执行与系统化调试闭环.md` 已追加二轮固定章节
 
-状态：02 维度证据已落库，但“边取证边回填”尚未完成（阻塞 Wave 1 完整达标）。
+状态：02 维度 Wave 1 达标。
 
 #### 03-review-ship-ops（审查发布运维与状态持久化）
 
@@ -99,4 +99,3 @@
 ## Update Log
 
 - 2026-04-09: 完成 Wave 0 共享地基并超额落库；01 维度 Wave 1 达标并完成回填；02 维度完成证据落库但回填未完成；03/04 仍需扩张证据链。
-
