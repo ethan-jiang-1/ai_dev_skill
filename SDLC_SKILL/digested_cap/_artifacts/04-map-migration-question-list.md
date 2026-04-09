@@ -14,6 +14,7 @@
   - 需要维护多少条 rewrites（path/frontmatter/tool/命令名/变量）？
   - 是否需要语义级 adapter（超出 string replace）？
   - 是否存在 conversion regression tests，覆盖范围与维护频率如何？
+- 社区 confirmed bugs 线索库如何转化为“企业引入前的风险评估清单”：哪些是结构性问题（宿主差异/转换层不可避免），哪些是实现缺陷（可用测试/门禁/治理显著缓解）？
 - “高迁移价值”是否必须满足：有确定性门禁/验证产物/回归资产，而不仅是 prompt 文本？
 
 ### P1（趋势与生态）

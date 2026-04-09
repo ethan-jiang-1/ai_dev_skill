@@ -7,6 +7,7 @@
 ### P0（决定“review/ship/ops 能力单元”是否可信）
 
 - builder self-review 的系统性偏差在“代码审查/安全审查”场景中如何量化？self-bias 研究给出机制证据，但在代码 review 的可观测信号与度量是什么？
+- SAT/SAST 告警 triage 作为 review gate：如何引入 LLM+静态分析 hybrid 以显著降噪但不牺牲 recall？最小可执行验证方案是什么（抽检、漏报回溯、灰度门禁、阈值策略）？
 - “fresh-context critic + multi-review aggregation + cross-model synthesis”的最小可落地实现是什么？哪些触发条件最合理（diff size / 风险分级 / 组件敏感度）？
 - PR-centric/full-context 的 review 评价怎么做才不被文本相似度误导？如何把“覆盖 ground-truth issues”工程化为组织内的 review 质量指标（避免 LLM 评分偏差）？
 - 运行时 QA（headless/截图/console/perf/交互前后差异）如何与回归资产绑定：baseline 版本化策略、不同环境（staging/prod/multi-tenant）如何避免误报？

@@ -27,8 +27,16 @@
 
 “机制判断：跨宿主迁移的核心成本在映射层（paths/frontmatter/tools/capabilities）与其长期维护；需要 installer+converter+tests 将差异固化为 contract”：
 - `reference_cap/04-gsd-multi-runtime-installer-and-format-conversion.md`
+- `reference_cap/04-gsd-multi-runtime-conversion-surface-area-metrics.md`
+- `reference_cap/04-gsd-installer-converter-churn-commit-history.md`
 - `reference_cap/04-gsd-windsurf-conversion-regression-tests.md`
 - `reference_cap/04-gstack-host-config-system-multi-host-portability.md`
+- `reference_cap/04-gstack-host-portability-surface-area-metrics.md`
+
+“失败模式：社区侧迁移/落地会暴露大量工程 bug surface（install/update/planning/execution/migration）与信任摩擦（外部 MCP/插件供应链顾虑），因此迁移价值必须显式计入 risk 与治理成本，而不能只看 demo/声量”：
+- `reference_cap/04-community-gsd-copilot-integration-reddit.md`
+- `reference_cap/04-community-gsd-bug-report-33-confirmed-bugs-llm-as-judge.md`
+- `reference_cap/03-arxiv-2603.16572-repo-context-skill-security.md`
 
 “机制判断：高迁移价值能力单元的共同点是 determinism + auditability：用 gate/验证产物把‘完成’从语言信号变为可复核证据链”：
 - `reference_cap/02-superpowers-verification-before-completion.md`
@@ -50,6 +58,10 @@
 - `reference_cap/03-arxiv-2402.11436-llm-self-bias-self-refinement.md`
 - `reference_cap/03-gstack-review-skill-adversarial-and-specialists.md`
 - `reference_cap/03-arxiv-2509.01494-swr-bench-llm-code-review-benchmark.md`
+
+“工业实证：LLM 在 review/质量门禁中可作为‘降噪能力单元’（例如 SAT 假阳性过滤），并且 LLM-assisted code review 的落地受 trust/false positives 与上下文支持（RAG/语义检索拼装）约束，交互形态（AI-led vs on-demand）呈情境依赖”：
+- `reference_cap/03-arxiv-2601.18844-reducing-false-positives-static-bug-detection-industry.md`
+- `reference_cap/03-arxiv-2505.16339-rethinking-code-review-workflows-llm-assistance.md`
 
 “机制判断：QA/Operate 的关键是 baseline+delta，把一次性验证变成可回归资产，并尽量只对‘变化’报警降低噪音”：
 - `reference_cap/03-gstack-qa-skill-runtime-verification.md`
@@ -118,14 +130,14 @@
 ### 可迁移 vs 专有实现（总结）
 
 - 最可迁移：验证产物、门禁规则、review/QA 的证据链与回归资产化（因为 determinism/auditability 更强）。
-- 专有实现风险高：宿主相关的 tools、frontmatter 约束、目录约定、权限/审批模型（需要 host portability layer）。`reference_cap/04-gsd-multi-runtime-installer-and-format-conversion.md` `reference_cap/04-gstack-host-config-system-multi-host-portability.md`
+- 专有实现风险高：宿主相关的 tools、frontmatter 约束、目录约定、权限/审批模型（需要 host portability layer）。`reference_cap/04-gsd-multi-runtime-installer-and-format-conversion.md` `reference_cap/04-gsd-multi-runtime-conversion-surface-area-metrics.md` `reference_cap/04-gsd-installer-converter-churn-commit-history.md` `reference_cap/04-gstack-host-config-system-multi-host-portability.md` `reference_cap/04-gstack-host-portability-surface-area-metrics.md`
 
 ## Open Gaps (Blockers to Report Readiness)
 
 - “迁移价值评级”的硬证据仍偏稀缺：
-  - 目前能证明配置机制的采用基线与部分效率收益，但 correctness/质量净收益仍缺更强因果证据与企业试点复盘。
-- 多宿主映射层的长期维护成本缺可复核度量：
-  - rewrites 数量增长率、回归失败频率、宿主升级引入的 breakage 统计等。
+  - 目前能证明配置机制的采用基线与部分效率收益，并新增了 review/质量门禁侧的工业实证切片（例如 SAT 假阳性降噪）与社区 confirmed bugs 线索库；但端到端 correctness/质量净收益仍缺更强因果证据与企业试点复盘。`reference_cap/03-arxiv-2601.18844-reducing-false-positives-static-bug-detection-industry.md` `reference_cap/04-community-gsd-bug-report-33-confirmed-bugs-llm-as-judge.md`
+- 多宿主映射层的长期维护成本仍缺“完整 time-series”可复核度量（已有 snapshot + 部分 churn 切片可回指）：
+  - 当前已有：converter/installer 的短窗口高频提交切片；仍需补：rewrites/adapter 增长率、回归失败频率、宿主升级引入的 breakage 统计等。`reference_cap/04-gsd-installer-converter-churn-commit-history.md` `reference_cap/04-gsd-multi-runtime-conversion-surface-area-metrics.md` `reference_cap/04-gstack-host-portability-surface-area-metrics.md`
 - 供应链安全治理的“最小可行方案”仍需落到可执行政策与工具链，并补真实案例：
   - 签名/锁定/隔离/审计/审批链等。
 

@@ -34,6 +34,10 @@
 - SWR-Bench（PR-centric + full context + objective eval）（`reference_cap/03-arxiv-2509.01494-swr-bench-llm-code-review-benchmark.md`）
 - CodeReviewQA（CTR/CL/SI probes + contamination mitigation）（`reference_cap/03-arxiv-2503.16167-codereviewqa-code-review-comprehension.md`）
 
+“工业实证：质量门禁的关键痛点是静态分析高假阳性；LLM+静态分析 hybrid 可在企业流水线中显著降噪且成本可控；同时 LLM-assisted code review 的 adoption 受 trust/false positives 约束，并在 AI-led vs on-demand 交互形态上呈现情境依赖”：
+- Tencent SAT false positives reduction（`reference_cap/03-arxiv-2601.18844-reducing-false-positives-static-bug-detection-industry.md`）
+- WirelessCar code review workflow study（`reference_cap/03-arxiv-2505.16339-rethinking-code-review-workflows-llm-assistance.md`）
+
 “宿主级执行安全与门禁：approval policy + sandbox_mode + OS/云隔离实现，把 ops 风险从‘口头规范’升级为可配置 contract”：
 - Codex approvals & security（Seatbelt/bubblewrap+seccomp/gVisor）（`reference_cap/03-openai-codex-agent-approvals-security-sandbox.md`）
 

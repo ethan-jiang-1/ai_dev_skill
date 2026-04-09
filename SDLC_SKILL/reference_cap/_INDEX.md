@@ -49,13 +49,16 @@
 | 03-mcp-security-best-practices.md | 03-review-ship-ops | official | MCP 官方安全最佳实践：confused deputy、tool poisoning、SSRF、session hijacking、least privilege scopes 等 |
 | 03-arxiv-2603.16572-repo-context-skill-security.md | 03-review-ship-ops | academic | 技能生态安全：仅看 SKILL.md 会高误报；引入仓库上下文可显著降假阳性并揭示“弃置仓库劫持”攻击面 |
 | 03-arxiv-2601.17549-breaking-the-protocol-mcp-security.md | 03-review-ship-ops | academic | MCP/A2A 安全风险与对抗评估：多恶意 server 可显著放大攻击成功率；提出协议扩展与验证 |
+| 03-arxiv-2601.18844-reducing-false-positives-static-bug-detection-industry.md | 03-review-ship-ops | academic | 工业实证（Tencent）：LLM+静态分析 hybrid 可在高 recall 下消除 94%-98% 假阳性；per-alarm 成本秒级/低美元 |
 | 03-arxiv-2512.06556-securing-mcp-tool-poisoning.md | 03-review-ship-ops | academic | MCP 语义攻击（tool poisoning/shadowing/rug pulls）+ 分层防御（signing/vetting/guardrails）与量化评估 |
 | 03-arxiv-2509.01494-swr-bench-llm-code-review-benchmark.md | 03-review-ship-ops | academic | SWR-Bench：1000 PR + full context；客观评估；multi-review aggregation 可显著提升 issue detection F1 |
+| 03-arxiv-2505.16339-rethinking-code-review-workflows-llm-assistance.md | 03-review-ship-ops | academic | 工业现场研究（WirelessCar）：code review 摩擦点（上下文切换/缺上下文）+ LLM 辅助两模式偏好与 trust/FP 顾虑 |
 | 03-arxiv-2503.16167-codereviewqa-code-review-comprehension.md | 03-review-ship-ops | academic | CodeReviewQA：把 ACR 拆成 CTR/CL/SI probes；揭示 review comment 理解/定位弱项并缓解数据污染 |
 | 03-arxiv-2402.11436-llm-self-bias-self-refinement.md | 03-review-ship-ops | academic | Self-bias：LLM 倾向偏好自身输出；self-refine 可能放大偏差；外部反馈可缓解 |
 | 04-arxiv-2602.14690-configuring-agentic-ai-coding-tools.md | 04-map-migration | academic | “配置机制谱系”与 OSS 采用基线：Context Files 占主导、AGENTS.md 走向互操作标准、Skills/Subagents 浅采用 |
 | 04-arxiv-2601.20404-impact-of-agents-md-efficiency.md | 04-map-migration | academic | 实证：AGENTS.md 与更低中位数 runtime（-28.64%）与 output tokens（-16.58%）相关（paired design） |
 | 04-community-gsd-copilot-integration-reddit.md | 04-map-migration | community | GSD 向 Copilot/Kilo 等宿主迁移的真实摩擦点：语言依赖、MCP 供应链顾虑、互操作路径讨论 |
+| 04-community-gsd-bug-report-33-confirmed-bugs-llm-as-judge.md | 04-map-migration | community | 社区失败模式清单：从 138 issues 中整理 33 个 confirmed bugs，覆盖 install/update/planning/execution/migration 等分类 |
 | 04-openai-introducing-codex-cloud-agent-secure-execution.md | 04-map-migration | official | Codex 云端 agent：AGENTS.md 指导、可追溯证据（logs/tests citations）、secure execution 边界与外部早期用例 |
 | 04-openai-unrolling-codex-agent-loop-instruction-aggregation-mcp-sandbox.md | 04-map-migration | official | Codex agent loop 细节：AGENTS.md/override 聚合与 32KiB cap、shell sandbox 边界、MCP tools 非 sandbox 与缓存 caveats |
 | 04-openai-codex-agents-md-scopes-override-fallback.md | 04-map-migration | official | Codex 对 AGENTS.md 的契约：global/project scopes、override、fallback（CODEX/CONTEXT/README）与单文件 32KiB 限制 |
@@ -64,6 +67,9 @@
 | 04-anthropic-claude-code-memory-claude-md-imports.md | 04-map-migration | official | Claude Code memory/rules：CLAUDE.md 与 .claude/ 分层 + imports（可导入 AGENTS.md）支持跨工具互操作 |
 | 04-gstack-agents-md-workflow-and-host-portability.md | 04-map-migration | official | gstack skill pack 的可迁移形态：`.agents/skills/` 约定 + 模板生成 + `--host codex` 等宿主差异化输出 |
 | 04-gstack-host-config-system-multi-host-portability.md | 04-map-migration | official | gstack 多宿主适配：HostConfig（frontmatter/paths/tools/suppressed）+ host adapter（语义转换）治理差异 |
+| 04-gstack-host-portability-surface-area-metrics.md | 04-map-migration | official | gstack 多宿主可移植层的可复核度量：8 hosts + registry/schema/adapter 切片约 733 LOC |
 | 04-gsd-multi-runtime-installer-and-format-conversion.md | 04-map-migration | official | GSD 多运行时安装与格式转换：`.github/`/`.codex/`/`.cursor/`/`.windsurf/`/`.clinerules` 目录契约与转换测试 |
+| 04-gsd-multi-runtime-conversion-surface-area-metrics.md | 04-map-migration | official | GSD 跨宿主 converter/installer 的 surface area：`install.js` 约 6,259 LOC + 多目标转换函数 + 回归测试 |
+| 04-gsd-installer-converter-churn-commit-history.md | 04-map-migration | official | GSD installer/converter 的 time-series churn 切片：`bin/install.js` 在 6 天内出现 34 次提交（commit history 计数） |
 | 04-gsd-windsurf-conversion-regression-tests.md | 04-map-migration | official | Windsurf 转换回归测试：frontmatter/plain scalar、命令命名与路径/tool 映射，固化跨宿主迁移 contract |
 | 04-gsd-clinerules-workflow-guardrails.md | 04-map-migration | official | `.clinerules` 作为 rules/context file：workflow-only guardrail + 架构/编码/安全标准的集中入口 |

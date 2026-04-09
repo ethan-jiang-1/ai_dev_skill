@@ -14,6 +14,12 @@
 - `reference_cap/04-gsd-multi-runtime-installer-and-format-conversion.md`
 - `reference_cap/04-gsd-windsurf-conversion-regression-tests.md`
 
+“宿主适配/转换层的 maintenance overhead 有可复核切片：gstack host registry 明确 8 hosts 且映射层有数百行规模；GSD 的 installer+converter 在单文件上达到千行级，并需要 conversion regression tests 固化 contract”：
+- `reference_cap/04-gstack-host-portability-surface-area-metrics.md`
+- `reference_cap/04-gsd-multi-runtime-conversion-surface-area-metrics.md`
+- `reference_cap/04-gsd-installer-converter-churn-commit-history.md`
+- `reference_cap/04-gsd-windsurf-conversion-regression-tests.md`
+
 “多宿主可移植需要显式映射层（HostConfig）与语义级 adapter；单纯字符串替换无法覆盖宿主语义差异”：
 - `reference_cap/04-gstack-host-config-system-multi-host-portability.md`
 
@@ -42,6 +48,9 @@
 
 “社区层面的真实迁移摩擦：目录结构/语言依赖/原生命令替代，以及对外部 MCP/插件供应链的信任顾虑”：
 - `reference_cap/04-community-gsd-copilot-integration-reddit.md`
+
+“社区失败模式线索库（负面证据）：GSD 的 bug report 从大量 issues 中整理 confirmed bugs，并按 install/update/planning/execution/migration 等分类，可用于校准 adoption risk 与治理成本”：
+- `reference_cap/04-community-gsd-bug-report-33-confirmed-bugs-llm-as-judge.md`
 
 “失败模式与安全约束：技能生态属于供应链风险域，仅看 SKILL.md 文本扫描会高误报；引入仓库上下文可显著降假阳性并揭示弃置仓库劫持攻击面”：
 - `reference_cap/03-arxiv-2603.16572-repo-context-skill-security.md`
