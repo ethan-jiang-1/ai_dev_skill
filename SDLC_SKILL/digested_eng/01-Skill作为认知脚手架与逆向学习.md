@@ -1,5 +1,7 @@
 # Skill 作为认知脚手架与逆向学习
 
+## 第一轮摘要（保留，不修改）
+
 ## 这份片段在讲什么
 
 这份上下文聚焦一个核心判断：
@@ -109,3 +111,73 @@
 - “AI skill 到底是不是高级提示词？”
 - “skill 为什么能成为工程师学习方法学的脚手架？”
 - “如何设计一个既能帮人做事、又能训练人的 skill？”
+
+## 二轮新增证据
+
+> 本节只记录“新增硬事实/高可信证据”，并用 `../reference_eng/*.md` 回指。结论推理放到后续章节。
+
+- 新手更受益于“明确指导”而非“最小指导”，worked examples 与认知负荷框架解释了为何指导可能促进学习而非仅提升短期表现。（ref: `../reference_eng/01-scaffold-kirschner-sweller-clark-minimal-guidance-2006.md`）
+- cognitive offloading（认知卸载）可以被严格定义为把认知负担转移到环境中，并具有可预期的触发条件与后果讨论框架。（ref: `../reference_eng/01-scaffold-risko-gilbert-cognitive-offloading-2016.md`）
+- belief offloading 提供了 LLM 场景下更细的风险分类：不仅是“少算”，也可能是“少判断/少形成信念”，需要用边界与分类讨论而非泛化指责。（ref: `../reference_eng/01-scaffold-belief-offloading-human-ai-interaction-arxiv-2602-08754.md`）
+- 学习收益与参与方式强相关：ICAP 框架把参与方式从 Passive/Active 拆到 Constructive/Interactive，并将更高层参与与更好学习结果关联。（ref: `../reference_eng/01-scaffold-chi-wylie-icap-framework-2014.md`）
+- tutoring moves taxonomy 把“教练式引导”拆成可操作动作（要求解释、提示、追问、反馈等），为 Skill 的交互设计提供语言。（ref: `../reference_eng/01-scaffold-tutor-move-taxonomy-arxiv-2603-05778.md`）
+- 在固定时间内，LLM 支持的开放式 self-explanation 能提升 transfer tasks 的解释质量（研究语境为微积分）；这是“把 LLM 用作解释/反思教练可能促进学习”的直接证据，但跨域到 SE 需降级表述。（ref: `../reference_eng/01-scaffold-llm-supported-self-explanation-calculus-arxiv-2604-00142.md`）
+- 在 brownfield（不熟悉 legacy codebase）任务中，Copilot 使学生更快完成、推进更多，并减少手写与 web search 时间；同时学生表达“不理解建议为何有效”的担忧。这是目前最接近“AI 编码助手改变参与方式并引入理解风险”的 SE 场景对照实验。（ref: `../reference_eng/01-scaffold-github-copilot-students-brownfield-arxiv-2506-10051.md`）
+- progressive disclosure（渐进式加载）作为技能系统的工程机制已被官方描述为多级加载（metadata 预载 + 按需加载 skill body/附件），它是“把复杂经验变成可逐步呈现脚手架”的可验证实现手段之一。（ref: `../reference_eng/01-scaffold-anthropic-engineering-agent-skills-progressive-disclosure-2025.md`）
+- 社区层面的风险信号：部分资深开发者报告“总是开着的自动补全”会造成注意力打断与决策疲劳，提示自动化可能以认知代价换取速度（证据强度低，需并列呈现与后续补证）。（ref: `../reference_eng/01-scaffold-community-experienceddevs-copilot-focus-disruption.md`）
+
+## 二轮新增机制理解
+
+> 本节从“是什么”上升到“为什么”：把脚手架/卸载/逆向学习拆成可被 Skill 设计影响的机制。
+
+### 1) “脚手架”不等于“自动化”：关键在于保留哪些心智动作
+
+- 如果把 Skill 仅当作“更快出结果”，它更像 offloading 的加速器；而“脚手架”要求把专家策略显式化为步骤与检查点，并迫使使用者参与关键判断（解释、反证、审查、证据链）。（ref: `../reference_eng/01-scaffold-risko-gilbert-cognitive-offloading-2016.md`）
+- 从 ICAP 视角，Skill 的设计目标不应只让人“Active（点击/执行）”，而应尽量把交互推到 Constructive/Interactive（要求生成解释、比较方案、提出反例、进行协商式修正）。（ref: `../reference_eng/01-scaffold-chi-wylie-icap-framework-2014.md`）
+- tutoring moves taxonomy 提供了把 Skill 写成“教练脚本”的方法：少给答案，多要求解释/推理/自检；这为“逆向学习”提供了可操作的交互骨架。（ref: `../reference_eng/01-scaffold-tutor-move-taxonomy-arxiv-2603-05778.md`）
+
+### 2) “逆向学习”成立的必要条件：解释负担不能被卸载掉
+
+- 逆向学习依赖一个前提：使用者必须能把“结果”映射回“为什么这样做”。如果工具让使用者仅接受建议而不理解其因果，就会触发 belief offloading 风险（把判断也外包）。（ref: `../reference_eng/01-scaffold-belief-offloading-human-ai-interaction-arxiv-2602-08754.md`）
+- 一个更可验证的“逆向学习替代口径”是：把 Skill 设计成自解释与自检协议的一部分，让使用者在关键节点输出“我为什么相信它对”。在非 SE 场景已有 LLM 促进 self-explanation 的实证，但迁移到 SE 需要额外验证。（ref: `../reference_eng/01-scaffold-llm-supported-self-explanation-calculus-arxiv-2604-00142.md`）
+
+### 3) 渐进式加载是“脚手架形态”的工程实现：把复杂性拆成可吸收的层
+
+- progressive disclosure 的核心机制是“先提供轻量导览，再按需加载细节”，它同时服务两类目标：
+  - 降低新手第一次接触复杂规范时的认知负担（像 worked examples 一样先让人跟着走）
+  - 避免一次性全量注入导致的“信息噪声”与不受控自动化
+  - （ref: `../reference_eng/01-scaffold-anthropic-engineering-agent-skills-progressive-disclosure-2025.md`）
+
+## 二轮新增趋势与难点
+
+- 趋势（工具形态）：GenAI 编码助手正在进入 brownfield 任务，且会实质改变开发过程分配（更少手写/检索，更依赖建议与生成）。这会把“理解与审查”推到更关键的位置。（ref: `../reference_eng/01-scaffold-github-copilot-students-brownfield-arxiv-2506-10051.md`）
+- 难点（学习 vs 效率）：短期效率提升可能与长期能力提升不一致；如果 Skill 设计只追求更快，容易把解释与判断一起卸载掉，导致“会用但不会”的技能债。（ref: `../reference_eng/01-scaffold-risko-gilbert-cognitive-offloading-2016.md`）
+- 难点（争议与个体差异）：社区反馈显示自动补全可能干扰专注，但这类证据强度低且高度依赖任务类型/个人习惯，报告中需要把它当作“风险信号”而非定论。（ref: `../reference_eng/01-scaffold-community-experienceddevs-copilot-focus-disruption.md`）
+
+## 当前判断（二轮综合后）
+
+### 0) 结论强度声明（必须显式）
+
+- “Skill 作为脚手架能提升长期能力”目前缺少直接 SE 实证；二轮更可靠的结论是：**工具与 Skill 的交互形态会显著影响参与方式，并存在可被定义的卸载/不理解风险**。（ref: `../reference_eng/01-scaffold-github-copilot-students-brownfield-arxiv-2506-10051.md`, `../reference_eng/01-scaffold-belief-offloading-human-ai-interaction-arxiv-2602-08754.md`）
+
+### 1) 六个固定问题回答（二轮）
+
+1. 这个主题当前的硬事实是什么
+   - offloading/belief offloading 有明确理论定义与分类语言，可用于精确讨论风险边界。（ref: `../reference_eng/01-scaffold-risko-gilbert-cognitive-offloading-2016.md`, `../reference_eng/01-scaffold-belief-offloading-human-ai-interaction-arxiv-2602-08754.md`）
+   - 在 SE 场景对照实验中，Copilot 能提升效率/进展，同时伴随理解担忧与参与方式变化信号。（ref: `../reference_eng/01-scaffold-github-copilot-students-brownfield-arxiv-2506-10051.md`）
+   - 技能系统层面存在可验证的“渐进式加载”工程机制。（ref: `../reference_eng/01-scaffold-anthropic-engineering-agent-skills-progressive-disclosure-2025.md`）
+2. 背后的根本机制是什么
+   - 新手阶段更需要结构化指导（邻近证据），而学习收益取决于是否触发 Constructive/Interactive 参与与解释负担。（ref: `../reference_eng/01-scaffold-kirschner-sweller-clark-minimal-guidance-2006.md`, `../reference_eng/01-scaffold-chi-wylie-icap-framework-2014.md`）
+   - 过度自动化会把记忆/计算甚至判断一起外包，形成 offloading/belief offloading；逆向学习要成立，解释与反证不能被外包。（ref: `../reference_eng/01-scaffold-belief-offloading-human-ai-interaction-arxiv-2602-08754.md`）
+3. 生态最近在往哪里演化
+   - 编码助手正在深入维护型（brownfield）任务，过程从“手写+搜索”迁移到“建议/生成+审查/理解”，对审查与理解能力要求上升。（ref: `../reference_eng/01-scaffold-github-copilot-students-brownfield-arxiv-2506-10051.md`）
+   - 工具侧在引入更工程化的技能组织与加载机制（progressive disclosure）。（ref: `../reference_eng/01-scaffold-anthropic-engineering-agent-skills-progressive-disclosure-2025.md`）
+4. 采用或落地的难点在哪里
+   - 最大难点是把 Skill 设计成“保留关键心智动作的脚手架”，而不是“更丝滑的卸载”；否则学习目标会被效率目标吞没。（ref: `../reference_eng/01-scaffold-chi-wylie-icap-framework-2014.md`）
+   - 另一个难点是衡量：很容易只量化速度/产出，难量化理解/迁移。（ref: `../reference_eng/01-scaffold-github-copilot-students-brownfield-arxiv-2506-10051.md`）
+5. 社区争议和失败模式在哪里
+   - 失败模式：不理解建议、错误信念形成、过度信任导致调试“兔子洞”等（学生研究已出现风险信号；需要更多样本补证）。（ref: `../reference_eng/01-scaffold-github-copilot-students-brownfield-arxiv-2506-10051.md`）
+   - 争议点：自动补全是否普遍破坏专注与深度思考，目前多为社区证词，需谨慎表述。（ref: `../reference_eng/01-scaffold-community-experienceddevs-copilot-focus-disruption.md`）
+6. 哪些对象最值得继续追踪
+   - 直接针对“结构化 Skill”对学习/迁移的对照实验与纵向研究（尤其是 brownfield/comprehension/debugging 任务）。
+   - 能把 tutoring moves / ICAP 机制落到可复用 Skill 交互模板的高质量实践样本。（ref: `../reference_eng/01-scaffold-tutor-move-taxonomy-arxiv-2603-05778.md`）
