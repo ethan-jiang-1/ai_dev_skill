@@ -31,7 +31,7 @@ Local anchor:
 
 ## 与本研究的关系
 
-- 支撑 `digested_cap/03` 中“文档同步是发布闭环能力单元”的判断，并提供可迁移的最小动作集（diff-aware audit + risk gates）。
+- 支撑 `round2_cap/03` 中“文档同步是发布闭环能力单元”的判断，并提供可迁移的最小动作集（diff-aware audit + risk gates）。
 - 也提供了“防漂移机制”的工程化样本：用硬规则避免 agent 覆写 CHANGELOG 等高风险文件。
 
 ## 可直接引用的术语 / 概念

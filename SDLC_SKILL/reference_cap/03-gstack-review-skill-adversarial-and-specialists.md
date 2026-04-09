@@ -32,7 +32,7 @@ Local anchor:
 
 ## 与本研究的关系
 
-- 为 `digested_cap/03` 的关键判断提供一手证据：成熟的 review 能力单元必须具备“独立审查 + gate + 可追溯落盘”，而不仅是同一 agent 的自我审查。
+- 为 `round2_cap/03` 的关键判断提供一手证据：成熟的 review 能力单元必须具备“独立审查 + gate + 可追溯落盘”，而不仅是同一 agent 的自我审查。
 - 提供可迁移的机制样本：scope check、fix-first、specialist 分派、adversarial passes、review 结果持久化（后续 `/ship` 可引用）。
 
 ## 可直接引用的术语 / 概念

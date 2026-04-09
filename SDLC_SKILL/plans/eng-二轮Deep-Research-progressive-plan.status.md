@@ -27,51 +27,51 @@
 
 - [x] ground truth docs（>=12）：已落库 13 条（`reference_eng/01-scaffold-*.md`）
 - [x] artifacts 已回填
-  - `digested_eng/_artifacts/01-scaffold-evidence-summary.md`
-  - `digested_eng/_artifacts/01-scaffold-question-list.md`
+  - `round2_eng/_artifacts/01-scaffold-evidence-summary.md`
+  - `round2_eng/_artifacts/01-scaffold-question-list.md`
 - [x] digested 已回填
-  - `digested_eng/01-Skill作为认知脚手架与逆向学习.md` 已追加二轮固定章节
+  - `round2_eng/01-Skill作为认知脚手架与逆向学习.md` 已追加二轮固定章节
 
 #### 02-tier（难度分层与能力训练矩阵）
 
 - [x] ground truth docs（>=12）：已落库 12 条（`reference_eng/02-tier-*.md`）
 - [x] artifacts 已回填
-  - `digested_eng/_artifacts/02-tier-evidence-summary.md`
-  - `digested_eng/_artifacts/02-tier-question-list.md`
+  - `round2_eng/_artifacts/02-tier-evidence-summary.md`
+  - `round2_eng/_artifacts/02-tier-question-list.md`
 - [x] digested 已回填
-  - `digested_eng/02-Skill难度分层与能力训练矩阵.md` 已追加二轮固定章节
+  - `round2_eng/02-Skill难度分层与能力训练矩阵.md` 已追加二轮固定章节
 
 #### 03-devlife（Skill 开发生命周期与工具生态）
 
 - [x] ground truth docs（>=12）：已落库 13 条（`reference_eng/03-devlife-*.md`）
 - [x] artifacts 已回填
-  - `digested_eng/_artifacts/03-devlife-evidence-summary.md`
-  - `digested_eng/_artifacts/03-devlife-question-list.md`
+  - `round2_eng/_artifacts/03-devlife-evidence-summary.md`
+  - `round2_eng/_artifacts/03-devlife-question-list.md`
 - [x] digested 已回填
-  - `digested_eng/03-Skill开发生命周期与工具生态支持.md` 已追加二轮固定章节
+  - `round2_eng/03-Skill开发生命周期与工具生态支持.md` 已追加二轮固定章节
 
 #### 04-path（工程师跃迁路径、团队采纳与治理）
 
 - [x] ground truth docs（>=12）：已落库 13 条（`reference_eng/04-path-*.md`）
 - [x] artifacts 已回填
-  - `digested_eng/_artifacts/04-path-evidence-summary.md`
-  - `digested_eng/_artifacts/04-path-question-list.md`
+  - `round2_eng/_artifacts/04-path-evidence-summary.md`
+  - `round2_eng/_artifacts/04-path-question-list.md`
 - [x] digested 已回填
-  - `digested_eng/04-工程师跃迁路径团队采纳与样本矩阵.md` 已追加二轮固定章节
+  - `round2_eng/04-工程师跃迁路径团队采纳与样本矩阵.md` 已追加二轮固定章节
 
 ### Wave 2：跨主题综合
 
-- [x] `digested_eng/_artifacts/W2-cross-topic-synthesis.md`：已完成 cross-topic claims→evidence pointers 与口径对齐
+- [x] `round2_eng/_artifacts/W2-cross-topic-synthesis.md`：已完成 cross-topic claims→evidence pointers 与口径对齐
 - [x] `reference_eng/_INDEX.md`：已维护为 30 秒回指入口索引
-- [x] P0 缺口检索记录：`digested_eng/_artifacts/P0-gap-search-log.md`
+- [x] P0 缺口检索记录：`round2_eng/_artifacts/P0-gap-search-log.md`
 
 ### Report Readiness Check（最终验收）
 
 - [x] 任意抽取一个核心判断 → 30 秒内定位到 `reference_eng/*.md` 支撑文档
-- [x] 4 个主题各自能写出“主张 + 证据 + 局限”的连贯段落（已回填到 `digested_eng/*.md`）
-- [x] 已形成“整体图景”的综合判断（`digested_eng/_artifacts/W2-cross-topic-synthesis.md`）
+- [x] 4 个主题各自能写出“主张 + 证据 + 局限”的连贯段落（已回填到 `round2_eng/*.md`）
+- [x] 已形成“整体图景”的综合判断（`round2_eng/_artifacts/W2-cross-topic-synthesis.md`）
 - [x] Hard Gates（完成定义）：
-  - P0 缺口已“关闭或降级并稳定化”（并留存检索记录）：`digested_eng/_artifacts/P0-gap-search-log.md`
+  - P0 缺口已“关闭或降级并稳定化”（并留存检索记录）：`round2_eng/_artifacts/P0-gap-search-log.md`
   - 至少 1 条负结果/边界证据已纳入并用于修正表述（例如 comprehension–performance gap、maintainability proxy 无显著差异等）
 
 ## Next Actions (Optional Hardening)

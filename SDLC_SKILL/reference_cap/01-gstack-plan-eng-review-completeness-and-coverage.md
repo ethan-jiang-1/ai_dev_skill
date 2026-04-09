@@ -33,7 +33,7 @@ Local anchor:
 
 ## 与本研究的关系
 
-- 为 digested_cap/01 与 digested_cap/02 提供“计划阶段绑定验证/测试”的机制样本，可与 GSD 的 Nyquist 形成对照（Nyquist 更偏 requirements→tests 映射，plan-eng-review 更偏 codepath/userflow 覆盖图）。
+- 为 round2_cap/01 与 round2_cap/02 提供“计划阶段绑定验证/测试”的机制样本，可与 GSD 的 Nyquist 形成对照（Nyquist 更偏 requirements→tests 映射，plan-eng-review 更偏 codepath/userflow 覆盖图）。
 
 ## 可直接引用的术语 / 概念
 

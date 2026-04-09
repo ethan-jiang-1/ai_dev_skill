@@ -41,7 +41,7 @@ Local anchor:
 
 ## 与本研究的关系
 
-- 为 digested_cap/01 的“前置规划机制”提供一手门禁样本：不仅产出观点，还规定审查顺序与“必须覆盖的 failure surfaces”。
+- 为 round2_cap/01 的“前置规划机制”提供一手门禁样本：不仅产出观点，还规定审查顺序与“必须覆盖的 failure surfaces”。
 - 对企业迁移：展示“交互式审查 + 显式决策点 + 落盘工件（handoff/design doc）”如何构成可治理流程。
 
 ## 可直接引用的术语 / 概念

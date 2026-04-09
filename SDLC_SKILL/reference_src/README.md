@@ -3,7 +3,7 @@
 `reference_src` 用于沉淀本轮 Deep Research 的可复用 ground truth（证据地基），目标是让后续写正式报告时：
 
 - 任意关键判断都能回指到本地证据文件
-- 新人接手只看 `digested_src + reference_src` 也能继续研究
+- 新人接手只看 `round2_src + reference_src` 也能继续研究
 - 证据与结论之间的映射清晰、可检查、可复用
 
 这里不追求全文镜像，也不做“链接堆积”。每个文件必须回答：**为什么值得保存**，以及**它能支撑哪些判断**。
@@ -45,9 +45,9 @@
 - 不要把整篇文章复制进来（不做全文镜像）。
 - 每段摘录尽量控制在 25 个英文词以内（中文同理，保持短句）。
 
-## 回指约定（digested_src -> reference_src）
+## 回指约定（round2_src -> reference_src）
 
-在 `digested_src` 的二轮新增内容里，每条关键判断都要附带本地回指，推荐写在句末：
+在 `round2_src` 的二轮新增内容里，每条关键判断都要附带本地回指，推荐写在句末：
 
 - `（Ref: ../reference_src/00-shared-agentskills-overview.md）`
 

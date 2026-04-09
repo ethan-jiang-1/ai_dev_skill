@@ -33,7 +33,7 @@ Local anchor:
 
 ## 与本研究的关系
 
-- 为 digested_cap/02 的“wave-based execution”提供工作流级证据：不仅有概念，还有运行时兼容与防阻塞策略。
+- 为 round2_cap/02 的“wave-based execution”提供工作流级证据：不仅有概念，还有运行时兼容与防阻塞策略。
 - 作为失败模式的直接回应：completion signal 不可靠时如何保证 pipeline 不挂死，并仍可用证据推进。
 
 ## 可直接引用的术语 / 概念

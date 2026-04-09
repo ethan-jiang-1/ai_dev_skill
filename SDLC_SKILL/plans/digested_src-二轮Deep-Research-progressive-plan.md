@@ -1,4 +1,4 @@
-# digested_src 二轮 Deep Research Progressive Plan
+# round2_src 二轮 Deep Research Progressive Plan
 
 > 执行状态（动态更新）：见 `digested_src-二轮Deep-Research-progressive-plan.status.md`
 
@@ -17,7 +17,7 @@
 - **一致性**：跨章节术语统一、口径统一、评估框架统一，不自相矛盾
 - **专业可读**：读者是领域内专业人士，不需要手把手解释，但需要准确、严谨、无歧义
 
-因此，每一个进入 `reference_src` 的文档、每一条写入 `digested_src` 的判断，都必须问自己：
+因此，每一个进入 `reference_src` 的文档、每一条写入 `round2_src` 的判断，都必须问自己：
 
 > **这条内容能直接支撑最终报告的哪个论点？如果不能，它就不该存在。**
 
@@ -78,7 +78,7 @@
 
 ## 目标
 
-针对 `digested_src` 里的 4 个主题，各做一轮更深入的 Deep Research。
+针对 `round2_src` 里的 4 个主题，各做一轮更深入的 Deep Research。
 
 这一轮不是重复第一轮摘要，而是要系统扩大：
 
@@ -132,7 +132,7 @@
 - 拿出任意一个重要判断，能在 30 秒内找到支撑它的 `reference_src` 文档
 - 对 4 个主题，能各自写出一段"机制 + 趋势 + 难点"的连贯叙述，不需要临时补搜
 - 跨主题能写出一段"这个生态的整体结构是什么"的综合判断，而不只是 4 段平行描述
-- 一位没有参与调研的专业人士，只看 `digested_src + reference_src`，能理解研究结论并继续往下走
+- 一位没有参与调研的专业人士，只看 `round2_src + reference_src`，能理解研究结论并继续往下走
 
 如果以上任一条不满足，调研不算完成。
 
@@ -140,10 +140,10 @@
 
 本轮研究直接以这 4 份文件为起点：
 
-- `/Users/bowhead/ai_dev_skill/SDLC_SKILL/digested_src/01-基础规范与宿主平台生态.md`
-- `/Users/bowhead/ai_dev_skill/SDLC_SKILL/digested_src/02-聚合器注册表与分发安全.md`
-- `/Users/bowhead/ai_dev_skill/SDLC_SKILL/digested_src/03-企业官方来源社区索引与MCP共生.md`
-- `/Users/bowhead/ai_dev_skill/SDLC_SKILL/digested_src/04-SDLC方法论框架与工程治理.md`
+- `/Users/bowhead/ai_dev_skill/SDLC_SKILL/round2_src/01-基础规范与宿主平台生态.md`
+- `/Users/bowhead/ai_dev_skill/SDLC_SKILL/round2_src/02-聚合器注册表与分发安全.md`
+- `/Users/bowhead/ai_dev_skill/SDLC_SKILL/round2_src/03-企业官方来源社区索引与MCP共生.md`
+- `/Users/bowhead/ai_dev_skill/SDLC_SKILL/round2_src/04-SDLC方法论框架与工程治理.md`
 
 ## 输出
 
@@ -188,9 +188,9 @@
 - 哪些是供给层真实高密度来源
 - 哪些是方法论层真正高杠杆框架
 
-### 4. digested_src 更新协议
+### 4. round2_src 更新协议
 
-二轮研究完成后，每份 `digested_src/*.md` 都要同步更新，结构如下：
+二轮研究完成后，每份 `round2_src/*.md` 都要同步更新，结构如下：
 
 ```md
 ## 第一轮摘要（保留，不修改）
@@ -349,8 +349,8 @@ Wave 2 的最低标准：
 - 以“探索宽度持续增长”为常态：每次搜索不只找同类材料，而是刻意扩张对象清单（新宿主 / 新分发器 / 新框架 / 新规范 / 新术语 / 新失败模式），直到“核心对象清单稳定”停止条件达成
 - 以“下钻到机制实现”为止：对每个关键对象，不停留在 README/营销页，沿 docs → schema → code/模板 → 打包产物（tarball 等）→ 论坛/issue 反例逐级下钻，尽量把判断升级为可引用的 contract 级证据（schema/代码）
 - 以“证据落库”为单位推进：每一次有效探索都必须落为 `reference_src/*.md`（可复用 ground truth），否则视为未完成，避免只“看过”但不可复用
-- 以“边取证边回填”避免集成债：新增证据落库后立刻回填到对应主题的二轮章节，并同步更新 `digested_src/_artifacts/<topic>-evidence-summary.md` 与 `digested_src/_artifacts/<topic>-question-list.md`；跨主题结论同步进入 `digested_src/_artifacts/W2-cross-topic-synthesis.md`
-- 以“持续自校验”保证 30 秒可回指：每波次结束做一次回指完整性检查（确保 `digested_src` 中所有 `../reference_src/*.md` 链接可解析），并维护 `reference_src/_INDEX.md` 作为快速入口
+- 以“边取证边回填”避免集成债：新增证据落库后立刻回填到对应主题的二轮章节，并同步更新 `round2_src/_artifacts/<topic>-evidence-summary.md` 与 `round2_src/_artifacts/<topic>-question-list.md`；跨主题结论同步进入 `round2_src/_artifacts/W2-cross-topic-synthesis.md`
+- 以“持续自校验”保证 30 秒可回指：每波次结束做一次回指完整性检查（确保 `round2_src` 中所有 `../reference_src/*.md` 链接可解析），并维护 `reference_src/_INDEX.md` 作为快速入口
 - 执行节奏默认不等反馈：只要没有外部依赖或关键不确定性阻断，就按 Wave/Step 检查点持续推进，直到通过 Report Readiness Check
 
 ## 什么值得存进 reference_src
@@ -672,7 +672,7 @@ Wave 2 的最低标准：
 - 每个主题至少形成一组可复用证据包，而不是临时搜索结果
 - 每个重要判断都能回指到本地 `reference_src` 文档
 - 对趋势、难度、争议都有专门证据，而不是顺手一提
-- 后续新的 agent 接手时，只看 `digested_src + reference_src` 就能继续往下研究
+- 后续新的 agent 接手时，只看 `round2_src + reference_src` 就能继续往下研究
 
 **最终报告可用性检查（Report Readiness Check）：**
 
@@ -681,7 +681,7 @@ Wave 2 的最低标准：
 1. 任意抽取一个重要判断，30 秒内能找到 `reference_src` 中的支撑文档
 2. 对 4 个主题各自能写出”机制 + 趋势 + 难点”的连贯段落，不需要临时补搜
 3. 跨主题能写出”这个生态的整体结构是什么”的综合判断，不只是 4 段平行描述
-4. 没有参与调研的专业人士，只看 `digested_src + reference_src`，能理解结论并继续深入
+4. 没有参与调研的专业人士，只看 `round2_src + reference_src`，能理解结论并继续深入
 
 ## Progressive Plan 元规则
 

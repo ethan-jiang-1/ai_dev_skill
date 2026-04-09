@@ -19,7 +19,7 @@
 
 ## Claims Supported
 
-- “skill 生态的关键不是单段 prompt，而是可版本控制、可移植、可按需加载的能力包。”（支撑 digested_src/主题1 的‘标准层事实’）
+- “skill 生态的关键不是单段 prompt，而是可版本控制、可移植、可按需加载的能力包。”（支撑 round2_src/主题1 的‘标准层事实’）
 - “Agent Skills 作为开放格式，其价值主张面向作者/工具/团队三方。”（支撑报告的受众与价值框架）
 
 ## Captured Excerpts (keep short)

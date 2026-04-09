@@ -41,7 +41,7 @@ Local anchor:
 
 ## 与本研究的关系
 
-- 作为 “Orchestrator/Worker 分离 + fresh context + state persistence” 的一手来源，能够直接支撑 digested_cap 里关于“对抗 context rot 的最强抽象之一”的判断。
+- 作为 “Orchestrator/Worker 分离 + fresh context + state persistence” 的一手来源，能够直接支撑 round2_cap 里关于“对抗 context rot 的最强抽象之一”的判断。
 - 提供“并发执行不可避免的工程冲突点”与可复核的缓解机制（hook contention、state write races）。
 
 ## 可直接引用的术语 / 概念

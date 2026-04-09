@@ -25,7 +25,7 @@
 
 ## 与本研究的关系
 
-- 为 `digested_cap/04` 的“仓库级配置工件”提供官方证据：不仅 Codex 支持 `AGENTS.md`，Claude Code 也提供将其纳入自身记忆体系的路径（imports）。
+- 为 `round2_cap/04` 的“仓库级配置工件”提供官方证据：不仅 Codex 支持 `AGENTS.md`，Claude Code 也提供将其纳入自身记忆体系的路径（imports）。
 - 为“迁移成本”提供事实：不同宿主对指令文件的命名、目录结构与加载语义不同；imports/rules 分层是一种降低漂移与兼容债的工程手段。
 
 ## 可直接引用的术语 / 概念

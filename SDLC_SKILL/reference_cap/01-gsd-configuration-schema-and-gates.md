@@ -37,8 +37,8 @@ Local anchor:
 
 ## 与本研究的关系
 
-- 为 digested_cap/01 的“Hook/Gate 的确定性为什么更可靠”提供一手证据：gates/hook 不是口头建议，而是配置面与行为约束。
-- 为 digested_cap/04 的迁移评估提供素材：企业落地核心在于把 workflow primitives 映射到组织政策（审批点/并行度/安全门禁/成本档位）。
+- 为 round2_cap/01 的“Hook/Gate 的确定性为什么更可靠”提供一手证据：gates/hook 不是口头建议，而是配置面与行为约束。
+- 为 round2_cap/04 的迁移评估提供素材：企业落地核心在于把 workflow primitives 映射到组织政策（审批点/并行度/安全门禁/成本档位）。
 
 ## 可直接引用的术语 / 概念
 

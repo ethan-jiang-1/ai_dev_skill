@@ -48,7 +48,7 @@ Local anchor:
 
 ## 与本研究的关系
 
-- 为 `digested_cap/04` 的迁移价值判断提供“可执行互操作层”的一手证据：真正可迁移的是 host adapter/rewrites/generation gates 等机制，而不是命令名或语气。
+- 为 `round2_cap/04` 的迁移价值判断提供“可执行互操作层”的一手证据：真正可迁移的是 host adapter/rewrites/generation gates 等机制，而不是命令名或语气。
 - 也为“迁移成本主因”提供证据：不同宿主对 frontmatter、工具名、路径约定、可用能力的差异需要持续维护映射层，否则会产生漂移与行为分叉。
 
 ## 可直接引用的术语 / 概念

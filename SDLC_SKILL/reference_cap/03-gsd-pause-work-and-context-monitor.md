@@ -32,7 +32,7 @@ Local anchor:
 
 ## 与本研究的关系
 
-- 支撑 `digested_cap/03` 的“文件型持久化记忆 + pause/resume 是长程 agent 的底座”判断，并提供一手 hook+workflow 证据。
+- 支撑 `round2_cap/03` 的“文件型持久化记忆 + pause/resume 是长程 agent 的底座”判断，并提供一手 hook+workflow 证据。
 - 也提供了可迁移的安全实践样本：hook 的输入校验、debounce、config 禁用开关。
 
 ## 可直接引用的术语 / 概念

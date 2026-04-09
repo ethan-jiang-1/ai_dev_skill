@@ -39,7 +39,7 @@ Local anchor:
 
 ## 与本研究的关系
 
-- 为 `digested_cap/04` 的 portability cost/maintenance overhead 提供可复核切片：即便只支持 8 个 hosts，也需要专门的 registry、schema 与 adapter，且代码规模达到数百行；宿主升级与语义差异会进一步引入兼容债。
+- 为 `round2_cap/04` 的 portability cost/maintenance overhead 提供可复核切片：即便只支持 8 个 hosts，也需要专门的 registry、schema 与 adapter，且代码规模达到数百行；宿主升级与语义差异会进一步引入兼容债。
 
 ## 可直接引用的术语 / 概念
 

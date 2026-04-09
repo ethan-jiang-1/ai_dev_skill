@@ -28,7 +28,7 @@ Local anchor:
 
 ## 与本研究的关系
 
-- 为 `digested_cap/03` 的“文件型状态持久化是最可靠项目记忆机制之一”提供一手工作流证据。
+- 为 `round2_cap/03` 的“文件型状态持久化是最可靠项目记忆机制之一”提供一手工作流证据。
 - 也提供了企业可迁移的“最小 checkpoint 文件协议”样本：frontmatter + decisions + remaining work。
 
 ## 可直接引用的术语 / 概念

@@ -29,7 +29,7 @@
 
 ## 先反省：当前版本为什么还不够
 
-`digested_cap` 的 4 份文件已经有清晰的骨架，但存在以下不足：
+`round2_cap` 的 4 份文件已经有清晰的骨架，但存在以下不足：
 
 ### 1. 框架来源的一手证据不足
 
@@ -53,7 +53,7 @@
 
 ## 目标
 
-针对 `digested_cap` 里的 4 个主题，各做一轮更深入的 Deep Research。
+针对 `round2_cap` 里的 4 个主题，各做一轮更深入的 Deep Research。
 
 这一轮不是重复原始文档的描述，而是要系统扩大：
 
@@ -114,10 +114,10 @@
 
 本轮研究直接以这 4 份文件为起点：
 
-- `/Users/bowhead/ai_dev_skill/SDLC_SKILL/digested_cap/01-能力单元本质与前置规划机制.md`
-- `/Users/bowhead/ai_dev_skill/SDLC_SKILL/digested_cap/02-构建执行与系统化调试闭环.md`
-- `/Users/bowhead/ai_dev_skill/SDLC_SKILL/digested_cap/03-审查发布运维与状态持久化.md`
-- `/Users/bowhead/ai_dev_skill/SDLC_SKILL/digested_cap/04-能力地图与迁移价值判断.md`
+- `/Users/bowhead/ai_dev_skill/SDLC_SKILL/round2_cap/01-能力单元本质与前置规划机制.md`
+- `/Users/bowhead/ai_dev_skill/SDLC_SKILL/round2_cap/02-构建执行与系统化调试闭环.md`
+- `/Users/bowhead/ai_dev_skill/SDLC_SKILL/round2_cap/03-审查发布运维与状态持久化.md`
+- `/Users/bowhead/ai_dev_skill/SDLC_SKILL/round2_cap/04-能力地图与迁移价值判断.md`
 
 ## 输出
 
@@ -131,11 +131,11 @@
 - 每个高价值来源单独存成一个 `md`
 - 不追求全文镜像，重点保存结构化摘录、关键信息、来源链接、研究价值判断
 
-### 2. digested_cap 自我提高（输入即输出）
+### 2. round2_cap 自我提高（输入即输出）
 
-`digested_cap` 的 4 份文件既是本轮的输入，也是本轮的输出目标——二轮研究完成后，这 4 份文件要被直接增强，成为更深版本。
+`round2_cap` 的 4 份文件既是本轮的输入，也是本轮的输出目标——二轮研究完成后，这 4 份文件要被直接增强，成为更深版本。
 
-如果二轮研究产生了原有 4 份文件无法容纳的新内容（如跨维度综合结论、新发现的主题），可以在 `digested_cap` 下新增额外 MD 文件。
+如果二轮研究产生了原有 4 份文件无法容纳的新内容（如跨维度综合结论、新发现的主题），可以在 `round2_cap` 下新增额外 MD 文件。
 
 每份文件增强后，至少能回答：
 
@@ -158,25 +158,25 @@
 
 这些文件的目标不是“写得好看”，而是降低集成债，确保每个判断都能在 30 秒内回指证据：
 
-跨维度综合结论（落盘于 `digested_cap/_artifacts/W2-cross-dimension-synthesis.md`）需要横向回答：
+跨维度综合结论（落盘于 `round2_cap/_artifacts/W2-cross-dimension-synthesis.md`）需要横向回答：
 - 哪些能力单元是跨框架通用的工程抽象
 - 哪些只是框架专有的风格化实现
 - 哪些阶段的能力单元已经成熟，哪些仍是空白
 - 能力地图的每一行评级都有 `reference_cap` 文档回指
 
-- `digested_cap/_artifacts/01-planning-evidence-summary.md`
-- `digested_cap/_artifacts/01-planning-question-list.md`
-- `digested_cap/_artifacts/02-build-debug-evidence-summary.md`
-- `digested_cap/_artifacts/02-build-debug-question-list.md`
-- `digested_cap/_artifacts/03-review-ship-ops-evidence-summary.md`
-- `digested_cap/_artifacts/03-review-ship-ops-question-list.md`
-- `digested_cap/_artifacts/04-map-migration-evidence-summary.md`
-- `digested_cap/_artifacts/04-map-migration-question-list.md`
+- `round2_cap/_artifacts/01-planning-evidence-summary.md`
+- `round2_cap/_artifacts/01-planning-question-list.md`
+- `round2_cap/_artifacts/02-build-debug-evidence-summary.md`
+- `round2_cap/_artifacts/02-build-debug-question-list.md`
+- `round2_cap/_artifacts/03-review-ship-ops-evidence-summary.md`
+- `round2_cap/_artifacts/03-review-ship-ops-question-list.md`
+- `round2_cap/_artifacts/04-map-migration-evidence-summary.md`
+- `round2_cap/_artifacts/04-map-migration-question-list.md`
 - `reference_cap/_INDEX.md`（证据入口索引，便于快速定位）
 
-### 4. digested_cap 更新协议
+### 4. round2_cap 更新协议
 
-二轮研究完成后，`digested_cap` 的每份文件追加以下固定章节结构，不改动原有内容：
+二轮研究完成后，`round2_cap` 的每份文件追加以下固定章节结构，不改动原有内容：
 
 ```md
 ## 第一轮摘要（保留，不修改）
@@ -299,14 +299,14 @@ Wave 2 的最低标准：
 - `03-<source-slug>.md`：审查发布运维与状态持久化
 - `04-<source-slug>.md`：能力地图与迁移价值判断
 
-## 已验证的高杠杆执行行为（从 digested_src 计划迁移）
+## 已验证的高杠杆执行行为（从 round2_src 计划迁移）
 
 这轮实际执行过程中验证有效的做法，建议固化为 cap 的默认动作：
 
 - 以“探索宽度持续增长”为常态：每次围绕一个能力单元/机制同时扩张对象清单（框架、SDLC 阶段、能力单元、实现手段、失败模式）；扩张必须服务于补新事实/澄清机制差异/提供反例，不做无意义的框架堆叠；直到清单稳定
 - 以“下钻到机制落地证据”为止：对每个关键描述必须回答“是确定性实现还是 prompt 约束”，优先下钻到 schema/代码/脚本/模板/CI 规则与实际运行接口
 - 以“证据落库”为单位推进：每一次有效探索都必须落为 `reference_cap/*.md`（可复用 ground truth），并写清版本/commit/hash（如适用）、`claims_supported`、`date_scope` 与局限
-- 以“边取证边回填”避免集成债：新增 evidence 落库后立刻回填到对应 `digested_cap/*.md` 的二轮章节，并维护 `digested_cap/_artifacts/<dim_prefix>-evidence-summary.md` 与 `digested_cap/_artifacts/<dim_prefix>-question-list.md`（`<dim_prefix>` ∈ {`01-planning`,`02-build-debug`,`03-review-ship-ops`,`04-map-migration`}）；跨维度结论维护 `digested_cap/_artifacts/W2-cross-dimension-synthesis.md`
+- 以“边取证边回填”避免集成债：新增 evidence 落库后立刻回填到对应 `round2_cap/*.md` 的二轮章节，并维护 `round2_cap/_artifacts/<dim_prefix>-evidence-summary.md` 与 `round2_cap/_artifacts/<dim_prefix>-question-list.md`（`<dim_prefix>` ∈ {`01-planning`,`02-build-debug`,`03-review-ship-ops`,`04-map-migration`}）；跨维度结论维护 `round2_cap/_artifacts/W2-cross-dimension-synthesis.md`
 - 以“持续自校验”保证 30 秒可回指：每波次结束做一次回指完整性检查；新增/更新 `reference_cap/*.md` 后同步补到 `reference_cap/_INDEX.md` 作为快速入口
 - 执行节奏默认不等反馈：除非遇到必须由报告口径决定的关键取舍，否则按 Wave/Step 检查点持续推进到 Report Readiness Check
 
@@ -354,11 +354,11 @@ Wave 2 的最低标准：
 
 ## 四条研究线的具体目标
 
-每条研究线对应一份 `digested_cap` 文件，深挖时从同样 5 个视角展开：证据、根本、趋势、难度、争议。
+每条研究线对应一份 `round2_cap` 文件，深挖时从同样 5 个视角展开：证据、根本、趋势、难度、争议。
 
 ### 研究线 01：能力单元本质与前置规划机制
 
-对应文件：`digested_cap/01-能力单元本质与前置规划机制.md`
+对应文件：`round2_cap/01-能力单元本质与前置规划机制.md`
 
 研究目标：
 - 深挖 4 种架构模式（Skill-like、Subagent、Orchestrator、Hook/Gate）的底层工程原理
@@ -391,7 +391,7 @@ Wave 2 的最低标准：
 
 ### 研究线 02：构建执行与系统化调试闭环
 
-对应文件：`digested_cap/02-构建执行与系统化调试闭环.md`
+对应文件：`round2_cap/02-构建执行与系统化调试闭环.md`
 
 研究目标：
 - 验证 Wave-Based 并行执行的真实实现（是编排器代码还是只是 prompt 指令）
@@ -424,7 +424,7 @@ Wave 2 的最低标准：
 
 ### 研究线 03：审查、发布、运维与状态持久化
 
-对应文件：`digested_cap/03-审查发布运维与状态持久化.md`
+对应文件：`round2_cap/03-审查发布运维与状态持久化.md`
 
 研究目标：
 - 验证对抗性代码审查（Adversarial Critic）的真实实现
@@ -457,7 +457,7 @@ Wave 2 的最低标准：
 
 ### 研究线 04：能力地图与迁移价值判断
 
-对应文件：`digested_cap/04-能力地图与迁移价值判断.md`
+对应文件：`round2_cap/04-能力地图与迁移价值判断.md`
 
 研究目标：
 - 为能力地图中的每个"迁移价值"评级补充实证依据
@@ -518,21 +518,21 @@ Wave 2 的最低标准：
 - 统一证据采集格式
 - 维护 `reference_cap` 命名规范与 `reference_cap/_INDEX.md`
 - 避免不同线程重复下载同一来源
-- 在 Wave 2 做跨研究线综合（落盘到 `digested_cap/_artifacts/W2-cross-dimension-synthesis.md`）
+- 在 Wave 2 做跨研究线综合（落盘到 `round2_cap/_artifacts/W2-cross-dimension-synthesis.md`）
 
 各研究线线程职责：
 
-- 深挖自己对应的 `digested_cap` 文件
+- 深挖自己对应的 `round2_cap` 文件
 - 把高价值来源落为 `reference_cap/*.md`
 - 在研究中明确记录：证据、根本、趋势、难点、争议
-- 回填到对应 `digested_cap/*.md` 二轮章节，并维护本研究线的 evidence summary 与 question list
+- 回填到对应 `round2_cap/*.md` 二轮章节，并维护本研究线的 evidence summary 与 question list
 
 为了避免写冲突，建议按前缀分工：
 
-- 线程 01：`reference_cap/01-*` + `digested_cap/01-*.md` + `digested_cap/_artifacts/01-planning-*.md`
-- 线程 02：`reference_cap/02-*` + `digested_cap/02-*.md` + `digested_cap/_artifacts/02-build-debug-*.md`
-- 线程 03：`reference_cap/03-*` + `digested_cap/03-*.md` + `digested_cap/_artifacts/03-review-ship-ops-*.md`
-- 线程 04：`reference_cap/04-*` + `digested_cap/04-*.md` + `digested_cap/_artifacts/04-map-migration-*.md`
+- 线程 01：`reference_cap/01-*` + `round2_cap/01-*.md` + `round2_cap/_artifacts/01-planning-*.md`
+- 线程 02：`reference_cap/02-*` + `round2_cap/02-*.md` + `round2_cap/_artifacts/02-build-debug-*.md`
+- 线程 03：`reference_cap/03-*` + `round2_cap/03-*.md` + `round2_cap/_artifacts/03-review-ship-ops-*.md`
+- 线程 04：`reference_cap/04-*` + `round2_cap/04-*.md` + `round2_cap/_artifacts/04-map-migration-*.md`
 
 ## 执行节奏
 
@@ -545,7 +545,7 @@ Wave 2 的最低标准：
 先初始化可回指入口并充实 `reference_cap`，不要一边浏览一边直接写结论。
 
 检查点：
-- 已初始化 `reference_cap/_INDEX.md` 与 `digested_cap/_artifacts/`（evidence summaries / question lists / W2 synthesis 的落盘位置明确）
+- 已初始化 `reference_cap/_INDEX.md` 与 `round2_cap/_artifacts/`（evidence summaries / question lists / W2 synthesis 的落盘位置明确）
 - 每新增一份 `reference_cap` 文档，都要能回答"为什么值得保存"
 - 如果只是浏览，没有形成可复用的本地文档，这一步不算完成
 

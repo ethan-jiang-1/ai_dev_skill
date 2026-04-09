@@ -27,7 +27,7 @@
 
 ## 与本研究的关系
 
-- 为 `digested_cap/02` 提供“官方机制落地”证据：并发与上下文治理不是纯 prompt 约定，而是通过 scheduler、output cap 与 compaction 的工程手段实现。
+- 为 `round2_cap/02` 提供“官方机制落地”证据：并发与上下文治理不是纯 prompt 约定，而是通过 scheduler、output cap 与 compaction 的工程手段实现。
 - 为能力单元架构提供可迁移抽象：output cap / compaction / progressive skill loading 是宿主实现细节，但其背后的通用模式（避免日志淹没、长期任务续航、按需加载能力）可迁移到其他框架或企业内部平台。
 
 ## 可直接引用的术语 / 概念

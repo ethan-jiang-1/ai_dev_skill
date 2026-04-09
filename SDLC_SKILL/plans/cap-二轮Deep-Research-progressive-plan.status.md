@@ -31,10 +31,10 @@
 - [x] >=1 近期趋势来源：`reference_cap/01-arxiv-2602.11988-evaluating-agents-md-helpfulness.md`（2026-02）
 - [x] >=1 限制/争议来源：同上（context files 可能降低 success rate、提高成本）
 - [x] artifacts 已回填
-  - `digested_cap/_artifacts/01-planning-evidence-summary.md`
-  - `digested_cap/_artifacts/01-planning-question-list.md`
+  - `round2_cap/_artifacts/01-planning-evidence-summary.md`
+  - `round2_cap/_artifacts/01-planning-question-list.md`
 - [x] digested 已回填
-  - `digested_cap/01-能力单元本质与前置规划机制.md` 已追加二轮固定章节
+  - `round2_cap/01-能力单元本质与前置规划机制.md` 已追加二轮固定章节
 
 状态：01 维度 Wave 1 达标。
 
@@ -46,10 +46,10 @@
 - [x] >=1 近期趋势来源：`reference_cap/02-arxiv-2604.03610-debugharness-interactive-debugging-for-apr.md`（2026-04）
 - [x] >=1 限制/失败模式来源：`reference_cap/02-arxiv-2506.09289-utboost-swebench-test-augmentation.md`（弱测试导致 false positives）
 - [x] artifacts 已回填
-  - `digested_cap/_artifacts/02-build-debug-evidence-summary.md`
-  - `digested_cap/_artifacts/02-build-debug-question-list.md`
+  - `round2_cap/_artifacts/02-build-debug-evidence-summary.md`
+  - `round2_cap/_artifacts/02-build-debug-question-list.md`
 - [x] digested 已回填
-  - `digested_cap/02-构建执行与系统化调试闭环.md` 已追加二轮固定章节
+  - `round2_cap/02-构建执行与系统化调试闭环.md` 已追加二轮固定章节
 
 状态：02 维度 Wave 1 达标。
 
@@ -61,10 +61,10 @@
 - [x] >=1 近期趋势来源：SWR-Bench/CodeReviewQA（PR-centric/full-context + probes）`reference_cap/03-arxiv-2509.01494-swr-bench-llm-code-review-benchmark.md` `reference_cap/03-arxiv-2503.16167-codereviewqa-code-review-comprehension.md`
 - [x] >=1 限制/失败模式来源：self-bias（builder self-review 风险）+ skills/MCP 供应链安全攻击面（仓库上下文/弃置仓库劫持、tool poisoning、多 server 放大）`reference_cap/03-arxiv-2402.11436-llm-self-bias-self-refinement.md` `reference_cap/03-arxiv-2603.16572-repo-context-skill-security.md` `reference_cap/03-arxiv-2512.06556-securing-mcp-tool-poisoning.md` `reference_cap/03-arxiv-2601.17549-breaking-the-protocol-mcp-security.md`
 - [x] artifacts 已回填
-  - `digested_cap/_artifacts/03-review-ship-ops-evidence-summary.md`
-  - `digested_cap/_artifacts/03-review-ship-ops-question-list.md`
+  - `round2_cap/_artifacts/03-review-ship-ops-evidence-summary.md`
+  - `round2_cap/_artifacts/03-review-ship-ops-question-list.md`
 - [x] digested 已回填
-  - `digested_cap/03-审查发布运维与状态持久化.md` 已追加二轮固定章节
+  - `round2_cap/03-审查发布运维与状态持久化.md` 已追加二轮固定章节
 
 状态：03 维度 Wave 1 达标。
 
@@ -76,23 +76,23 @@
 - [x] >=1 近期趋势来源：两篇 arXiv（2026-03）
 - [x] >=1 限制/失败模式来源：社区迁移摩擦与信任顾虑 + skills 供应链风险域 `reference_cap/04-community-gsd-copilot-integration-reddit.md` `reference_cap/03-arxiv-2603.16572-repo-context-skill-security.md`
 - [x] artifacts 已回填
-  - `digested_cap/_artifacts/04-map-migration-evidence-summary.md`
-  - `digested_cap/_artifacts/04-map-migration-question-list.md`
+  - `round2_cap/_artifacts/04-map-migration-evidence-summary.md`
+  - `round2_cap/_artifacts/04-map-migration-question-list.md`
 - [x] digested 已回填
-  - `digested_cap/04-能力地图与迁移价值判断.md` 已追加二轮固定章节（含能力地图评级与最小证据集回指）
+  - `round2_cap/04-能力地图与迁移价值判断.md` 已追加二轮固定章节（含能力地图评级与最小证据集回指）
 
 状态：04 维度 Wave 1 达标。
 
 ### Wave 2：横向比对与综合判断
 
-- [x] `digested_cap/_artifacts/W2-cross-dimension-synthesis.md`：已完成 shared vocabulary、跨维度 claims→evidence pointers、四大抽象的跨框架对齐，并补齐治理控制面（approval/sandbox/requirements/prefix_rules/MCP allowlist）与 MCP 安全边界
-- [x] “能力地图每行评级 30 秒回指”自检：已在 `digested_cap/04` 中落位（每行给出最小证据集；证据不足则标注“待验证”）
+- [x] `round2_cap/_artifacts/W2-cross-dimension-synthesis.md`：已完成 shared vocabulary、跨维度 claims→evidence pointers、四大抽象的跨框架对齐，并补齐治理控制面（approval/sandbox/requirements/prefix_rules/MCP allowlist）与 MCP 安全边界
+- [x] “能力地图每行评级 30 秒回指”自检：已在 `round2_cap/04` 中落位（每行给出最小证据集；证据不足则标注“待验证”）
 
 ### Report Readiness Check（最终验收）
 
 - [x] 任意抽取能力地图一行 → 30 秒内回指迁移价值证据（或明确标注“待验证”）
 - [x] 任意 SDLC 阶段 → 写出“失控模式 + 机制 + 实证来源”段落（01-03 维度已具备）
-- [x] “4 框架核心抽象异同”横向综合（已落盘到 `digested_cap/_artifacts/W2-cross-dimension-synthesis.md`）
+- [x] “4 框架核心抽象异同”横向综合（已落盘到 `round2_cap/_artifacts/W2-cross-dimension-synthesis.md`）
 - [ ] 第三方可继续深入：仍有 gap（端到端 correctness/质量净收益的更强因果证据、更多企业试点复盘、以及更完整的 time-series 维护成本/失败复盘仍不足；但已补 SAT 降噪工业实证 + 社区 confirmed bugs 线索库 + portability churn 切片）
 
 ## Next Actions (Shortest Path)

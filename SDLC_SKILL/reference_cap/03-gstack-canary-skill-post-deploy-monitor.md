@@ -31,7 +31,7 @@ Local anchor:
 
 ## 与本研究的关系
 
-- 为 `digested_cap/03` 的“Ship/Operate 需要可观测、可回归能力单元”提供一手机制证据：baseline + loop + report + JSONL log。
+- 为 `round2_cap/03` 的“Ship/Operate 需要可观测、可回归能力单元”提供一手机制证据：baseline + loop + report + JSONL log。
 - 支撑“运行时 QA/监控不应只在 PR 内发生”，而应延伸到 prod 早期窗口。
 
 ## 可直接引用的术语 / 概念

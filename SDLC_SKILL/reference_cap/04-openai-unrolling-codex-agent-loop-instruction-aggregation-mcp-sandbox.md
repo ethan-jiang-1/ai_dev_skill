@@ -31,7 +31,7 @@
 
 ## 与本研究的关系
 
-- 为 `digested_cap/04` 的“迁移价值/互操作成本”提供一手细节：AGENTS.md 不只是一个文件名，而是多层 precedence + size cap 的可执行协议；这决定了跨工具迁移时需要考虑的落盘位置与 override 机制。
+- 为 `round2_cap/04` 的“迁移价值/互操作成本”提供一手细节：AGENTS.md 不只是一个文件名，而是多层 precedence + size cap 的可执行协议；这决定了跨工具迁移时需要考虑的落盘位置与 override 机制。
 - 为“安全与治理”提供边界证据：shell sandbox 与 MCP tools 的隔离属性不同，意味着企业把能力单元外移到 MCP 时必须显式补安全门禁与权限治理（不能误以为默认 sandbox 覆盖一切）。
 
 ## 可直接引用的术语 / 概念

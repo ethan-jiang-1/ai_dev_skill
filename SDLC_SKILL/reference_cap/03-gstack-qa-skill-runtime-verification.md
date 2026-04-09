@@ -29,7 +29,7 @@ Local anchor:
 
 ## 与本研究的关系
 
-- 为 `digested_cap/03` 的“Ship/Operate 需要运行时验证闭环”提供一手证据：能力单元通过 browse daemon 将验证资产化（report + baseline）。
+- 为 `round2_cap/03` 的“Ship/Operate 需要运行时验证闭环”提供一手证据：能力单元通过 browse daemon 将验证资产化（report + baseline）。
 - 也为“质量门禁”提供可迁移样本：health rubric + evidence-first issue report 的组合。
 
 ## 可直接引用的术语 / 概念

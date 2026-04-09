@@ -119,7 +119,7 @@
 
 ## Open Gaps (Blockers to Report Readiness)
 
-补充：P0 缺口的检索记录与命中/未命中的可复核路径见 `digested_eng/_artifacts/P0-gap-search-log.md`。
+补充：P0 缺口的检索记录与命中/未命中的可复核路径见 `round2_eng/_artifacts/P0-gap-search-log.md`。
 
 ### 最高优先级缺口（不补就必须在报告里降级）
 
@@ -145,10 +145,10 @@
 > 目标不是“宣称都解决了”，而是可检查地回答：哪些已满足、哪些只能降级表述、哪些需要下一轮补证。
 
 1. 任意抽取一个核心判断，30 秒内能找到 `reference_eng` 支撑文档
-   - 当前状态：基本满足。`digested_eng/*.md` 的二轮新增内容以 `ref:` 回指 `reference_eng/*.md`；入口索引在 `reference_eng/_INDEX.md`。
+   - 当前状态：基本满足。`round2_eng/*.md` 的二轮新增内容以 `ref:` 回指 `reference_eng/*.md`；入口索引在 `reference_eng/_INDEX.md`。
 2. 对 4 个主题各自能写出“主张 + 证据 + 局限”的连贯段落，不需要临时补搜
    - 当前状态：满足到“可写”水平，但仍存在必须降级的主张（例如“长期能力提升”的直接实证不足）。
 3. 能写出“工程师 Skill 掌握路径整体图景”的综合判断，不只是平行描述
    - 当前状态：基本满足。横向综合落盘在本文件的 Cross-Topic Claims，且每条带回指。
-4. 没有参与调研的专业人士，只看 `digested_eng + reference_eng`，能理解结论并继续深入
+4. 没有参与调研的专业人士，只看 `round2_eng + reference_eng`，能理解结论并继续深入
    - 当前状态：部分满足。机制与控制面较清晰；但“真实企业案例/长期学习实证”类缺口仍会影响读者信心，需要在报告里显式标注证据强度与缺口，并给出后续追踪清单。

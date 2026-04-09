@@ -1,4 +1,4 @@
-# digested_src Wave 0 权威来源优先级清单
+# round2_src Wave 0 权威来源优先级清单
 
 目标：先建立 4 个主题共用的 high-trust ground truth 地基。这里先列“应该优先抓的权威来源类型与对象”，不在此文件里写结论。
 

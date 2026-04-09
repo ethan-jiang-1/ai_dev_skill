@@ -38,9 +38,9 @@
 
 ## 与本研究的关系
 
-- 为 `digested_cap/04` 的“迁移价值评级”补齐失败模式证据：
+- 为 `round2_cap/04` 的“迁移价值评级”补齐失败模式证据：
   - 不是抽象争论，而是可枚举的 bug surface（并按阶段分类），可直接映射到 adoption complexity / maintenance overhead / portability cost / team training cost。
-- 反向支撑 `digested_cap/02` 与 `digested_cap/03` 的必要性：
+- 反向支撑 `round2_cap/02` 与 `round2_cap/03` 的必要性：
   - “验证闭环前置”“无新鲜验证不准宣称完成”“状态持久化交接”等机制，正是对这些常见故障类别的工程化回应。
 
 ## 可直接引用的术语 / 概念

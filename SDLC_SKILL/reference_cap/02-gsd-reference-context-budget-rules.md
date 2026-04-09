@@ -34,7 +34,7 @@ Local anchor:
 
 ## 与本研究的关系
 
-- 直接补足 digested_cap/02 关于 context rot 的“可操作护栏”：不仅是 fresh context，还要控制 orchestrator 的 context 预算与早期信号。
+- 直接补足 round2_cap/02 关于 context rot 的“可操作护栏”：不仅是 fresh context，还要控制 orchestrator 的 context 预算与早期信号。
 
 ## 可直接引用的术语 / 概念
 

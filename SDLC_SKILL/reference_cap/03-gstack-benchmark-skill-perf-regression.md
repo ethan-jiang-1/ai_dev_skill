@@ -29,7 +29,7 @@ Local anchor:
 
 ## 与本研究的关系
 
-- 为 `digested_cap/03` 的“benchmark/性能回归属于 ops 能力单元”提供一手工作流证据。
+- 为 `round2_cap/03` 的“benchmark/性能回归属于 ops 能力单元”提供一手工作流证据。
 - 也为“迁移价值评估”提供证据：baseline+trend 的结构化资产更容易跨团队复用与审计。
 
 ## 可直接引用的术语 / 概念

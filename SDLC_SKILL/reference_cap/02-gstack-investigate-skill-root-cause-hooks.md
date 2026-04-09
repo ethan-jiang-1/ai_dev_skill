@@ -28,7 +28,7 @@ Local anchor:
 
 ## 与本研究的关系
 
-- 对 digested_cap/02：它提供“调试纪律如何从文字变成机制”的例子（hooks + boundary check）。
+- 对 round2_cap/02：它提供“调试纪律如何从文字变成机制”的例子（hooks + boundary check）。
 - 对企业迁移：展示了在 agent lifecycle 点插入确定性脚本检查的方式（hook/gate 的工程落点）。
 
 ## 可直接引用的术语 / 概念

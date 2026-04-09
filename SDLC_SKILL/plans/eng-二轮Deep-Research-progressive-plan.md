@@ -6,10 +6,10 @@
 
 本轮 Deep Research 的起点是第一轮已消化的 4 份文件：
 
-- `/Users/bowhead/ai_dev_skill/SDLC_SKILL/digested_eng/01-Skill作为认知脚手架与逆向学习.md`
-- `/Users/bowhead/ai_dev_skill/SDLC_SKILL/digested_eng/02-Skill难度分层与能力训练矩阵.md`
-- `/Users/bowhead/ai_dev_skill/SDLC_SKILL/digested_eng/03-Skill开发生命周期与工具生态支持.md`
-- `/Users/bowhead/ai_dev_skill/SDLC_SKILL/digested_eng/04-工程师跃迁路径团队采纳与样本矩阵.md`
+- `/Users/bowhead/ai_dev_skill/SDLC_SKILL/round2_eng/01-Skill作为认知脚手架与逆向学习.md`
+- `/Users/bowhead/ai_dev_skill/SDLC_SKILL/round2_eng/02-Skill难度分层与能力训练矩阵.md`
+- `/Users/bowhead/ai_dev_skill/SDLC_SKILL/round2_eng/03-Skill开发生命周期与工具生态支持.md`
+- `/Users/bowhead/ai_dev_skill/SDLC_SKILL/round2_eng/04-工程师跃迁路径团队采纳与样本矩阵.md`
 
 第一轮已经完成了结构化提炼，识别出核心结论和待深挖问题。本轮不是重复第一轮，而是针对每个主题的"适合继续 Deep Research 的问题"，系统扩大证据密度、根本机制理解、趋势判断和实践难点。
 
@@ -73,7 +73,7 @@ Cursor vs Windsurf 的对比（显式控制 vs 隐式自动化）是有价值的
 
 ## 目标
 
-针对 `digested_eng` 里的 4 个主题，各做一轮更深入的 Deep Research。
+针对 `round2_eng` 里的 4 个主题，各做一轮更深入的 Deep Research。
 
 这一轮不是重复第一轮提炼，而是要系统扩大：
 
@@ -126,7 +126,7 @@ Cursor vs Windsurf 的对比（显式控制 vs 隐式自动化）是有价值的
 1. 任意抽取"认知脚手架"主张的一个论点，30 秒内能找到 `reference_eng` 中的支撑文档
 2. 对 4 个主题各自能写出"主张 + 证据 + 局限"的连贯段落，不需要临时补搜
 3. 能写出一段"工程师 Skill 掌握路径整体图景"的综合判断，不只是 4 段平行描述
-4. 没有参与调研的专业人士（工程领导者或 L&D 负责人），只看 `digested_eng + reference_eng`，能理解结论并继续深入
+4. 没有参与调研的专业人士（工程领导者或 L&D 负责人），只看 `round2_eng + reference_eng`，能理解结论并继续深入
 
 如果以上任一条不满足，调研不算完成。
 
@@ -136,10 +136,10 @@ Cursor vs Windsurf 的对比（显式控制 vs 隐式自动化）是有价值的
 
 本轮研究直接以这 4 份文件为起点：
 
-- `digested_eng/01-Skill作为认知脚手架与逆向学习.md`
-- `digested_eng/02-Skill难度分层与能力训练矩阵.md`
-- `digested_eng/03-Skill开发生命周期与工具生态支持.md`
-- `digested_eng/04-工程师跃迁路径团队采纳与样本矩阵.md`
+- `round2_eng/01-Skill作为认知脚手架与逆向学习.md`
+- `round2_eng/02-Skill难度分层与能力训练矩阵.md`
+- `round2_eng/03-Skill开发生命周期与工具生态支持.md`
+- `round2_eng/04-工程师跃迁路径团队采纳与样本矩阵.md`
 
 ## 输出
 
@@ -153,7 +153,7 @@ Cursor vs Windsurf 的对比（显式控制 vs 隐式自动化）是有价值的
 - 每个高价值来源单独存成一个 `md`
 - 不追求全文镜像，重点保存结构化摘录、关键信息、来源链接、研究价值判断
 
-### 2. 主题二轮研究结果（回填到 `digested_eng/*.md`）
+### 2. 主题二轮研究结果（回填到 `round2_eng/*.md`）
 
 每个主题都应形成更深版本，至少能回答：
 
@@ -176,26 +176,26 @@ Cursor vs Windsurf 的对比（显式控制 vs 隐式自动化）是有价值的
 
 这些文件的目标不是“写得好看”，而是降低集成债，确保每个判断都能在 30 秒内回指证据：
 
-跨主题综合结论（落盘于 `digested_eng/_artifacts/W2-cross-topic-synthesis.md`）需要横向回答：
+跨主题综合结论（落盘于 `round2_eng/_artifacts/W2-cross-topic-synthesis.md`）需要横向回答：
 - "认知脚手架"主张的实证强度如何，在哪些条件下成立
 - 四阶段跃迁路径的哪些部分有实证，哪些是理论推演
 - 工具选择对学习路径的实际影响有多大
 - 团队治理的关键成功要素是什么
 
-- `digested_eng/_artifacts/01-scaffold-evidence-summary.md`
-- `digested_eng/_artifacts/01-scaffold-question-list.md`
-- `digested_eng/_artifacts/02-tier-evidence-summary.md`
-- `digested_eng/_artifacts/02-tier-question-list.md`
-- `digested_eng/_artifacts/03-devlife-evidence-summary.md`
-- `digested_eng/_artifacts/03-devlife-question-list.md`
-- `digested_eng/_artifacts/04-path-evidence-summary.md`
-- `digested_eng/_artifacts/04-path-question-list.md`
+- `round2_eng/_artifacts/01-scaffold-evidence-summary.md`
+- `round2_eng/_artifacts/01-scaffold-question-list.md`
+- `round2_eng/_artifacts/02-tier-evidence-summary.md`
+- `round2_eng/_artifacts/02-tier-question-list.md`
+- `round2_eng/_artifacts/03-devlife-evidence-summary.md`
+- `round2_eng/_artifacts/03-devlife-question-list.md`
+- `round2_eng/_artifacts/04-path-evidence-summary.md`
+- `round2_eng/_artifacts/04-path-question-list.md`
 - `reference_eng/_INDEX.md`（证据入口索引，便于快速定位）
-- `digested_eng/_artifacts/P0-gap-search-log.md`（P0 缺口检索记录：证明“已尽力搜过”，用于 Hard Gates 复核）
+- `round2_eng/_artifacts/P0-gap-search-log.md`（P0 缺口检索记录：证明“已尽力搜过”，用于 Hard Gates 复核）
 
-### 4. digested_eng 更新协议
+### 4. round2_eng 更新协议
 
-二轮研究完成后，每份 `digested_eng/*.md` 都要同步更新，结构如下：
+二轮研究完成后，每份 `round2_eng/*.md` 都要同步更新，结构如下：
 
 ```md
 ## 第一轮摘要（保留，不修改）
@@ -319,14 +319,14 @@ Wave 2 的最低标准：
 - `03-devlife-<source-slug>.md`：Skill 开发生命周期与工具生态
 - `04-path-<source-slug>.md`：工程师跃迁路径与团队治理
 
-## 已验证的高杠杆执行行为（从 digested_src 计划迁移）
+## 已验证的高杠杆执行行为（从 round2_src 计划迁移）
 
 这轮实际执行过程中验证有效的做法，建议固化为 eng 的默认动作：
 
 - 以“探索宽度持续增长”为常态：每次围绕一个主张（认知脚手架/认知卸载/逆向学习/治理策略）同时扩张至少三条证据线（学术研究、工具机制、真实案例/社区反馈），直到核心对象与证据链条稳定
 - 以“下钻到可验证细节”为止：学术主张下钻到论文方法/样本/指标/局限；工具主张下钻到官方 docs/schema/code；企业/社区案例下钻到一手记录与可复核数据（时间、上下文、反例）
 - 以“证据落库”为单位推进：每一次有效探索都必须落为 `reference_eng/*.md`（可复用 ground truth），并写清 `claims_supported` 与 `date_scope`，避免靠记忆写结论
-- 以“边取证边回填”避免集成债：新增 evidence 落库后立刻回填到对应主题的二轮章节，并维护 `digested_eng/_artifacts/<topic_prefix>-evidence-summary.md` 与 `digested_eng/_artifacts/<topic_prefix>-question-list.md`（`<topic_prefix>` ∈ {`01-scaffold`,`02-tier`,`03-devlife`,`04-path`}）；跨主题结论维护 `digested_eng/_artifacts/W2-cross-topic-synthesis.md`
+- 以“边取证边回填”避免集成债：新增 evidence 落库后立刻回填到对应主题的二轮章节，并维护 `round2_eng/_artifacts/<topic_prefix>-evidence-summary.md` 与 `round2_eng/_artifacts/<topic_prefix>-question-list.md`（`<topic_prefix>` ∈ {`01-scaffold`,`02-tier`,`03-devlife`,`04-path`}）；跨主题结论维护 `round2_eng/_artifacts/W2-cross-topic-synthesis.md`
 - 同步维护证据入口：新增/更新 `reference_eng/*.md` 后，同步补到 `reference_eng/_INDEX.md`，确保“30 秒可回指”可操作
 - 用 Claim Strength Policy 强制诚实表述：任何跨域类比都必须显式标注边界；证据不足时降级表述，不硬凑强结论
 - 执行节奏默认不等反馈：除非遇到必须由报告 scope 决定的关键取舍，否则按 Wave/Step 检查点持续推进到 Report Readiness Check
@@ -545,21 +545,21 @@ Wave 2 的最低标准：
 - 统一证据采集格式
 - 维护 `reference_eng` 命名规范与 `reference_eng/_INDEX.md`
 - 避免不同线程重复下载同一来源
-- 在 Wave 2 做跨主题综合（落盘到 `digested_eng/_artifacts/W2-cross-topic-synthesis.md`）
+- 在 Wave 2 做跨主题综合（落盘到 `round2_eng/_artifacts/W2-cross-topic-synthesis.md`）
 
 各主题线程职责：
 
 - 深挖自己主题
 - 把高价值来源落为 `reference_eng/*.md`
 - 在研究中明确记录：证据、根本、趋势、难点、争议
-- 回填到对应 `digested_eng/*.md` 二轮章节，并维护本主题的 evidence summary 与 question list
+- 回填到对应 `round2_eng/*.md` 二轮章节，并维护本主题的 evidence summary 与 question list
 
 为了避免写冲突，建议按前缀分工：
 
-- 线程 A：`reference_eng/01-scaffold-*` + `digested_eng/01-*.md` + `digested_eng/_artifacts/01-scaffold-*.md`
-- 线程 B：`reference_eng/02-tier-*` + `digested_eng/02-*.md` + `digested_eng/_artifacts/02-tier-*.md`
-- 线程 C：`reference_eng/03-devlife-*` + `digested_eng/03-*.md` + `digested_eng/_artifacts/03-devlife-*.md`
-- 线程 D：`reference_eng/04-path-*` + `digested_eng/04-*.md` + `digested_eng/_artifacts/04-path-*.md`
+- 线程 A：`reference_eng/01-scaffold-*` + `round2_eng/01-*.md` + `round2_eng/_artifacts/01-scaffold-*.md`
+- 线程 B：`reference_eng/02-tier-*` + `round2_eng/02-*.md` + `round2_eng/_artifacts/02-tier-*.md`
+- 线程 C：`reference_eng/03-devlife-*` + `round2_eng/03-*.md` + `round2_eng/_artifacts/03-devlife-*.md`
+- 线程 D：`reference_eng/04-path-*` + `round2_eng/04-*.md` + `round2_eng/_artifacts/04-path-*.md`
 
 ## 执行节奏
 
@@ -572,7 +572,7 @@ Wave 2 的最低标准：
 先初始化可回指入口并充实 `reference_eng`，不要一边浏览一边直接写结论。
 
 检查点：
-- 已初始化 `reference_eng/_INDEX.md` 与 `digested_eng/_artifacts/`（evidence summaries / question lists / W2 synthesis 的落盘位置明确）
+- 已初始化 `reference_eng/_INDEX.md` 与 `round2_eng/_artifacts/`（evidence summaries / question lists / W2 synthesis 的落盘位置明确）
 - 每新增一份 `reference_eng` 文档，都要能回答"为什么值得保存"
 - 如果只是浏览，没有形成可复用的本地文档，这一步不算完成
 
@@ -625,7 +625,7 @@ Wave 2 的最低标准：
 1. 任意抽取一个核心判断，30 秒内能找到 `reference_eng` 中的支撑文档
 2. 对 4 个主题各自能写出"主张 + 证据 + 局限"的连贯段落，不需要临时补搜
 3. 能写出"工程师 Skill 掌握路径整体图景"的综合判断，不只是平行描述
-4. 没有参与调研的专业人士，只看 `digested_eng + reference_eng`，能理解结论并继续深入
+4. 没有参与调研的专业人士，只看 `round2_eng + reference_eng`，能理解结论并继续深入
 
 ### 严格意义上的“完成定义”（Hard Gates，满足才允许说“跑完”）
 
@@ -633,11 +633,11 @@ Wave 2 的最低标准：
 
 - P0 缺口必须被关闭或被“结论降级并稳定化”：
   - “关闭”指：找到直接 SE 实证，能把关键主张从“邻近证据/类比”升级到“已有证据表明”（仍需写局限）。
-  - “降级并稳定化”指：把主张写成条件性结论，并在 `digested_eng/*.md` 与 `digested_eng/_artifacts/W2-cross-topic-synthesis.md` 中同步更新，确保跨章节一致，不再以强结论口吻出现。
+  - “降级并稳定化”指：把主张写成条件性结论，并在 `round2_eng/*.md` 与 `round2_eng/_artifacts/W2-cross-topic-synthesis.md` 中同步更新，确保跨章节一致，不再以强结论口吻出现。
 - 必须有“负结果/反例”支撑的诚实边界：
   - 至少 1 条来自高可信研究或官方限制清单的“无显著提升/存在明确限制/失败模式”的证据，避免报告变成只讲收益的软文。
 - 必须能复核“已尽力搜过”：
-  - 对每个 P0 缺口，必须在 `digested_eng/_artifacts/` 中留下“检索记录或可复核的来源路径”，证明不是因为懒得找才说“缺口”。
+  - 对每个 P0 缺口，必须在 `round2_eng/_artifacts/` 中留下“检索记录或可复核的来源路径”，证明不是因为懒得找才说“缺口”。
 - 30 秒回指必须对关键链路成立：
   - 任意抽取“一个核心判断”→能在 30 秒内定位到 `reference_eng/*.md`，并且该引用能解释“为什么支撑/边界是什么”。
 

@@ -35,7 +35,7 @@ Local anchor:
 
 ## 与本研究的关系
 
-- 直接支撑 digested_cap/02 中的“熔断/重试上限/优雅退出”机制（与 RARV 的 verify+budget 同类）。
+- 直接支撑 round2_cap/02 中的“熔断/重试上限/优雅退出”机制（与 RARV 的 verify+budget 同类）。
 
 ## 可直接引用的术语 / 概念
 

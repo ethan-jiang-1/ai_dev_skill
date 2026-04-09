@@ -36,7 +36,7 @@ Local anchor:
 
 ## 与本研究的关系
 
-- 为 `digested_cap/03` 的“验证闭环必须持久化、可回指”提供一手证据：UAT.md/VALIDATION/verification-report 把验证从口头变成文件资产。
+- 为 `round2_cap/03` 的“验证闭环必须持久化、可回指”提供一手证据：UAT.md/VALIDATION/verification-report 把验证从口头变成文件资产。
 - 也为“迁移价值判断”提供可迁移样本：truth 表格、wiring 检查、anti-patterns 的结构适合企业 QA/交付验收口径。
 
 ## 可直接引用的术语 / 概念

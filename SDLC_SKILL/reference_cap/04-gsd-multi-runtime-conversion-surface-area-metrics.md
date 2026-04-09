@@ -37,7 +37,7 @@ Local anchor:
 
 ## 与本研究的关系
 
-- 为 `digested_cap/04` 的 portability cost/maintenance overhead 提供强信号：当跨宿主迁移要覆盖多个目标时，转换器会迅速膨胀为千行级代码，并需要回归测试固化 contract；这类 surface area 是企业迁移评估必须计入的长期成本。
+- 为 `round2_cap/04` 的 portability cost/maintenance overhead 提供强信号：当跨宿主迁移要覆盖多个目标时，转换器会迅速膨胀为千行级代码，并需要回归测试固化 contract；这类 surface area 是企业迁移评估必须计入的长期成本。
 
 ## 可直接引用的术语 / 概念
 

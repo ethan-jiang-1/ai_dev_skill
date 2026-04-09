@@ -37,7 +37,7 @@
 
 ## 与本研究的关系
 
-- 直接回填 `digested_cap/04` 与 `W2-cross-dimension-synthesis` 的 portability cost / maintenance overhead：
+- 直接回填 `round2_cap/04` 与 `W2-cross-dimension-synthesis` 的 portability cost / maintenance overhead：
   - 从“静态规模（LOC/targets）”补到“动态 churn（短周期高频修改）”。
 - 为企业迁移价值评估提供更严格口径：
   - 如果企业要“支持 N 个宿主”，必须把 installer/converter 当成长期维护系统，并配套回归测试与变更治理预算。

@@ -31,7 +31,7 @@ Local anchor:
 
 ## 与本研究的关系
 
-- 为 `digested_cap/03` 的“review 能力单元如何落地”为一手证据：review 不是“同一 agent 自审”，而是可配置的 workflow + 独立 reviewer agent + 产物落盘。
+- 为 `round2_cap/03` 的“review 能力单元如何落地”为一手证据：review 不是“同一 agent 自审”，而是可配置的 workflow + 独立 reviewer agent + 产物落盘。
 - 也为“迁移价值”提供支撑：phase-scoped + artifacts 的做法对企业流程更可集成。
 
 ## 可直接引用的术语 / 概念

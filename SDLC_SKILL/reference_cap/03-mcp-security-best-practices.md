@@ -31,7 +31,7 @@
 
 ## 与本研究的关系
 
-- 为 `digested_cap/03` 与 `digested_cap/04` 提供“供应链治理”的权威依据：当能力单元通过 MCP 扩展到外部 server 时，安全边界不再是 repo 内 prompt，而是授权 scopes、token 隔离、以及对 tool 输出的信任策略。
+- 为 `round2_cap/03` 与 `round2_cap/04` 提供“供应链治理”的权威依据：当能力单元通过 MCP 扩展到外部 server 时，安全边界不再是 repo 内 prompt，而是授权 scopes、token 隔离、以及对 tool 输出的信任策略。
 - 可用于把“社区顾虑（不信任 MCP）”转成可执行治理清单（allowlist/scopes/审批/隔离/审计）。
 
 ## 可直接引用的术语 / 概念

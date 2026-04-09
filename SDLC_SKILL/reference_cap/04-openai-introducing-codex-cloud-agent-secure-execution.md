@@ -26,7 +26,7 @@
 
 ## 与本研究的关系
 
-- 为 `digested_cap/04` 提供“迁移价值判断”的官方样本：AGENTS.md 作为 repo-level 指令工件已经在主流 agent 产品中被明确支持，并且与“可复核证据链（logs/tests citations）”绑定。
+- 为 `round2_cap/04` 提供“迁移价值判断”的官方样本：AGENTS.md 作为 repo-level 指令工件已经在主流 agent 产品中被明确支持，并且与“可复核证据链（logs/tests citations）”绑定。
 - 为能力单元架构提供边界事实：云端隔离 +（当时）默认无互联网，决定了哪些“能力单元”必须通过 repo 内工件、测试与可观测性来闭环，而不是依赖外部实时资源。
 
 ## 可直接引用的术语 / 概念
