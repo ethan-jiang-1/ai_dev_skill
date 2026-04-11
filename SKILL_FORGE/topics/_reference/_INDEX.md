@@ -162,6 +162,10 @@
   - category: `portable-practice-guide`
   - use: portable fields、skill package、`AGENTS.md` 边界与方法论补充
 
+- `01-skill-methodology-and-spec-codex-surface-interface-facts.md`
+  - category: `surface-difference-and-portability-limit`
+  - use: Codex 的 `.agents/skills`、`agents/openai.yaml`、plugins 与 layered `AGENTS.md` 语义
+
 - `01-skill-methodology-and-spec-claude-surface-differences.md`
   - category: `surface-difference-and-portability-limit`
   - use: portable core 与 Claude-specific extensions 的边界、SDK / CLI / API runtime 的支持差异

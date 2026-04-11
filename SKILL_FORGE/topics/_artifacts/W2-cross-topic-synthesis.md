@@ -1,9 +1,15 @@
 # Wave 2 Cross Topic Synthesis
 
-- `status`: `in_progress`
-- `phase`: `mid_stage`
+- `status`: `done`
+- `phase`: `closed`
 - `basis`: `01 / 02 / 03 已完成第一轮 topic-specific 证据包，并补入第二轮 portability limit、orchestration gap、independent effectiveness、clone / security / quality 风险与 third-party tutorial layer`
 - `paired_scorecard`: `/Users/bowhead/ai_dev_skill/SKILL_FORGE/topics/_artifacts/W2-candidate-scorecard-draft.md`
+- `formal_comparison_table`: `/Users/bowhead/ai_dev_skill/SKILL_FORGE/topics/_artifacts/W2-formal-comparison-table.md`
+- `workflow_baseline_draft`: `/Users/bowhead/ai_dev_skill/SKILL_FORGE/topics/_artifacts/W2-combination-baseline-workflow-draft.md`
+- `surface_compatibility_appendix`: `/Users/bowhead/ai_dev_skill/SKILL_FORGE/topics/_artifacts/W2-surface-compatibility-appendix-codex-github-claude.md`
+- `final_recommendation_syntax`: `/Users/bowhead/ai_dev_skill/SKILL_FORGE/topics/_artifacts/W2-final-recommendation-syntax-draft.md`
+- `final_recommendation`: `/Users/bowhead/ai_dev_skill/SKILL_FORGE/topics/_artifacts/W2-final-recommendation-and-baseline.md`
+- `readiness_check`: `/Users/bowhead/ai_dev_skill/SKILL_FORGE/topics/_artifacts/W2-readiness-check.md`
 
 ## 当前跨 topic 共享事实
 
@@ -84,6 +90,13 @@
   - learning / discovery layer
   - engineering baseline layer
   - trust / governance layer
+- 这一步已经从抽象判断推进到两份中间资产:
+  - 一份正式横向比较表
+  - 一份组合式 workflow baseline draft
+- 现在又多了一份关键附录:
+  - `Codex / GitHub / Claude` surface compatibility appendix
+- 以及一份关键收口草案:
+  - final recommendation syntax draft
 
 ## 当前仍未解决的跨 topic 问题
 
@@ -91,16 +104,16 @@
 - installer / manager 与 library-manager 的边界是否会进一步收敛
 - 当前候选对象各自对 clone / security / quality 风险的应对能力有多强
 - 在缺少平台级 analytics 的情况下，baseline workflow 的 evaluation loop 应该如何最小化实现
-- 最终交付到底更适合写“前 `3` 总榜”，还是“按角色拆开的组合推荐”
+- 最终是否还需要保留一个附录式单榜，供快速扫描
+- 是否还需要把 appendix 继续展开成 field-by-field support matrix
 
 ## 对下一波的含义
 
-- 下一波不应再平均扩搜，而应开始把新增反证映射回具体候选对象:
-  - 谁更适合当 learning layer
-  - 谁更适合当 install / distribution layer
-  - 谁更适合当 governance / trust layer
-- 还需要把 `组合式 baseline` 写成可执行 workflow:
-  - authoring baseline
-  - audit / evaluation gate
-  - versioning / rollout / rollback 节奏
-- 只有把对象 scorecard 和 workflow baseline 同时补齐，最终的前 `3` 判断与落地建议才会真正稳。
+- 下一波不应再平均扩搜，而应开始决定最终交付语法:
+  - 是否保留附录式单榜
+  - 是否把分角色推荐直接定稿
+  - 是否继续补 field-level matrix
+- 如果继续推进，最合理的顺序是:
+  - 先把 final recommendation syntax 从 draft 提炼成最终推荐结构
+  - 再决定是否保留附录式单榜
+  - 最后视需要补 field-level matrix

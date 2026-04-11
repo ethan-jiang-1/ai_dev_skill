@@ -208,6 +208,8 @@
 
 ### Wave 2 / limitation and difference slice
 
+- `/Users/bowhead/ai_dev_skill/SKILL_FORGE/topics/_reference/01-skill-methodology-and-spec-codex-surface-interface-facts.md`
+  - 现在已经不只是 GitHub / Claude 两家对照了，Codex 的官方 surface 也已经补进来，可以开始真正写 cross-surface appendix。
 - `/Users/bowhead/ai_dev_skill/SKILL_FORGE/topics/_reference/01-skill-methodology-and-spec-claude-surface-differences.md`
   - 第二轮最关键的新信息，不是又找到一份“skill 是什么”的定义，而是把 `portable core` 和 `surface-specific extensions` 真正拆开了。
 - 这份材料说明：
@@ -217,6 +219,9 @@
 - 这直接改变了 `01` 的研究重心：
   - 第一轮更像在确认“共识已经存在”
   - 第二轮则是在确认“哪些共识适合直接当作工作标准，哪些只能当作某平台特性”
+- 到这一步，可以更稳地说：
+  - GitHub、Claude、Codex 三家都已足以证明共同层存在
+  - 也都足以证明 distribution、metadata、repo guidance 与 runtime 语义并不会自然统一
 - 也正因为如此，`01` 仍必须单独存在。
   - 如果不先把这层拆清，`02` 很容易把某个平台特有 frontmatter 误当成通用工程基座能力。
   - `03` 也容易把某个平台生态的采用，误读成“规范已经跨平台统一”。

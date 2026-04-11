@@ -2,8 +2,8 @@
 
 - `status`: `in_progress`
 - `wave`: `Wave 2 / limitation and difference slice in progress`
-- `doc_count`: `9`
-- `current_focus`: `在最小共同层之上，继续补 portable baseline 与 client-specific extensions 的边界。`
+- `doc_count`: `10`
+- `current_focus`: `在最小共同层之上，继续补 GitHub / Claude / Codex 三家 surface 的 portable baseline 与 extension 边界。`
 
 ## 本轮新增证据栈
 
@@ -23,6 +23,8 @@
   - 用实践 guide 补强 portable fields、skill package 与 `AGENTS.md` 边界。
 - `01-skill-methodology-and-spec-methodology-convergence-draft.md`
   - 形成第一版“已收敛 / 未收敛”判断。
+- `01-skill-methodology-and-spec-codex-surface-interface-facts.md`
+  - 补上 Codex 的 `.agents/skills`、`agents/openai.yaml`、plugins 与 layered `AGENTS.md` interface facts。
 - `01-skill-methodology-and-spec-claude-surface-differences.md`
   - 补上 Claude Code CLI、SDK 与 API runtime 的 surface difference，固定 portable core 与运行边界的区别。
 
@@ -50,10 +52,13 @@
   - `surface-specific frontmatter`
   - `runtime constraints`
   这三层不能再混写成同一个“规范层”
+- 现在还能更明确地补一句:
+  - `Codex / GitHub / Claude` 三家都能支撑 skill 目录共同层
+  - 但三家的 distribution、repo guidance、metadata extension 语义明显不同
 - 因此，skill engineering 已经是一套接口设计 + 触发设计 + 内容分层设计，而不只是 prompt 写作。
 
 ## 当前缺口
 
-- 还缺更多非 Claude 生态的客户端差异，来判断哪些扩展字段真能跨平台稳定工作。
+- 还缺完整的 field-by-field support matrix，来判断哪些扩展字段真能跨平台稳定工作。
 - 还需要把 portable baseline 进一步收束成可直接执行的 authoring checklist。
 - 还没有形成一份明确的“哪些字段默认可迁移，哪些字段必须加兼容性注释”的支持矩阵。
