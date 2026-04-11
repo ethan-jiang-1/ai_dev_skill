@@ -36,6 +36,22 @@
   - category: `registry-or-marketplace-entry`
   - use: 目录站、统一安装命令、多 agent 生态入口、公开信号层
 
+- `00-shared-local-example-agent-skills-teardown.md`
+  - category: `local-example-teardown`
+  - use: 生命周期化 skill 样板库的阅读方式、命令入口与流程纪律
+
+- `00-shared-local-example-get-shit-done-teardown.md`
+  - category: `local-example-teardown`
+  - use: command / agent / workflow / reference / template 五层 skill-like 系统阅读法
+
+- `00-shared-local-example-superpowers-teardown.md`
+  - category: `local-example-teardown`
+  - use: workflow-enforcing skill plugin、hooks、宿主适配与行为测试
+
+- `00-shared-local-example-gstack-teardown.md`
+  - category: `local-example-teardown`
+  - use: 高级系统样本的阅读重点，例如模板治理、浏览器 runtime 与 specialist review
+
 ## Topic 03 Docs
 
 - `03-ecosystem-signals-and-adoption-github-changelog-agent-skills.md`
@@ -184,3 +200,4 @@
 - `registry-or-marketplace-entry`: covered
 - `limitation-risk-failure-mode`: covered via `00-shared-github-create-agent-skills.md` and `00-shared-skill-forge-readme.md`
 - `comparison-or-adoption-analysis`: covered via `00-shared-awesome-copilot-readme.md` and `00-shared-skills-sh-home.md`
+- `local-example-teardown`: covered via local analysis notes for `agent-skills`, `get-shit-done`, `superpowers`, and `gstack`
