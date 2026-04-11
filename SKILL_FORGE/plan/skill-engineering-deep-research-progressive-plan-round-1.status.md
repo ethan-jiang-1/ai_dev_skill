@@ -5,8 +5,8 @@
 ## 当前结论 / 进度语义
 
 - 状态：`deliverable_ready`
-- 当前所处波次：`Wave 2`
-- 当前工作模式：`ready_for_handoff`
+- 当前所处波次：`Readiness Check`
+- 当前工作模式：`round_complete`
 - 收口距离：`done`
 - 核心对象稳定度：`high`
 - 新增信息产出：`complete_for_round`
