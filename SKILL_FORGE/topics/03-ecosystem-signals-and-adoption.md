@@ -236,5 +236,25 @@
   - `skills.sh` / `awesome-copilot` 更像高杠杆学习入口与发现层
   - `vercel-labs/agent-skills` 更像官方样板池
   - `vercel-labs/skills` 更像分发与生态服务层
-  - `skill-forge` 更像值得跟踪的早期治理 / 方法项目
+- `skill-forge` 更像值得跟踪的早期治理 / 方法项目
 - 因此，后续最终推荐很可能不会是“单一赢家”，而是按学习、试用、长期跟踪三种采用语义给出组合式判断。
+
+### Wave 2 / limitation and difference slice
+
+- `/Users/bowhead/ai_dev_skill/SKILL_FORGE/topics/_reference/03-ecosystem-signals-and-adoption-independent-effectiveness-benchmark.md`
+  - 第二轮最重要的新反证之一，是 public skills 并不天然带来显著收益，大多数 skill 在独立 benchmark 中并没有明显改善。
+- `/Users/bowhead/ai_dev_skill/SKILL_FORGE/topics/_reference/03-ecosystem-signals-and-adoption-clone-security-and-quality-risks.md`
+  - 另一块关键反证是 clone inflation、安全结构弱点与 validation / behavior 脱钩，这会直接扭曲我们对“生态规模”和“可直接采用性”的理解。
+- `/Users/bowhead/ai_dev_skill/SKILL_FORGE/topics/_reference/03-ecosystem-signals-and-adoption-third-party-tutorial-layer.md`
+  - 同时，第三方教学层的存在又反过来证明：借鉴别人 skill 的成长价值并不是空话，而是已经形成公开教学对象。
+- 所以 `03` 到这一轮的核心语义已经更完整了：
+  - 现成 skill 确实容易找到
+  - 借鉴它们确实能加速成长
+  - 但 discovery、learning、trust、effectiveness 必须分成四层判断
+- 这也解释了为什么你前面提到的那个命题，最适合放在 `03`：
+  - “借鉴别人 skill 能帮助快速成长”说的是学习入口和采用路径
+  - 它不是在证明某个规范字段更标准，也不是在证明某个工具链 segment 更完整
+- 因此，`03` 现在不只是研究“谁更火”，而是在研究：
+  - 哪些对象更适合当学习入口
+  - 哪些对象值得小心试用
+  - 哪些对象只能拿来拆结构、不能直接信任

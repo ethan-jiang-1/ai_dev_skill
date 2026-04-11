@@ -78,6 +78,18 @@
   - category: `limitation-risk-failure-mode`
   - use: 共享 skill 的权限、安全与污染风险边界
 
+- `03-ecosystem-signals-and-adoption-independent-effectiveness-benchmark.md`
+  - category: `independent-effectiveness-evidence`
+  - use: public skills 的真实收益分布、负效果与任务不匹配风险
+
+- `03-ecosystem-signals-and-adoption-clone-security-and-quality-risks.md`
+  - category: `independent-risk-and-quality-audit`
+  - use: clone inflation、安全结构弱点、validation 与实际效果脱钩
+
+- `03-ecosystem-signals-and-adoption-third-party-tutorial-layer.md`
+  - category: `third-party-learning-layer`
+  - use: 外部教学层已经形成，证明借鉴、安装、创建与安全使用已成为公开教学对象
+
 ## Topic 02 Docs
 
 - `02-skill-toolchain-and-lifecycle-github-loader-paths-and-scope.md`
@@ -107,6 +119,14 @@
 - `02-skill-toolchain-and-lifecycle-skills-vs-agents-md-boundary.md`
   - category: `object-boundary`
   - use: skills 与 `AGENTS.md` 的边界
+
+- `02-skill-toolchain-and-lifecycle-orchestration-and-recall-limits.md`
+  - category: `orchestration-and-selection-limit`
+  - use: recall failure、role-based bundles、tree retrieval 与 DAG orchestration 的必要性
+
+- `02-skill-toolchain-and-lifecycle-evaluation-versioning-and-cross-surface-gaps.md`
+  - category: `evaluation-versioning-and-surface-gap`
+  - use: test / deploy / monitor / deprecate、version pinning、fallback、surface sync 缺口
 
 - `02-skill-toolchain-and-lifecycle-lifecycle-segmentation-and-combination-baseline.md`
   - category: `cross-source-synthesis`
@@ -141,6 +161,10 @@
 - `01-skill-methodology-and-spec-vercel-guide-portable-methodology.md`
   - category: `portable-practice-guide`
   - use: portable fields、skill package、`AGENTS.md` 边界与方法论补充
+
+- `01-skill-methodology-and-spec-claude-surface-differences.md`
+  - category: `surface-difference-and-portability-limit`
+  - use: portable core 与 Claude-specific extensions 的边界、SDK / CLI / API runtime 的支持差异
 
 - `01-skill-methodology-and-spec-methodology-convergence-draft.md`
   - category: `cross-source-synthesis`

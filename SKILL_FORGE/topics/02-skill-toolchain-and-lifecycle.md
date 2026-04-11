@@ -221,3 +221,24 @@
   - 一个 governance / publish layer
 - 如果场景是本地 / 自托管 / MCP，对应 baseline 里还应追加 runtime bridge。
 - 因此，`02` 这条线目前最重要的结论不是“谁第一”，而是“应该用什么组合方式看待 skill toolchain”。
+
+### Wave 2 / limitation and difference slice
+
+- `/Users/bowhead/ai_dev_skill/SKILL_FORGE/topics/_reference/02-skill-toolchain-and-lifecycle-orchestration-and-recall-limits.md`
+  - 第二轮补上的第一块硬证据，是 skill 一多起来以后，问题不再只是“怎么装”，而是“怎么选”和“怎么编排”。
+- `/Users/bowhead/ai_dev_skill/SKILL_FORGE/topics/_reference/02-skill-toolchain-and-lifecycle-evaluation-versioning-and-cross-surface-gaps.md`
+  - 第二块硬证据则说明 lifecycle 也不该停在 publish / install，而要继续覆盖 test、deploy、monitor、deprecate、version pinning 与 fallback。
+- 这使 `02` 的边界比第一轮更清楚：
+  - 它不只是拆对象类型
+  - 还要拆“对象之外的运行阶段”和“规模化之后的治理阶段”
+- 换句话说，这个 topic 现在已经能更明确地区分三类经常混在一起的东西：
+  - installation convenience
+  - orchestration discipline
+  - post-deploy evaluation discipline
+- 这也是为什么 `02` 仍然不能被 `03` 吸收掉。
+  - skill 太多导致 recall failure，是工程机制问题，不是采用热度问题。
+  - custom skills 不跨 surface 自动同步，是 lifecycle 缺口，不是社区口碑问题。
+- 到这一轮，`02` 的研究语义已经从“哪些项目覆盖哪一段”推进到：
+  - 哪些段落本身最容易出问题
+  - 哪些能力必须靠组合补齐
+  - baseline 为什么必须包含 versioning、evaluation 与 orchestration

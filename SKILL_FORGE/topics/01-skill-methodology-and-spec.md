@@ -205,3 +205,24 @@
   - 按需 supporting files
 - 因此，`01` 当前最重要的结论不是“有没有标准”，而是“已经有多少共识足以作为工作标准先用起来”。
 - 另一条更强的判断是：skill engineering 已经明显不是纯 prompt engineering，它至少同时涉及接口设计、触发设计、内容分层与执行边界设计。
+
+### Wave 2 / limitation and difference slice
+
+- `/Users/bowhead/ai_dev_skill/SKILL_FORGE/topics/_reference/01-skill-methodology-and-spec-claude-surface-differences.md`
+  - 第二轮最关键的新信息，不是又找到一份“skill 是什么”的定义，而是把 `portable core` 和 `surface-specific extensions` 真正拆开了。
+- 这份材料说明：
+  - Claude Code CLI 暴露的 frontmatter 能力明显更丰富
+  - Agent SDK 与 CLI 的支持面并不完全一致
+  - API runtime 还有明确的请求数、体积、网络与依赖安装限制
+- 这直接改变了 `01` 的研究重心：
+  - 第一轮更像在确认“共识已经存在”
+  - 第二轮则是在确认“哪些共识适合直接当作工作标准，哪些只能当作某平台特性”
+- 也正因为如此，`01` 仍必须单独存在。
+  - 如果不先把这层拆清，`02` 很容易把某个平台特有 frontmatter 误当成通用工程基座能力。
+  - `03` 也容易把某个平台生态的采用，误读成“规范已经跨平台统一”。
+- 所以到这一轮，这个 topic 最重要的新增口径已经不只是：
+  - skill 有最小共同层
+- 而是：
+  - 最小共同层可以先当 baseline
+  - 扩展字段必须带着兼容性意识来使用
+  - 运行边界本身也是方法论的一部分
