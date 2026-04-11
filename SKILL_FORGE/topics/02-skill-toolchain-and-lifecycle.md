@@ -142,6 +142,25 @@
 - `/Users/bowhead/ai_dev_skill/SKILL_FORGE/topics/_reference/00-shared-skills-sh-home.md`
   - 目录站与服务层已经和安装命令、审计入口、统计信号发生耦合。
 
+### Wave 1 / topic-specific slice
+
+- `/Users/bowhead/ai_dev_skill/SKILL_FORGE/topics/_reference/02-skill-toolchain-and-lifecycle-github-loader-paths-and-scope.md`
+  - GitHub 已经把 project / personal 两种装载语义和多种 skills 目录位置固定下来，说明 placement 本身就是 lifecycle 的一层。
+- `/Users/bowhead/ai_dev_skill/SKILL_FORGE/topics/_reference/02-skill-toolchain-and-lifecycle-skills-cli-manager-role.md`
+  - `skills` 的职责已足够清楚地落在 installer / manager / compatibility layer，而不是样板库或治理工具。
+- `/Users/bowhead/ai_dev_skill/SKILL_FORGE/topics/_reference/02-skill-toolchain-and-lifecycle-agent-skills-sample-library-role.md`
+  - `vercel-labs/agent-skills` 适合稳定归类为 sample library / content library。
+- `/Users/bowhead/ai_dev_skill/SKILL_FORGE/topics/_reference/02-skill-toolchain-and-lifecycle-skill-forge-governance-pipeline-role.md`
+  - `skill-forge` 更像 post-authoring governance / publish pipeline，而不是 authoring 生成器。
+- `/Users/bowhead/ai_dev_skill/SKILL_FORGE/topics/_reference/02-skill-toolchain-and-lifecycle-open-skills-local-runtime-bridge.md`
+  - `open-skills` 暴露出独立的 runtime bridge / execution adapter 层，不能和 installer 混为一谈。
+- `/Users/bowhead/ai_dev_skill/SKILL_FORGE/topics/_reference/02-skill-toolchain-and-lifecycle-ai-agent-skills-library-manager.md`
+  - `Ai-Agent-Skills` 展示了 skill engineering 中另一个常被忽视的层: curated library manager / workspace manager。
+- `/Users/bowhead/ai_dev_skill/SKILL_FORGE/topics/_reference/02-skill-toolchain-and-lifecycle-skills-vs-agents-md-boundary.md`
+  - `skills` 与 `AGENTS.md` 的边界如果不先拆清，整个 toolchain 分析会不断混类。
+- `/Users/bowhead/ai_dev_skill/SKILL_FORGE/topics/_reference/02-skill-toolchain-and-lifecycle-lifecycle-segmentation-and-combination-baseline.md`
+  - 第一版 lifecycle segmentation 与组合式 baseline 已形成。
+
 ## 本轮新增机制理解
 
 - 当前生态至少可以分出六类对象：
@@ -154,12 +173,51 @@
 - `single source of truth + symlink` 已经出现为多 agent 安装治理的一种明确思路。
 - lifecycle 里“写内容”与“让 skill 可安装、可更新、可发布”已经开始分化为不同工程层。
 
+### Wave 1 / topic-specific slice
+
+- 现在可以把 lifecycle 进一步拆成更稳定的层:
+  - loader placement
+  - sample library
+  - install / manager
+  - library manager
+  - runtime bridge
+  - governance / publish
+  - registry / directory
+- `skills` 与 `Ai-Agent-Skills` 的相似之处在于都会触达安装，但它们面向的问题不同：
+  - 前者偏通用 installer / compatibility
+  - 后者偏 curated library / workspace management
+- `vercel-labs/agent-skills` 与 `skill-forge` 的价值也不同：
+  - 前者教你“skill 可以怎么组织”
+  - 后者处理“skill 如何被审计、修复、发布”
+- `open-skills` 说明 runtime 层不必然从属于 installer，它可以独立存在并服务本地 / MCP 场景。
+
 ## 本轮新增趋势与难点
 
 - 趋势上，installer、目录站和审计工具都在出现，说明生态正在从“内容集合”向“工程链路”演进。
 - 难点在于：许多项目宣传边界重叠，容易把样板库误当工具链，把目录站误当治理层。
 
+### Wave 1 / topic-specific slice
+
+- 趋势上，skill engineering 正在从“能写 skill”转向“能管理一整套 skill lifecycle”。
+- 趋势上，新的分化层已经明显出现：
+  - 专门的 installer / manager
+  - 专门的 governance / publish pipeline
+  - 专门的 runtime bridge
+  - 专门的 curated library manager
+- 难点在于，这些层之间仍然没有完全统一的标准接口，所以一眼看上去很容易像“都在做差不多的事”。
+- 另一个难点是：生态里已经不只需要比较单项目强弱，还需要比较哪种组合更像可执行 baseline。
+
 ## 当前判断（Wave 0）
 
 - 这一 topic 已经不再需要从“有没有工具链”开始问，而应进入“不同对象分别覆盖 lifecycle 哪一段”的细拆阶段。
 - 当前最稳的判断是：单一对象覆盖全链路的证据还不充分，组合式链路是高概率候选答案。
+
+### Wave 1 / topic-specific slice
+
+- 当前更稳的判断是：skill 工程链路至少已经分化出多层独立职责，继续拿单一项目去争夺“全链路基座”会越来越不准确。
+- 如果只想快速形成自己的 baseline，当前最像最低可行组合的是：
+  - 一个高质量 sample library
+  - 一个 installer / manager
+  - 一个 governance / publish layer
+- 如果场景是本地 / 自托管 / MCP，对应 baseline 里还应追加 runtime bridge。
+- 因此，`02` 这条线目前最重要的结论不是“谁第一”，而是“应该用什么组合方式看待 skill toolchain”。

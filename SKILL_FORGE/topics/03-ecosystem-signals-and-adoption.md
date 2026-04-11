@@ -155,6 +155,29 @@
 - `/Users/bowhead/ai_dev_skill/SKILL_FORGE/topics/_reference/00-shared-skill-forge-readme.md`
   - skill-forge 的存在也反向证明：生态里确实存在结构、发现、安全和描述质量问题，不能因为好找就默认可信。
 
+### Wave 1 / topic-specific slice
+
+- `/Users/bowhead/ai_dev_skill/SKILL_FORGE/topics/_reference/03-ecosystem-signals-and-adoption-github-changelog-agent-skills.md`
+  - GitHub 已把 Agent Skills 作为产品能力公开发布，说明借鉴 skill 不只是社区玩法，而是主平台正在强化的工作流。
+- `/Users/bowhead/ai_dev_skill/SKILL_FORGE/topics/_reference/03-ecosystem-signals-and-adoption-vercel-changelog-open-ecosystem.md`
+  - Vercel 公开把发现、安装和生态统计打包为开放生态，进一步证明“现成 skill 很容易找到”已经成为事实基础设施。
+- `/Users/bowhead/ai_dev_skill/SKILL_FORGE/topics/_reference/03-ecosystem-signals-and-adoption-vercel-kb-learning-leverage.md`
+  - 官方 guide 直接把 skill 解释成适合 progressive disclosure 的可复用上下文资产，也直接说明借鉴现成 skill 是高杠杆路径。
+- `/Users/bowhead/ai_dev_skill/SKILL_FORGE/topics/_reference/03-ecosystem-signals-and-adoption-skills-sh-directory-signals.md`
+  - `skills.sh` 已形成目录、审计、文档和公开统计入口，说明外部 skill 的搜索与浏览成本确实很低。
+- `/Users/bowhead/ai_dev_skill/SKILL_FORGE/topics/_reference/03-ecosystem-signals-and-adoption-npm-skills-cli-adoption.md`
+  - `skills` CLI 最近一月下载量达到 `2879420`，这意味着分发层已经有很强的真实调用信号。
+- `/Users/bowhead/ai_dev_skill/SKILL_FORGE/topics/_reference/03-ecosystem-signals-and-adoption-awesome-copilot-repo-signals.md`
+  - `github/awesome-copilot` 作为 GitHub 官方社区聚合层，既有大规模关注，也仍在持续扩容和维护。
+- `/Users/bowhead/ai_dev_skill/SKILL_FORGE/topics/_reference/03-ecosystem-signals-and-adoption-vercel-skills-repo-signals.md`
+  - `vercel-labs/skills` 不只体现 adoption，也暴露出 duplicate / malicious skills 治理压力，说明可信度问题是真实存在的。
+- `/Users/bowhead/ai_dev_skill/SKILL_FORGE/topics/_reference/03-ecosystem-signals-and-adoption-vercel-agent-skills-repo-signals.md`
+  - 官方样板库已形成强学习入口，且仍在修订细节，不是静态样板陈列。
+- `/Users/bowhead/ai_dev_skill/SKILL_FORGE/topics/_reference/03-ecosystem-signals-and-adoption-skill-forge-repo-signals.md`
+  - `skill-forge` 方向上很相关，但公共采用信号仍然薄，适合作为“学习价值高但采用信号弱”的对照样本。
+- `/Users/bowhead/ai_dev_skill/SKILL_FORGE/topics/_reference/03-ecosystem-signals-and-adoption-trust-boundaries.md`
+  - “好找”与“可直接信任”之间必须保留一层独立安全判断，不能被目录便利度覆盖掉。
+
 ## 本轮新增机制理解
 
 - “现成 skill 好找”与“值得直接采用”是两回事，中间至少隔着学习价值、工程质量与安全可信度三层判断。
@@ -164,12 +187,54 @@
   - 让经验积累建立在现成样板和反复实验上，而不是完全闭门摸索
 - 目录站和聚合站主要解决发现与学习，不自动解决质量保证。
 
+### Wave 1 / topic-specific slice
+
+- 生态采用信号至少要拆成四层，而不能只看 star:
+  - 官方产品 / 官方文档认可
+  - 官方样板库或高活跃官方仓库
+  - 分发层调用与安装信号
+  - 社区聚合与学习入口信号
+- `learning value` 与 `engineering maturity` 必须分开判断：
+  - `github/awesome-copilot` 与 `skills.sh` 极强地降低学习与发现成本
+  - 但能否直接采用，还要继续看权限边界、脚本质量和持续治理
+- 对学习者来说，最合理的成长路径不是完全从零摸索，而是：
+  - 先找现成 skill / 样板
+  - 再通过实验理解触发方式、目录组织与脚本边界
+  - 最后内化成自己的 workflow
+- 这条路径之所以成立，不只是经验判断，而是因为目录、样板库、CLI 和官方 guide 已经同时出现。
+
 ## 本轮新增趋势与难点
 
 - 趋势上，生态越来越重视目录、学习中心、machine-readable listing 和安装入口，这对新进入者非常友好。
 - 难点在于：第三方资源越多，越容易把“热度高”“聚合度高”误当成“工程成熟度高”。
 
+### Wave 1 / topic-specific slice
+
+- 趋势上，skill 生态正在快速平台化：
+  - GitHub 把 Agent Skills 放进产品 changelog
+  - Vercel 把 skills 做成目录、CLI、统计与知识库组合
+- 趋势上，外部资源已经多到足以显著缩短摸索期，这会让“借鉴别人 skill”越来越成为默认学习动作。
+- 难点也同步放大：
+  - 目录与安装越容易，恶意 / 重复 / 低质量 skill 污染风险越高
+  - 公开下载量与公开 star 都不能直接替代安全审查
+- 另一类难点是研究口径本身：
+  - 学习入口推荐
+  - 工程基座推荐
+  - 长期押注对象推荐
+  这三类对象未必是同一批。
+
 ## 当前判断（Wave 0）
 
 - 当前最稳的判断是：在网络上找到现成 skill 并不难，借鉴现成 skill 确实是比完全闭门从零琢磨更高杠杆的成长路径。
 - 同时也必须保留另一半判断：外部资源越丰富，越需要独立验证其来源、权限边界、结构质量与真实采用信号。
+
+### Wave 1 / topic-specific slice
+
+- 现在可以把 Wave 0 的直觉判断再推进一步：现成 skill 容易找到，不只是因为社区热闹，而是因为目录站、官方样板库、社区聚合和 CLI 分发层已经同时存在。
+- “借鉴别人 skill 对快速成长帮助很大”这件事，最合适继续放在 `03`，因为它本质上属于学习入口、生态信号与采用路径问题，而不是单纯的方法论问题。
+- 当前更稳的口径应是：
+  - `skills.sh` / `awesome-copilot` 更像高杠杆学习入口与发现层
+  - `vercel-labs/agent-skills` 更像官方样板池
+  - `vercel-labs/skills` 更像分发与生态服务层
+  - `skill-forge` 更像值得跟踪的早期治理 / 方法项目
+- 因此，后续最终推荐很可能不会是“单一赢家”，而是按学习、试用、长期跟踪三种采用语义给出组合式判断。
