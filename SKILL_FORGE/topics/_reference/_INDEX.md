@@ -112,6 +112,40 @@
   - category: `cross-source-synthesis`
   - use: lifecycle 分段草案与组合式 baseline
 
+## Topic 01 Docs
+
+- `01-skill-methodology-and-spec-agent-skills-open-format.md`
+  - category: `open-format-and-adoption`
+  - use: open format、跨平台支持与 skill 最小载体
+
+- `01-skill-methodology-and-spec-agent-skills-spec-fields.md`
+  - category: `formal-specification`
+  - use: `SKILL.md`、frontmatter 字段与规格层约束
+
+- `01-skill-methodology-and-spec-agent-skills-client-loading-model.md`
+  - category: `client-loading-model`
+  - use: discovery / activation / resource loading 三层模型
+
+- `01-skill-methodology-and-spec-agent-skills-triggering-and-description.md`
+  - category: `triggering-methodology`
+  - use: `description` 作为 routing 机制与触发优化对象
+
+- `01-skill-methodology-and-spec-agent-skills-best-practices-and-scripts.md`
+  - category: `authoring-best-practice`
+  - use: progressive disclosure、脚本边界与 skill 内容分层
+
+- `01-skill-methodology-and-spec-github-skill-interface-facts.md`
+  - category: `client-interface-facts`
+  - use: GitHub 产品级 skill 结构与字段事实
+
+- `01-skill-methodology-and-spec-vercel-guide-portable-methodology.md`
+  - category: `portable-practice-guide`
+  - use: portable fields、skill package、`AGENTS.md` 边界与方法论补充
+
+- `01-skill-methodology-and-spec-methodology-convergence-draft.md`
+  - category: `cross-source-synthesis`
+  - use: 当前共识与未收敛部分的综合判断
+
 ## Coverage Check
 
 - `skill-definition-or-structure`: covered

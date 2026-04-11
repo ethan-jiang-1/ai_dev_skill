@@ -1,4 +1,49 @@
 # 01 / Skill 方法论与规范接口 / Evidence Summary
 
-- `status`: `not_started`
-- `note`: `Wave 0 共享地基已建立，下一步进入 topic-specific 取证。`
+- `status`: `in_progress`
+- `wave`: `Wave 1 / first topic-specific slice complete`
+- `doc_count`: `8`
+- `current_focus`: `固定 skill 的最小定义、字段共识、触发机制与方法论分层。`
+
+## 本轮新增证据栈
+
+- `01-skill-methodology-and-spec-agent-skills-open-format.md`
+  - 固定了 open format 与跨平台支持语境。
+- `01-skill-methodology-and-spec-agent-skills-spec-fields.md`
+  - 固定了 `SKILL.md` frontmatter 的核心字段与扩展字段。
+- `01-skill-methodology-and-spec-agent-skills-client-loading-model.md`
+  - 固定了 discovery / activation / resources 的三层加载模型。
+- `01-skill-methodology-and-spec-agent-skills-triggering-and-description.md`
+  - 确认 `description` 是 routing 级字段，而不是普通摘要。
+- `01-skill-methodology-and-spec-agent-skills-best-practices-and-scripts.md`
+  - 确认 progressive disclosure 与脚本边界已经进入写作方法论。
+- `01-skill-methodology-and-spec-github-skill-interface-facts.md`
+  - 用 GitHub 产品级文档补强字段与接口事实。
+- `01-skill-methodology-and-spec-vercel-guide-portable-methodology.md`
+  - 用实践 guide 补强 portable fields、skill package 与 `AGENTS.md` 边界。
+- `01-skill-methodology-and-spec-methodology-convergence-draft.md`
+  - 形成第一版“已收敛 / 未收敛”判断。
+
+## 当前最稳的判断
+
+- skill 的最小单位已经可以稳定理解为目录级能力包，而不是散落提示词。
+- `SKILL.md + frontmatter + optional supporting files` 已经是高频事实结构。
+- `description` 的地位已经接近 routing rule，这使 skill engineering 明显不同于普通文档写作。
+- 方法论上最关键的不是“写长一点”，而是把 metadata、instructions、resources、scripts 做分层组织。
+
+## 当前机制理解
+
+- 当前共识不是“所有客户端都完全一样”，而是“有一组越来越稳定的共同接口层”。
+- 这个共同接口层至少包括:
+  - `SKILL.md`
+  - `name`
+  - `description`
+  - progressive disclosure
+  - supporting files on demand
+- 因此，skill engineering 已经是一套接口设计 + 触发设计 + 内容分层设计，而不只是 prompt 写作。
+
+## 当前缺口
+
+- 还缺更多客户端差异与失败样本，来判断哪些字段真能跨平台稳定工作。
+- 还缺更多关于 `allowed-tools`、`compatibility` 等扩展字段的支持差异证据。
+- 还没有把“当前最小可迁移写法”提炼成可直接套用的 authoring checklist。

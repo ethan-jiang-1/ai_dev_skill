@@ -128,6 +128,25 @@
 - `/Users/bowhead/ai_dev_skill/SKILL_FORGE/topics/_reference/00-shared-vercel-agent-skills.md`
   - 官方样板库显示一个高质量 skill 通常不止 `SKILL.md`，还可带 `scripts/` 和 `references/`。
 
+### Wave 1 / topic-specific slice
+
+- `/Users/bowhead/ai_dev_skill/SKILL_FORGE/topics/_reference/01-skill-methodology-and-spec-agent-skills-open-format.md`
+  - Agent Skills 已经以 open format / open standard 语境出现，并被多种客户端支持。
+- `/Users/bowhead/ai_dev_skill/SKILL_FORGE/topics/_reference/01-skill-methodology-and-spec-agent-skills-spec-fields.md`
+  - `SKILL.md`、YAML frontmatter、`name`、`description` 以及若干扩展字段已经进入规格层。
+- `/Users/bowhead/ai_dev_skill/SKILL_FORGE/topics/_reference/01-skill-methodology-and-spec-agent-skills-client-loading-model.md`
+  - 方法论层最关键的新事实之一，是 discovery / activation / resources 的三层加载模型。
+- `/Users/bowhead/ai_dev_skill/SKILL_FORGE/topics/_reference/01-skill-methodology-and-spec-agent-skills-triggering-and-description.md`
+  - `description` 不是装饰字段，而是 skill 路由与触发精度的中心接口。
+- `/Users/bowhead/ai_dev_skill/SKILL_FORGE/topics/_reference/01-skill-methodology-and-spec-agent-skills-best-practices-and-scripts.md`
+  - project-specific conventions、domain-specific procedures 与 progressive disclosure 已经进入 authoring best practice。
+- `/Users/bowhead/ai_dev_skill/SKILL_FORGE/topics/_reference/01-skill-methodology-and-spec-github-skill-interface-facts.md`
+  - GitHub 产品文档把上述抽象共识落成了真实接口与字段事实。
+- `/Users/bowhead/ai_dev_skill/SKILL_FORGE/topics/_reference/01-skill-methodology-and-spec-vercel-guide-portable-methodology.md`
+  - Vercel guide 进一步说明了 skill package、portable fields 与 `AGENTS.md` / skills 边界。
+- `/Users/bowhead/ai_dev_skill/SKILL_FORGE/topics/_reference/01-skill-methodology-and-spec-methodology-convergence-draft.md`
+  - 第一版“已收敛 / 未收敛”方法论判断已经形成。
+
 ## 本轮新增机制理解
 
 - 当前生态至少存在两个互补层：
@@ -136,13 +155,53 @@
 - skill engineering 的最小单位更接近“目录级可加载工件”，而不是单条提示词。
 - skill 的质量判断已经不止“内容对不对”，还包含 discoverability、executability、结构一致性等工程维度。
 
+### Wave 1 / topic-specific slice
+
+- 当前最关键的机制收敛点不在“每个平台目录放哪”，而在“skill 是如何被发现和激活”的共同模型。
+- 这个共同模型已经相当清楚：
+  - startup 只暴露 metadata
+  - 命中后再加载完整 instructions
+  - resources 与 scripts 按需进一步加载
+- 这解释了为什么 `description` 会成为 skill engineering 的核心字段之一，因为它本质上承担了 routing 责任。
+- 方法论上，好的 skill 不是写成一大块 Markdown，而是:
+  - 用 frontmatter 承担发现与路由
+  - 用正文承担核心步骤
+  - 用 supporting files 承担细节和执行
+
 ## 本轮新增趋势与难点
 
 - 趋势上，`SKILL.md` 作为 skill 入口文件已经越来越具体，但跨平台字段与目录约定是否完全收敛仍待验证。
 - 难点在于：很多生态讨论仍把 `AGENTS.md`、custom instructions、skills 混在一起，导致比较对象不干净。
+
+### Wave 1 / topic-specific slice
+
+- 趋势上，skill 正在从“提示工程小技巧”转向“目录级、可迁移、可路由的能力包”。
+- 趋势上，开放规范已经开始覆盖:
+  - 格式字段
+  - 触发机制
+  - 客户端加载模型
+  - scripts / references 的使用方式
+- 难点在于，规范层已经出现，但实现层仍然有差异，特别是扩展字段与权限边界。
+- 另一类难点是 authoring discipline：
+  - 太泛会导致不触发
+  - 太宽会导致乱触发
+  - 太长又会破坏 progressive disclosure 的初衷
 
 ## 当前判断（Wave 0）
 
 - 这一 topic 已经具备进入 Wave 1 的共享地基。
 - 当前最稳的判断是：skill 不是泛化概念，而是一个有明确载体、可按需加载、可附带脚本与资源的目录级能力包。
 - 当前还不能下的判断是：整个生态已经形成统一、无歧义、跨平台完全一致的 skill 标准。
+
+### Wave 1 / topic-specific slice
+
+- 现在可以更稳地说：虽然“完全统一标准”还没有到位，但“最小共同层”已经足够明确，可以支撑我们设计可迁移的 authoring baseline。
+- 这层最小共同层至少包括：
+  - 目录级对象
+  - `SKILL.md`
+  - `name`
+  - `description`
+  - progressive disclosure
+  - 按需 supporting files
+- 因此，`01` 当前最重要的结论不是“有没有标准”，而是“已经有多少共识足以作为工作标准先用起来”。
+- 另一条更强的判断是：skill engineering 已经明显不是纯 prompt engineering，它至少同时涉及接口设计、触发设计、内容分层与执行边界设计。
