@@ -29,6 +29,11 @@
 | `E15` | `superpowers` 本地拆解：workflow-enforcing plugin、hooks 与行为测试 | `../topics/_reference/00-shared-local-example-superpowers-teardown.md` |
 | `E16` | `gstack` 本地拆解：模板治理、浏览器 runtime、specialist review 与系统化工作流 | `../topics/_reference/00-shared-local-example-gstack-teardown.md` |
 | `E17` | portable core、progressive disclosure 与跨 surface 的方法论边界 | `../topics/01-skill-methodology-and-spec.md`；`../topics/_reference/01-skill-methodology-and-spec-methodology-convergence-draft.md` |
+| `E18` | skill 是按需加载的 instructions / scripts / resources 文件夹，且有 project / personal 两类位置 | `../topics/_reference/00-shared-github-about-agent-skills.md` |
+| `E19` | `SKILL.md` 是核心入口，skill 是目录级对象，并且应与 always-on custom instructions 区分 | `../topics/_reference/00-shared-github-create-agent-skills.md` |
+| `E20` | `AGENTS.md`、skill package、installer、directory、learning layer 应分开看待 | `../topics/_artifacts/00-shared-object-classification-draft.md` |
+| `E21` | skill 的最小共同层是目录、`SKILL.md`、`name`、`description` 与按需 supporting files | `../topics/_reference/01-skill-methodology-and-spec-methodology-convergence-draft.md` |
+| `E22` | 好的 skill 会把 project conventions、procedures、references、scripts 分层组织，并通过 progressive disclosure 控制正文膨胀 | `../topics/_reference/01-skill-methodology-and-spec-agent-skills-best-practices-and-scripts.md` |
 
 ## B2. 主文档常见判断应回指到哪里
 
@@ -41,6 +46,7 @@
 | “发现容易不等于可直接信” | `E06` + `E10` + `E11` |
 | “要先写 portable core，再补 host-specific extensions” | `E02` + `E04` + `E17` |
 | “要用 role-based bundles，而不是全量激活” | `E04` |
+| “skill 到底是什么 / 为什么存在 / 能装什么” | `E18` + `E19` + `E20` + `E21` + `E22` |
 
 ## B3. 这轮新增的例子层来自哪里
 

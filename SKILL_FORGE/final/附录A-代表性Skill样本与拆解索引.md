@@ -10,6 +10,16 @@
 - 当你知道“先读后编”是对的，但还不知道先拆哪一个例子时
 - 当你希望把“看样本”从随便翻仓库，变成有顺序的阅读动作时
 
+先把这张阅读路线图记住，会比纯列表更容易用：
+
+```mermaid
+flowchart LR
+    A[skills.sh / awesome-copilot<br/>先扩视野] --> B[vercel-labs/agent-skills<br/>先学样板]
+    B --> C[agent-skills 本地拆解<br/>练生命周期眼睛]
+    C --> D[get-shit-done / superpowers<br/>看系统级 skill-like 结构]
+    D --> E[gstack<br/>看高级系统样本]
+```
+
 ## A1. 先看这 5 个生态入口样本
 
 | 样本 | 对象类型 | 最适合回答什么问题 | 先看什么 | 不要误读成什么 | 证据 |
@@ -88,18 +98,9 @@
 
 ## A3. 一个最省时间的阅读顺序
 
-如果你现在时间有限，最推荐的顺序是：
+如果你现在时间有限，最推荐的顺序不是“多看”，而是“看得有递进”：
 
-1. `skills.sh`
-   - 先知道现成 skill 到底有多容易找到
-2. `github/awesome-copilot`
-   - 再看社区层和学习层是怎么组织入口的
-3. `vercel-labs/agent-skills`
-   - 第一次认真拆一个高质量样板库
-4. `agent-skills` 本地拆解
-   - 训练“按生命周期读样本”的视角
-5. `superpowers` 或 `get-shit-done`
-   - 进入系统级 skill-like 结构
+先用 `skills.sh` 知道现成 skill 到底有多容易找到，再用 `github/awesome-copilot` 看社区层和学习层怎么组织入口，然后第一次认真拆一个 `vercel-labs/agent-skills` 这样的高质量样板库。等你有了样板感之后，再去读 `agent-skills` 的本地拆解，训练“按生命周期读样本”的视角。最后再进入 `superpowers` 或 `get-shit-done` 这类系统级样本，开始看 skill-like 结构怎样和 runtime、hook、workflow 连起来。
 
 ## A4. 每个样本都要问的 6 个问题
 
