@@ -1,4 +1,4 @@
-# 面向 AI Coding 工程师的 Topic Final Playbook Generator
+1# 面向 AI Coding 工程师的 Topic Final Playbook Generator
 
 > 用途：把一组已经完成多轮 Deep Research 的 topic 材料，稳定收束成一套面向 AI coding engineer 的 `progressive playbook package`。
 >
