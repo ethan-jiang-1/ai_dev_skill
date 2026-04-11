@@ -4,18 +4,18 @@
 
 ## 当前结论 / 进度语义
 
-- 状态：`not_started`
-- 当前所处波次：`Wave 0`
+- 状态：`in_progress`
+- 当前所处波次：`Wave 1`
 - 当前工作模式：`opening`
 - 收口距离：`far`
-- 核心对象稳定度：`unstable`
-- 新增信息产出：`none`
-- 失败 / 反例覆盖度：`thin`
-- 当前最大阻塞：`尚未初始化 _reference / _artifacts，也尚未建立共享 ground truth`
-- 当前还缺的必做项：`初始化目录、完成 Wave 0 配额、形成共享术语和对象分类草案`
-- 当前只剩的可选打磨项：`无`
-- 当前已挂起的高难分支：`无`
-- 如果现在停止，最大缺口：`没有本地可回指证据库，topic 仍无法进入可持续 Deep Research`
+- 核心对象稳定度：`forming`
+- 新增信息产出：`high`
+- 失败 / 反例覆盖度：`partial`
+- 当前最大阻塞：`Wave 0 已完成，但每条研究线的 topic-specific 证据包还未建立`
+- 当前还缺的必做项：`对 01/02/03 分别完成第一轮专属对象扩展、一手来源补强、限制与争议补搜`
+- 当前只剩的可选打磨项：`补一份更强的 AGENTS.md / Agent Skills 标准来源，作为共享地基增强项`
+- 当前已挂起的高难分支：`暂无`
+- 如果现在停止，最大缺口：`虽然已有共享地基，但还不足以支撑前 3 排序或 workflow baseline`
 
 ## Wave 0：共享 Ground Truth 地基
 
@@ -31,8 +31,13 @@
   - `limitation-risk-failure-mode`
   - `comparison-or-adoption-analysis`
 - `shared_index_file`：`/Users/bowhead/ai_dev_skill/SKILL_FORGE/topics/_reference/_INDEX.md`
-- `status`：`not_started`
+- `status`：`done`
+- `doc_count`：`8`
 - `notes`：
+  - `已创建 _reference / _artifacts`
+  - `已落库 8 份共享 reference 文档`
+  - `已形成共享 evidence summary 与 object classification draft`
+  - `已将共享证据回填到 01 / 02 / 03 topic 文件`
 
 ## Wave 1：按研究线深挖
 
@@ -45,8 +50,8 @@
 - `limitation_count`：`0`
 - `evidence_summary`：`/Users/bowhead/ai_dev_skill/SKILL_FORGE/topics/_artifacts/01-skill-methodology-and-spec-evidence-summary.md`
 - `question_list`：`/Users/bowhead/ai_dev_skill/SKILL_FORGE/topics/_artifacts/01-skill-methodology-and-spec-question-list.md`
-- `status`：`not_started`
-- `gap`：`尚未形成 skill 定义、结构共识与质量维度的共享证据层`
+- `status`：`opening`
+- `gap`：`共享定义层已建立，但仍缺跨平台字段差异、事实标准收敛情况与限制证据`
 
 ### 02-skill-toolchain-and-lifecycle
 
@@ -57,8 +62,8 @@
 - `limitation_count`：`0`
 - `evidence_summary`：`/Users/bowhead/ai_dev_skill/SKILL_FORGE/topics/_artifacts/02-skill-toolchain-and-lifecycle-evidence-summary.md`
 - `question_list`：`/Users/bowhead/ai_dev_skill/SKILL_FORGE/topics/_artifacts/02-skill-toolchain-and-lifecycle-question-list.md`
-- `status`：`not_started`
-- `gap`：`尚未建立统一生命周期拆解框架，也未把候选对象映射到职责边界`
+- `status`：`opening`
+- `gap`：`共享分类草案已形成，但仍缺对重点对象的 lifecycle mapping 与强弱项拆解`
 
 ### 03-ecosystem-signals-and-adoption
 
@@ -69,8 +74,8 @@
 - `limitation_count`：`0`
 - `evidence_summary`：`/Users/bowhead/ai_dev_skill/SKILL_FORGE/topics/_artifacts/03-ecosystem-signals-and-adoption-evidence-summary.md`
 - `question_list`：`/Users/bowhead/ai_dev_skill/SKILL_FORGE/topics/_artifacts/03-ecosystem-signals-and-adoption-question-list.md`
-- `status`：`not_started`
-- `gap`：`尚未建立独立于项目自述的采用、可信度与推荐判断证据层`
+- `status`：`opening`
+- `gap`：`共享成长入口与目录信号已确认，但仍缺外部采用、维护与可信度的独立验证`
 
 ## Wave 2：跨主题综合
 
@@ -96,3 +101,4 @@
 ## Worklog
 
 - `2026-04-11`：创建一轮 progressive plan 与 status skeleton，研究尚未启动。
+- `2026-04-11`：完成 Wave 0 初始化，创建 `_reference`、`_artifacts`、8 份共享 reference、共享索引与对象分类草案，并回填 3 个 topic 文件。

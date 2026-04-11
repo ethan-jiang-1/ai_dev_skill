@@ -116,3 +116,33 @@
 - `expected_output_shape`:
   - 一份关于 skill 定义、结构要素、事实标准和方法论分层的稳定框架。
   - 一组后续 topic 共用的术语和判断口径。
+
+## 本轮新增证据（Wave 0 共享地基）
+
+- `/Users/bowhead/ai_dev_skill/SKILL_FORGE/topics/_reference/00-shared-github-about-agent-skills.md`
+  - GitHub 官方已经把 skill 定义为按需加载的 instructions / scripts / resources 文件夹，并明确 project / personal 两层存放位置。
+- `/Users/bowhead/ai_dev_skill/SKILL_FORGE/topics/_reference/00-shared-github-create-agent-skills.md`
+  - `SKILL.md`、YAML frontmatter、`name`、`description`、`allowed-tools` 等字段已经构成一套事实接口。
+- `/Users/bowhead/ai_dev_skill/SKILL_FORGE/topics/_reference/00-shared-agents-md-home.md`
+  - `AGENTS.md` 是 repo-level agent guidance，而不是 task-level skill 包，应与 `SKILL.md` 区分。
+- `/Users/bowhead/ai_dev_skill/SKILL_FORGE/topics/_reference/00-shared-vercel-agent-skills.md`
+  - 官方样板库显示一个高质量 skill 通常不止 `SKILL.md`，还可带 `scripts/` 和 `references/`。
+
+## 本轮新增机制理解
+
+- 当前生态至少存在两个互补层：
+  - repo-level、常驻的 agent guidance
+  - task-level、按需加载的 skill package
+- skill engineering 的最小单位更接近“目录级可加载工件”，而不是单条提示词。
+- skill 的质量判断已经不止“内容对不对”，还包含 discoverability、executability、结构一致性等工程维度。
+
+## 本轮新增趋势与难点
+
+- 趋势上，`SKILL.md` 作为 skill 入口文件已经越来越具体，但跨平台字段与目录约定是否完全收敛仍待验证。
+- 难点在于：很多生态讨论仍把 `AGENTS.md`、custom instructions、skills 混在一起，导致比较对象不干净。
+
+## 当前判断（Wave 0）
+
+- 这一 topic 已经具备进入 Wave 1 的共享地基。
+- 当前最稳的判断是：skill 不是泛化概念，而是一个有明确载体、可按需加载、可附带脚本与资源的目录级能力包。
+- 当前还不能下的判断是：整个生态已经形成统一、无歧义、跨平台完全一致的 skill 标准。

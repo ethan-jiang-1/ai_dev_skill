@@ -141,3 +141,35 @@
   - 一份重点候选对象的生态信号记录框架。
   - 一套支持后续前 3 排序和组合推荐的可信度判断口径。
   - 一份关于“借鉴现成 skill 如何帮助快速成长”的观察框架，用来支撑后续 workflow 建议。
+
+## 本轮新增证据（Wave 0 共享地基）
+
+- `/Users/bowhead/ai_dev_skill/SKILL_FORGE/topics/_reference/00-shared-github-about-agent-skills.md`
+  - GitHub 官方直接建议使用共享在线 skills，这说明“借鉴现成 skill”不是边缘路径，而是被正式支持的入口。
+- `/Users/bowhead/ai_dev_skill/SKILL_FORGE/topics/_reference/00-shared-awesome-copilot-readme.md`
+  - 社区聚合层已经同时提供学习入口、搜索入口和可安装对象，说明外部 skill 资源确实能成为成长加速器。
+- `/Users/bowhead/ai_dev_skill/SKILL_FORGE/topics/_reference/00-shared-skills-sh-home.md`
+  - 目录站把“发现 skill”“安装 skill”“看生态信号”放进了同一个入口，进一步降低了借鉴成本。
+- `/Users/bowhead/ai_dev_skill/SKILL_FORGE/topics/_reference/00-shared-github-create-agent-skills.md`
+  - GitHub 官方明确提示第三方 skill 和预批准 shell / bash 工具存在安全风险，说明借鉴必须与审查并存。
+- `/Users/bowhead/ai_dev_skill/SKILL_FORGE/topics/_reference/00-shared-skill-forge-readme.md`
+  - skill-forge 的存在也反向证明：生态里确实存在结构、发现、安全和描述质量问题，不能因为好找就默认可信。
+
+## 本轮新增机制理解
+
+- “现成 skill 好找”与“值得直接采用”是两回事，中间至少隔着学习价值、工程质量与安全可信度三层判断。
+- 借鉴现成 skill 的高杠杆价值主要来自：
+  - 降低空白起步成本
+  - 暴露真实目录结构和 use-when 写法
+  - 让经验积累建立在现成样板和反复实验上，而不是完全闭门摸索
+- 目录站和聚合站主要解决发现与学习，不自动解决质量保证。
+
+## 本轮新增趋势与难点
+
+- 趋势上，生态越来越重视目录、学习中心、machine-readable listing 和安装入口，这对新进入者非常友好。
+- 难点在于：第三方资源越多，越容易把“热度高”“聚合度高”误当成“工程成熟度高”。
+
+## 当前判断（Wave 0）
+
+- 当前最稳的判断是：在网络上找到现成 skill 并不难，借鉴现成 skill 确实是比完全闭门从零琢磨更高杠杆的成长路径。
+- 同时也必须保留另一半判断：外部资源越丰富，越需要独立验证其来源、权限边界、结构质量与真实采用信号。

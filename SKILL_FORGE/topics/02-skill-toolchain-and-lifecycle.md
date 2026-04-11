@@ -130,3 +130,36 @@
 - `expected_output_shape`:
   - 一份可复用的 skill 生命周期分解框架。
   - 一套用来分析候选项目职责边界、强弱项和工程定位的统一模板。
+
+## 本轮新增证据（Wave 0 共享地基）
+
+- `/Users/bowhead/ai_dev_skill/SKILL_FORGE/topics/_reference/00-shared-vercel-skills-cli.md`
+  - 生态中已经有明确的 installer / updater / multi-agent compatibility 层，不再只是 skill 内容仓库。
+- `/Users/bowhead/ai_dev_skill/SKILL_FORGE/topics/_reference/00-shared-vercel-agent-skills.md`
+  - 官方 skill 样板库与 installer 是不同对象，应分开评估。
+- `/Users/bowhead/ai_dev_skill/SKILL_FORGE/topics/_reference/00-shared-skill-forge-readme.md`
+  - 治理 / 审计 / 发布 / 安全层已经具备明显独立性，是 skill lifecycle 的后半段能力。
+- `/Users/bowhead/ai_dev_skill/SKILL_FORGE/topics/_reference/00-shared-skills-sh-home.md`
+  - 目录站与服务层已经和安装命令、审计入口、统计信号发生耦合。
+
+## 本轮新增机制理解
+
+- 当前生态至少可以分出六类对象：
+  - repo-level guidance
+  - skill package / sample
+  - installer / loader / compatibility layer
+  - governance / audit / publish tooling
+  - registry / marketplace / directory
+  - community curation / learning layer
+- `single source of truth + symlink` 已经出现为多 agent 安装治理的一种明确思路。
+- lifecycle 里“写内容”与“让 skill 可安装、可更新、可发布”已经开始分化为不同工程层。
+
+## 本轮新增趋势与难点
+
+- 趋势上，installer、目录站和审计工具都在出现，说明生态正在从“内容集合”向“工程链路”演进。
+- 难点在于：许多项目宣传边界重叠，容易把样板库误当工具链，把目录站误当治理层。
+
+## 当前判断（Wave 0）
+
+- 这一 topic 已经不再需要从“有没有工具链”开始问，而应进入“不同对象分别覆盖 lifecycle 哪一段”的细拆阶段。
+- 当前最稳的判断是：单一对象覆盖全链路的证据还不充分，组合式链路是高概率候选答案。
