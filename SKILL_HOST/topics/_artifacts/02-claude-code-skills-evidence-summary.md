@@ -7,10 +7,14 @@
 ## New local evidence gathered
 
 - Claude runtime loading model for skills vs CLAUDE.md vs MCP vs subagents vs hooks
+- Official skills docs covering where skills live, precedence, nested discovery, add-dir exception, and frontmatter controls (`disable-model-invocation`, `allowed-tools`, `model`, `effort`, `context: fork`, `$ARGUMENTS`)
 - Directory and persistence model for `.claude`, including plugin storage and orphan cleanup
+- Official memory docs covering CLAUDE.md concatenation rules, import strategy for `AGENTS.md`, `.claude/rules/` organization, and auto-memory storage/limits
 - Plugin packaging, namespacing, semver, local override, and reload flows
 - Governance controls for marketplaces and managed settings
+- Official permission-modes docs covering `default/acceptEdits/plan/auto/dontAsk/bypassPermissions` and protected-path guarantees
 - Hooks, subagents, preloaded skills, persistent subagent memory, and security warnings
+- Official changelog evidence (2026-dated) showing plugin marketplace/versioning evolution and skill-adjacent controls like `effort` frontmatter support
 - Explicit research-tool/runtime contract:
   - permission-gated `WebSearch` / `WebFetch`
   - background subagent approval envelope

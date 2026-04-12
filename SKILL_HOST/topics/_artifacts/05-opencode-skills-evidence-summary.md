@@ -10,6 +10,8 @@
 - Agents/subagents/memory coupling
 - Fine-grained permissions
 - 75+ provider / local model surface
+- Explicit skills discovery rules and cross-host compatibility paths across `.opencode/skills`, `.claude/skills`, and `.agents/skills`
+- Provider onboarding and credential storage details (`/connect`, `~/.local/share/opencode/auth.json`, baseURL overrides)
 - 2026 changelog signals on token cost, plugin version pinning, compatibility, and provider stability
 - Plugin load order, Bun install behavior, compaction hooks, and safety defaults
 

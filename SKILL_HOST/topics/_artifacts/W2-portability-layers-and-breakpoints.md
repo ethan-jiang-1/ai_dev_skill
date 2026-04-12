@@ -26,11 +26,13 @@
   - registry discovery
   - `skills` CLI install/update flows
   - some host path compatibility
+  - sometimes, canonical-source plus mirror-sync automation across duplicated native directories
 - Relevant references:
   - [00-shared-agent-skills-quickstart-cross-host-paths.md](../_reference/00-shared-agent-skills-quickstart-cross-host-paths.md)
   - [00-shared-skills-cli-management-and-updates.md](../_reference/00-shared-skills-cli-management-and-updates.md)
   - [00-shared-opencode-skills-and-rules-compatibility.md](../_reference/00-shared-opencode-skills-and-rules-compatibility.md)
   - [06-cross-host-sync-skills-normalization-and-path-drift.md](../_reference/06-cross-host-sync-skills-normalization-and-path-drift.md)
+  - [06-claude-codex-mirror-sync-hook-and-canonical-source.md](../_reference/06-claude-codex-mirror-sync-hook-and-canonical-source.md)
 
 ### Layer 3: Workflow-method portability
 
@@ -73,6 +75,7 @@
   - [03-codex-subagents-runtime-controls-and-cost.md](../_reference/03-codex-subagents-runtime-controls-and-cost.md)
   - [04-cursor-plugin-bundles-and-ecosystem-direction.md](../_reference/04-cursor-plugin-bundles-and-ecosystem-direction.md)
   - [05-opencode-permissions-granularity-and-command-policy.md](../_reference/05-opencode-permissions-granularity-and-command-policy.md)
+  - [06-skill-codex-claude-plugin-delegation-and-runtime-contract.md](../_reference/06-skill-codex-claude-plugin-delegation-and-runtime-contract.md)
 
 ### Layer 6: Tool-surface and backend-policy portability
 
@@ -84,6 +87,7 @@
   - model restrictions or backend routing do not matter
 - Relevant references:
   - [02-claude-code-tool-permissions-web-controls-and-subagent-inheritance.md](../_reference/02-claude-code-tool-permissions-web-controls-and-subagent-inheritance.md)
+  - [03-codex-approvals-sandbox-web-search-and-subagent-inheritance.md](../_reference/03-codex-approvals-sandbox-web-search-and-subagent-inheritance.md)
   - [05-opencode-tools-websearch-provider-gating-and-subagent-defaults.md](../_reference/05-opencode-tools-websearch-provider-gating-and-subagent-defaults.md)
   - [04-cursor-subagent-routing-server-side-issue-2-6-22-through-3-0-4.md](../_reference/04-cursor-subagent-routing-server-side-issue-2-6-22-through-3-0-4.md)
 
@@ -97,6 +101,7 @@
   - a model/provider naming scheme that no longer matches the host
 - Relevant references:
   - [08-repo-research-analyst-multi-host-adoption-and-host-assumption-drift.md](../_reference/08-repo-research-analyst-multi-host-adoption-and-host-assumption-drift.md)
+  - [06-claude-to-codex-tool-mapping-and-subagent-translation.md](../_reference/06-claude-to-codex-tool-mapping-and-subagent-translation.md)
 
 ### Layer 7: External dependency portability
 
@@ -116,15 +121,20 @@
 ## Practical breakpoint rules
 
 - If a skill is mostly `rules + examples + references`, try direct reuse first.
+- If you need to satisfy multiple native skill directories, declare a canonical source and automate mirror sync before drift accumulates.
+- If a host scans multiple tool directories, verify deduplication and precedence behavior before treating cross-host coexistence as a benefit.
 - If a skill depends on `subagents + hooks + plugins`, assume only partial portability.
 - If a skill depends on `specific execution topology` such as worktrees, cloud agents, or background waits, test that layer before trusting reuse.
 - If a skill depends on `search / task / subagent tools`, verify actual tool availability and backend policy before trusting portability.
+- If a skill carries another host’s tool names or subagent labels, treat portability as translation work, not copy work.
 - If a skill body itself hardcodes host call shapes, stale years, or model/provider names, treat it as `installable but not yet trustworthy`.
 - If a skill depends on `external APIs + env vars + shell permissions`, portability should be treated as an integration project, not a copy operation.
 - If a skill seems "portable" only because it orchestrates multiple hosts together, treat it as a handoff pattern rather than host-equivalence proof.
+- If interoperability is achieved by wrapping another host’s CLI, treat that as delegated portability, not native portability.
 - If a skill declares host compatibility explicitly, treat that as a useful hint, not final proof.
 
 ## Strong provisional conclusion
 
 - Most confusion about “can this skill move across hosts?” comes from collapsing all seven layers into one yes/no question.
 - The useful answer is almost always: `some layers yes, later layers no or maybe`.
+- And some of the strongest 2026 examples do not solve portability by removing host differences; they solve it by synchronizing around them, translating across them, or delegating through them.

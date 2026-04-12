@@ -11,9 +11,13 @@
 - Cross-host compatible UX writing packaging
 - Multilingual document-writing scope
 - Academic writing standards as a narrow subdomain
+- API-documentation skill signal (OpenAPI/GraphQL oriented)
+- Structured engineering-doc skill signal (ADR/RFC/design-doc/KB)
+- Documentation-as-product / documentation-systems skill signal
+- Developer-facing content marketing / SEO writing skill signal
+- Minimal proofreading skill signal (preserve tone/meaning/order)
 
 ## Provisional direction
 
 - Writing skills are already a large, diverse, and packaging-friendly category.
 - They are often easier to reuse across hosts than research skills because many depend more on craft rules and references than on heavy runtime orchestration.
-

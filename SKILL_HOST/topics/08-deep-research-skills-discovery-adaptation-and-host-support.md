@@ -73,6 +73,10 @@
   - staged autonomous agent 型：显式拆出 planner、source evaluator、report generator [ref](./_reference/08-deep-research-agent-source-evaluation-pipeline.md)
   - deterministic routing / backend selection 型：按 use case 在通用研究和学术检索后端之间切换 [ref](./_reference/08-research-lookup-deterministic-routing-skill.md)
   - tool-heavy domain search 型：例如依赖 Valyu API 和显式运行前提的 domain retrieval [ref](./_reference/08-valyu-powered-search-skill-requirements.md)
+  - academic literature synthesis 型：围绕论文阅读、对话与综合（ArXiv 等）[ref](./_reference/08-chat-with-arxiv-academic-research-skill-registry-signal.md)
+  - market intelligence 型：围绕竞品、广告库、定位与信息抽取分析 [ref](./_reference/08-market-intelligence-gather-skill-registry-signal.md)
+  - prospect / lead research 型：围绕 ICP、证据搜集、资格评估与外联策略 [ref](./_reference/08-prospect-investigation-skill-registry-signal.md)
+  - knowledge-base research ops 型：在 Notion/知识库中检索、抓取、综合并生成结构化文档（外部依赖更显式）[ref](./_reference/08-research-management-notion-workspace-skill-registry-signal.md)
 - “能搜”与“能做 deep research”之间的区别，现在已经能通过 skill 内容本身观察到：
   - 真正高级的 skill 会写 report contract、source triage、citation verification、parallel drafting 和 merge [ref](./_reference/08-deep-research-skill-evidence-mapping-and-parallel-drafting.md)
   - 只是 search wrapper 的 skill，更多强调 backend、API、统一检索入口和依赖前提 [ref](./_reference/08-research-lookup-deterministic-routing-skill.md) [ref](./_reference/08-valyu-powered-search-skill-requirements.md)
@@ -84,7 +88,11 @@
 - 而且已经能看到“安装传播很广，但宿主假设仍然会漂移”的现实例子：
   - `repo-research-analyst` 已跨 `opencode / codex / gemini-cli / cursor / github-copilot / amp` 分布
   - 但内部仍携带 `Task(...)`、`subagent_type="general-purpose"`、以及 `The current year is 2025` 这样的运行假设漂移 [ref](./_reference/08-repo-research-analyst-multi-host-adoption-and-host-assumption-drift.md)
+- 现在又多了一条更“近身”的适配证据：
+  - 一份 Claude -> Codex 迁移映射文档，直接把 Claude 风格工具引用、计划语义和 subagent label 翻译到 Codex
+  - 这说明很多 research skill 即使安装得上，仍然要先做 host-call-shape translation，不能把原文当成可直接执行的 runtime contract [ref](./_reference/06-claude-to-codex-tool-mapping-and-subagent-translation.md)
 - host 对这类 skill 的承接能力，也在 2026 明显拉开：
+  - Codex 把 approval policy、sandbox, network access、`web_search` 模式、subagent inheritance 明确暴露出来，因此 research workflow 的前提更可建模 [ref](./_reference/03-codex-approvals-sandbox-web-search-and-subagent-inheritance.md)
   - Cursor `3.0` 已经支持在 repos、本地、worktrees、cloud、remote SSH 上并行跑 agents，还新增了 `Await` 和更快的 Explorer subagent startup [ref](./_reference/04-cursor-3-0-agents-window-await-tool-and-cloud-runtime.md)
   - OpenCode 则把 `websearch` 的 provider gating、`webfetch` / `websearch` 分工、以及 subagent tool defaults 直接写进 tools docs [ref](./_reference/05-opencode-tools-websearch-provider-gating-and-subagent-defaults.md)
   - Cursor 官方 forum 还显示，research workflow 依赖的 subagent availability 可能受 server-side provisioning、Composer routing 和 model restrictions 影响 [ref](./_reference/04-cursor-subagent-routing-server-side-issue-2-6-22-through-3-0-4.md)
@@ -107,12 +115,19 @@
   - workflow-method 本身可以很强
   - install portability 也可以很强
   - 但一到 runtime call shape、宿主术语、日期假设，就还是会漂 [ref](./_reference/08-repo-research-analyst-multi-host-adoption-and-host-assumption-drift.md)
+- 现在已经有一份更直接的迁移材料，把这种“漂”拆成了具体适配动作：
+  - 保留研究方法
+  - 重写工具名
+  - 重写计划语义
+  - 重写 subagent role label
+  - 对没有等价物的宿主特性明确承认“不存在标准映射” [ref](./_reference/06-claude-to-codex-tool-mapping-and-subagent-translation.md)
 - 这也解释了为什么你要的重点不该是“自己从零搭研究系统”，而是先判断：
   - 这个 skill 属于哪一类
   - 哪些能直接用
   - 哪些只能借思路
   - 哪些需要宿主专属能力才能真正成立
 - 现在可以把“宿主专属能力”说得更具体：
+  - 有的宿主把 approval / sandbox / search mode 直接暴露出来
   - 有的宿主给你多环境并行执行
   - 有的宿主把 search tool 绑到特定 provider
   - 有的宿主默认不给 subagents 某些工具
@@ -129,11 +144,18 @@
   - citation verification [ref](./_reference/08-deep-research-agent-source-evaluation-pipeline.md) [ref](./_reference/08-deep-research-skill-evidence-mapping-and-parallel-drafting.md)
 - 另一个趋势是：deterministic data source 和智能 backend routing 正在变成 skill 的重要价值点 [ref](./_reference/08-research-lookup-deterministic-routing-skill.md) [ref](./_reference/08-valyu-powered-search-skill-requirements.md)
 - 还有一个越来越明确的趋势是：高阶 research skill 不再只吃“单一对话 + 单次搜索”，而是越来越依赖多环境执行、background waits、parallel agents、provider-aware tool routing [ref](./_reference/04-cursor-3-0-agents-window-await-tool-and-cloud-runtime.md) [ref](./_reference/05-opencode-tools-websearch-provider-gating-and-subagent-defaults.md)
+- Codex 则补上了另一面：高阶 research skill 还越来越依赖 host 是否把 approval / search / network / subagent inheritance 写成可配置、可治理的显式契约 [ref](./_reference/03-codex-approvals-sandbox-web-search-and-subagent-inheritance.md)
 - 同时还出现了另一个值得注意的趋势：这类 skill 的 install 分布可能很快扩散，但 skill 文本本身的 host assumptions 更新未必同步跟上 [ref](./_reference/08-repo-research-analyst-multi-host-adoption-and-host-assumption-drift.md)
+- 所以还要再补一个趋势判断：
+  - deep research skill 的 portability 越来越不是“原样迁移”
+  - 而是“方法论可迁移，call shape 要翻译，runtime contract 要重判” [ref](./_reference/06-claude-to-codex-tool-mapping-and-subagent-translation.md)
 - 最大难点也很清楚：
   - 越高级的 research skill，越容易强依赖 host runtime
   - 越依赖外部 API，setup 和权限成本越高
   - 越依赖 parallel agents，越容易碰到宿主稳定性、server-side routing、管理员模型策略与 token 成本问题 [ref](./_reference/03-codex-subagents-runtime-controls-and-cost.md) [ref](./_reference/04-cursor-subagent-and-skill-rollout-friction.md) [ref](./_reference/04-cursor-subagent-routing-server-side-issue-2-6-22-through-3-0-4.md) [ref](./_reference/05-opencode-permissions-granularity-and-command-policy.md)
+- 现在还可以再说得更精确一点：
+  - 很多失败不是因为研究方法不行
+  - 而是因为 skill 体内把宿主工具面、delegation 语义和 plan-mode 前提写死了 [ref](./_reference/06-claude-to-codex-tool-mapping-and-subagent-translation.md)
 
 ## 本轮新增维护 / 版本管理 / 模型要求
 
@@ -158,6 +180,11 @@
   - 当前依赖是否齐全
   - 当前 provider 是否给到所需 search surface
   - 当前团队 / 账户策略会不会影响 subagent routing [ref](./_reference/08-valyu-powered-search-skill-requirements.md) [ref](./_reference/05-opencode-tools-websearch-provider-gating-and-subagent-defaults.md) [ref](./_reference/04-cursor-subagent-routing-server-side-issue-2-6-22-through-3-0-4.md)
+- 对 Codex 这类 host 还要再看：
+  - 当前 approval policy 是什么
+  - `web_search` 是 `disabled / cached / live` 哪种
+  - sandbox 里有没有 network access
+  - cloud 任务环境是否默认禁网 [ref](./_reference/03-codex-approvals-sandbox-web-search-and-subagent-inheritance.md)
 - 还得再加一项：
   - skill 本身有没有携带过时的 host call shape、年代假设或 invocation 约定 [ref](./_reference/08-repo-research-analyst-multi-host-adoption-and-host-assumption-drift.md)
 
@@ -166,7 +193,11 @@
 - 2026 年的 deep research skill 生态已经足够成熟到可以分型，而不应该再被统称为“搜索 skill”。
 - 它们的最大价值，在于把研究过程里的治理步骤编译进去；也正因为如此，它们比写作 skill 更能暴露宿主的真实上限 [ref](./_reference/08-deep-research-skill-evidence-mapping-and-parallel-drafting.md) [ref](./_reference/08-deep-research-agent-source-evaluation-pipeline.md)
 - 2026 年之后，这个“暴露宿主上限”的方式已经很具体：要看 host 是否支持并行 agent、background waits、多环境执行、provider-aware search，以及 subagent 可拿到的实际工具面 [ref](./_reference/04-cursor-3-0-agents-window-await-tool-and-cloud-runtime.md) [ref](./_reference/05-opencode-tools-websearch-provider-gating-and-subagent-defaults.md)
+- Codex 的证据进一步说明，这里面还包括 host 是否把 approval、search、network、delegation inheritance 变成显式可治理对象 [ref](./_reference/03-codex-approvals-sandbox-web-search-and-subagent-inheritance.md)
 - 而且这些约束不一定都写在静态 docs 里；有些会藏在 server-side provisioning、Composer routing、team model restrictions 这种后台运行层 [ref](./_reference/04-cursor-subagent-routing-server-side-issue-2-6-22-through-3-0-4.md)
 - 另一个现实风险也已经很清楚：research skill 可以装得很广，但 skill 体内的宿主假设、调用形态和年份前提仍然会漂，所以“装得上”和“按原意跑得对”不是一回事 [ref](./_reference/08-repo-research-analyst-multi-host-adoption-and-host-assumption-drift.md)
+- 而且现在已经能看到一种更成熟的适配观：
+  - 真正该迁移的是 research method、evidence discipline 和 output contract
+  - 工具名、subagent label、plan-mode 假设则应该被当作 host-specific shell，必要时重写 [ref](./_reference/06-claude-to-codex-tool-mapping-and-subagent-translation.md)
 - 它们的主要风险，不在于“有没有这个 skill”，而在于你是否误把一个 search wrapper 当成了真正的 deep research workflow [ref](./_reference/08-research-lookup-deterministic-routing-skill.md)
 - 如果目标是判断“哪类现成 research skill 可以直接拿来试，哪类只能借思路”，这一条线现在已经开始有很清楚的研究价值。

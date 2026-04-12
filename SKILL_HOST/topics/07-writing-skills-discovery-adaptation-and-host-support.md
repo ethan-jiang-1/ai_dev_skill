@@ -75,12 +75,18 @@
 
 - 2026 年 writing skills 已经形成相当清楚的几个子类：
   - technical writing / documentation standardization [ref](./_reference/07-technical-writer-skill-patterns-and-install-flow.md)
+  - API documentation / OpenAPI / GraphQL docs [ref](./_reference/07-api-documenter-writing-skill-registry-signal.md)
+  - structured engineering docs: ADR/RFC/design-doc/KB [ref](./_reference/07-document-writer-writing-skill-registry-signal.md)
+  - documentation as a product / documentation systems [ref](./_reference/07-documentation-engineer-writing-skill-registry-signal.md)
   - human-style prose correction / anti-AI-tone [ref](./_reference/07-good-prose-human-style-reuse-pattern.md)
   - UX writing / microcopy / content audits [ref](./_reference/07-ux-writing-cross-host-compatibility-signal.md)
+  - developer-focused content marketing / SEO writing [ref](./_reference/07-content-marketer-writing-skill-registry-signal.md)
   - multilingual document-writing conventions [ref](./_reference/07-document-writing-multilingual-skill-scope.md)
   - academic / scientific writing standards [ref](./_reference/07-academic-writing-standards-skill-signal.md)
+  - proofreading / light copy-edit with preservation constraints [ref](./_reference/07-proof-skill-proofreading-registry-signal.md)
 - 这些写作 skill 的安装路径已经明显平台化：
   - `npx skills add ... --skill technical-writer`
+  - `npx skills add ... --skill api-documenter / document-writer / documentation-engineer / content-marketer / proof`
   - registry-first 发现和安装正在替代手动复制目录 [ref](./_reference/07-technical-writer-skill-patterns-and-install-flow.md) [ref](./_reference/00-shared-skills-cli-management-and-updates.md)
 - 有些写作 skill 已经开始显式声明 host compatibility：
   - 某些 skill 直接写出兼容 Claude Desktop、Claude Code、Codex CLI / IDE
@@ -138,4 +144,3 @@
 - 它们的最大优势，是复用门槛低、安装路径清楚、很多只需轻量替换参考材料就能开始服务自己的 workflow [ref](./_reference/07-technical-writer-skill-patterns-and-install-flow.md) [ref](./_reference/07-good-prose-human-style-reuse-pattern.md)
 - 它们的主要风险，不在于装不上，而在于你可能高估了 skill 的质量、风格保持能力或专业可靠性 [ref](./_reference/07-academic-writing-standards-skill-signal.md)
 - 如果目标是“快速理解 skill 能分装什么、怎么借别人 skill 学会自己的 skill 判断”，写作类 skill 仍然是最好的入口之一。
-

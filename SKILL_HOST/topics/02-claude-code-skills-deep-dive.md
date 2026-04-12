@@ -63,6 +63,13 @@
   - skill 默认只把 `name + description` 暴露给模型
   - 完整内容在使用时才加载
   - `disable-model-invocation: true` 可以把一个 skill 变成只允许用户显式调用，从而把常驻上下文成本降到零 [ref](./_reference/02-claude-code-skills-loading-and-invocation.md)
+- Claude 的 skill “落点与治理”也已经有官方明确表格化定义：
+  - skill 可以来自 enterprise / personal / project / plugin 四层
+  - `enterprise > personal > project` 有明确优先级
+  - plugin skills 使用 `plugin-name:skill-name` namespace，避免与其他层冲突
+  - monorepo 场景下会自动发现 nested `.claude/skills/`
+  - `--add-dir` 默认是 file-access，但 `.claude/skills/` 是官方例外：会被自动加载且支持 live change detection
+  - `SKILL.md` frontmatter 已经显式支持 `allowed-tools`、`model`、`effort`、`context: fork`、`$ARGUMENTS` 等运行控制面 [ref](./_reference/02-claude-code-skills-authoring-discovery-and-frontmatter.md)
 - Claude 不是把 skill 当单一扩展点，而是把它放进一个更大的执行栈：
   - `CLAUDE.md`
   - `Skills`
@@ -70,6 +77,11 @@
   - `Subagents`
   - `Hooks`
   - `Plugins` [ref](./_reference/02-claude-code-skills-loading-and-invocation.md) [ref](./_reference/00-shared-claude-code-skills-roles-and-plugin-architecture.md)
+- Claude 的持久规则层也有更“可操作”的官方契约：
+  - `CLAUDE.md` / `CLAUDE.local.md` 通过向上 walking + concatenation 组合进上下文（不是 override）
+  - 官方建议用 `CLAUDE.md` import `AGENTS.md` 来降低多宿主 instruction 漂移
+  - `.claude/rules/` 与 `claudeMdExcludes` 用于压制 monorepo 里的规则冲突与过度加载
+  - auto memory 的存储位置、权限边界与加载上限（`first 200 lines or 25KB`）被明确写出 [ref](./_reference/02-claude-code-memory-claude-md-rules-and-auto-memory.md)
 - Claude 的作用域和持久化模型已经非常具体：
   - `skills/` 可以在 project 和 global 两层存在
   - `~/.claude/plugins/` 会保存 marketplace clone、已安装版本和插件数据
@@ -94,10 +106,19 @@
   - background subagents 只继承启动前已批准的权限，未预批内容会 auto-deny
   - subagents 默认继承主线程工具与 MCP，但也可通过 `tools / disallowedTools` 收窄
   - `Task` 在 `2.1.63` 已迁移为 `Agent`，旧写法只是 alias [ref](./_reference/02-claude-code-tool-permissions-web-controls-and-subagent-inheritance.md)
+- Claude 的权限治理也被做成了显式的 mode contract，而不是“靠 prompt 约束”：
+  - `default / acceptEdits / plan / auto / dontAsk / bypassPermissions` 各自定义了无需提示即可执行的动作
+  - protected paths 仍然保持“永不自动批准”的硬护栏
+  - 这会直接改变 orchestration-heavy skills 的可运行性与可维护性 [ref](./_reference/02-claude-code-permission-modes-and-protected-paths.md)
 - 2026 年的 changelog 已经暴露出 skills 进入规模化使用后的真实问题：
   - large `.claude/skills` 目录在 `git pull` 时曾触发 deadlock 修复
   - `/skills` description 被压到 `250` 字符以降低 context cost
   - Claude 专门改善了长会话里的 skill state 释放 [ref](./_reference/00-shared-claude-code-skills-2026-operational-signals.md)
+- 同时，官方 changelog 也给了更硬的“版本管理与控制面增长”证据：
+  - plugins 可 pin 到 git commit SHA（精确版本安装）
+  - marketplace 在离线/拉取失败时的 cache 保留策略被显式提供
+  - `effort` frontmatter 可对 skills / slash commands 覆盖会话级 effort
+  - `--add-dir` 的 marketplace/governance 相关行为也在 2026 迭代中被扩展 [ref](./_reference/02-claude-code-changelog-2026-plugin-and-skill-surface.md)
 
 ## 本轮新增机制理解
 
@@ -136,6 +157,9 @@
   - plugin 使用 semver
   - 本地 override 可覆盖 marketplace 版本用于测试
   - orphan cleanup 是官方显式支持的机制 [ref](./_reference/02-claude-code-plugin-marketplaces-and-versioning.md) [ref](./_reference/02-claude-code-directory-scope-and-persistence.md)
+- 它对“可重复部署/可追溯升级”的支持也在 2026 changelog 里变得更具体：
+  - plugins 可 pin 到 git commit SHA
+  - marketplace 更新失败的离线容错被写成显式 env var [ref](./_reference/02-claude-code-changelog-2026-plugin-and-skill-surface.md)
 - Claude 在运维层面也已经暴露出真实维护面：
   - large skills directories
   - memory usage
@@ -146,6 +170,9 @@
   - 可以限制工具
   - hooks 则直接触发系统能力
   - web research 还要满足 `WebFetch / WebSearch` 的权限前提 [ref](./_reference/02-claude-code-hooks-subagents-and-skill-composition.md) [ref](./_reference/02-claude-code-tool-permissions-web-controls-and-subagent-inheritance.md)
+- 同时 skills 自身也已经开始承载更显式的“模型与推理档位”控制面：
+  - `model` / `effort` frontmatter 可用于 skill-scoped 覆盖
+  - 这使得 “skills ≈ prompt 文件” 的理解在 Claude 上更不成立 [ref](./_reference/02-claude-code-skills-authoring-discovery-and-frontmatter.md) [ref](./_reference/02-claude-code-changelog-2026-plugin-and-skill-surface.md)
 - 这意味着 Claude 的高阶 skills 对“模型能力 + 工具权限 + 编排能力”的要求很强，对只想写一个孤立 `SKILL.md` 的用户则不一定友好。
 
 ## 当前判断（本轮综合后）
