@@ -50,6 +50,14 @@
 - `06-claude-to-codex-tool-mapping-and-subagent-translation.md` — tool mapping 需求说明 runtime 差异
 - `08-repo-research-analyst-multi-host-adoption-and-host-assumption-drift.md` — install spread ≠ semantic portability
 
+### 判断 2.4：`description` 是 discoverability / routing contract
+
+**来源**：Topic 01 机制判断 + Quickstart 经验总结
+
+**支撑证据**：
+- `00-shared-agent-skills-description-optimization.md` — description 质量直接影响发现/激活与误触发风险
+- `00-shared-agent-skills-specification.md` — description 字段的约束与用途（不是装饰字段）
+
 ---
 
 ## 第 3 章：四大 Host 的 Runtime Contract
