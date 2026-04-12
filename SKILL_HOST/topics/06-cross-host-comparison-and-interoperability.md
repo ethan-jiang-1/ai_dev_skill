@@ -78,12 +78,20 @@
 - 这种生态信号还可以按 skill 类型细分：
   - `technical-writer` 这类轻 orchestration、重规则与范式的 skill，已经能在 `opencode / gemini-cli / codex / cursor / github-copilot / claude-code` 上出现安装分布
   - 这说明“写作 / 文档类 skill 更容易跨宿主铺开”不是空想，而是已经有真实分布支持 [ref](./_reference/07-technical-writer-skill-patterns-and-install-flow.md)
+- 还有一种更朴素但很说明问题的 portability 需求：
+  - 社区已经出现专门把同一个 skill 同步到多家工具目录的 `sync-skills`
+  - 它把 `.agents/skills` 当作通用锚点，但自身目录映射又暴露出 path drift 风险 [ref](./_reference/06-cross-host-sync-skills-normalization-and-path-drift.md)
 - 互通的具体形态还不只是一份 skill 在多家安装：
   - 已经出现把 Claude Code 和 Codex 明确编排进一个循环里的 workflow skill
   - 这种 portability 更接近“跨宿主协作编排”，而不是“单宿主能力完全等价” [ref](./_reference/06-cross-host-codex-claude-loop-example.md)
+- 研究型 skill 的 registry 分布也进一步说明了分层 portability：
+  - `repo-research-analyst` 已经跨多个 host 被安装
+  - 但 skill 内部仍可能携带 `Task(...)`、`subagent_type="general-purpose"`、甚至错误年份这样的宿主假设漂移 [ref](./_reference/08-repo-research-analyst-multi-host-adoption-and-host-assumption-drift.md)
 - 最新 host 演进也说明，横向比较不能只盯格式兼容，还得盯 execution topology：
   - Cursor 已经从 IDE / CLI 扩到 worktrees、cloud、remote SSH、self-hosted cloud agents [ref](./_reference/04-cursor-3-0-agents-window-await-tool-and-cloud-runtime.md)
   - OpenCode 则把 provider-gated `websearch` 与 subagent tool defaults 直接暴露出来 [ref](./_reference/05-opencode-tools-websearch-provider-gating-and-subagent-defaults.md)
+- Claude 这边则提供了另一类对照：
+  - 研究型 workflow 的关键工具面和 delegation contract 明确写在官方 docs 里，例如 permission-gated `WebSearch / WebFetch`、background subagent approval envelope、`Task -> Agent` 演化 [ref](./_reference/02-claude-code-tool-permissions-web-controls-and-subagent-inheritance.md)
 - 而且 hidden runtime constraints 已经不是抽象担忧：
   - Cursor 官方 forum 明确出现了 `Task` tool provisioning 的 server-side 问题
   - subagent availability 还会受 Composer routing 和 team model restrictions 影响 [ref](./_reference/04-cursor-subagent-routing-server-side-issue-2-6-22-through-3-0-4.md)
@@ -110,8 +118,9 @@
   - spec 统一的是文件与元数据
   - registry / CLI 统一的是一部分发现和更新动作
   - 真正差异最大的部分，是 host 各自如何把 skill 嵌进 rules / plugins / subagents / permissions / MCP
+  - 连最表层的“同步到正确目录”这件事，也会被 community path drift 影响
   - 结果就是：轻流程 skill 往往更容易多宿主复用，重 orchestration skill 往往更容易演化成 handoff 或 host-specialized workflow
-  - 甚至在实践里，跨宿主“可移植”有时意味着把不同宿主放到同一条 loop 里分工，而不是强行追求一个 runtime 等价壳 [ref](./_reference/00-shared-agent-skills-integration-guide.md) [ref](./_reference/00-shared-opencode-skills-and-rules-compatibility.md) [ref](./_reference/00-shared-claude-code-skills-roles-and-plugin-architecture.md) [ref](./_reference/06-cross-host-codex-claude-loop-example.md)
+  - 甚至在实践里，跨宿主“可移植”有时意味着把不同宿主放到同一条 loop 里分工，而不是强行追求一个 runtime 等价壳 [ref](./_reference/00-shared-agent-skills-integration-guide.md) [ref](./_reference/00-shared-opencode-skills-and-rules-compatibility.md) [ref](./_reference/00-shared-claude-code-skills-roles-and-plugin-architecture.md) [ref](./_reference/06-cross-host-codex-claude-loop-example.md) [ref](./_reference/08-repo-research-analyst-multi-host-adoption-and-host-assumption-drift.md)
 
 ## 本轮新增趋势与难点
 
@@ -124,6 +133,7 @@
   - Cursor 把 agent execution 扩到本地、worktree、cloud、SSH、自托管环境 [ref](./_reference/04-cursor-3-0-agents-window-await-tool-and-cloud-runtime.md)
   - OpenCode 明确暴露 `websearch` gating 与 subagent tool defaults [ref](./_reference/05-opencode-tools-websearch-provider-gating-and-subagent-defaults.md)
 - 更进一步，host 的差异还开始体现在“哪些运行层约束是显式的，哪些是隐式的”：
+  - Claude 倾向把 research tool permissions 和 subagent inheritance 明确写进 docs
   - OpenCode 倾向把 permissions 和 tool gating 写在文档里
   - Cursor 则至少有一部分 subagent 行为要通过 forum 与 support 交互才能看见 [ref](./_reference/05-opencode-tools-websearch-provider-gating-and-subagent-defaults.md) [ref](./_reference/04-cursor-subagent-routing-server-side-issue-2-6-22-through-3-0-4.md)
 - 另一个趋势是：分发和更新正在脱离“手动复制目录”阶段，开始出现 registry + CLI + telemetry 的平台化层 [ref](./_reference/00-shared-skills-sh-docs-registry-safety-and-telemetry.md) [ref](./_reference/00-shared-skills-cli-management-and-updates.md)
@@ -131,6 +141,9 @@
 - 这也让 portability 呈现出两条并行路线：
   - 一条是 `technical-writer` 这种轻技能在多宿主直接铺开
   - 一条是 `codex-claude-loop` 这种把不同宿主串起来分工 [ref](./_reference/07-technical-writer-skill-patterns-and-install-flow.md) [ref](./_reference/06-cross-host-codex-claude-loop-example.md)
+- 但现在还应补第三条更现实的路线：
+  - 先用 `sync-skills` 这类工具做目录层同步
+  - 再面对 path drift、tool surface、runtime semantics 逐层修正 [ref](./_reference/06-cross-host-sync-skills-normalization-and-path-drift.md)
 - 主要难点则集中在三处：
   - runtime semantics 不一致，导致同一个 skill 外壳可移植，但执行质量不等价
   - host-native 运维成熟度差异明显
@@ -155,8 +168,10 @@
 
 - 截至 `2026-04-12`，四家在 `skills` 上已经形成“同格式、不同运行栈”的局面，这个判断是成立的 [ref](./_reference/00-shared-agent-skills-specification.md) [ref](./_reference/00-shared-agent-skills-integration-guide.md)
 - 真正可互通的部分，首先是文件格式、frontmatter、部分目录 convention，以及越来越明显的 registry / CLI 发现层；最难互通的是 host-native runtime 行为，包括 rules、plugins、subagents、permissions、hooks 与 MCP 编排 [ref](./_reference/00-shared-agent-skills-quickstart-cross-host-paths.md) [ref](./_reference/00-shared-skills-sh-ecosystem-usage-signals.md) [ref](./_reference/00-shared-opencode-skills-and-rules-compatibility.md)
+- 目录层 portability 也不能想得太乐观：社区已经在主动做 multi-host sync，但这类映射会随着 host path 约定演化而漂移，所以“安装层 portability”本身也有维护成本 [ref](./_reference/06-cross-host-sync-skills-normalization-and-path-drift.md)
 - 但“互通”还应该补上一层实践定义：在 2026，跨宿主 skill 也可以表现为 handoff workflow，本质是让不同 agent 各做自己擅长的段落，而不是要求它们共享完全相同的 runtime 语义 [ref](./_reference/06-cross-host-codex-claude-loop-example.md)
 - 同时，轻技能和重技能的 portability 路径并不一样：像 technical writing 这种以规则、范式、示例为主的技能，更接近直接复用；像复杂 orchestration 技能，则更接近按宿主能力重新编排 [ref](./_reference/07-technical-writer-skill-patterns-and-install-flow.md) [ref](./_reference/06-cross-host-codex-claude-loop-example.md)
+- 研究型 skill 还进一步证明了一点：install portability 可以很强，但 runtime-semantic portability 仍可能因为旧调用形态、宿主假设、年份和参数漂移而失真 [ref](./_reference/08-repo-research-analyst-multi-host-adoption-and-host-assumption-drift.md)
 - 同时，真正决定复杂 skill 能不能跑稳的，越来越是 execution topology 和 tool-surface assumptions，而不是单纯的格式兼容 [ref](./_reference/04-cursor-3-0-agents-window-await-tool-and-cloud-runtime.md) [ref](./_reference/05-opencode-tools-websearch-provider-gating-and-subagent-defaults.md)
 - 再往深一点说，复杂 skill 的稳定性还取决于这些约束是公开可建模的，还是藏在后台路由和团队策略里；这会直接影响排错成本与可移植性判断 [ref](./_reference/04-cursor-subagent-routing-server-side-issue-2-6-22-through-3-0-4.md)
 - 如果只看取向：

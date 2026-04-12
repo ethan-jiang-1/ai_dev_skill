@@ -89,6 +89,11 @@
   - hooks 可执行 command / HTTP / prompt / agent hooks
   - hooks 带明确安全警告，因为它们运行在用户权限下
   - subagents 可预加载 skills、限制工具、选模型、持久化 memory [ref](./_reference/02-claude-code-hooks-subagents-and-skill-composition.md)
+- Claude 对研究型 workflow 的真实运行边界现在也更清楚了：
+  - `WebFetch` 与 `WebSearch` 都是 permission-gated
+  - background subagents 只继承启动前已批准的权限，未预批内容会 auto-deny
+  - subagents 默认继承主线程工具与 MCP，但也可通过 `tools / disallowedTools` 收窄
+  - `Task` 在 `2.1.63` 已迁移为 `Agent`，旧写法只是 alias [ref](./_reference/02-claude-code-tool-permissions-web-controls-and-subagent-inheritance.md)
 - 2026 年的 changelog 已经暴露出 skills 进入规模化使用后的真实问题：
   - large `.claude/skills` 目录在 `git pull` 时曾触发 deadlock 修复
   - `/skills` description 被压到 `250` 字符以降低 context cost
@@ -97,6 +102,10 @@
 ## 本轮新增机制理解
 
 - Claude 的关键不在于“支持 skills”，而在于它把 skill 明确放在“按需加载的方法论层”，而把 `CLAUDE.md` 放在“始终在线的背景规则层”，把 subagents 放在“隔离执行层”，把 hooks 放在“确定性后处理或控制层” [ref](./_reference/02-claude-code-skills-loading-and-invocation.md) [ref](./_reference/02-claude-code-hooks-subagents-and-skill-composition.md)
+- 这一层“隔离执行层”不是抽象说法，而是有明确 host contract 的：
+  - 搜索和抓取要过权限闸门
+  - 后台 subagent 只能在预批权限包内行动
+  - delegation 语义还经历了 `Task -> Agent` 的演化 [ref](./_reference/02-claude-code-tool-permissions-web-controls-and-subagent-inheritance.md)
 - 这意味着 Claude 上真正强的 workflow 很少是纯 skill 独立完成的，更多是：
   - `skill + CLAUDE.md`
   - `skill + plugin`
@@ -118,6 +127,7 @@
 - Claude 的主要难点也因此非常具体：
   - 能力强，但系统耦合也强
   - 一旦 workflow 依赖 hooks / subagents / marketplace policies / MCP，迁移成本就会迅速上升
+  - 研究型 workflow 还要额外处理 permission-gated web tools 与 background approval envelope
   - skill 作者必须更认真地管理 description、触发方式和 context footprint，否则在 Claude 里反而更容易造成混乱或膨胀 [ref](./_reference/02-claude-code-skills-loading-and-invocation.md) [ref](./_reference/00-shared-agent-skills-best-practices.md)
 
 ## 本轮新增维护 / 版本管理 / 模型要求
@@ -134,13 +144,13 @@
 - Claude 上的模型要求和工具要求不是由 skill spec 决定，而是由 subagent/hook/plugin 组合决定：
   - subagents 可以选模型
   - 可以限制工具
-  - hooks 则直接触发系统能力 [ref](./_reference/02-claude-code-hooks-subagents-and-skill-composition.md)
+  - hooks 则直接触发系统能力
+  - web research 还要满足 `WebFetch / WebSearch` 的权限前提 [ref](./_reference/02-claude-code-hooks-subagents-and-skill-composition.md) [ref](./_reference/02-claude-code-tool-permissions-web-controls-and-subagent-inheritance.md)
 - 这意味着 Claude 的高阶 skills 对“模型能力 + 工具权限 + 编排能力”的要求很强，对只想写一个孤立 `SKILL.md` 的用户则不一定友好。
 
 ## 当前判断（本轮综合后）
 
 - Claude Code 在 2026 年已经不是“有 skills 的 coding agent”这么简单，而是已经形成了 `skills + plugins + hooks + subagents + marketplace governance` 的组合式平台 [ref](./_reference/02-claude-code-plugin-marketplaces-and-versioning.md) [ref](./_reference/02-claude-code-settings-marketplace-governance.md) [ref](./_reference/02-claude-code-hooks-subagents-and-skill-composition.md)
 - Claude 的最大优势，不只是有很多 skill，而是它对高阶方法论工作流的承载最成熟，尤其适合研究型、写作型、流水线型 skill [ref](./_reference/02-claude-code-hooks-subagents-and-skill-composition.md)
-- Claude 的最大代价，是很多真正有价值的 skill 工作流已经不是“纯 skill”了，而是 deeply host-specific；这会直接提高迁移成本和维护复杂度 [ref](./_reference/02-claude-code-skills-loading-and-invocation.md) [ref](./_reference/00-shared-claude-code-skills-2026-operational-signals.md)
+- Claude 的最大代价，是很多真正有价值的 skill 工作流已经不是“纯 skill”了，而是 deeply host-specific；这会直接提高迁移成本和维护复杂度，而且研究型 skill 还会撞上显式的 web-tool 权限与后台 subagent approval contract [ref](./_reference/02-claude-code-skills-loading-and-invocation.md) [ref](./_reference/00-shared-claude-code-skills-2026-operational-signals.md) [ref](./_reference/02-claude-code-tool-permissions-web-controls-and-subagent-inheritance.md)
 - 如果想研究“skill 生态成熟以后长什么样”，Claude 目前仍然是最值得深挖的主样本之一。
-

@@ -11,6 +11,10 @@
 - Staged autonomous research-agent pattern
 - Intelligent backend routing pattern
 - Valyu-powered deterministic domain retrieval pattern
+- Claude runtime contract for research work: permission-gated web tools, subagent inheritance limits, Task-to-Agent evolution
+- Cursor hidden backend constraints for delegated execution across `2.6.22 -> 3.0.4`
+- OpenCode provider-gated `websearch`, split `webfetch / websearch`, and subagent tool-default caveats
+- `repo-research-analyst` as a real example of broad install spread plus stale runtime assumptions
 
 ## Provisional direction
 
@@ -20,4 +24,6 @@
   - backend-routing style
   - deterministic domain search style
 - The more advanced the pattern, the more it depends on host runtime quality, external tools, and permission/model support.
-
+- A new practical distinction is now visible:
+  - some research skills are easy to install widely
+  - but still require adaptation because host call shapes, permissions, provider surfaces, or even date assumptions drift

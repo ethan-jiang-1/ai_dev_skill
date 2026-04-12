@@ -9,6 +9,7 @@
 - trust_level: practitioner
 - why_it_matters: this is strong ecosystem evidence that users actively need to distribute the same skill across many hosts, while also revealing that community-maintained portability maps can drift from current official host docs
 - claims_supported: cross-host sync is now a real user need; `.agents/skills` is treated as a universal anchor by practitioners; path normalization across hosts is fragile and can become stale
+- captured_excerpt: partial
 - canonical_exception: no
 
 ## 关键事实
@@ -25,6 +26,20 @@
   - weekly installs `42`
   - installs on `gemini-cli`, `codex`, `cursor`, `opencode`, `github-copilot`, `antigravity`
 - Compared with current official OpenCode docs used elsewhere in this research, this skill’s `~/.config/opencode/skill` path appears stale against the current `skills` directory convention.
+
+## 核心内容摘录
+
+- This listing is valuable because it encodes a practitioner portability model directly in automation:
+  - one source skill
+  - multiple target host directories
+  - `.agents/skills` treated as the common denominator
+- That tells us two things at once:
+  - multi-host sync is no longer a theoretical need
+  - users are already trying to normalize host differences operationally
+- But the same artifact also shows why portability remains fragile:
+  - its directory map can drift behind current official docs
+  - once a sync script bakes in stale host paths, install portability itself starts to wobble
+  - so even the “easy” portability layer depends on keeping path conventions current
 
 ## 与本研究的关系
 

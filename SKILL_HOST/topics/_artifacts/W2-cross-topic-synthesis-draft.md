@@ -54,6 +54,7 @@
 - This is now supported by concrete contrast:
   - `technical-writer` style skills can spread across many hosts directly
   - complex multi-agent workflows increasingly become host-specialized or even cross-host handoff patterns
+  - research skills can also spread widely at install level while still carrying stale call-shape or date assumptions internally
 
 ## Strong provisional conclusions
 
@@ -61,6 +62,7 @@
 - Writing skills are a natural entry point for people learning to leverage existing skills.
 - Research skills are the best stress test for comparing host quality.
 - `Light skills` and `heavy orchestration skills` now clearly follow different portability paths.
+- `Path drift` and `assumption drift` are now concrete ecosystem problems, not theoretical risks.
 - The next-generation comparison problem is not only `what features exist`, but `which constraints are explicit, which are hidden, and where the agent can actually run`.
 - The next useful synthesis layer is a concrete decision framework:
   - who should use which host

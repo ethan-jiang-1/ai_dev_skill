@@ -9,6 +9,7 @@
 - trust_level: official
 - why_it_matters: clarifies the practical runtime surface for research-oriented skills in Claude Code by showing which tools require permission, how background subagents inherit approvals, and how tool access can be narrowed or expanded
 - claims_supported: WebSearch and WebFetch are permission-gated; Task/Agent orchestration semantics have evolved; subagents inherit tools and permissions by default but can be restricted; background subagents auto-deny anything not pre-approved
+- captured_excerpt: partial
 - canonical_exception: no
 
 ## 关键事实
@@ -34,6 +35,22 @@
   - isolating high-volume operations
   - running parallel research
   - chaining multi-step workflows
+
+## 核心内容摘录
+
+- Claude’s current host contract for research-like work is explicit rather than implicit:
+  - the main settings surface treats `WebFetch` and `WebSearch` as permission-gated tools
+  - sensitive-file hiding can be expressed directly through `permissions.deny`
+  - background subagents are not free-form workers; they inherit only what was approved before launch, and anything outside that envelope is auto-denied
+- The subagent docs also make the execution model concrete:
+  - subagents have isolated context windows
+  - they inherit main-thread tools and MCP access by default
+  - that inheritance can then be narrowed with `tools` or `disallowedTools`
+  - omitting `Agent` from a parent agent’s tool list prevents further delegation
+- There is also a real semantic-evolution signal here:
+  - `Task` was renamed to `Agent`
+  - legacy `Task(...)` references still work as aliases
+  - this matters for cross-host skill reuse, because community skills may still encode older call shapes
 
 ## 与本研究的关系
 

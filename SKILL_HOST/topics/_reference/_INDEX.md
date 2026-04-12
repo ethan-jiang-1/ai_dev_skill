@@ -30,6 +30,7 @@
 - [02-claude-code-plugin-marketplaces-and-versioning.md](./02-claude-code-plugin-marketplaces-and-versioning.md)
 - [02-claude-code-settings-marketplace-governance.md](./02-claude-code-settings-marketplace-governance.md)
 - [02-claude-code-hooks-subagents-and-skill-composition.md](./02-claude-code-hooks-subagents-and-skill-composition.md)
+- [02-claude-code-tool-permissions-web-controls-and-subagent-inheritance.md](./02-claude-code-tool-permissions-web-controls-and-subagent-inheritance.md)
 
 ## Topic 03 Codex
 
@@ -68,6 +69,7 @@
 ## Topic 06 Cross-Host
 
 - [06-cross-host-codex-claude-loop-example.md](./06-cross-host-codex-claude-loop-example.md)
+- [06-cross-host-sync-skills-normalization-and-path-drift.md](./06-cross-host-sync-skills-normalization-and-path-drift.md)
 
 ## Topic 07 Writing Skills
 
@@ -84,6 +86,7 @@
 - [08-deep-research-agent-source-evaluation-pipeline.md](./08-deep-research-agent-source-evaluation-pipeline.md)
 - [08-research-lookup-deterministic-routing-skill.md](./08-research-lookup-deterministic-routing-skill.md)
 - [08-valyu-powered-search-skill-requirements.md](./08-valyu-powered-search-skill-requirements.md)
+- [08-repo-research-analyst-multi-host-adoption-and-host-assumption-drift.md](./08-repo-research-analyst-multi-host-adoption-and-host-assumption-drift.md)
 
 ## Coverage Snapshot
 

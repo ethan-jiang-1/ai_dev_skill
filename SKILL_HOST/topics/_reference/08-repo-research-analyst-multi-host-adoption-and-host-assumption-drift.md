@@ -9,6 +9,7 @@
 - trust_level: practitioner
 - why_it_matters: provides a concrete research-oriented skill that spread across many hosts, while also showing how portable-looking research skills can still carry stale date assumptions and host-specific invocation conventions
 - claims_supported: research skills can achieve real multi-host distribution; repository research is a common reusable skill shape; portability at install level can coexist with stale runtime assumptions inside the skill itself
+- captured_excerpt: partial
 - canonical_exception: no
 
 ## 关键事实
@@ -29,6 +30,27 @@
   - first seen `Jan 24, 2026`
   - weekly installs `269`
   - installs on `opencode`, `codex`, `gemini-cli`, `cursor`, `github-copilot`, and `amp`
+
+## 核心内容摘录
+
+- This skill is a useful stress case because it combines three normally separate things:
+  - a real repository-research workflow
+  - broad cross-host installation
+  - visible assumption drift inside the skill body
+- The workflow itself is substantial rather than cosmetic:
+  - structure review
+  - documentation reading
+  - code-pattern search
+  - stack identification
+  - formal research handoff generation
+- But the invocation layer reveals portability seams:
+  - it still encodes `Task(...)`
+  - it assumes a `subagent_type="general-purpose"` shape
+  - it carries a stale year marker, `The current year is 2025`
+- That combination makes the main lesson very sharp:
+  - install portability can be real
+  - workflow-method portability can also be real
+  - runtime-semantic portability can still drift at the same time
 
 ## 与本研究的关系
 

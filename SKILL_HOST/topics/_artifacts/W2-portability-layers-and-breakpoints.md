@@ -30,6 +30,7 @@
   - [00-shared-agent-skills-quickstart-cross-host-paths.md](../_reference/00-shared-agent-skills-quickstart-cross-host-paths.md)
   - [00-shared-skills-cli-management-and-updates.md](../_reference/00-shared-skills-cli-management-and-updates.md)
   - [00-shared-opencode-skills-and-rules-compatibility.md](../_reference/00-shared-opencode-skills-and-rules-compatibility.md)
+  - [06-cross-host-sync-skills-normalization-and-path-drift.md](../_reference/06-cross-host-sync-skills-normalization-and-path-drift.md)
 
 ### Layer 3: Workflow-method portability
 
@@ -82,8 +83,20 @@
   - subagents get the same tools as primary agents
   - model restrictions or backend routing do not matter
 - Relevant references:
+  - [02-claude-code-tool-permissions-web-controls-and-subagent-inheritance.md](../_reference/02-claude-code-tool-permissions-web-controls-and-subagent-inheritance.md)
   - [05-opencode-tools-websearch-provider-gating-and-subagent-defaults.md](../_reference/05-opencode-tools-websearch-provider-gating-and-subagent-defaults.md)
   - [04-cursor-subagent-routing-server-side-issue-2-6-22-through-3-0-4.md](../_reference/04-cursor-subagent-routing-server-side-issue-2-6-22-through-3-0-4.md)
+
+### Layer 6.5: Runtime-assumption portability
+
+- A skill can install cleanly and still drift internally.
+- Breaks when the skill text itself assumes:
+  - outdated call shapes like `Task(...)`
+  - host-specific subagent type names
+  - stale date / year markers
+  - a model/provider naming scheme that no longer matches the host
+- Relevant references:
+  - [08-repo-research-analyst-multi-host-adoption-and-host-assumption-drift.md](../_reference/08-repo-research-analyst-multi-host-adoption-and-host-assumption-drift.md)
 
 ### Layer 7: External dependency portability
 
@@ -106,6 +119,7 @@
 - If a skill depends on `subagents + hooks + plugins`, assume only partial portability.
 - If a skill depends on `specific execution topology` such as worktrees, cloud agents, or background waits, test that layer before trusting reuse.
 - If a skill depends on `search / task / subagent tools`, verify actual tool availability and backend policy before trusting portability.
+- If a skill body itself hardcodes host call shapes, stale years, or model/provider names, treat it as `installable but not yet trustworthy`.
 - If a skill depends on `external APIs + env vars + shell permissions`, portability should be treated as an integration project, not a copy operation.
 - If a skill seems "portable" only because it orchestrates multiple hosts together, treat it as a handoff pattern rather than host-equivalence proof.
 - If a skill declares host compatibility explicitly, treat that as a useful hint, not final proof.

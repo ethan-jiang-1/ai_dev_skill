@@ -31,22 +31,22 @@
 ## Document Counters
 
 - `wave0_shared_docs:` `20`
-- `total_reference_docs:` `61`
+- `total_reference_docs:` `64`
 - `total_artifact_docs:` `20`
 - `topic01_docs:` `shared refs backfilled`
-- `topic02_docs:` `5 topic-specific refs + evidence summary`
+- `topic02_docs:` `6 topic-specific refs + evidence summary`
 - `topic03_docs:` `7 topic-specific refs + evidence summary`
 - `topic04_docs:` `10 topic-specific refs + evidence summary`
 - `topic05_docs:` `8 topic-specific refs + evidence summary`
-- `topic06_docs:` `1 topic-specific ref + shared refs backfilled + evidence summary`
+- `topic06_docs:` `2 topic-specific refs + shared refs backfilled + evidence summary`
 - `topic07_docs:` `5 topic-specific refs + evidence summary`
-- `topic08_docs:` `5 topic-specific refs + evidence summary`
+- `topic08_docs:` `6 topic-specific refs + evidence summary`
 
 ## Current Focus
 
-- `now_working_on:` `Wave 1 density refresh on 01/04/05/06/08 + hidden-runtime-constraint evidence`
-- `why_now:` `the strongest remaining gaps are no longer basic feature existence; they are hidden routing constraints, execution topology differences, and provider/tool gating that change whether advanced skills actually run`
-- `next_after_this:` `tighten Wave 2 comparison judgments with stronger portability, hidden-runtime, and research-tool-surface evidence`
+- `now_working_on:` `Wave 1 density refresh on 02/06/08 + install-portability vs runtime-portability evidence`
+- `why_now:` `new Claude runtime constraints and multi-host registry examples sharpen the difference between easy installation, host-specific semantics, and real execution portability`
+- `next_after_this:` `tighten Wave 2 comparison judgments with stronger path-drift, runtime-assumption-drift, and host-specific research-tool evidence`
 
 ## Suspended Branches
 
@@ -101,3 +101,10 @@
 - Migrated active round-1 plan from template `v4` to `v5` without resetting wave progress
 - Upgraded plan contract so references must be more self-contained and execution follows file-first autonomous protocol
 - Added migration compatibility rule so legacy references can be upgraded incrementally instead of forcing a big-bang rewrite
+- Added Claude runtime/permission reference covering WebSearch/WebFetch approvals, subagent inheritance, and Task-to-Agent evolution
+- Added cross-host sync skill reference showing portability demand and community path drift
+- Added research-skill adoption reference showing install portability can coexist with stale host assumptions
+- Backfilled Topic 02 with explicit Claude research-tool and subagent-approval constraints
+- Backfilled Topic 06 with sync-path drift, install-vs-runtime portability, and research-skill assumption drift
+- Backfilled Topic 08 with multi-host research-skill adoption plus runtime-assumption drift
+- Refreshed Topic 06 / 08 evidence summaries and Wave 2 synthesis artifacts to include path drift and runtime-assumption portability
