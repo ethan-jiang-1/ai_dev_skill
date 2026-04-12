@@ -1,7 +1,7 @@
 # Wave 2 Round 1 Closeout Summary
 
-- generated_at: 2026-04-12 18:15:00 CST
-- status: draft-closeout
+- generated_at: 2026-04-12 18:35:42 CST
+- status: closeout-ready
 - scope: `Topics 01-08` (Round 1)
 
 ## What this round established (the reusable ground truth)
@@ -68,4 +68,3 @@
 - Suspended branches remain valid triggers to reopen:
   - `topic06/official-migration-guidance`
   - `topic06-08/additional-repair-oriented-failure-cases`
-

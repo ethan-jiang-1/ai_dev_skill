@@ -1,7 +1,7 @@
 # Wave 2 Host Selection and Portability Decision Framework
 
-- generated_at: 2026-04-12 11:56:36 CST
-- status: draft
+- generated_at: 2026-04-12 18:35:42 CST
+- status: final-ish
 
 ## Decision 1: What problem are you actually solving?
 

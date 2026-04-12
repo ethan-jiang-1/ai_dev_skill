@@ -5,27 +5,27 @@
 - `seed_dir:` `/Users/bowhead/ai_dev_skill/SKILL_HOST/topics`
 - `reference_dir:` `/Users/bowhead/ai_dev_skill/SKILL_HOST/topics/_reference`
 - `artifact_dir:` `/Users/bowhead/ai_dev_skill/SKILL_HOST/topics/_artifacts`
-- `current_wave:` `wave_2_in_progress`
-- `overall_state:` `in_progress`
+- `current_wave:` `round_1_complete`
+- `overall_state:` `completed`
 - `date_scope_default:` `2026-01-01+`
 - `migration_note:` `2026-04-12 从 v4 plan skeleton 升级到 v5 协议；不重置已完成进度，status 继续作为执行真相来源`
 
 ## Wave Checklist
 
 - `Wave 0` shared ground truth: `completed`
-- `Wave 1` topic deep dives: `in_progress`
-- `Wave 2` cross-topic synthesis: `in_progress`
-- `Readiness Check`: `in_progress`
+- `Wave 1` topic deep dives: `completed`
+- `Wave 2` cross-topic synthesis: `completed`
+- `Readiness Check`: `passed`
 
 ## Topic Status
 
-- `01` `skill-foundations-and-common-model`: `in_progress`
-- `02` `claude-code-skills-deep-dive`: `in_progress`
-- `03` `codex-cli-skills-deep-dive`: `in_progress`
-- `04` `cursor-skills-deep-dive`: `in_progress`
-- `05` `opencode-skills-deep-dive`: `in_progress`
+- `01` `skill-foundations-and-common-model`: `near_evidence_complete`
+- `02` `claude-code-skills-deep-dive`: `near_evidence_complete`
+- `03` `codex-cli-skills-deep-dive`: `near_evidence_complete`
+- `04` `cursor-skills-deep-dive`: `near_evidence_complete`
+- `05` `opencode-skills-deep-dive`: `near_evidence_complete`
 - `06` `cross-host-comparison-and-interoperability`: `near_evidence_complete`
-- `07` `writing-skills-discovery-adaptation-and-host-support`: `in_progress`
+- `07` `writing-skills-discovery-adaptation-and-host-support`: `near_evidence_complete`
 - `08` `deep-research-skills-discovery-adaptation-and-host-support`: `near_evidence_complete`
 
 ## Document Counters
@@ -33,7 +33,7 @@
 - `wave0_shared_docs:` `20`
 - `total_reference_docs:` `90`
 - `total_artifact_docs:` `24`
-- `topic01_docs:` `shared refs backfilled`
+- `topic01_docs:` `shared refs + boundary examples + expanded evidence summary`
 - `topic02_docs:` `10 topic-specific refs + evidence summary`
 - `topic03_docs:` `10 topic-specific refs + evidence summary`
 - `topic04_docs:` `10 topic-specific refs + evidence summary`
@@ -44,9 +44,9 @@
 
 ## Current Focus
 
-- `now_working_on:` `round-level synthesis tightening + readiness gate`
-- `why_now:` `Wave 1 doc floors are now met for Topics 02/03/05/06/07/08; the next leverage step is to tighten Wave 2 synthesis and decide round-level closeout criteria`
-- `next_after_this:` `tighten W2 closeout summary + rerun readiness gate, then decide whether Round 1 can be marked complete or whether Topic 01 needs more boundary examples`
+- `now_working_on:` `round 1 closeout completed`
+- `why_now:` `Wave 1 floors are met for Topics 01-08; Wave 2 artifacts are final-ish; readiness check is passed`
+- `next_after_this:` `open Round 2: pick one branch (official migration contracts, more repair-oriented failure cases, or deeper “constraint visibility” comparisons)`
 
 ## Suspended Branches
 
@@ -137,3 +137,6 @@
 - Added 2 Topic 05 official OpenCode references (skills discovery paths + providers/connect/auth storage) and backfilled Topic 05 seed + evidence summary
 - Added 4 Topic 06 cross-host practitioner references (skills_sync CLI + example config + meta-skill hygiene + MCP research discipline) and backfilled Topic 06 seed + evidence summary
 - Added `W2-round1-closeout-summary.md` to provide a decision-oriented “stop-the-world” closeout entry point now that Wave 1 doc floors are met
+- Added Topic 01 boundary examples section (skills vs rules vs MCP vs plugins vs subagents) and expanded Topic 01 evidence summary
+- Marked Wave 2 artifacts as final-ish and passed the round-level readiness check
+- Added `SKILL_HOST/topics/00-topic-registry.md` as a stable workspace entry point for Topic 01-08

@@ -1,7 +1,7 @@
 # Wave 2 Cross-Topic Synthesis
 
-- updated_at: 2026-04-12 17:10:00 CST
-- status: in_progress
+- updated_at: 2026-04-12 18:35:42 CST
+- status: final-ish
 
 ## 1) The 3-layer model: spec vs convention vs host runtime
 

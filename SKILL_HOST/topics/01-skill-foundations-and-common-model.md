@@ -127,6 +127,28 @@
   - `discovery / install` 次之
   - `runtime behavior` 最弱 [ref](./_reference/00-shared-opencode-skills-and-rules-compatibility.md) [ref](./_reference/00-shared-cursor-skills-introduction-2026.md) [ref](./_reference/00-shared-codex-skills-repo-and-product-surface.md)
 
+## 边界示例：到底该放在哪里（skills vs rules vs MCP vs plugins vs subagents）
+
+> 这一节的目标不是定义名词，而是给“放哪里最不容易后悔”的可操作判断。
+
+- 把“必须始终生效的约束”放进 `rules / AGENTS.md / CLAUDE.md / instructions` 层：
+  - 例如：安全边界、禁止访问的目录、代码风格硬约束、仓库级工作原则、默认工具选择策略。
+  - 这些内容是“每次都要遵守”，不适合做成需要触发的 skill；并且各宿主都有自己的持久层加载与优先级规则（不一致但都很强）[ref](./_reference/03-codex-agents-md-layering-and-instruction-chain.md) [ref](./_reference/02-claude-code-memory-claude-md-rules-and-auto-memory.md) [ref](./_reference/04-cursor-rules-agents-and-skill-boundary.md) [ref](./_reference/05-opencode-skills-rules-and-instructions-bridge.md)
+- 把“只在特定场景才用、且可能很长”的流程包放进 `skill`：
+  - 例如：发布检查清单、深度研究编排、文档重写流程、代码审查工作流、特定框架迁移步骤。
+  - 技术原因：skill 的核心契约是 `progressive disclosure`（启动只加载 `name/description`，激活后加载完整说明，资源按需读入），用它来对抗“常驻巨型提示词”[ref](./_reference/00-shared-agent-skills-specification.md) [ref](./_reference/00-shared-agent-skills-integration-guide.md) [ref](./_reference/00-shared-agent-skills-best-practices.md)
+  - 运行时原因：description 本身就是 discoverability 契约的一部分，写得差会直接导致误触发或永远不触发[ref](./_reference/00-shared-agent-skills-description-optimization.md)
+- 把“能力接口 / 工具”放进 `MCP`（skill 负责教会 agent 怎么用，而不是替代工具本身）：
+  - 例如：把一个文档库/知识库/搜索系统暴露成 MCP server；再用 skill 规定什么时候调用、如何验证、如何引用。
+  - 一个已被官方明示的组合模式是 `AGENTS/rules + Docs MCP + Docs Skill`：用持久层保证默认调用习惯，用 skill 规定用法与输出契约[ref](./_reference/00-shared-openai-docs-mcp-cross-host-support.md)
+- 把“需要代码、需要自定义 tool、需要安装依赖”的扩展放进 `plugins / hooks`，再由 skill 驱动调用：
+  - 例如：新工具（自定义命令/HTTP endpoint/外部服务）通常不应藏在 SKILL.md 里，而应由插件/钩子提供运行时能力；skill 只封装使用协议与步骤。
+  - 这类能力天然更 host-shaped：不同宿主的插件/钩子成熟度、权限模型、加载路径和稳定性差异很大[ref](./_reference/02-claude-code-hooks-subagents-and-skill-composition.md) [ref](./_reference/03-codex-hooks-plugins-and-feature-maturity.md) [ref](./_reference/05-opencode-plugins-load-order-and-compaction-hooks.md)
+- 把“隔离执行 / 并行 / 不同模型或工具权限”的执行形态放进 `subagents`，skill 负责编排：
+  - 例如：深度研究往往需要并行子任务、不同工具白名单、或不同模型/effort；这些通常不是纯 skill 能解决的，因为 subagent 的继承规则、工具可用性、审批/沙箱策略属于宿主运行时契约[ref](./_reference/02-claude-code-hooks-subagents-and-skill-composition.md) [ref](./_reference/03-codex-subagents-runtime-controls-and-cost.md) [ref](./_reference/04-cursor-skills-subagents-rollout-2026.md) [ref](./_reference/05-opencode-agents-permissions-and-subagent-design.md)
+- 把“多目录扫描导致的重复加载/版本歧义”当成发现层风险处理，而不是“多装几个更灵活”：
+  - 一旦宿主跨目录扫描缺少 dedup/precedence 规则，就会出现“同名 skill 被重复注入、上下文浪费、版本不确定”的真实故障；此时应收敛 discovery surface、建立 canonical source，并用同步/排除规则治理[ref](./_reference/06-cursor-cross-tool-skill-duplication-and-dedup-gap.md) [ref](./_reference/00-shared-agent-skills-integration-guide.md)
+
 ## 本轮新增趋势与难点
 
 - `2026` 的最明显趋势之一，是 skills 正从“文件格式”走向“生态对象”：

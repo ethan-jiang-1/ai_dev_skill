@@ -1,7 +1,7 @@
 # Wave 2 Host Capability Matrix
 
-- generated_at: 2026-04-12 16:50:00 CST
-- status: draft
+- generated_at: 2026-04-12 18:35:42 CST
+- status: final-ish
 
 ## Comparison Matrix
 
