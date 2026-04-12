@@ -1,5 +1,7 @@
 # Topic 01: Skill Foundations and Common Model
 
+## 历史摘要（保留，不修改）
+
 ## 为什么这个 topic 要单独存在
 
 当前这 4 份 Deep Research 原始材料分别从 Claude Code、Codex CLI、Cursor、OpenCode 四个宿主出发讨论 skill，但它们都默认读者已经知道 skill 是什么、为什么存在、它和 prompt/rules/plugin/MCP/subagent 的边界在哪里。对于已经做过一段时间 AI Coding、但仍然对“怎么找 skill、怎么编 skill、怎么 leverage skill”感到混乱的人来说，这一步反而是最容易糊涂的地方。
@@ -75,10 +77,92 @@
   - `What are skills?`
   - `How to add skills support to your agent`
 
-## 下一轮 Deep Research 的预期产出
+## 本轮新增证据
 
-这篇下一轮不应该写成“定义汇总”，而应该写成一篇真正能把人带入门的总论。最理想的效果是：读者第一次不再问“skill 到底是什么”，而开始问下面这些更高阶的问题：
+- `Agent Skills` 在 `2026` 年已经不是纯社区约定，而是明确公开的规范体系：
+  - overview 层把 skill 定义为用于扩展 agent 的开放格式，最小单位是包含 `SKILL.md` 的目录，且可以附带 scripts / references / templates [ref](./_reference/00-shared-agent-skills-overview.md)
+  - specification 层明确了 `SKILL.md` 的 YAML frontmatter、必填字段、命名约束、description 约束、主文件长度建议与 `progressive disclosure` [ref](./_reference/00-shared-agent-skills-specification.md)
+  - integration guide 又把“skills-compatible client”应该怎么接入分成 `catalog / instructions / resources` 三层加载模型 [ref](./_reference/00-shared-agent-skills-integration-guide.md)
+- `spec` 和 `convention` 已经能清楚分开：
+  - 规范本身定义 skill 目录和元数据长什么样 [ref](./_reference/00-shared-agent-skills-specification.md)
+  - `.agents/skills/` 是官方实现指南和 quickstart 都在使用的跨客户端 convention，但不是 spec 的强制扫描路径 [ref](./_reference/00-shared-agent-skills-integration-guide.md) [ref](./_reference/00-shared-agent-skills-quickstart-cross-host-paths.md)
+- `skill` 的核心不是“更长 prompt”，而是一个按需加载的工作流包：
+  - 主文件只该保留流程和判断
+  - bulky context 应外置到 `references/`
+  - 环境前提和脚本前提需要显式说明，而不是让模型猜 [ref](./_reference/00-shared-agent-skills-best-practices.md) [ref](./_reference/00-shared-agent-skills-scripts-and-env-requirements.md)
+- `description` 在运行时是关键契约的一部分，而不是装饰字段：
+  - 它决定 skill 是否会被正确发现、激活或误触发
+  - 不同 client 对 discoverability 的接法不同，因此 description 质量直接影响跨宿主可用性 [ref](./_reference/00-shared-agent-skills-description-optimization.md)
+- 到 `2026` 年，skills 已经开始长出独立的分发和生命周期层，而不再只是 GitHub 目录：
+  - `skills.sh` 提供 registry、CLI、leaderboard、telemetry、audit posture [ref](./_reference/00-shared-skills-sh-docs-registry-safety-and-telemetry.md)
+  - `skills` CLI 已经有 `find / add / check / update` 这样的 package-manager-like 管理动作 [ref](./_reference/00-shared-skills-cli-management-and-updates.md)
+- 到 `2026` 年，外部可观察 skill 的“封装对象”也已经相当具体，而不是抽象概念：
+  - 可以封装技术写作与文档标准化 [ref](./_reference/07-technical-writer-skill-patterns-and-install-flow.md)
+  - 可以封装 UX writing / microcopy / content audit [ref](./_reference/07-ux-writing-cross-host-compatibility-signal.md)
+  - 可以封装多语言文档写作约束 [ref](./_reference/07-document-writing-multilingual-skill-scope.md)
+  - 也可以封装带 evidence mapping、parallel subagents、citation verification 的深度研究工作流 [ref](./_reference/08-deep-research-skill-evidence-mapping-and-parallel-drafting.md)
+  - 甚至可以封装 deterministic retrieval routing 与特定搜索后端要求 [ref](./_reference/08-research-lookup-deterministic-routing-skill.md) [ref](./_reference/08-valyu-powered-search-skill-requirements.md)
 
-- 这个工作流值不值得做成 skill。
-- 这个 skill 只是某个宿主的私有玩法，还是已经踩在公开规范上。
-- 我现在拿到的 skill，到底是一个通用格式，还是一个 heavily host-specific 的实现。
+## 本轮新增机制理解
+
+- 现在最应该用的抽象，不是“skill 是个文件夹”，而是“skill 是一个三层工作流对象”：
+  - 第 1 层是 `catalog metadata`，负责轻量发现
+  - 第 2 层是 `instructions`，负责主流程
+  - 第 3 层是 `resources`，负责按需下钻 [ref](./_reference/00-shared-agent-skills-integration-guide.md)
+- 这解释了为什么 `progressive disclosure` 会成为整个体系的中心原则：
+  - 没有这一层，skill 很容易退化成总是在线的巨型提示词
+  - 有了这一层，skill 才能同时兼顾可复用性与上下文经济性 [ref](./_reference/00-shared-agent-skills-specification.md) [ref](./_reference/00-shared-agent-skills-best-practices.md)
+- 这也解释了 skill 与周边对象的边界：
+  - skill 主要封装“怎么做”
+  - MCP 主要提供“能做什么”
+  - rules / AGENTS / CLAUDE.md 主要提供“始终遵守什么”
+  - subagents 主要提供“由谁在隔离上下文中执行” [ref](./_reference/00-shared-openai-docs-mcp-cross-host-support.md) [ref](./_reference/00-shared-claude-code-skills-roles-and-plugin-architecture.md) [ref](./_reference/00-shared-opencode-agents-and-permissions.md)
+- 换句话说，skill 今天能分装的东西，已经清楚覆盖三类：
+  - 规则化工作流和检查清单
+  - 大量参考材料与例子
+  - 工具 / 检索 / 子代理的调用协议
+  这也是它和“长 prompt”最本质的区别。
+- 所谓“跨宿主兼容”，更合理的理解是分层兼容：
+  - `format` 兼容最强
+  - `discovery / install` 次之
+  - `runtime behavior` 最弱 [ref](./_reference/00-shared-opencode-skills-and-rules-compatibility.md) [ref](./_reference/00-shared-cursor-skills-introduction-2026.md) [ref](./_reference/00-shared-codex-skills-repo-and-product-surface.md)
+
+## 本轮新增趋势与难点
+
+- `2026` 的最明显趋势之一，是 skills 正从“文件格式”走向“生态对象”：
+  - registry、leaderboard、install telemetry、CLI lifecycle 已经出现 [ref](./_reference/00-shared-skills-sh-docs-registry-safety-and-telemetry.md) [ref](./_reference/00-shared-skills-sh-ecosystem-usage-signals.md) [ref](./_reference/00-shared-skills-cli-management-and-updates.md)
+- 另一个明显趋势，是 host 都在把 skill 嵌进更大的 agent stack：
+  - Claude 把 skill 放进 plugin / agent / hook / MCP 体系 [ref](./_reference/00-shared-claude-code-skills-roles-and-plugin-architecture.md)
+  - Codex 把 skill 和 AGENTS / MCP / Plugins / Subagents 并列为一等配置面 [ref](./_reference/00-shared-codex-skills-repo-and-product-surface.md)
+  - Cursor 把 skill 和 subagents 一起推出，并继续往 plugin bundle 方向走 [ref](./_reference/00-shared-cursor-skills-introduction-2026.md) [ref](./_reference/00-shared-cursor-plugin-bundling-and-early-friction.md)
+  - OpenCode 则直接把 skill、rules、instructions、agents、permissions 组合在一起 [ref](./_reference/00-shared-opencode-skills-and-rules-compatibility.md) [ref](./_reference/00-shared-opencode-agents-and-permissions.md)
+- 难点也已经很清楚：
+  - description 写得差，skill 可能根本不会被正确发现 [ref](./_reference/00-shared-agent-skills-description-optimization.md)
+  - skill 体积大、references 不外置，会直接压垮上下文经济 [ref](./_reference/00-shared-agent-skills-best-practices.md)
+  - registry 有审计语言，但不会替你保证每个 skill 都安全或高质量 [ref](./_reference/00-shared-skills-sh-docs-registry-safety-and-telemetry.md)
+
+## 本轮新增维护 / 版本管理 / 模型要求
+
+- skill 到 `2026` 年已经明显长出生命周期管理面：
+  - registry 分发
+  - CLI 安装
+  - `check` / `update`
+  - telemetry-driven 排名 [ref](./_reference/00-shared-skills-cli-management-and-updates.md) [ref](./_reference/00-shared-skills-sh-ecosystem-usage-signals.md)
+- 但版本管理目前仍然是分层的：
+  - spec 管的是 skill 长什么样
+  - registry / CLI 管的是怎么发现和更新
+  - 真正的 runtime compatibility 仍然要看 host [ref](./_reference/00-shared-agent-skills-specification.md) [ref](./_reference/00-shared-agent-skills-integration-guide.md)
+- 模型要求不是 spec 层硬编码出来的，而是运行层决定的：
+  - spec 本身不规定模型
+  - 但高阶 skill 的效果会明显受上下文窗口、reasoning effort、工具权限和 subagent 能力影响 [ref](./_reference/00-shared-codex-model-requirements-and-context-windows.md) [ref](./_reference/00-shared-opencode-agents-and-permissions.md)
+- 因此更合理的说法是：
+  - `skill format` 对模型要求弱
+  - `skill usefulness` 对模型和宿主要求强
+
+## 当前判断（本轮综合后）
+
+- 截至 `2026-04-12`，`skills` 已经有公开规范，这个判断是成立的；但规范主要统一的是格式和加载原则，而不是整个运行时世界 [ref](./_reference/00-shared-agent-skills-specification.md) [ref](./_reference/00-shared-agent-skills-integration-guide.md)
+- “skill 是更长的 prompt”这个理解已经不够用了。更准确的理解是：skill 是一个以 `SKILL.md` 为入口、以渐进式披露为核心、以 references / scripts 为延伸的可复用工作流包 [ref](./_reference/00-shared-agent-skills-overview.md) [ref](./_reference/00-shared-agent-skills-best-practices.md)
+- 从当前 registry 和样例看，skill 已经能稳定承载写作、文档规范、检索、深度研究编排、工具调用协议这些不同类型的工作对象；它的上限早就超过“长一点的提示词” [ref](./_reference/07-technical-writer-skill-patterns-and-install-flow.md) [ref](./_reference/08-deep-research-skill-evidence-mapping-and-parallel-drafting.md) [ref](./_reference/08-research-lookup-deterministic-routing-skill.md)
+- 到 `2026` 年，skills 正在从“能不能写”转向“怎么分发、怎么维护、怎么更新、怎么和宿主协同”这个阶段，这也是为什么 registry、CLI、telemetry、host-native extension stack 开始变得重要 [ref](./_reference/00-shared-skills-sh-docs-registry-safety-and-telemetry.md) [ref](./_reference/00-shared-skills-cli-management-and-updates.md)
+- 真正的跨宿主复用是分层成立的：格式和元数据层最容易共享；发现、安装、生命周期层次之；真正依赖宿主 rules / plugins / MCP / subagents / permissions 的部分最难完全等价迁移 [ref](./_reference/00-shared-opencode-skills-and-rules-compatibility.md) [ref](./_reference/00-shared-claude-code-skills-roles-and-plugin-architecture.md) [ref](./_reference/00-shared-cursor-plugin-bundling-and-early-friction.md)

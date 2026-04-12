@@ -1,5 +1,7 @@
 # Topic 07: Writing Skills Discovery, Adaptation, and Host Support
 
+## 历史摘要（保留，不修改）
+
 ## 为什么这个 topic 要改成现在这样
 
 前一个版本把重点放在“怎么自己写 skill”，这不完全贴合你真正想推进的方向。你更关心的其实是另一条更现实、更高杠杆的路径：先去找现成的 writing skill，装起来，读懂它背后的思路，拿来跑，边用边改，最后再慢慢长出自己的判断和能力。
@@ -69,7 +71,71 @@
 - Cursor 材料里最关键的是 `.cursorrules` 和 writing skill 的职责分离。
 - OpenCode 材料里最关键的是 `AGENTS.md`、`instructions` 与 writing skill 的组合方式。
 
-## 下一轮 Deep Research 的预期产出
+## 本轮新增证据
 
-下一轮这篇不应该写成“写作 skill 教程”，而应写成一份面向实践者的指南：现成 writing skill 去哪里找、怎么判断哪些值得装、四个宿主分别在哪些地方帮你省力，以及拿到之后通常如何做轻量改造，让它开始真正服务自己的写作与内容工作流。
+- 2026 年 writing skills 已经形成相当清楚的几个子类：
+  - technical writing / documentation standardization [ref](./_reference/07-technical-writer-skill-patterns-and-install-flow.md)
+  - human-style prose correction / anti-AI-tone [ref](./_reference/07-good-prose-human-style-reuse-pattern.md)
+  - UX writing / microcopy / content audits [ref](./_reference/07-ux-writing-cross-host-compatibility-signal.md)
+  - multilingual document-writing conventions [ref](./_reference/07-document-writing-multilingual-skill-scope.md)
+  - academic / scientific writing standards [ref](./_reference/07-academic-writing-standards-skill-signal.md)
+- 这些写作 skill 的安装路径已经明显平台化：
+  - `npx skills add ... --skill technical-writer`
+  - registry-first 发现和安装正在替代手动复制目录 [ref](./_reference/07-technical-writer-skill-patterns-and-install-flow.md) [ref](./_reference/00-shared-skills-cli-management-and-updates.md)
+- 有些写作 skill 已经开始显式声明 host compatibility：
+  - 某些 skill 直接写出兼容 Claude Desktop、Claude Code、Codex CLI / IDE
+  - 同时明确 ChatGPT 不支持 skills [ref](./_reference/07-ux-writing-cross-host-compatibility-signal.md)
+- writing skill 的内容形态，并不只是“文风模板”：
+  - 有的是文档类型与流程集合 [ref](./_reference/07-technical-writer-skill-patterns-and-install-flow.md)
+  - 有的是 prose heuristics [ref](./_reference/07-good-prose-human-style-reuse-pattern.md)
+  - 有的是专业子领域规范 [ref](./_reference/07-academic-writing-standards-skill-signal.md)
+  - 有的还把 translation 和 writing 明确拆开 [ref](./_reference/07-document-writing-multilingual-skill-scope.md)
+
+## 本轮新增机制理解
+
+- 写作类 skill 之所以特别适合“先找现成的，再装起来再改”，是因为它们很多时候依赖的是：
+  - 规则
+  - 例子
+  - 检查清单
+  - 风格原则
+  而不是高度宿主专属的 runtime orchestration
+- 这意味着写作 skill 的可复用性通常高于深度研究 skill：
+  - 一部分可直接跨宿主用
+  - 一部分只要替换 `references/` 或 style guides 就能继续用
+  - 只有当 skill 深度依赖 hooks、rules、plugin bundles 或外部 linters 时，宿主差异才会显著放大 [ref](./_reference/00-shared-agent-skills-best-practices.md) [ref](./_reference/02-claude-code-hooks-subagents-and-skill-composition.md) [ref](./_reference/05-opencode-skills-rules-and-instructions-bridge.md)
+- 写作 skill 的真正学习价值，也正好在这里：
+  - 你不需要先会“写一个完美 skill”
+  - 你先读懂别人把风格、结构和检查点怎么拆，就已经在学 skill authoring 的核心思路了
+
+## 本轮新增趋势与难点
+
+- 一个很清楚的趋势是：writing skills 正在细分，而不是停留在泛泛的“帮我写文章”：
+  - technical writer
+  - UX writing
+  - academic writing
+  - multilingual document writing
+  - anti-AI-tone / better prose [ref](./_reference/07-technical-writer-skill-patterns-and-install-flow.md) [ref](./_reference/07-good-prose-human-style-reuse-pattern.md) [ref](./_reference/07-ux-writing-cross-host-compatibility-signal.md)
+- 另一个趋势是：host compatibility 正在从隐含事实变成 skill 包装语言的一部分 [ref](./_reference/07-ux-writing-cross-host-compatibility-signal.md)
+- 难点主要在三处：
+  - 安装容易，但质量判断不容易
+  - style skill 很容易看起来“有道理”，但实际输出可能被压平 [ref](./_reference/07-good-prose-human-style-reuse-pattern.md)
+  - narrow-domain writing skills 看起来更专业，但也更容易给人一种“已经自动保证正确”的错觉 [ref](./_reference/07-academic-writing-standards-skill-signal.md)
+
+## 本轮新增维护 / 版本管理 / 模型要求
+
+- writing skills 的维护成本通常低于研究型技能：
+  - 很多只需要更新 examples、术语表、style guides、规则文本
+  - 不一定需要复杂的外部依赖或 runtime orchestration
+- 但不是没有模型要求：
+  - multilingual writing 更依赖模型语言能力 [ref](./_reference/07-document-writing-multilingual-skill-scope.md)
+  - academic / technical writing 更依赖 stronger reasoning 和长期一致性 [ref](./_reference/07-academic-writing-standards-skill-signal.md)
+  - 如果 skill 还结合 lint、hooks 或文档流水线，那就会重新进入强宿主依赖区域 [ref](./_reference/02-claude-code-hooks-subagents-and-skill-composition.md)
+- 从生命周期角度看，registry + CLI 已经让“发现 / 安装 / 更新”比过去轻松很多，但“选哪个 skill 值得长期留下”依然要靠人工判断 [ref](./_reference/00-shared-skills-sh-docs-registry-safety-and-telemetry.md) [ref](./_reference/00-shared-skills-cli-management-and-updates.md)
+
+## 当前判断（本轮综合后）
+
+- 写作类 skill 是目前最适合普通实践者“先借力、再成长”的 skill 类别之一，这个判断是成立的。
+- 它们的最大优势，是复用门槛低、安装路径清楚、很多只需轻量替换参考材料就能开始服务自己的 workflow [ref](./_reference/07-technical-writer-skill-patterns-and-install-flow.md) [ref](./_reference/07-good-prose-human-style-reuse-pattern.md)
+- 它们的主要风险，不在于装不上，而在于你可能高估了 skill 的质量、风格保持能力或专业可靠性 [ref](./_reference/07-academic-writing-standards-skill-signal.md)
+- 如果目标是“快速理解 skill 能分装什么、怎么借别人 skill 学会自己的 skill 判断”，写作类 skill 仍然是最好的入口之一。
 
