@@ -2,7 +2,7 @@
 
 > 执行状态（动态更新）：见 `/Users/bowhead/ai_dev_skill/SKILL_HOST/plan/skill-host-skills-deep-research-progressive-plan-round-1.status.md`
 
-- `template_version`：`v4`
+- `template_version`：`v5`
 - `round_label`：`一轮`
 - `seed_dir`：`/Users/bowhead/ai_dev_skill/SKILL_HOST/topics`
 - `reference_dir`：`/Users/bowhead/ai_dev_skill/SKILL_HOST/topics/_reference`
@@ -12,6 +12,7 @@
 - `topic_count`：`8`
 - `main_task_kind`：`补现态事实 + 补趋势 + 补机制 + 补维护/版本管理 + 补限制`
 - `date_scope_default`：`只接受 2026-01-01 及之后的来源作为本轮主证据`
+- `migration_note`：`2026-04-12 从 v4 plan skeleton 升级到 v5 协议；不重置已完成 wave 与现有落库，status 文件继续作为执行真相来源`
 
 ## 调研的根本目的
 
@@ -282,8 +283,9 @@
 形式：
 
 - 每个高价值来源单独存成一个 `md`
-- 不追求全文镜像，重点保存结构化摘录、关键信息、来源链接、研究价值判断
+- 不追求全文镜像，但要求 `关键事实 + 核心内容摘录` 两节加起来足够自给自足，让接手者多数情况下不回原文也能继续推理
 - 所有辛苦收集到、后续推理会反复用到的重要内容，都必须真正落进 `_reference`
+- 所有进入最终推理链条的重要来源，都必须有自己独立的一份 `md`，不能只停留在 `_artifacts`、seed 文件或聊天上下文
 
 ### 2. 输入目录的持续生长
 
@@ -465,9 +467,12 @@ Wave 2 的最低标准：
 - trust_level: (official / academic / practitioner / community)
 - why_it_matters:
 - claims_supported:
+- captured_excerpt: (yes / partial / no)
 - canonical_exception: (yes / no)
 
 ## 关键事实
+
+## 核心内容摘录
 
 ## 与本研究的关系
 
@@ -477,6 +482,12 @@ Wave 2 的最低标准：
 
 ## 风险与局限
 ```
+
+迁移兼容规则：
+
+- 本计划升级到 `v5` 之后，新增 reference 必须遵循上述结构
+- 已经存在的 legacy reference 不要求一次性全量返工
+- 但只要某份 legacy reference 被再次触碰、进入 closeout 主推理链、或明显承担关键判断支撑，就应优先补齐 `captured_excerpt` 与 `## 核心内容摘录`
 
 命名建议：
 
@@ -493,6 +504,39 @@ Wave 2 的最低标准：
 - 如果某条来源无法确认是否为 `2026+`，默认不能作为本轮主证据；除非它属于 `canonical_exception`
 - GitHub 仓库、文档页面、marketplace 页面如果缺明确发布时间，必须补抓 `last commit / latest release / changelog / page updated date` 作为时间信号
 
+### `## 核心内容摘录` 写法规则
+
+定位：
+
+- 这一节不是摘要，而是来源里真正会进入后续推理链的硬核内容提取
+- 目标是让接手者不回 URL，也能把这份 reference 当作该来源的本地权威替代
+
+写什么：
+
+- 关键论证链条与设计理由
+- 重要数字、版本、时间线、参数、阈值、限制条件
+- 关键表格、分层结构、兼容矩阵、流程图的文字保留
+- 方法论要点、测试条件、失败因果链
+- 必要时保留短原文引用，并注明出处位置
+
+不写什么：
+
+- 不在这一节做二次分析或评论
+- 不重复 `## 关键事实` 已覆盖的短摘要
+- 不堆无关背景铺垫或营销话术
+
+篇幅指引：
+
+- 高价值一手来源：优先做到 `500-1500` 字的自给自足摘录
+- 中等价值 practitioner 来源：通常 `200-500` 字，保留最硬的段落
+- 低价值来源：只有在 `## 关键事实` 已足够支撑时，才允许 `captured_excerpt: no`
+
+忠实度要求：
+
+- 摘录必须忠实于原文，不美化、不改写关键数字
+- 如果是翻译，尽量保留原术语，避免把约束翻译没了
+- 如果原文存在歧义或自相矛盾，应如实记录
+
 ## 已验证的高杠杆执行行为（写入计划，必须遵守）
 
 - 以“证据落库”为单位推进：每一次有效探索都必须落为 `_reference/*.md`
@@ -500,7 +544,45 @@ Wave 2 的最低标准：
 - 以“下钻到机制”为深挖目标：关键对象不只看 README，还要沿 docs → schema / code / issue / changelog / failure analysis 逐级下钻
 - 以“边取证边回填”避免集成债：新增证据落库后立刻回填到对应 seed 文件和 `_artifacts`
 - 以“持续自校验”保证 30 秒可回指：每个波次结束后都做一次回指完整性检查，并维护 `_reference/_INDEX.md`
-- 无外部阻塞时按 Wave / Step 检查点持续推进，不等临时反馈
+- 无外部阻塞时按 Wave / Step 检查点持续自主推进，不等临时反馈；status 文件是默认进度机制
+
+## 自主执行协议（Autonomous Execution Protocol）
+
+### 1. 默认模式：静默自主推进
+
+- 长程任务默认按 Wave / Step 检查点持续推进，不主动停下来汇报
+- status 文件就是默认汇报机制；进度、阻塞、挂起分支优先写入 status，而不是停在对话里同步
+- 每完成一个有意义的步骤，例如一份 reference 落库、一条研究线显著补强、一个 Wave 达标，就更新 status 后继续推进
+
+### 2. 允许主动中断用户的条件
+
+只有下面三种情况允许主动打断：
+
+- 主线被真正阻塞，且无法通过 `suspend` 绕开
+- 研究方向需要根本性调整，例如 topic registry、FINAL_DELIVERABLE 或核心假设必须重写
+- 用户明确要求实时协同，而不是 file-first 的进度模式
+
+### 3. 不允许主动中断用户的情况
+
+以下情况都必须自行处理，不得停下来请示：
+
+- Wave 之间切换
+- 某一研究线配额达标或停止条件满足
+- 单个探索分支需要 `suspend / archive / redirect`
+- 发现新的高价值对象或对照面
+- Readiness Check 某一项暂未通过但仍可继续补证据
+
+### 4. 进度可见性靠文件，不靠对话
+
+- `status` 文件是唯一默认进度沟通机制
+- 每个有意义的步骤都应在 `Notes`、`Current Focus` 或相关计数中留下痕迹
+- 如果用户主动询问进度，可以简要回答；否则默认继续推进
+
+### 5. 与 Human-on-the-loop 的关系
+
+- 本计划保留 `human on the loop`，而不是 step 级 `human in the loop`
+- 挂起分支优先在 status 中登记，等阶段性收束或 closeout 时统一交给人判断
+- 如果用户中途介入，介入结束后恢复自主推进模式
 
 ## 什么值得存进 `_reference`
 
@@ -546,12 +628,26 @@ Wave 2 的最低标准：
 
 ### Human-on-the-loop 原则
 
+- 完整的自主执行规则以上方 `自主执行协议` 为准；本节保留其最核心约束
 - 长程任务默认不依赖 `human in the loop`
 - 更推荐 `human on the loop`：研究线程自主推进；高难分支先 `suspend`；阶段性收拢时统一交给人判断是否提供资料、改方向或重启
 - 只有在下面几种情况之一成立时，才值得主动请求同步人工介入：
   - 用户明确要求实时协同
   - 当前分支直接阻塞主线，而无法通过 `suspend` 绕开
   - 已知存在用户手里的专有材料、内部文档或访问入口，不拿到就无法继续
+
+### Suspended Branch 最低记录格式
+
+建议在 status、综合 artifact 或 closeout 中至少保留下列结构：
+
+```md
+- branch: `<topic-slug / question>`
+- state: `suspended`
+- why_suspended:
+- confirmed_so_far:
+- still_missing:
+- reopen_trigger:
+```
 
 ## 本轮执行顺序建议
 
@@ -568,4 +664,3 @@ Wave 2 的最低标准：
 建议使用：
 
 - `/Users/bowhead/ai_dev_skill/SKILL_HOST/plan/skill-host-skills-deep-research-progressive-plan-round-1.status.md`
-

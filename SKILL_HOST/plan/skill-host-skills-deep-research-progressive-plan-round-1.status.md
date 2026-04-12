@@ -1,12 +1,14 @@
 # Skill Host Skills Deep Research Progressive Plan Round 1 Status
 
 - `plan_path:` `/Users/bowhead/ai_dev_skill/SKILL_HOST/plan/skill-host-skills-deep-research-progressive-plan-round-1.md`
+- `template_version:` `v5`
 - `seed_dir:` `/Users/bowhead/ai_dev_skill/SKILL_HOST/topics`
 - `reference_dir:` `/Users/bowhead/ai_dev_skill/SKILL_HOST/topics/_reference`
 - `artifact_dir:` `/Users/bowhead/ai_dev_skill/SKILL_HOST/topics/_artifacts`
 - `current_wave:` `wave_1_in_progress`
 - `overall_state:` `in_progress`
 - `date_scope_default:` `2026-01-01+`
+- `migration_note:` `2026-04-12 从 v4 plan skeleton 升级到 v5 协议；不重置已完成进度，status 继续作为执行真相来源`
 
 ## Wave Checklist
 
@@ -96,3 +98,6 @@
 - Added latest Cursor `3.0` runtime reference covering Agents Window, Await, and self-hosted cloud agents
 - Added latest OpenCode tools reference covering websearch provider gating and subagent tool defaults
 - Added official Cursor forum evidence showing Task/subagent failures persisted into 2.6.22 and 3.0.4 due to server-side routing and model-policy interactions
+- Migrated active round-1 plan from template `v4` to `v5` without resetting wave progress
+- Upgraded plan contract so references must be more self-contained and execution follows file-first autonomous protocol
+- Added migration compatibility rule so legacy references can be upgraded incrementally instead of forcing a big-bang rewrite
