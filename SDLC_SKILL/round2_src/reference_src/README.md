@@ -22,7 +22,7 @@
 
 ## 文件结构（强制最小集合）
 
-每个 `reference_src/*.md` 至少包含以下字段（空值也要留出位置，方便后续补齐）：
+每个 `./*.md` 至少包含以下字段（空值也要留出位置，方便后续补齐）：
 
 - source_url:
 - source_type:
@@ -49,7 +49,7 @@
 
 在 `round2_src` 的二轮新增内容里，每条关键判断都要附带本地回指，推荐写在句末：
 
-- `（Ref: ../reference_src/00-shared-agentskills-overview.md）`
+- `（Ref: ./reference_src/00-shared-agentskills-overview.md）`
 
 目标是做到“30 秒内可定位支撑证据”。如发现某条 `reference_src` 文档无法回答“它支撑哪个判断”，那它就不该留在库里。
 

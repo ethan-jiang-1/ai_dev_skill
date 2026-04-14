@@ -2,7 +2,7 @@
 
 目标：快速回答“某个判断的证据在哪里”，减少翻找成本。
 
-维护方式：新增或更新 `reference_src/*.md` 后，同步补一行到这里即可。
+维护方式：新增或更新 `./*.md` 后，同步补一行到这里即可。
 
 | File | related_topic | trust_level | Supports (short) |
 |---|---|---|---|
