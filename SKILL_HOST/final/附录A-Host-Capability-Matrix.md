@@ -6,6 +6,23 @@
 
 ---
 
+## 场景决策矩阵
+
+**在看完整对比表之前，先用这张矩阵快速找到你的场景。**
+
+| 你的场景 | 关键需求 | 推荐倾向 | 主要理由 |
+|---------|---------|---------|---------|
+| 快速复用现有 writing/docs skills | 低风险上手，方法论复用 | **任意 host** | Writing skills 主要在 Layer 3，四个 host 都能跑 |
+| 运行复杂多步骤 workflow（subagents + hooks） | 最高 composition ceiling | **Claude Code** | 最成熟的 `skill + hook + subagent + MCP + plugin` 组合栈 |
+| 需要 CI/合规/审计环境下的 skill 执行 | Explicit runtime governance | **Codex** | approval/sandbox/search controls 最透明，可配置 |
+| 主要在 IDE 里工作，需要编辑器上下文感知 | IDE-native + async agents | **Cursor** | in-editor context 最强，execution topology 最广 |
+| 测试 skill 跨 host 兼容性，或多 provider 环境 | Compatibility bridge | **OpenCode** | 支持最多路径格式，provider flexibility 最高 |
+| 团队多人用不同 host，需要 skill 统一同步 | Mirror sync + canonical source | **OpenCode 或 Claude Code** | OpenCode 兼容性最广；Claude Code 组合能力最强 |
+| 评估 deep research skill，比较 host 能力 | Orchestration + tool availability | **Claude Code**（初选）/ **Codex**（治理需求） | 两者的 orchestration contract 最明确 |
+| 新手快速上手，不想踩太多坑 | 上手摩擦最低 | **Claude Code 或 Codex** | 文档和社区案例最多，runtime 行为最可预测 |
+
+---
+
 ## 综合对比矩阵
 
 | 维度 | Claude Code | Codex | Cursor | OpenCode |
@@ -93,3 +110,4 @@
 ---
 
 > 注意：同一个 skill 可以在 format 层兼容，但在 runtime 层失败或降级。对于 advanced skills，execution topology 和 constraint visibility 现在和 file-format compatibility 一样重要。
+
