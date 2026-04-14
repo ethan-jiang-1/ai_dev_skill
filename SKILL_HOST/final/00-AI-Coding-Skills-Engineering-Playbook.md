@@ -1,8 +1,20 @@
 # AI Coding Skills 工程实战 Playbook
 
 > 面向 AI Coding Engineer 的 2026 年 Skills 生态实战指南
->
-> 从"看到 skills 到处都是但不知道怎么选"，到"能根据工作流选 host、评估可移植性、跨 host 高效工作"。
+
+---
+
+你在 GitHub 上找到一个 skill——`repo-research-analyst`，周安装量 269，覆盖了 opencode、codex、cursor、gemini-cli、github-copilot、amp 六个 host。评分不错，描述清晰，安装也顺利。你装进 Claude Code，跑起来了，效果挺好。
+
+两个月后，你的同事开始用 Codex CLI——它的沙箱环境更适合 CI，审批模式更透明。他把这个 skill 的文件夹复制过去，装上，运行。
+
+出问题了。
+
+你们花了半天排查。最后发现不是格式问题——SKILL.md 是标准的，frontmatter 也没错。问题出在 skill 的正文里：它在关键步骤用了 `Task(...)` 这个调用语法，然后假设 `subagent_type=”general-purpose”`。这两个都是 Claude Code 的 runtime 约定，Codex 里不存在等价的名称。更讽刺的是，这个 skill 的正文里还有一行写着 `The current year is 2025`。
+
+这个 skill 能在六个 host 上 install，却在真正运行时露出了裂缝。格式层它通过了，runtime 层它带着过时的假设。
+
+**这就是这份 Playbook 要解决的问题。**
 
 ---
 
@@ -12,9 +24,9 @@
 
 | 你现在最关心什么 | 先读哪里 | 再跳哪里 |
 | --- | --- | --- |
-| 我想先上手跑通一个 skill（不想先做完全部对比） | 第 2 章末尾 `Quickstart` | 第 5 章（Writing）+ 附录 B |
+| 我想先上手跑通一个 skill（不想先做完全部对比） | 第 2 章 `Quickstart` | 第 5 章（Writing）+ 附录 B |
 | 我主要困惑是选 host | 第 3 章 | 附录 A + 第 6 章 |
-| 我主要困惑是“能不能跨 host 用” | 第 4 章 | 附录 B |
+| 我主要困惑是”能不能跨 host 用” | 第 4 章 | 附录 B |
 | 我在做跨 host 协作（团队不同工具） | 第 6 章 | 附录 A + 附录 B |
 | 我想追溯每个强判断的证据 | 附录 C | `../_reference/_INDEX.md` |
 
@@ -35,24 +47,29 @@ flowchart TD
 
 ## 1. 为什么 2026 年需要这份 Playbook
 
-2026 年，AI Coding Skills 已经不是新鲜事了。Claude Code、Codex、Cursor、OpenCode 都支持 skills，GitHub 上的 skill 仓库越来越多，`agentskills.io` 甚至发布了公开规范。
+2026 年，AI Coding Skills 已经不是新鲜事了。Claude Code、Codex、Cursor、OpenCode 都支持 skills，`agentskills.io` 发布了公开规范，skills.sh registry 上每天都有新的 skill 发布。
 
-但大多数 AI Coding Engineer 仍然卡在同一个地方：
+但大多数 AI Coding Engineer 仍然卡在同一批问题上——不是”有没有 skill 可以用”，而是更深一层的困惑：
 
-- **选 host 困惑**：四个主流 host 都说自己支持 skills，到底选哪个？
-- **可移植性误解**：以为 `SKILL.md` 格式通用就能直接复用，结果换个 host 就跑不起来
-- **复用风险盲区**：GitHub 上找到一个 skill，装上了，但不知道它有没有 stale assumptions（过时假设）
-- **跨 host 无方法**：团队里有人用 Claude Code，有人用 Cursor，不知道怎么让 skills 协同工作
+**”这个 skill 能用，还是只是能装？”**
 
-这份 Playbook 不是一份技术规范文档，也不是一份学术研究报告。它是一份**实战工程指南**，目标是帮你建立一个清晰的心智模型：
+有人在 GitHub 找到一个评分很高的 deep research skill，装进了自己的 host，跑起来了。结果团队里用另一个 host 的同事复用时，发现行为完全不一致，排查半天才发现 skill 里硬编码了原 host 的工具调用语法。
 
-- Skills 到底是什么（不是"更长的 prompt"）
-- 四大 Host 各自的 runtime contract（运行时契约）有什么本质差异
-- 可移植性为什么不是 yes/no 问题，而是分层的
-- 跨 host 工作时，什么时候该 sync、translate、delegate
-- 什么能直接复用，什么需要改造，什么不能碰
+有人看到 `SKILL.md` 格式规范是共享的，以为格式兼容就等于运行兼容，结果在第一个需要 subagent 并发的步骤就卡住了。
 
-**2026 年最重要的一个认知转变**：问题不再是"哪个 host 有 skills"，而是"哪个 host 的 runtime contract 足够明确，能支撑我的工作流"。
+有人团队用三个不同 host，想让 skill 在三个地方统一使用，结果三份文件慢慢 drift，成了三个互相矛盾的版本。
+
+这些困惑有一个共同根源：**format portability 和 runtime portability 是两件事**。一个 skill 能 install 不代表它能 run。能 run 不代表换一个 host 还能 run。
+
+这份 Playbook 是一份实战工程指南，不是技术规范文档。它的目的是帮你建立一套可操作的心智模型：
+
+- Skills 到底是什么（为什么不能只把它当成”更长的 prompt”）
+- 四大 Host 各自的 runtime contract 有什么本质差异，以及这些差异什么时候会影响你
+- 可移植性为什么是分层的问题，而不是 yes/no 问题
+- 跨 host 工作时，什么时候该直接复用、什么时候该翻译、什么时候该委托
+- 什么能直接拿来用，什么必须先改造，什么改了也没用
+
+**2026 年最重要的认知转变只有一句话**：问题不再是”哪个 host 有 skills”，而是”哪个 host 的 runtime contract 足够明确，能支撑我的工作流”。
 
 ---
 
@@ -267,6 +284,94 @@ flowchart TD
 - 将另一个 host 的 CLI 作为 worker 调用
 - 用 plugin delegation 包装跨 host 调用
 - 关键：这是 delegated portability（委托式可移植性），不是 native portability
+
+### Mini Case：一个 Technical-Writer Skill 的迁移故事
+
+框架读起来清晰，但真正的理解来自跑一遍。下面是一个 `technical-writer` skill 从 Claude Code 迁移到 Codex 的完整过程——它展示了 7 层框架里哪些层顺利通过，哪里开始断裂。
+
+**背景**：团队的文档质量出了问题——不同人写的 API 文档风格差距很大，术语不统一，README 参差不齐。有人在 skills.sh registry 找到了一个 `technical-writer` skill（作者：404kidwiz，周安装量 105 次，覆盖 opencode、codex、cursor、claude-code 六个 host），装进 Claude Code，用了两个月，效果不错。工程师写文档时触发这个 skill，输出质量稳定了不少。
+
+然后 CTO 宣布公司新项目要在 Codex CLI 上跑——它的沙箱模型更适合 CI 环境，审批流程更透明。问题来了：能不能把这个 skill 直接搬过去？
+
+---
+
+**Layer 1-2：格式和发现层，顺利**
+
+把 `SKILL.md` 复制过来，`npx skills add` 一行命令装进 Codex，没有报错。frontmatter 兼容，目录结构没问题。这层没有悬念。
+
+---
+
+**Layer 3：Workflow-Method 层，基本可用——但有一个隐患**
+
+打开 `SKILL.md` 仔细读。这个 skill 的核心是一套文档写作流程：
+
+1. 读取目标文档的受众和用途
+2. 检查 style rules（外置在 `references/style-guide.md`）
+3. 生成草稿，应用风格约束
+4. 自检：术语一致性、段落长度、代码示例格式
+
+方法论本身是完全可移植的——它封装的是写作判断，不是工具调用。换哪个 host 都能理解"检查术语一致性"这件事。**Layer 3 通过。**
+
+但有一个细节值得注意：`SKILL.md` 的开头写着一行说明：
+
+> *"Optimized for use with Claude Code's `WebFetch` tool to retrieve brand guidelines from internal wiki."*
+
+这条说明不影响主流程运行，但它暗示作者设想了一个具体的 tool 调用场景。记住这里，后面会用到。
+
+---
+
+**Layer 5-6：问题出现了**
+
+团队的文档工作流里有一个步骤：当写到涉及竞品的部分时，skill 需要搜索最新的竞品发布信息来确保准确性。原来的 `SKILL.md` 里有这么一段：
+
+```
+当需要验证竞品信息时，使用 WebSearch 工具检索最新动态，
+并通过 WebFetch 从官方文档页面提取关键数据点。
+```
+
+装进 Codex 之后，运行时报错：`WebFetch` 不是 Codex 的原生工具名。Codex 的对应能力需要通过 shell 命令或 MCP 调用，而不是 Claude Code 的 `WebFetch`。
+
+这就是 **Layer 6（Tool-Surface）的 breakpoint**：工具名是 host-specific 的，不能直接移植。
+
+同时发现另一个问题：原来的 skill 有一个可选步骤，会在验证阶段起一个 general-purpose subagent 来做并行检查。在 Codex 里，subagent 的调用语法和 label 都不一样——Claude Code 的 `general-purpose` 在 Codex 里需要映射到 `default` 或 `worker`。**Layer 5（Runtime-Orchestration）也出现了断层。**
+
+---
+
+**选择：Translate 还是 Delegate？**
+
+团队的判断：
+
+- Delegate 模式（让 Codex 去调用 Claude Code CLI）：可以，但引入了跨 host 的依赖，不适合 CI 环境
+- Translate 模式：工具名是表层问题，核心方法论不变，翻译工作量可控
+
+选 Translate。
+
+具体改动只有两处：
+
+1. `WebFetch` → 改为"通过 shell 命令或 MCP fetch 目标 URL"（行为描述，不绑定工具名）
+2. `general-purpose subagent` → 改为"在 Codex 中使用 `worker` 类型的子代理，或直接在主 agent 内完成并行验证"
+
+改完之后，重新装进 Codex，完整跑通。style rules、checklist、输出格式全部保留，方法论一字未改。
+
+---
+
+**这个案例告诉我们什么**
+
+| 层级 | 结果 | 原因 |
+|------|------|------|
+| Layer 1（文件格式） | ✅ 直接通过 | SKILL.md 格式共享 |
+| Layer 2（发现/安装） | ✅ 直接通过 | skills CLI 跨 host 兼容 |
+| Layer 3（工作流方法） | ✅ 完整保留 | 写作判断不依赖 runtime |
+| Layer 5（运行时编排） | ⚠️ 需要翻译 | subagent label 不同 |
+| Layer 6（工具表面） | ⚠️ 需要翻译 | `WebFetch` 是 Claude Code 专属 |
+
+改动量：2处工具名和 subagent label 的翻译，不到 10 行。代价很小，因为这个 skill 的价值集中在 Layer 3，Layer 5-6 只是薄薄的一层 host-specific shell。
+
+如果这个 skill 的核心是"用 subagent 并行爬取 20 个源并做证据合并"（典型的 deep research skill 形态），Layer 5-6 的翻译工作就会复杂得多，这时候 Delegate 模式可能是更好的选择。
+
+> **规律**：skill 的价值越集中在 Layer 3，跨 host 迁移就越轻松。一旦 Layer 5-6 成为核心执行逻辑，才需要认真评估 Translate vs Delegate。
+
+---
 
 ### 一个关键警告
 
