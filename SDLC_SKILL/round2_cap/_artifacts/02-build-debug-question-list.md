@@ -1,6 +1,6 @@
 # 02-build-debug Question List (Progressive)
 
-目标：持续维护待验证问题清单；每个问题最终都应有 `reference_cap/*.md` 回答或标注“待验证”。
+目标：持续维护待验证问题清单；每个问题最终都应有 `../reference_cap/*.md` 回答或标注“待验证”。
 
 ## Open Questions
 
