@@ -15,12 +15,12 @@
 
 已落库的代表性来源（示例）：
 
-- 学术：`reference_eng/01-scaffold-kirschner-sweller-clark-minimal-guidance-2006.md`, `reference_eng/01-scaffold-chi-wylie-icap-framework-2014.md`, `reference_eng/01-scaffold-risko-gilbert-cognitive-offloading-2016.md`, `reference_eng/01-scaffold-belief-offloading-human-ai-interaction-arxiv-2602-08754.md`
-- 直接 SE 场景实验：`reference_eng/01-scaffold-github-copilot-students-brownfield-arxiv-2506-10051.md`, `reference_eng/03-devlife-borg-hewett-et-al-echoes-of-ai-maintainability-arxiv-2507-00788.md`
-- 直接 SE 场景负结果/边界：`reference_eng/01-scaffold-qiao-et-al-comprehension-performance-gap-brownfield-arxiv-2511-02922.md`
-- 企业 field study（体验/负荷）：`reference_eng/03-devlife-brandebusemeyer-schimmer-arnrich-genai-dev-experience-field-study-arxiv-2512-19926.md`
-- 官方机制：`reference_eng/01-scaffold-anthropic-engineering-agent-skills-progressive-disclosure-2025.md`
-- 社区反例信号：`reference_eng/01-scaffold-community-experienceddevs-copilot-focus-disruption.md`
+- 学术：`../reference_eng/01-scaffold-kirschner-sweller-clark-minimal-guidance-2006.md`, `../reference_eng/01-scaffold-chi-wylie-icap-framework-2014.md`, `../reference_eng/01-scaffold-risko-gilbert-cognitive-offloading-2016.md`, `../reference_eng/01-scaffold-belief-offloading-human-ai-interaction-arxiv-2602-08754.md`
+- 直接 SE 场景实验：`../reference_eng/01-scaffold-github-copilot-students-brownfield-arxiv-2506-10051.md`, `../reference_eng/03-devlife-borg-hewett-et-al-echoes-of-ai-maintainability-arxiv-2507-00788.md`
+- 直接 SE 场景负结果/边界：`../reference_eng/01-scaffold-qiao-et-al-comprehension-performance-gap-brownfield-arxiv-2511-02922.md`
+- 企业 field study（体验/负荷）：`../reference_eng/03-devlife-brandebusemeyer-schimmer-arnrich-genai-dev-experience-field-study-arxiv-2512-19926.md`
+- 官方机制：`../reference_eng/01-scaffold-anthropic-engineering-agent-skills-progressive-disclosure-2025.md`
+- 社区反例信号：`../reference_eng/01-scaffold-community-experienceddevs-copilot-focus-disruption.md`
 
 ## 02-tier（难度分层与能力训练矩阵）
 
@@ -32,10 +32,10 @@
 
 已落库的代表性来源（示例）：
 
-- 专家差异实证：`reference_eng/02-tier-vessey-1985-expertise-in-debugging-process-analysis.md`, `reference_eng/02-tier-burkhardt-detienne-wiedenbeck-1998-oo-comprehension-expertise.md`
-- 可测 proxy / 注意力路线：`reference_eng/02-tier-bergersen-et-al-inferring-programming-skill-time-quality-esem-2011.md`, `reference_eng/02-tier-al-madi-et-al-longitudinal-eye-tracking-token-effects-icpc-2021.md`, `reference_eng/02-tier-kuang-et-al-gazeprinter-expert-gaze-guide-novices-arxiv-2603-19855.md`
-- 学习机制：`reference_eng/02-tier-ericsson-1993-deliberate-practice-expert-performance.md`, `reference_eng/02-tier-bjork-bjork-2020-desirable-difficulties.md`
-- SE expertise 理论：`reference_eng/02-tier-baltes-diehl-theory-software-development-expertise-2018.md`
+- 专家差异实证：`../reference_eng/02-tier-vessey-1985-expertise-in-debugging-process-analysis.md`, `../reference_eng/02-tier-burkhardt-detienne-wiedenbeck-1998-oo-comprehension-expertise.md`
+- 可测 proxy / 注意力路线：`../reference_eng/02-tier-bergersen-et-al-inferring-programming-skill-time-quality-esem-2011.md`, `../reference_eng/02-tier-al-madi-et-al-longitudinal-eye-tracking-token-effects-icpc-2021.md`, `../reference_eng/02-tier-kuang-et-al-gazeprinter-expert-gaze-guide-novices-arxiv-2603-19855.md`
+- 学习机制：`../reference_eng/02-tier-ericsson-1993-deliberate-practice-expert-performance.md`, `../reference_eng/02-tier-bjork-bjork-2020-desirable-difficulties.md`
+- SE expertise 理论：`../reference_eng/02-tier-baltes-diehl-theory-software-development-expertise-2018.md`
 
 ## 03-devlife（开发生命周期与工具生态）
 
@@ -48,10 +48,10 @@
 
 已落库的代表性来源（示例）：
 
-- 官方机制：`reference_eng/03-devlife-windsurf-cascade-skills-docs.md`, `reference_eng/03-devlife-windsurf-workflows-manual-only.md`, `reference_eng/03-devlife-vercel-skills-lock-files.md`, `reference_eng/03-devlife-vercel-skills-update-system.md`
-- eval 原语：`reference_eng/03-devlife-openai-evals-readme.md`
-- 学术/企业研究：`reference_eng/03-devlife-borg-hewett-et-al-echoes-of-ai-maintainability-arxiv-2507-00788.md`, `reference_eng/03-devlife-brandebusemeyer-schimmer-arnrich-genai-dev-experience-field-study-arxiv-2512-19926.md`
-- 行业实践：`reference_eng/03-devlife-pandey-singh-wei-shankar-copilot-real-world-projects-arxiv-2406-17910.md`
+- 官方机制：`../reference_eng/03-devlife-windsurf-cascade-skills-docs.md`, `../reference_eng/03-devlife-windsurf-workflows-manual-only.md`, `../reference_eng/03-devlife-vercel-skills-lock-files.md`, `../reference_eng/03-devlife-vercel-skills-update-system.md`
+- eval 原语：`../reference_eng/03-devlife-openai-evals-readme.md`
+- 学术/企业研究：`../reference_eng/03-devlife-borg-hewett-et-al-echoes-of-ai-maintainability-arxiv-2507-00788.md`, `../reference_eng/03-devlife-brandebusemeyer-schimmer-arnrich-genai-dev-experience-field-study-arxiv-2512-19926.md`
+- 行业实践：`../reference_eng/03-devlife-pandey-singh-wei-shankar-copilot-real-world-projects-arxiv-2406-17910.md`
 
 ## 04-path（跃迁路径、团队采纳与治理）
 
@@ -64,7 +64,7 @@
 
 已落库的代表性来源（示例）：
 
-- 官方治理：`reference_eng/04-path-github-copilot-repo-custom-instructions.md`, `reference_eng/04-path-github-copilot-cli-tool-permissions.md`, `reference_eng/04-path-github-copilot-cloud-agent-pilot-guide.md`
-- prompt 资产治理实证（大规模）：`reference_eng/04-path-li-et-al-understanding-prompt-management-github-repos-arxiv-2509-12421.md`
-- 风险框架：`reference_eng/04-path-owasp-top-10-llm-apps-v1-1.md`
-- 组织采纳纵向：`reference_eng/04-path-stray-brandtzaeg-wivestad-et-al-copilot-longitudinal-case-study-arxiv-2509-20353.md`
+- 官方治理：`../reference_eng/04-path-github-copilot-repo-custom-instructions.md`, `../reference_eng/04-path-github-copilot-cli-tool-permissions.md`, `../reference_eng/04-path-github-copilot-cloud-agent-pilot-guide.md`
+- prompt 资产治理实证（大规模）：`../reference_eng/04-path-li-et-al-understanding-prompt-management-github-repos-arxiv-2509-12421.md`
+- 风险框架：`../reference_eng/04-path-owasp-top-10-llm-apps-v1-1.md`
+- 组织采纳纵向：`../reference_eng/04-path-stray-brandtzaeg-wivestad-et-al-copilot-longitudinal-case-study-arxiv-2509-20353.md`

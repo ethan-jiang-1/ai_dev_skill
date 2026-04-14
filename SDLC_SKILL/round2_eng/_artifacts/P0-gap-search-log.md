@@ -28,15 +28,15 @@
 ### 命中并已落库的“最接近”证据（仍不足以关闭缺口）
 
 - brownfield 场景对照实验（学生）：效率/过程改变 + 理解担忧信号，但没有把“长期能力提升”测成因果结论。
-  - `reference_eng/01-scaffold-github-copilot-students-brownfield-arxiv-2506-10051.md`
+  - `../reference_eng/01-scaffold-github-copilot-students-brownfield-arxiv-2506-10051.md`
 - brownfield 复现实验：Copilot 显著提升 performance（时间/测试通过数），但 comprehension scores 无显著提升，出现 comprehension–performance gap（强边界证据）。
-  - `reference_eng/01-scaffold-qiao-et-al-comprehension-performance-gap-brownfield-arxiv-2511-02922.md`
+  - `../reference_eng/01-scaffold-qiao-et-al-comprehension-performance-gap-brownfield-arxiv-2511-02922.md`
 - 可用性研究：偏好与效果可能分离；理解/编辑/调试困难显著（学习收益不能用“喜欢/省搜索”替代）。
-  - `reference_eng/01-scaffold-vaithilingam-zhang-glassman-expectation-vs-experience-copilot-chi22.md`
+  - `../reference_eng/01-scaffold-vaithilingam-zhang-glassman-expectation-vs-experience-copilot-chi22.md`
 - 专业开发者 field study：交互类型/强度影响效率、准确率与负荷（对“参与方式会被塑形”提供过程证据，但不等价学习收益）。
-  - `reference_eng/03-devlife-brandebusemeyer-schimmer-arnrich-genai-dev-experience-field-study-arxiv-2512-19926.md`
+  - `../reference_eng/03-devlife-brandebusemeyer-schimmer-arnrich-genai-dev-experience-field-study-arxiv-2512-19926.md`
 - 两阶段实验（Phase 2 RCT）：实现阶段提速，但下游 maintainability proxy 未见显著差异（提示“短期更快 ≠ 长期更好/更差”）。
-  - `reference_eng/03-devlife-borg-hewett-et-al-echoes-of-ai-maintainability-arxiv-2507-00788.md`
+  - `../reference_eng/03-devlife-borg-hewett-et-al-echoes-of-ai-maintainability-arxiv-2507-00788.md`
 
 ### 当前结论（缺口状态）
 
@@ -71,16 +71,16 @@
 ### 命中并已落库的“最接近”证据（仍不足以关闭缺口）
 
 - 官方治理控制面（可执行事实）：repo instructions、权限模型、组织策略、pilot playbook、cloud agent workflow（说明“能怎么治理”，但不是“谁如何跃迁”的案例）。
-  - `reference_eng/04-path-github-copilot-repo-custom-instructions.md`
-  - `reference_eng/04-path-github-copilot-cli-tool-permissions.md`
-  - `reference_eng/04-path-github-copilot-policies-concepts.md`
-  - `reference_eng/04-path-github-copilot-cloud-agent-about.md`
-  - `reference_eng/04-path-github-copilot-cloud-agent-pilot-guide.md`
+  - `../reference_eng/04-path-github-copilot-repo-custom-instructions.md`
+  - `../reference_eng/04-path-github-copilot-cli-tool-permissions.md`
+  - `../reference_eng/04-path-github-copilot-policies-concepts.md`
+  - `../reference_eng/04-path-github-copilot-cloud-agent-about.md`
+  - `../reference_eng/04-path-github-copilot-cloud-agent-pilot-guide.md`
 - prompt 资产治理的“问题面”实证（大规模）：GitHub 上 prompt 管理存在格式不一致、重复、可读性/拼写问题，并指出 prompts 与 GitHub 管理范式存在阻抗不匹配与 gatekeeping 缺失（说明“为什么治理会很难”，但不提供跃迁案例链条）。
-  - `reference_eng/04-path-li-et-al-understanding-prompt-management-github-repos-arxiv-2509-12421.md`
+  - `../reference_eng/04-path-li-et-al-understanding-prompt-management-github-repos-arxiv-2509-12421.md`
 - 组织采纳与度量研究/案例：可回答“采纳如何试点与测量”，但仍不等价“从使用者到作者/治理者”的个人成长证据链。
-  - `reference_eng/04-path-stray-brandtzaeg-wivestad-et-al-copilot-longitudinal-case-study-arxiv-2509-20353.md`
-  - `reference_eng/04-path-zoominfo-copilot-deployment-productivity-arxiv-2501-13282.md`
+  - `../reference_eng/04-path-stray-brandtzaeg-wivestad-et-al-copilot-longitudinal-case-study-arxiv-2509-20353.md`
+  - `../reference_eng/04-path-zoominfo-copilot-deployment-productivity-arxiv-2501-13282.md`
 
 ### 当前结论（缺口状态）
 

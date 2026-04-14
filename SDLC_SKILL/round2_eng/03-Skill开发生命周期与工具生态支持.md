@@ -95,32 +95,32 @@
 
 ## 二轮新增证据
 
-- Claude 官方对 skills 的定义强调：skills 可按需加载、可动态启用，并存在可治理的范围/权限边界（生态原语事实）。（ref: `../reference_eng/03-devlife-claude-what-are-skills.md`）
-- Windsurf 官方文档描述了 skills 的 invocation、scopes 与存储/组织方式，体现“skills 作为可管理上下文资产”。（ref: `../reference_eng/03-devlife-windsurf-cascade-skills-docs.md`）
-- Windsurf 官方明确 workflows 必须手动触发（manual-only），这是一个非常硬的“显式授权”边界事实。（ref: `../reference_eng/03-devlife-windsurf-workflows-manual-only.md`）
-- OpenAI Evals 官方仓库提供了 evals-as-code 的工程形态：自定义 eval、registry 管理、dashboard 运行等，可作为“Evals 阶段”的 ground truth。（ref: `../reference_eng/03-devlife-openai-evals-readme.md`）
+- Claude 官方对 skills 的定义强调：skills 可按需加载、可动态启用，并存在可治理的范围/权限边界（生态原语事实）。（ref: `./reference_eng/03-devlife-claude-what-are-skills.md`）
+- Windsurf 官方文档描述了 skills 的 invocation、scopes 与存储/组织方式，体现“skills 作为可管理上下文资产”。（ref: `./reference_eng/03-devlife-windsurf-cascade-skills-docs.md`）
+- Windsurf 官方明确 workflows 必须手动触发（manual-only），这是一个非常硬的“显式授权”边界事实。（ref: `./reference_eng/03-devlife-windsurf-workflows-manual-only.md`）
+- OpenAI Evals 官方仓库提供了 evals-as-code 的工程形态：自定义 eval、registry 管理、dashboard 运行等，可作为“Evals 阶段”的 ground truth。（ref: `./reference_eng/03-devlife-openai-evals-readme.md`）
 - Vercel 的 skills 机制展示了分发/稳态支持的工程化要素：
-  - lockfile 用于确定性安装态与团队共享（ref: `../reference_eng/03-devlife-vercel-skills-lock-files.md`）
-  - update system 使用 hash-based checks + remote update API（ref: `../reference_eng/03-devlife-vercel-skills-update-system.md`）
-  - source formats 与解析顺序属于底层实现事实（ref: `../reference_eng/03-devlife-vercel-skills-source-formats.md`）
-- Cursor vs Windsurf 的第三方对比只能作为弱证据信号（观点性），但可用于提出“显式控制 vs 隐式自动化”影响学习路径的假设，需优先用官方 docs 做机制事实兜底。（ref: `../reference_eng/03-devlife-cursor-vs-windsurf-blott-2025.md`）
-- 大样本、preregistered 的两阶段实验显示：AI assistants 能显著加速实现阶段，但在后续他人演进的 completion time / code quality proxy 上未检测到显著差异；Bayesian 分析认为任何改善至多很小且不确定，同时论文明确提出需要关注 code bloat 与 cognitive debt 等风险方向。（ref: `../reference_eng/03-devlife-borg-hewett-et-al-echoes-of-ai-maintainability-arxiv-2507-00788.md`）
-- 企业自然工作环境的 mixed-method field study 表明：交互类型（in-code vs chat vs combined）与使用强度会影响效率、准确率与 perceived workload；适度使用单一交互形式更可能带来收益，过度或组合使用会减弱收益。（ref: `../reference_eng/03-devlife-brandebusemeyer-schimmer-arnrich-genai-dev-experience-field-study-arxiv-2512-19926.md`）
-- 行业实践型证据（Cisco）在大型专有代码库上用“任务分类 + 日志对照”评估 Copilot，并明确列出其 underperforming 场景（复杂任务、大函数、多文件、专有上下文、尤其 C/C++）。（ref: `../reference_eng/03-devlife-pandey-singh-wei-shankar-copilot-real-world-projects-arxiv-2406-17910.md`）
-- controlled experiment（随机分组、招募 professional developers）显示：Copilot treatment 组在 JS HTTP server 任务上完成时间快 55.8%，且 control 组允许使用搜索/Stack Overflow；论文还提供了可复用的评测工程脚手架（GitHub Classroom + test suite + 时间戳定义）。（ref: `../reference_eng/03-devlife-peng-et-al-impact-ai-developer-productivity-copilot-arxiv-2302-06590.md`）
+  - lockfile 用于确定性安装态与团队共享（ref: `./reference_eng/03-devlife-vercel-skills-lock-files.md`）
+  - update system 使用 hash-based checks + remote update API（ref: `./reference_eng/03-devlife-vercel-skills-update-system.md`）
+  - source formats 与解析顺序属于底层实现事实（ref: `./reference_eng/03-devlife-vercel-skills-source-formats.md`）
+- Cursor vs Windsurf 的第三方对比只能作为弱证据信号（观点性），但可用于提出“显式控制 vs 隐式自动化”影响学习路径的假设，需优先用官方 docs 做机制事实兜底。（ref: `./reference_eng/03-devlife-cursor-vs-windsurf-blott-2025.md`）
+- 大样本、preregistered 的两阶段实验显示：AI assistants 能显著加速实现阶段，但在后续他人演进的 completion time / code quality proxy 上未检测到显著差异；Bayesian 分析认为任何改善至多很小且不确定，同时论文明确提出需要关注 code bloat 与 cognitive debt 等风险方向。（ref: `./reference_eng/03-devlife-borg-hewett-et-al-echoes-of-ai-maintainability-arxiv-2507-00788.md`）
+- 企业自然工作环境的 mixed-method field study 表明：交互类型（in-code vs chat vs combined）与使用强度会影响效率、准确率与 perceived workload；适度使用单一交互形式更可能带来收益，过度或组合使用会减弱收益。（ref: `./reference_eng/03-devlife-brandebusemeyer-schimmer-arnrich-genai-dev-experience-field-study-arxiv-2512-19926.md`）
+- 行业实践型证据（Cisco）在大型专有代码库上用“任务分类 + 日志对照”评估 Copilot，并明确列出其 underperforming 场景（复杂任务、大函数、多文件、专有上下文、尤其 C/C++）。（ref: `./reference_eng/03-devlife-pandey-singh-wei-shankar-copilot-real-world-projects-arxiv-2406-17910.md`）
+- controlled experiment（随机分组、招募 professional developers）显示：Copilot treatment 组在 JS HTTP server 任务上完成时间快 55.8%，且 control 组允许使用搜索/Stack Overflow；论文还提供了可复用的评测工程脚手架（GitHub Classroom + test suite + 时间戳定义）。（ref: `./reference_eng/03-devlife-peng-et-al-impact-ai-developer-productivity-copilot-arxiv-2302-06590.md`）
 
 ## 二轮新增机制理解
 
 ### 1) 生命周期的“硬分界线”：是否具备稳态维护闭环
 
 - 从工具原语看，Skill 从一次性脚本到团队资产的关键分界线不是“写得更复杂”，而是是否进入可回归的稳态：
-  - Evals 让输出质量可被持续回归，而不是靠人工记忆与主观印象维护。（ref: `../reference_eng/03-devlife-openai-evals-readme.md`）
-  - lockfile + update check 把“安装态一致性”和“更新漂移”工程化，否则团队共享会退化为复制粘贴碎片化。（ref: `../reference_eng/03-devlife-vercel-skills-lock-files.md`, `../reference_eng/03-devlife-vercel-skills-update-system.md`）
-- 生产力/效果评测的可复用形态也已经出现：标准化仓库 + tests + 明确定义的“完成时间”指标（GitHub Classroom harness）。这为 Skill/agent 的内部评测提供了可迁移的工程样板。（ref: `../reference_eng/03-devlife-peng-et-al-impact-ai-developer-productivity-copilot-arxiv-2302-06590.md`）
+  - Evals 让输出质量可被持续回归，而不是靠人工记忆与主观印象维护。（ref: `./reference_eng/03-devlife-openai-evals-readme.md`）
+  - lockfile + update check 把“安装态一致性”和“更新漂移”工程化，否则团队共享会退化为复制粘贴碎片化。（ref: `./reference_eng/03-devlife-vercel-skills-lock-files.md`, `./reference_eng/03-devlife-vercel-skills-update-system.md`）
+- 生产力/效果评测的可复用形态也已经出现：标准化仓库 + tests + 明确定义的“完成时间”指标（GitHub Classroom harness）。这为 Skill/agent 的内部评测提供了可迁移的工程样板。（ref: `./reference_eng/03-devlife-peng-et-al-impact-ai-developer-productivity-copilot-arxiv-2302-06590.md`）
 
 ### 2) “显式授权边界”是生态走向团队化的必要条件
 
-- workflows manual-only 说明生态正在把某类高风险自动化行为强制放到显式触发通道，这与团队治理目标一致：把不可预测副作用的动作放回人类授权与审计链条。（ref: `../reference_eng/03-devlife-windsurf-workflows-manual-only.md`）
+- workflows manual-only 说明生态正在把某类高风险自动化行为强制放到显式触发通道，这与团队治理目标一致：把不可预测副作用的动作放回人类授权与审计链条。（ref: `./reference_eng/03-devlife-windsurf-workflows-manual-only.md`）
 - 这也反向约束 Skill 设计：当能力越来越强，越需要把“自动做”改成“按协议做”，否则会演化为过度代理风险（与 04-path 风险框架相交叉）。
 
 ### 3) 工具生态塑形：不是“哪个更强”，而是“训练了谁的什么能力”
@@ -130,14 +130,14 @@
 
 ## 二轮新增趋势与难点
 
-- 趋势：skills 正在从个人 prompt 资产化为“可加载、可治理、可更新、可回归”的工程工件（至少在多个官方生态里出现相似原语）。（ref: `../reference_eng/03-devlife-claude-what-are-skills.md`, `../reference_eng/03-devlife-vercel-skills-lock-files.md`）
-- 难点：Evals 设计与维护成本高，且容易出现指标漂移/过拟合等问题；若没有 eval 资产与回归纪律，skill 很难进入稳态。（ref: `../reference_eng/03-devlife-openai-evals-readme.md`）
-- 难点：跨生态的 skill “标准化与可迁移性”仍不清晰；不同工具对触发边界与存储形式的差异会带来迁移成本。（ref: `../reference_eng/03-devlife-windsurf-cascade-skills-docs.md`, `../reference_eng/03-devlife-vercel-skills-source-formats.md`）
-- 难点（真实工程约束）：在企业真实任务里，工具能力受多文件/专有上下文/复杂任务影响显著；因此生命周期中的“Build”需要显式把上下文组织与边界条件设计纳入协议，而不是假设工具能自动处理。（ref: `../reference_eng/03-devlife-pandey-singh-wei-shankar-copilot-real-world-projects-arxiv-2406-17910.md`）
-- 难点（交互强度与负荷）：更“全程/组合”的 AI 交互不一定更好；需要在工具/skill 层引入“交互强度治理”（例如：哪些任务用 chat，哪些用 in-code，哪些必须人工审查），否则收益可能被工作负荷与验证成本吞噬。（ref: `../reference_eng/03-devlife-brandebusemeyer-schimmer-arnrich-genai-dev-experience-field-study-arxiv-2512-19926.md`）
-- 开发者体验中的另一个关键变量是 trust calibration：研究显示学生在 1 小时与 10 天使用 Copilot 后的 trust 会演化；平均信任上升，但完成项目后仍认为 Copilot 需要 competent programmer 手动完成部分任务，并提出应持续教授 comprehension/debugging/testing 以验证输出。（ref: `../reference_eng/03-devlife-shah-et-al-evolution-programmers-trust-genai-assistants-arxiv-2509-13253.md`）
-- 趋势（度量升级）：开始出现把影响评估推进到“下游可维护性/演进成本”的严肃实验设计；这意味着生态在从“更快写代码”走向“更可持续地演进代码”。（ref: `../reference_eng/03-devlife-borg-hewett-et-al-echoes-of-ai-maintainability-arxiv-2507-00788.md`）
-- 趋势（评测工程化）：开始出现可复用的标准化任务评测 harness（repo+tests+timestamp），让“工具/skill 是否带来速度差异”可重复测量（尽管仍需补质量/风险维度）。（ref: `../reference_eng/03-devlife-peng-et-al-impact-ai-developer-productivity-copilot-arxiv-2302-06590.md`）
+- 趋势：skills 正在从个人 prompt 资产化为“可加载、可治理、可更新、可回归”的工程工件（至少在多个官方生态里出现相似原语）。（ref: `./reference_eng/03-devlife-claude-what-are-skills.md`, `./reference_eng/03-devlife-vercel-skills-lock-files.md`）
+- 难点：Evals 设计与维护成本高，且容易出现指标漂移/过拟合等问题；若没有 eval 资产与回归纪律，skill 很难进入稳态。（ref: `./reference_eng/03-devlife-openai-evals-readme.md`）
+- 难点：跨生态的 skill “标准化与可迁移性”仍不清晰；不同工具对触发边界与存储形式的差异会带来迁移成本。（ref: `./reference_eng/03-devlife-windsurf-cascade-skills-docs.md`, `./reference_eng/03-devlife-vercel-skills-source-formats.md`）
+- 难点（真实工程约束）：在企业真实任务里，工具能力受多文件/专有上下文/复杂任务影响显著；因此生命周期中的“Build”需要显式把上下文组织与边界条件设计纳入协议，而不是假设工具能自动处理。（ref: `./reference_eng/03-devlife-pandey-singh-wei-shankar-copilot-real-world-projects-arxiv-2406-17910.md`）
+- 难点（交互强度与负荷）：更“全程/组合”的 AI 交互不一定更好；需要在工具/skill 层引入“交互强度治理”（例如：哪些任务用 chat，哪些用 in-code，哪些必须人工审查），否则收益可能被工作负荷与验证成本吞噬。（ref: `./reference_eng/03-devlife-brandebusemeyer-schimmer-arnrich-genai-dev-experience-field-study-arxiv-2512-19926.md`）
+- 开发者体验中的另一个关键变量是 trust calibration：研究显示学生在 1 小时与 10 天使用 Copilot 后的 trust 会演化；平均信任上升，但完成项目后仍认为 Copilot 需要 competent programmer 手动完成部分任务，并提出应持续教授 comprehension/debugging/testing 以验证输出。（ref: `./reference_eng/03-devlife-shah-et-al-evolution-programmers-trust-genai-assistants-arxiv-2509-13253.md`）
+- 趋势（度量升级）：开始出现把影响评估推进到“下游可维护性/演进成本”的严肃实验设计；这意味着生态在从“更快写代码”走向“更可持续地演进代码”。（ref: `./reference_eng/03-devlife-borg-hewett-et-al-echoes-of-ai-maintainability-arxiv-2507-00788.md`）
+- 趋势（评测工程化）：开始出现可复用的标准化任务评测 harness（repo+tests+timestamp），让“工具/skill 是否带来速度差异”可重复测量（尽管仍需补质量/风险维度）。（ref: `./reference_eng/03-devlife-peng-et-al-impact-ai-developer-productivity-copilot-arxiv-2302-06590.md`）
 
 ## 当前判断（二轮综合后）
 
@@ -145,26 +145,26 @@
 
 - Discovery：明确目标与失败模式，否则后续 eval 不可定义。
 - Build：把专家策略写成可执行协议与可审查结构（与 01/02 的“保留心智动作”一致）。
-- Evals：把“对不对/好不好/稳不稳”变成可回归资产（是进入稳态的必要条件）。（ref: `../reference_eng/03-devlife-openai-evals-readme.md`）
-- Deploy/Steady State：必须具备分发的确定性与更新控制，否则团队共享会碎片化。（ref: `../reference_eng/03-devlife-vercel-skills-lock-files.md`, `../reference_eng/03-devlife-vercel-skills-update-system.md`）
+- Evals：把“对不对/好不好/稳不稳”变成可回归资产（是进入稳态的必要条件）。（ref: `./reference_eng/03-devlife-openai-evals-readme.md`）
+- Deploy/Steady State：必须具备分发的确定性与更新控制，否则团队共享会碎片化。（ref: `./reference_eng/03-devlife-vercel-skills-lock-files.md`, `./reference_eng/03-devlife-vercel-skills-update-system.md`）
 
 ### 2) 六个固定问题回答（二轮）
 
 1. 这个主题当前的硬事实是什么
-   - skills/workflows/evals/lockfile/update 等工程原语在官方生态中已经存在，且可以被直接引用为 ground truth。（ref: `../reference_eng/03-devlife-claude-what-are-skills.md`, `../reference_eng/03-devlife-windsurf-workflows-manual-only.md`, `../reference_eng/03-devlife-openai-evals-readme.md`, `../reference_eng/03-devlife-vercel-skills-lock-files.md`）
-   - 在更贴近真实工程的研究中，已经能观察到：AI assistants 会影响效率、负荷与后续演进等工程结果，但净效应依赖交互类型、使用强度、任务与上下文。（ref: `../reference_eng/03-devlife-brandebusemeyer-schimmer-arnrich-genai-dev-experience-field-study-arxiv-2512-19926.md`, `../reference_eng/03-devlife-borg-hewett-et-al-echoes-of-ai-maintainability-arxiv-2507-00788.md`）
-   - trust 是动态态度，且会随使用经验演化；校准信任需要“可验证证据”与传统工程技能（comprehension/debugging/testing）作为底座。（ref: `../reference_eng/03-devlife-shah-et-al-evolution-programmers-trust-genai-assistants-arxiv-2509-13253.md`）
-   - 存在可复用的标准化任务评测工程形态（GitHub Classroom + test suite + 时间戳），用于度量“是否更快/是否完成”，可迁移到内部 Skill/agent 评估。（ref: `../reference_eng/03-devlife-peng-et-al-impact-ai-developer-productivity-copilot-arxiv-2302-06590.md`）
+   - skills/workflows/evals/lockfile/update 等工程原语在官方生态中已经存在，且可以被直接引用为 ground truth。（ref: `./reference_eng/03-devlife-claude-what-are-skills.md`, `./reference_eng/03-devlife-windsurf-workflows-manual-only.md`, `./reference_eng/03-devlife-openai-evals-readme.md`, `./reference_eng/03-devlife-vercel-skills-lock-files.md`）
+   - 在更贴近真实工程的研究中，已经能观察到：AI assistants 会影响效率、负荷与后续演进等工程结果，但净效应依赖交互类型、使用强度、任务与上下文。（ref: `./reference_eng/03-devlife-brandebusemeyer-schimmer-arnrich-genai-dev-experience-field-study-arxiv-2512-19926.md`, `./reference_eng/03-devlife-borg-hewett-et-al-echoes-of-ai-maintainability-arxiv-2507-00788.md`）
+   - trust 是动态态度，且会随使用经验演化；校准信任需要“可验证证据”与传统工程技能（comprehension/debugging/testing）作为底座。（ref: `./reference_eng/03-devlife-shah-et-al-evolution-programmers-trust-genai-assistants-arxiv-2509-13253.md`）
+   - 存在可复用的标准化任务评测工程形态（GitHub Classroom + test suite + 时间戳），用于度量“是否更快/是否完成”，可迁移到内部 Skill/agent 评估。（ref: `./reference_eng/03-devlife-peng-et-al-impact-ai-developer-productivity-copilot-arxiv-2302-06590.md`）
 2. 背后的根本机制是什么
-   - 稳态来自“可回归（evals）+ 可复现（lockfile）+ 可控更新（update checks）+ 显式授权边界（manual-only workflows）”的组合，而不是单纯更强模型或更长 prompt。（ref: `../reference_eng/03-devlife-openai-evals-readme.md`, `../reference_eng/03-devlife-vercel-skills-update-system.md`, `../reference_eng/03-devlife-windsurf-workflows-manual-only.md`）
+   - 稳态来自“可回归（evals）+ 可复现（lockfile）+ 可控更新（update checks）+ 显式授权边界（manual-only workflows）”的组合，而不是单纯更强模型或更长 prompt。（ref: `./reference_eng/03-devlife-openai-evals-readme.md`, `./reference_eng/03-devlife-vercel-skills-update-system.md`, `./reference_eng/03-devlife-windsurf-workflows-manual-only.md`）
 3. 生态最近在往哪里演化
-   - 在向“资产化与治理化”演化：skills 越来越像可部署的工程工件，而不是个人聊天技巧。（ref: `../reference_eng/03-devlife-vercel-skills-lock-files.md`）
+   - 在向“资产化与治理化”演化：skills 越来越像可部署的工程工件，而不是个人聊天技巧。（ref: `./reference_eng/03-devlife-vercel-skills-lock-files.md`）
 4. 采用或落地的难点在哪里
-   - eval 设计与维护是最硬的门槛；缺少评测闭环会导致技能漂移、不可复现与信任崩塌。（ref: `../reference_eng/03-devlife-openai-evals-readme.md`）
-   - 工具在 multi-file、专有上下文、复杂任务等场景可能明显 underperform；如果不把这些失败模式写进 skill 协议与评测，团队会被不可预期的返工拖垮。（ref: `../reference_eng/03-devlife-pandey-singh-wei-shankar-copilot-real-world-projects-arxiv-2406-17910.md`）
+   - eval 设计与维护是最硬的门槛；缺少评测闭环会导致技能漂移、不可复现与信任崩塌。（ref: `./reference_eng/03-devlife-openai-evals-readme.md`）
+   - 工具在 multi-file、专有上下文、复杂任务等场景可能明显 underperform；如果不把这些失败模式写进 skill 协议与评测，团队会被不可预期的返工拖垮。（ref: `./reference_eng/03-devlife-pandey-singh-wei-shankar-copilot-real-world-projects-arxiv-2406-17910.md`）
 5. 社区争议和失败模式在哪里
-   - 失败模式：无 lockfile/无更新控制导致团队共享碎片化；无 eval 导致 drift；自动化边界不清导致误触发与过度代理风险。（ref: `../reference_eng/03-devlife-vercel-skills-update-system.md`, `../reference_eng/03-devlife-windsurf-workflows-manual-only.md`）
-   - 失败模式：把“更强交互/更高频使用”当作必然收益；真实研究提示 combined/excessive use 可能降低效率或提高负荷，需要对交互强度做治理与训练。（ref: `../reference_eng/03-devlife-brandebusemeyer-schimmer-arnrich-genai-dev-experience-field-study-arxiv-2512-19926.md`）
+   - 失败模式：无 lockfile/无更新控制导致团队共享碎片化；无 eval 导致 drift；自动化边界不清导致误触发与过度代理风险。（ref: `./reference_eng/03-devlife-vercel-skills-update-system.md`, `./reference_eng/03-devlife-windsurf-workflows-manual-only.md`）
+   - 失败模式：把“更强交互/更高频使用”当作必然收益；真实研究提示 combined/excessive use 可能降低效率或提高负荷，需要对交互强度做治理与训练。（ref: `./reference_eng/03-devlife-brandebusemeyer-schimmer-arnrich-genai-dev-experience-field-study-arxiv-2512-19926.md`）
 6. 哪些对象最值得继续追踪
    - 公开的“从 0 到稳态”的 skill/agent 案例复盘（尤其是 eval 迭代史、失败模式）。
    - 跨生态的版本/分发/权限/触发边界标准化趋势与兼容性成本。
