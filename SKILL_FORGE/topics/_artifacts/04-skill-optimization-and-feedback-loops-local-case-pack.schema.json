@@ -1,0 +1,178 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://skill-forge.local/schemas/skill-regression-case-pack.schema.json",
+  "title": "Skill Regression Case Pack",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "case_pack_id",
+    "status",
+    "skills",
+    "cases"
+  ],
+  "properties": {
+    "schema_version": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "case_pack_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "status": {
+      "type": "string",
+      "minLength": 1
+    },
+    "purpose": {
+      "type": "string"
+    },
+    "source_artifact": {
+      "type": "string"
+    },
+    "default_tier": {
+      "type": "string",
+      "enum": ["gate", "periodic", "manual"]
+    },
+    "skills": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": [
+          "skill_id",
+          "skill_name",
+          "skill_path"
+        ],
+        "properties": {
+          "skill_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "skill_name": {
+            "type": "string",
+            "minLength": 1
+          },
+          "skill_path": {
+            "type": "string",
+            "minLength": 1
+          },
+          "surface_style": {
+            "type": "string"
+          },
+          "notable_fields": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "additionalProperties": true
+      }
+    },
+    "cases": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": [
+          "case_id",
+          "skill_id",
+          "skill_path",
+          "user_task",
+          "should_trigger",
+          "expected_skill_behavior",
+          "failure_class",
+          "artifact_layer",
+          "source",
+          "tier"
+        ],
+        "properties": {
+          "case_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "skill_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "skill_path": {
+            "type": "string",
+            "minLength": 1
+          },
+          "user_task": {
+            "type": "string",
+            "minLength": 1
+          },
+          "should_trigger": {
+            "type": "string",
+            "enum": ["yes", "no", "conditional"]
+          },
+          "expected_skill_behavior": {
+            "type": "string",
+            "minLength": 1
+          },
+          "expected_trajectory": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "expected_tools": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": ["name"],
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "required": {
+                  "type": "boolean"
+                },
+                "forbidden": {
+                  "type": "boolean"
+                },
+                "args_match": {
+                  "type": "object",
+                  "additionalProperties": true
+                }
+              },
+              "additionalProperties": true
+            }
+          },
+          "expected_output_contract": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "safety_constraints": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "failure_class": {
+            "type": "string",
+            "minLength": 1
+          },
+          "artifact_layer": {
+            "type": "string",
+            "minLength": 1
+          },
+          "source": {
+            "type": "string",
+            "enum": ["synthetic", "production_trace", "user_feedback", "regression"]
+          },
+          "tier": {
+            "type": "string",
+            "enum": ["gate", "periodic", "manual"]
+          }
+        },
+        "additionalProperties": true
+      }
+    }
+  },
+  "additionalProperties": true
+}

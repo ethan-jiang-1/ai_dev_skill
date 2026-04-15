@@ -9,6 +9,7 @@
   - `00-shared-agents-md-home.md`
   - `00-shared-github-create-agent-skills.md`
 - `warning`: `这份 appendix 的目标是帮助 authoring baseline 与最终推荐口径收口，不是替代完整 field-by-field 支持矩阵。`
+- `field_support_matrix`: `/Users/bowhead/ai_dev_skill/SKILL_FORGE/topics/_artifacts/W2-field-support-matrix-codex-github-claude.md`
 
 ## 三家 surface 对照表
 
@@ -75,10 +76,6 @@
 
 ## 当前仍未完全解决的点
 
-- 这份 appendix 还不是完整 field-by-field matrix。
-- 还没有把:
-  - GitHub
-  - Claude
-  - Codex
-  的每个具体 frontmatter 字段做逐项支持矩阵。
-- 但它已经足够支撑当前 round 的最终推荐语法，不会再把三家的实现语义混成一个“统一标准幻觉”。
+- 已补出 field-level support matrix 草案，但它仍基于本轮 reference 文档，不是跨 surface 实测结果。
+- 后续如果继续深化，应把 `unclear` 字段逐项补证据，最好通过真实 skill package 做运行验证。
+- 但当前 appendix + matrix 已经足够支撑当前 round 的最终推荐语法，不会再把三家的实现语义混成一个“统一标准幻觉”。

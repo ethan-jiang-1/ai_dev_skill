@@ -7,6 +7,7 @@
   - `W2-combination-baseline-workflow-draft.md`
   - `W2-surface-compatibility-appendix-codex-github-claude.md`
   - `W2-cross-topic-synthesis.md`
+  - `04-skill-optimization-and-feedback-loops-evidence-summary.md`
 - `warning`: `这份文档决定的是推荐语法，不是最终对外报告终稿。`
 
 ## 不推荐的表达方式
@@ -28,6 +29,7 @@
   - public skills 很好找
   - 现成样板很适合借鉴
   - 但有效性、信任边界与工程成熟度并不会自动跟着一起成立
+  - 即使 skill 已可发布，也不代表它已经具备持续优化、回归验证和反馈回流能力
 
 ## 当前最稳的最终推荐语法
 
@@ -66,7 +68,26 @@
   - rollback
   - role-based bundling
 
-### Part D. Context-Specific Add-ons
+### Part D. Optimization / Feedback Loop 推荐
+
+- 用来回答:
+  - skill 上线后如何持续变好
+  - 修改 skill 后如何判断是真的提升
+  - 如何避免最终输出看似正确但 workflow 轨迹已经偏航
+- 当前最稳的机制组合:
+  - `skill-forge` 做 artifact governance / publish gate
+  - Promptfoo 类机制做 trajectory / regression assertions
+  - LangSmith 类机制做 offline / online trace feedback loop
+  - DSPy / OpenAI evals 类机制提供 candidate revision 与 eval-driven optimization flywheel
+- 必须显式写入的 discipline:
+  - failure taxonomy
+  - representative cases
+  - trigger / no-trigger cases
+  - trajectory assertions
+  - version pinning
+  - promote / reject / fallback gate
+
+### Part E. Context-Specific Add-ons
 
 - 用来回答:
   - 哪些对象不是默认基座，但在特定场景下很重要
@@ -91,6 +112,10 @@
 
 ...
 
+## 上线后必须保留的持续优化闭环
+
+...
+
 ## 只在特定场景下追加的增强层
 
 ...
@@ -102,6 +127,7 @@
   - `01` 负责方法论共同层
   - `02` 负责 lifecycle 与 baseline
   - `03` 负责 adoption、learning leverage 与 trust boundary
+  - `04` 负责 optimization、failure taxonomy、feedback loop 与 regression discipline
 - 它也与当前现实约束一致:
   - 没有单一对象在所有维度上都最强
   - 生态发现层与工程基座层本来就不是同一批对象
@@ -110,6 +136,7 @@
 ## 当前几乎可以定稿的判断
 
 - 最终交付应以 `分角色推荐 + baseline 组合` 为主。
+- `04` 刷新后，最终推荐应显式增加 `optimization / feedback loop` 这一层，而不是把它埋进 `evaluation` 一词里。
 - 如果一定要给 `前 3`，也应明确:
   - 这是 learning-first 前 3
   - 或是值得先试的 baseline 相关前 3
@@ -119,3 +146,4 @@
 
 - 要不要在最终文稿里保留一个“单榜附录”，供快速扫描使用。
 - `open-skills` 与 `Ai-Agent-Skills` 是否需要进入最终正文，还是只放进场景化补充段。
+- 是否需要另写一份具体的 `SKILL.md regression harness` 样板，把 Promptfoo / LangSmith / DSPy / OpenAI evals 的机制组合成可执行模板。

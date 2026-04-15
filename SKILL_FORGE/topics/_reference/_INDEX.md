@@ -106,6 +106,44 @@
   - category: `third-party-learning-layer`
   - use: 外部教学层已经形成，证明借鉴、安装、创建与安全使用已成为公开教学对象
 
+## Topic 04 Docs
+
+- `04-skill-optimization-and-feedback-loops-skill-forge-artifact-optimization.md`
+  - category: `skill-artifact-optimization`
+  - use: `skill-forge` 作为 skill artifact 级优化对象，支持 discoverability、executability、结构一致性、安全和发布治理判断
+
+- `04-skill-optimization-and-feedback-loops-description-trigger-optimization.md`
+  - category: `trigger-discoverability-tuning`
+  - use: `description` 与 metadata 作为 skill routing / triggering 接口，支持触发优化与漏触发 / 误触发分类
+
+- `04-skill-optimization-and-feedback-loops-evaluation-versioning-loop.md`
+  - category: `evaluation-versioning-loop`
+  - use: test、deploy、monitor、iterate / deprecate、version pinning 与 fallback，支持最小 eval / replay / regression loop
+
+- `04-skill-optimization-and-feedback-loops-promptfoo-agent-trajectory-regression.md`
+  - category: `trajectory-regression`
+  - use: agent / workflow skill 的中间步骤、工具调用、步骤数量和执行路径回归检查
+
+- `04-skill-optimization-and-feedback-loops-promptfoo-ci-quality-gates.md`
+  - category: `ci-quality-gate`
+  - use: 把 eval、security scan、pass-rate threshold 和 fail-on-error 放进 skill 发布前 gate
+
+- `04-skill-optimization-and-feedback-loops-langsmith-offline-online-feedback-loop.md`
+  - category: `trace-feedback-loop`
+  - use: production trace、online eval、offline regression dataset 与 human feedback 的持续优化闭环
+
+- `04-skill-optimization-and-feedback-loops-dspy-program-optimizer-pattern.md`
+  - category: `program-optimizer-pattern`
+  - use: metric、examples、trajectory、candidate instruction 和 self-reflective rules 的 program-level optimization 模式
+
+- `04-skill-optimization-and-feedback-loops-openai-evals-optimization-flywheel.md`
+  - category: `eval-driven-optimization`
+  - use: baseline、test data、eval feedback 与 iterative optimization flywheel，支撑 skill 修改前后对比
+
+- `04-skill-optimization-and-feedback-loops-local-gstack-eval-harness.md`
+  - category: `local-code-evidence`
+  - use: 本地 `gstack` eval / E2E / runner / compare 机制，支撑 skill regression runner 的真实实现参考
+
 ## Topic 02 Docs
 
 - `02-skill-toolchain-and-lifecycle-github-loader-paths-and-scope.md`
@@ -201,3 +239,11 @@
 - `limitation-risk-failure-mode`: covered via `00-shared-github-create-agent-skills.md` and `00-shared-skill-forge-readme.md`
 - `comparison-or-adoption-analysis`: covered via `00-shared-awesome-copilot-readme.md` and `00-shared-skills-sh-home.md`
 - `local-example-teardown`: covered via local analysis notes for `agent-skills`, `get-shit-done`, `superpowers`, and `gstack`
+- `skill-artifact-optimization`: covered via `04-skill-optimization-and-feedback-loops-skill-forge-artifact-optimization.md`
+- `trigger-discoverability-tuning`: covered via `04-skill-optimization-and-feedback-loops-description-trigger-optimization.md`
+- `evaluation-versioning-loop`: covered via `04-skill-optimization-and-feedback-loops-evaluation-versioning-loop.md`
+- `trajectory-regression`: covered via `04-skill-optimization-and-feedback-loops-promptfoo-agent-trajectory-regression.md`
+- `ci-quality-gate`: covered via `04-skill-optimization-and-feedback-loops-promptfoo-ci-quality-gates.md`
+- `trace-feedback-loop`: covered via `04-skill-optimization-and-feedback-loops-langsmith-offline-online-feedback-loop.md`
+- `program-optimizer-pattern`: covered via `04-skill-optimization-and-feedback-loops-dspy-program-optimizer-pattern.md`
+- `eval-driven-optimization`: covered via `04-skill-optimization-and-feedback-loops-openai-evals-optimization-flywheel.md`

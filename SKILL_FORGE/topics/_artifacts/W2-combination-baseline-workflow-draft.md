@@ -4,6 +4,7 @@
 - `purpose`: `把当前最强的“组合式 baseline”从抽象判断推进成可执行 workflow。`
 - `basis`:
   - `01 / 02 / 03 evidence summary`
+  - `04 / skill-optimization-and-feedback-loops evidence summary`
   - `W2-cross-topic-synthesis.md`
   - `W2-candidate-scorecard-draft.md`
 - `warning`: `这是当前最小可行 workflow，不是最终定稿，也不是唯一正确路径。`
@@ -13,7 +14,7 @@
 - 先围绕 `portable core` 写，再逐步接 surface-specific 扩展。
 - 先把 skill 当作 code-like asset 管，再把它当作内容资产分发。
 - 先小范围、可回滚地试用，再考虑放大 skill 数量与覆盖范围。
-- 把 `learning`, `install`, `governance`, `evaluation` 明确拆层，避免让任一单个对象被误当全链路答案。
+- 把 `learning`, `install`, `governance`, `evaluation`, `feedback loop` 明确拆层，避免让任一单个对象被误当全链路答案。
 
 ## 当前最小可行组合
 
@@ -23,6 +24,8 @@
   - 候选对象：`vercel-labs/skills`
 - `governance / publish layer`
   - 候选对象：`skill-forge`
+- `optimization / feedback loop layer`
+  - 候选机制：`failure taxonomy`, `trajectory regression`, `CI quality gate`, `offline / online feedback loop`, `candidate revision`
 - `discovery / learning inputs`
   - 候选对象：`skills.sh`, `github/awesome-copilot`
 
@@ -100,6 +103,30 @@
   - validation pass 不等于有效
   - 可发现不等于可用
 
+### Step 6.5. 为 skill 建立 failure taxonomy 与 regression harness
+
+- 最低要求：
+  - 建立成功样本、失败样本和边界样本
+  - 每个失败样本必须归入 failure class
+  - 每次修订必须写明要修复哪个 failure class
+- 至少覆盖：
+  - trigger / discoverability
+  - workflow executability
+  - tool-use contract
+  - structural / packaging
+  - safety / governance
+  - versioning / regression
+  - trajectory regression
+  - feedback loop
+- 候选机制：
+  - Promptfoo trajectory assertions
+  - LangSmith offline / online trace loop
+  - OpenAI eval baseline
+  - DSPy-style candidate revision
+- 原则：
+  - final answer pass 不等于 workflow skill 通过
+  - 自动候选修订不替代人工 promotion gate
+
 ### Step 7. 为 skill 建立 version pinning 与 rollback 节奏
 
 - 最低要求：
@@ -109,6 +136,7 @@
 - 原则：
   - 不把“最新 skill”默认视为“最好 skill”
   - 不把公开生态变更直接推入生产 workflow
+  - promote / reject 应基于 regression result，而不是作者主观感觉
 
 ### Step 8. 只按 role / task bundle 暴露 skills
 
@@ -143,6 +171,7 @@
 - 当前更像现实答案的是：
   - `借鉴现成 skill` 用来加速学习
   - `installer / manager` 用来受控装载
-  - `governance` 用来过质量与信任门槛
-  - `evaluation + versioning` 用来防止错误扩散
+- `governance` 用来过质量与信任门槛
+- `evaluation + versioning` 用来防止错误扩散
+- `feedback loop + regression harness` 用来让 skill 在上线后持续变好
 - 如果后续要给最终 workflow 建议，这份 draft 已经足够作为骨架继续深化。

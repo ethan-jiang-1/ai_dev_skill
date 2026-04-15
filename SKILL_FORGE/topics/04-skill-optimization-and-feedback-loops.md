@@ -194,17 +194,73 @@
 
 ## 本轮新增证据
 
-- 待本轮 Wave 1 正式落库后补充。
+- `/Users/bowhead/ai_dev_skill/SKILL_FORGE/topics/_reference/04-skill-optimization-and-feedback-loops-skill-forge-artifact-optimization.md`
+  - `skill-forge` 是 `04` 的优先起步样本之一，因为它把 discoverability、executability、结构一致性、安全与发布治理纳入 skill artifact 级优化对象。
+- `/Users/bowhead/ai_dev_skill/SKILL_FORGE/topics/_reference/04-skill-optimization-and-feedback-loops-description-trigger-optimization.md`
+  - `description` 与 metadata 是 skill triggering / routing 的核心接口，支持把漏触发、误触发、描述过窄 / 过宽纳入 failure taxonomy。
+- `/Users/bowhead/ai_dev_skill/SKILL_FORGE/topics/_reference/04-skill-optimization-and-feedback-loops-evaluation-versioning-loop.md`
+  - 官方 lifecycle / versioning 材料支持 skill 发布后仍需 test、deploy、monitor、iterate / deprecate、version pinning 与 fallback。
+- `/Users/bowhead/ai_dev_skill/SKILL_FORGE/topics/_reference/04-skill-optimization-and-feedback-loops-promptfoo-agent-trajectory-regression.md`
+  - workflow skill 的 regression 不应只看最终输出，还应检查 trajectory、tool calls、tool args、tool sequence 与 step count。
+- `/Users/bowhead/ai_dev_skill/SKILL_FORGE/topics/_reference/04-skill-optimization-and-feedback-loops-promptfoo-ci-quality-gates.md`
+  - skill 修订可以迁移 CI quality gate 思路，用 threshold、fail-on-error、security scan 和 report artifact 阻断坏版本。
+- `/Users/bowhead/ai_dev_skill/SKILL_FORGE/topics/_reference/04-skill-optimization-and-feedback-loops-langsmith-offline-online-feedback-loop.md`
+  - production trace、online eval、offline dataset、human feedback 与 annotation queue 可以形成持续优化闭环。
+- `/Users/bowhead/ai_dev_skill/SKILL_FORGE/topics/_reference/04-skill-optimization-and-feedback-loops-dspy-program-optimizer-pattern.md`
+  - program-level optimizer 提供 candidate revision 机制原型，但迁移到 skill 时应优先作用于局部 artifact 部件。
+- `/Users/bowhead/ai_dev_skill/SKILL_FORGE/topics/_reference/04-skill-optimization-and-feedback-loops-openai-evals-optimization-flywheel.md`
+  - eval baseline、representative test data、feedback 与 iterative optimization flywheel 支持 skill 修改前后比较。
+- `/Users/bowhead/ai_dev_skill/SKILL_FORGE/topics/_reference/04-skill-optimization-and-feedback-loops-local-gstack-eval-harness.md`
+  - 本地 `gstack` eval / E2E / runner / compare 机制证明 `04` 可以从模板推进到可执行 regression runner：LLM judge、trace parsing、tool-call extraction、touchfile selection、structured eval store 与 before / after compare 都已有本地实现参考。
 
 ## 本轮新增机制理解
 
-- 待本轮 Wave 1 正式推进后补充。
+- Skill optimization 至少应拆成三条入口：
+  - skill artifact 发布前治理
+  - trigger / discoverability tuning
+  - eval / replay / regression / versioning loop
+- `skill-forge` 更偏发布前治理，但它提供了 `04` 需要的 artifact-level failure vocabulary。
+- 最小优化闭环应把失败样本定位到 artifact 层，而不是默认归因为 prompt 需要重写。
+- 第二批证据进一步说明，skill regression 需要覆盖 trajectory / tool-use，而 feedback loop 需要把 online trace 转回 offline eval cases。
+- 自动优化应被定位为 candidate revision generator，不应直接替代人工验收和发布门槛。
 
 ## 本轮新增趋势与难点
 
-- 待本轮 Wave 1 正式推进后补充。
+- 趋势上，skill lifecycle 正在从 create / install 扩展到 test / deploy / monitor / iterate / deprecate。
+- 趋势上，agent eval 工具已经开始覆盖 trajectory、tool calls、CI quality gate、online / offline feedback loop 与 optimizer search。
+- 难点在于，公开材料主要提供机制原型，还缺一个专门面向 `SKILL.md` / skill package 的完整 harness 样板。
+- 另一类难点是 `skill-forge` 证明了 artifact-level optimization 路线，但不能单独证明线上效果提升，需要后续补独立评测或实践证据。
 
 ## 当前判断（本轮综合后）
 
 - 当前最稳的判断是：这已经不是 `01/02/03` 内任何一条研究线的局部补件，而是一个独立问题簇，因此应作为 `04` 独立 topic 推进。
 - 当前最值得作为 `04` 起步样本的对象之一是 `skill-forge`，因为它已经把 skill 的 discoverability、executability、结构一致性和发布前治理视为可优化对象，而不只是把问题退化成 prompt 改写。
+- `04` 的基础 research artifacts 已形成：
+  - `/Users/bowhead/ai_dev_skill/SKILL_FORGE/topics/_artifacts/04-skill-optimization-and-feedback-loops-evidence-summary.md`
+  - `/Users/bowhead/ai_dev_skill/SKILL_FORGE/topics/_artifacts/04-skill-optimization-and-feedback-loops-failure-taxonomy-draft.md`
+  - `/Users/bowhead/ai_dev_skill/SKILL_FORGE/topics/_artifacts/04-skill-optimization-and-feedback-loops-eval-loop-baseline.md`
+
+## 当前执行产物（runner 方向）
+
+- `/Users/bowhead/ai_dev_skill/SKILL_FORGE/topics/_artifacts/04-skill-optimization-and-feedback-loops-skill-regression-harness-template.md`
+  - 固定 cases / expected / runs / revision-log / promotion-decision 的最小目录骨架。
+- `/Users/bowhead/ai_dev_skill/SKILL_FORGE/topics/_artifacts/04-skill-optimization-and-feedback-loops-tool-config-sketch.md`
+  - 把 Promptfoo / LangSmith-style 配置迁移成 skill regression harness 草图。
+- `/Users/bowhead/ai_dev_skill/SKILL_FORGE/topics/_artifacts/04-skill-optimization-and-feedback-loops-local-case-pack.md`
+  - 把本地 `gstack / ship`、`gstack / review` 与 `agent-skills / code-review-and-quality` 转成首批回归样本。
+- `/Users/bowhead/ai_dev_skill/SKILL_FORGE/topics/_artifacts/04-skill-optimization-and-feedback-loops-local-case-pack.yaml`
+  - 将 9 个 case 机器可读化，覆盖 trigger、no-trigger、trajectory、safety、output contract 与 portable-core workflow。
+- `/Users/bowhead/ai_dev_skill/SKILL_FORGE/topics/_artifacts/04-skill-optimization-and-feedback-loops-local-case-pack.schema.json`
+  - 固定 case pack 的必填字段、枚举和基本结构约束。
+- `/Users/bowhead/ai_dev_skill/SKILL_FORGE/topics/_artifacts/04-skill-optimization-and-feedback-loops-agent-adapter-contract.md`
+  - 定义 runner 与真实 agent surface 之间的输入 / 输出 / assertion result contract。
+- `/Users/bowhead/ai_dev_skill/SKILL_FORGE/topics/_artifacts/04-skill-optimization-and-feedback-loops-runner-prototype-spec.md`
+  - 收束为可实现 runner 规格：schema validation、mock adapter、deterministic assertions、real adapter、compare 与 promotion report。
+- `/Users/bowhead/ai_dev_skill/SKILL_FORGE/topics/_artifacts/04-skill-optimization-and-feedback-loops-mock-adapter-and-assertion-spec.md`
+  - 固定 mock trace、deterministic assertion、compare status 与 promotion blocking 的第一版语义。
+
+## 当前判断（runner 规格后）
+
+- `04` 当前已经超过 Wave 1 文档数量下限，并已完成 W2 synthesis、workflow baseline、formal comparison、final recommendation 和 readiness check 回填。
+- 本轮不再缺 harness 样板，也已有最小 mock runner；真正剩余的是 JSON report、可配置 matcher、真实 adapter 和真实 baseline / candidate 对比运行。
+- 继续推进时，应优先实现 mock runner，再接 Codex adapter；不要先进入复杂真实 agent 调用，否则 assertion 语义和 compare 语义还没稳定就会被 CLI / model variance 干扰。

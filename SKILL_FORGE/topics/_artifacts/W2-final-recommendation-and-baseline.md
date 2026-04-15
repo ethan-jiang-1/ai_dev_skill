@@ -1,13 +1,15 @@
 # Wave 2 Final Recommendation And Baseline
 
-- `status`: `ready_for_handoff`
+- `status`: `refreshed_for_04_ready_for_handoff`
 - `purpose`: `给出本轮 research 当前最稳的最终推荐结论与可执行 baseline。`
 - `basis`:
   - `W2-formal-comparison-table.md`
   - `W2-combination-baseline-workflow-draft.md`
   - `W2-surface-compatibility-appendix-codex-github-claude.md`
-  - `W2-final-recommendation-syntax-draft.md`
-  - `W2-cross-topic-synthesis.md`
+- `W2-final-recommendation-syntax-draft.md`
+- `W2-cross-topic-synthesis.md`
+- `04-skill-optimization-and-feedback-loops-evidence-summary.md`
+- `W2-appendix-quick-scan-ranked-list.md`
 
 ## 最终总判断
 
@@ -16,11 +18,13 @@
   - learning / discovery layer
   - engineering baseline layer
   - governance / trust layer
+  - optimization / feedback loop layer
   在现实里就是不同对象承担的不同职责。
 - 因此，本轮最终推荐不采用无语义总榜，而采用:
   - `最值得先学的 3 个入口`
   - `最值得先搭的 baseline 组合`
   - `使用时必须保留的纪律`
+  - `上线后必须保留的持续优化闭环`
   - `只在特定场景下追加的增强层`
 
 ## 最值得先学的 3 个入口
@@ -62,6 +66,16 @@
 - `vercel-labs/agent-skills`
 - `vercel-labs/skills`
 - `skill-forge`
+  - 负责 governance / publish / trust-oriented quality gate / artifact optimization
+
+### 组合之外必须补的 Optimization Layer
+
+- Promptfoo-style trajectory regression
+  - 负责 workflow skill 的工具调用、步骤顺序、参数与 step count 回归检查
+- LangSmith-style offline / online feedback loop
+  - 负责 production traces、human feedback、annotation queue 到 offline eval dataset 的回流
+- DSPy / OpenAI evals style optimizer and flywheel
+  - 负责候选修订、baseline comparison、代表性样本 eval 与 iterative feedback
 
 ### 组合语义
 
@@ -70,13 +84,14 @@
 - `vercel-labs/skills`
   - 负责 install / distribution / compatibility
 - `skill-forge`
-  - 负责 governance / publish / trust-oriented quality gate
+  - 负责 governance / publish / trust-oriented quality gate / artifact optimization
 
 ### 为什么不是单对象
 
 - `agent-skills` 强在样板，不强在治理。
 - `skills` 强在安装与分发，不等于 trust / effectiveness。
 - `skill-forge` 强在治理方向，但不该被误读成现成 install baseline。
+- Promptfoo / LangSmith / DSPy / OpenAI evals 这类机制强在 optimization loop，但不该被误读成 skill package 规范本身。
 
 ## 使用时必须保留的纪律
 
@@ -104,6 +119,50 @@
 
 - 不做“全量 skill 默认激活”。
 - 优先按角色或任务包暴露 skills，降低 recall overload。
+
+## 上线后必须保留的持续优化闭环
+
+### 1. Failure taxonomy
+
+- 每个失败样本都要归类，而不是只写“prompt 不好”。
+- 最低分类包括：
+  - trigger / discoverability failure
+  - workflow executability failure
+  - tool-use contract failure
+  - structural / packaging failure
+  - safety / governance failure
+  - versioning / regression failure
+  - trajectory regression failure
+  - feedback loop failure
+
+### 2. Regression harness
+
+- 不只检查 final answer。
+- 至少检查：
+  - trigger / no-trigger
+  - tool calls
+  - tool args
+  - tool sequence
+  - step count
+  - output contract
+  - safety boundary
+
+### 3. Offline / online feedback loop
+
+- 线上失败要能回流成离线 eval case。
+- 用户修正、人工审阅与 annotation queue 应进入后续 regression dataset。
+- 每次 skill 修订都应有 baseline vs candidate 对比。
+
+### 4. Candidate revision with human promotion gate
+
+- 自动优化只适合生成候选修订。
+- 候选修订应优先作用于局部 artifact：
+  - description
+  - examples
+  - workflow steps
+  - tool contract
+  - supporting file structure
+- promote / reject / fallback 必须由 regression result 与人工审阅共同决定。
 
 ## 只在特定场景下追加的增强层
 
@@ -150,9 +209,11 @@
 4. 用 installer / manager 放进 project-scoped controlled trial。
 5. install 之后立即走 trust gate。
 6. 对代表性任务做 with / without evaluation。
-7. 记录版本、通过版本与 rollback 路径。
-8. 按 role / task bundle 暴露 skills，而不是全量激活。
-9. 定期做 clone / quality / retirement 清理。
+7. 建立 failure taxonomy 与 regression harness。
+8. 记录版本、通过版本与 rollback 路径。
+9. 建立 online trace 到 offline eval case 的反馈回流。
+10. 按 role / task bundle 暴露 skills，而不是全量激活。
+11. 定期做 clone / quality / retirement 清理。
 
 ## 本轮最终交付语法
 
@@ -161,9 +222,11 @@
   - `最值得先学的 3 个入口`
   - `最值得先搭的 baseline 组合`
   - `使用时必须保留的信任与评测纪律`
+  - `上线后必须保留的持续优化闭环`
   - `只在特定场景下追加的增强层`
 
 ## 后续可选深化项
 
 - 补 `GitHub / Claude / Codex` 的 field-by-field support matrix。
-- 如果需要快速扫描视图，可额外补一份附录式单榜，但不应替代主推荐结构。
+- 将 `SKILL.md regression harness` 样板进一步落成真实可运行的 Promptfoo / LangSmith / 自建 runner 适配器。
+- 已补快速扫描附录 `W2-appendix-quick-scan-ranked-list.md`；它不替代主推荐结构。
