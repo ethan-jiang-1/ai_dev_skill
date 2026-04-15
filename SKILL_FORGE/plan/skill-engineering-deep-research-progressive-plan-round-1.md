@@ -2,9 +2,9 @@
 
 > 执行状态（动态更新）：见 `/Users/bowhead/ai_dev_skill/SKILL_FORGE/plan/skill-engineering-deep-research-progressive-plan-round-1.status.md`
 
-- `template_version`：`v4`
+- `template_version`：`v6`
 - `round_label`：`一轮`
-- `main_task`：`扩事实 + 补机制 + 补限制`
+- `main_task`：`扩事实 + 补机制 + 补限制 + 拓扑迁移后重开`
 
 ## 调研的根本目的
 
@@ -25,7 +25,7 @@
 
 这份最终产出至少要满足下面要求：
 
-- 系统性：覆盖方法论、工程链路、生态验证三个层面
+- 系统性：覆盖方法论、工程链路、生态验证、持续优化闭环四个层面
 - 逻辑性：每个关键判断都能回指到本地 reference 文档
 - 一致性：跨 topic 的术语、对象分类、评估维度保持统一
 - 专业可读：默认读者熟悉 agent、repo、workflow，不接受泛泛而谈
@@ -34,48 +34,143 @@
 
 > 这条内容是否直接支撑最终的对象比较、推荐判断或 workflow 建议？如果不能，它就不该存在。
 
-权威信源优先规则：
+权威信源优先规则（最高优先级，不可违反）：
 
-> 当官方仓库、官方文档、官方规范说明、源码或高可信一手材料已足以支撑某个判断时，不为了凑配额额外引入低质量二手来源。
-
-## 本轮定位
-
-这一轮不是最终定胜负的一轮。
-
-这一轮的主任务是：
-
-- 固定 skill 的定义边界、结构共识和质量维度
-- 拆清候选对象在 skill 生命周期中的职责边界
-- 建立生态信号与采用判断的证据口径
-- 为后续排序和 workflow 建议打下可回指的本地 ground truth 地基
-
-这一轮不追求：
-
-- 直接输出最终对外报告
-- 在证据基础还不稳时提前宣告单一赢家
-- 只凭 README 或主观印象完成前 `3` 排序
+> 当权威一手来源已经足以支撑某个判断时，不为满足配额额外引入低质量二手来源。配额是防止搜太浅的下限，不是必须凑满的目标。宁缺毋滥。
 
 ## 先反省：当前版本为什么还不够
 
-### 1. Skill 定义与边界仍然悬空
+### 1. Skill 定义与边界虽然已有较强共同层，但 portable core 与 surface-specific extension 的界线还未彻底稳定
 
-当前已有 topic seed 已明确研究诉求，但仍未固定 skill 与 prompt、rule、agent instruction、recipe 之间的边界，也未固定哪些结构约定已接近事实标准。这会直接影响后续对象分类和比较口径。
+当前已有证据已足以说明 `SKILL.md`、metadata、progressive disclosure、repo-level guidance 等共同层存在，但跨 GitHub / Claude / Codex 的字段与运行边界仍未彻底收束。这会直接影响后续对“什么可迁移、什么是平台特性”的判断。
 
-### 2. 候选对象的工程职责还没有被系统拆开
+### 2. 候选对象的工程职责虽然已基本拆开，但 lifecycle baseline 还缺发布后持续优化这一段
 
-当前已知对象横跨内容仓库、结构样板、runtime loader、audit tool、registry / marketplace，但尚未形成统一的生命周期拆解框架。因此目前还不能准确回答“谁真正降低了工程成本”。
+当前对 loader、sample library、audit / governance、distribution、registry 的职责边界已经更清楚，但“发布后如何持续评测、回放、修订和验证”仍未形成独立研究线，因此 workflow baseline 仍缺后半段。
 
-### 3. 生态信号与采用可信度缺少独立证据层
+### 3. 生态信号已有较强积累，但最终推荐仍未吸收“持续优化能力”这一维度
 
-目前对多数对象的认知仍主要来自其自述材料。外部采用、被收录、被引用、被集成、跨平台兼容等信号还没有落成本地证据，因此“值得持续跟踪或采用”的判断还不稳。
+当前外部采用、学习杠杆、安全边界、社区回声已有较多材料，但如果不把 skill continuous optimization 纳入独立维度，最终推荐会偏向“谁好写、好装、好看”，而不是“谁更能支撑长期迭代”。
 
-### 4. 本地 ground truth 资产还没有建立
+### 4. 旧版 round-1 拓扑只有 3 条研究线，已经无法覆盖新进入 scope 的独立问题簇
 
-当前知识主要存在于 seed 文件和初步判断里，还没有系统化沉淀到 `_reference` 与 `_artifacts`。如果现在让新的 agent 接手，仍然需要从零重新搜索，无法做到 `30` 秒回指。
+`skill-continuous-optimization.md` 已经形成独立对象清单、独立问题簇和独立工件需求。继续把它口头当作补充段落，会让 plan、status 与实际研究对象失真。
+
+### 5. 旧状态文件把 round-1 视为 `deliverable_ready`，与新增 `new_topic` 后的真实研究状态冲突
+
+既有 `01-03` 的成果仍然有效，但整轮已不应继续宣称“完成”，因为 `04` topic 尚未正式启动，其缺口会直接影响最终 baseline 和推荐结论。
+
+## 目标
+
+针对 `/Users/bowhead/ai_dev_skill/SKILL_FORGE/topics` 中的 `4` 条研究线，各做一轮更深入的 Deep Research。
+
+这一轮不是重复已有摘要，而是要系统扩大：
+
+- 内容广度
+- 证据密度
+- 根本机制理解
+- 趋势判断
+- 难度分层
+- 现实约束与失败模式
+
+同时，把搜到的高价值材料沉淀到：
+
+- `/Users/bowhead/ai_dev_skill/SKILL_FORGE/topics/_reference`
+
+这些材料要作为后续分析的 ground truth，而不是临时浏览痕迹。
+
+## 手段策略
+
+本轮研究采用“先建地基，再分题深挖，再横向综合，最后检验最终产出可用性”的递进策略。
+
+具体分为三个波次（Wave 0 → Wave 1 → Wave 2），加一个最终验收检查点（Readiness Check）。
+
+每个波次都有明确的最低标准，不满足则不进入下一波次。
+
+## 验收标准：如何判断调研结果质量合理
+
+调研完成的判断不依赖“感觉搜够了”，而是对照下面 4 个维度逐项检查：
+
+### 1. 证据可追溯性
+
+- 每个关键判断都能回指到 `/Users/bowhead/ai_dev_skill/SKILL_FORGE/topics/_reference` 中的具体文档
+- 没有悬空结论
+- 没有孤立来源
+
+### 2. 覆盖完整性
+
+- 每条研究线的固定问题都已有证据支撑
+- 趋势、难度、争议三类内容各有专门证据
+- 已完成至少一轮“官方说法 vs 第三方验证 / 实践证据 / 失败模式”交叉核验
+
+### 3. 跨主题一致性
+
+- 同一概念在不同研究线下定义口径一致
+- 不同研究线之间的交叉结论已经对齐或已明确标注分歧
+- 已区分“硬事实”“分析判断”“趋势推测”
+
+### 4. 最终产出可用性（最终验收）
+
+执行完成后，必须能通过以下检查：
+
+- 任意一个重要判断都能在 `30` 秒内找到本地支撑文档
+- 对每条研究线都能写出一段“机制 + 趋势 + 难点”的连贯叙述，不需要临时补搜
+- 跨研究线能写出一段“整体结构是什么”的综合判断，而不只是平行描述
+- 一位没有参与调研的专业人士，只看 `SEED_DIR + REFERENCE_DIR + STATUS_PATH`，能理解研究结论并继续往下走
+
+如果以上任一条不满足，调研不算完成。
+
+## 输入
+
+本轮研究直接以 `/Users/bowhead/ai_dev_skill/SKILL_FORGE/topics` 为起点。
+
+输入对象包括：
+
+- 目录中的 topic seed 文件
+- 目录中的已有摘要 / 初步判断 / 问题清单
+- 上一轮留下的 `_artifacts` 与相关本地 `_reference`
+
+## 输入对象建模
+
+在正式执行前，必须先把输入目录建模成“研究线注册表”。
+
+每条研究线至少要写清楚：
+
+- 编号
+- slug
+- 主题标题
+- 对应 seed 文件
+- 当前假设或当前缺口
+- 为什么它值得继续深挖
+- 本轮必须回答的问题
+
+只有研究线注册表稳定后，才允许进入 Wave 0。
+
+## 当前拓扑与 Formalization Ledger
+
+### Current Topology
+
+- `topic_count`：`4`
+- `carry_forward_topics`：
+  - `01 / skill-methodology-and-spec`
+  - `02 / skill-toolchain-and-lifecycle`
+  - `03 / ecosystem-signals-and-adoption`
+- `new_topics`：
+  - `04 / skill-optimization-and-feedback-loops`
+- `topology_status`：`recently_changed`
+
+### Formalization Ledger
+
+- `candidate`：`/Users/bowhead/ai_dev_skill/SKILL_FORGE/_raw_idea/skill-continuous-optimization.md`
+  - `current_classification`：`new_topic`
+  - `why`：它已形成独立问题簇、独立对象边界和独立工件需求，无法继续安全归并为 `01/02/03` 的局部补件
+  - `next_action`：已同步 topic seed、topic registry、plan 与 status；后续进入 `04` 的 Wave 1 深挖
 
 ## 参数与目录约定
 
 - `PLAN_NAME`：`面向 Coding Agent 的 Skill Engineering Deep Research Progressive Plan（一轮）`
+- `TEMPLATE_VERSION`：`v6`
+- `ROUND_LABEL`：`一轮`
 - `SEED_DIR`：`/Users/bowhead/ai_dev_skill/SKILL_FORGE/topics`
 - `REFERENCE_DIR`：`/Users/bowhead/ai_dev_skill/SKILL_FORGE/topics/_reference`
 - `ARTIFACT_DIR`：`/Users/bowhead/ai_dev_skill/SKILL_FORGE/topics/_artifacts`
@@ -83,19 +178,13 @@
 - `STATUS_PATH`：`/Users/bowhead/ai_dev_skill/SKILL_FORGE/plan/skill-engineering-deep-research-progressive-plan-round-1.status.md`
 - `FINAL_DELIVERABLE`：`一套面向 coding agent 的 skill engineering 研究基座，足以支撑候选筛选、横向比较、推荐结论与 workflow baseline 建议`
 - `AUDIENCE`：`项目主研究者、后续协作 agent、技术背景读者`
-- `TOPIC_COUNT`：`3`
+- `TOPIC_COUNT`：`4`
 - `WAVE0_SHARED_DOC_FLOOR`：`8`
 - `WAVE1_DOC_FLOOR_PER_TOPIC`：`8`
 - `PRIMARY_SOURCE_FLOOR`：`4`
 - `SECONDARY_SOURCE_FLOOR`：`2`
 - `RECENT_SOURCE_FLOOR`：`1`
 - `LIMITATION_SOURCE_FLOOR`：`1`
-
-目录初始化强约束：
-
-- 在正式开始 Wave 0 之前，必须先创建 `REFERENCE_DIR` 与 `ARTIFACT_DIR`
-- `REFERENCE_DIR` 与 `ARTIFACT_DIR` 均放在 `SEED_DIR` 之下，确保接手者能在 `30` 秒内定位
-- `SEED_DIR` 本身是 living docs，后续研究执行时需要持续回填 topic 文件
 
 ## 输入对象建模（Topic Registry）
 
@@ -138,6 +227,21 @@
   - 哪些对象只适合参考，哪些值得直接试用
   - 最终推荐应是单项目还是组合方案
 
+### 04 / skill-optimization-and-feedback-loops / Skill 持续优化、评测闭环与反馈回流
+
+- `seed_files:`
+  - `/Users/bowhead/ai_dev_skill/SKILL_FORGE/topics/04-skill-optimization-and-feedback-loops.md`
+- `current_hypothesis:`
+  - Skill optimization 的真实对象是完整 artifact，而不是单段 prompt；可迁移的 skill workflow baseline 必须包含失败样本、eval / replay / regression 与反馈回流闭环。
+- `why_it_matters:`
+  - 这一线负责补齐 skill engineering 从“可写、可装、可发”走向“可持续变好”的后半程能力。
+- `must_answer:`
+  - skill 持续优化的对象边界是什么，为什么不能等同于 prompt tuning
+  - 发布后的失败信号如何分类、沉淀、回流
+  - 最小 eval / replay / regression loop 应如何定义
+  - 哪些优化环节适合自动化，哪些必须 human-in-the-loop
+  - 如何判断一次 skill 修订是真的提升，而不是换一种失败方式
+
 ## 输出
 
 本轮执行后应至少形成下面 5 类资产：
@@ -148,11 +252,11 @@
 
 - `/Users/bowhead/ai_dev_skill/SKILL_FORGE/topics/_reference`
 
-要求：
+形式：
 
 - 每个高价值来源单独存成一个 `md`
-- 每个重要来源必须可独立回指
-- 完成单位不是“看过链接”，而是“已被整理成可复用的本地 reference 文档”
+- 关键事实与核心摘录合起来应足以支撑后续推理，不要求回原文才能使用
+- 完成单位不是“看过链接”，而是“已被整理成可复用、可回指的本地 reference 文档”
 
 ### 2. 输入目录的持续生长
 
@@ -175,16 +279,16 @@
 
 - 每条研究线一份 `evidence-summary`
 - 每条研究线一份 `question-list`
-- 一份横向综合 `W2-cross-topic-synthesis`
+- 一份横向综合 `W2-cross-topic-synthesis.md`
 - 一份 `/Users/bowhead/ai_dev_skill/SKILL_FORGE/topics/_reference/_INDEX.md`
 
 ### 4. 跨主题综合结论
 
-必须能够横向回答：
+最终需要能够横向回答：
 
 - 哪些是基础层事实
-- 哪些是局部 topic 内成立的判断
-- 哪些结论跨 topic 成立
+- 哪些是局部主题内成立的判断
+- 哪些结论跨主题成立
 - 哪些对象最值得继续追踪
 
 ### 5. 更新协议
@@ -212,55 +316,52 @@
 
 ## 总体策略
 
-这轮研究采用“先共享地基，再分题深挖，再横向综合”的结构。
+这轮 Deep Research 采用“先共享地基，再分题深挖，再横向综合”的结构。
 
 ### Wave 0：建立共同 ground truth 地基
 
-- `purpose`：固定共享术语、共享对象分类、共享高可信入口，避免 3 条研究线各自从零开始。
+- `purpose`：固定共享术语、共享对象分类、共享高可信入口，避免 `4` 条研究线各自从零开始。
 - `focus`：不急着排序，先把后续会反复用到的硬事实落进 `_reference`。
 
 Wave 0 完成最低标准：
 
 - 至少沉淀 `8` 份共享型 ground truth 文档
-- 至少覆盖下面 `8` 类共享材料中的每一类至少 `1` 份：
-  - skill 定义或结构约定
-  - `SKILL.md` / `AGENTS.md` / 类似接口说明
-  - 官方或半官方 skill 样板
-  - runtime / loader 兼容说明
-  - 工程治理或 audit / validation 工具说明
-  - registry / marketplace / curated list 入口说明
-  - 限制 / 风险 / 安全 / 失败模式材料
-  - 对比、采用或生态分析材料
-- `REFERENCE_DIR`、`ARTIFACT_DIR`、`_INDEX.md` 已初始化
-- 已形成一版共享术语表和对象分类草案
+- 至少包含一份安全 / 限制 / 失败模式材料
+- 至少包含一份高质量对比、实践复盘或失败分析
+- `REFERENCE_DIR`、`ARTIFACT_DIR`、`STATUS_PATH` 已初始化
 
 只有 Wave 0 达标，才进入 Wave 1。
 
 ### Wave 1：按研究线分别深挖
 
-- `purpose`：把每条研究线从“知道名字和观点”推进到“有证据、有机制、有难点、有趋势”。
-- `focus`：围绕证据、根本机制、趋势、难度、争议五个视角打深每条 topic。
+- `purpose`：把每条研究线从“名称和观点”推进到“机制和证据”。
+- `focus`：围绕证据、机制、趋势、难度、争议，把每条线打深到可复用证据包。
 
 每条研究线在 Wave 1 的最低交付标准：
 
-- 至少 `8` 份该研究线专属 ground truth 文档
+- 至少 `8` 份该研究线专属的 ground truth 文档
 - 至少 `4` 份一手来源
 - 至少 `2` 份高质量二手分析
 - 至少 `1` 份近期趋势来源
 - 至少 `1` 份限制、失败或争议来源
 - 每条研究线都必须形成一份 `evidence-summary` 与一份 `question-list`
 
+对新增 `04` topic，额外要求：
+
+- 至少形成一版 failure taxonomy 草案
+- 至少形成一版最小 eval / replay / regression loop baseline
+
 ### Wave 2：横向比对与综合判断
 
 - `purpose`：把分题结果重新收束成整体结构与跨主题判断。
 - `focus`：回答哪些结论是共享底层事实，哪些只是 topic 局部差异，哪些对象值得长期追踪。
 
-Wave 2 完成最低标准：
+Wave 2 的最低标准：
 
 - 每个横向判断都能回指到具体 `_reference/*.md`
 - 每条研究线至少有 `2` 个与其他研究线交叉验证的结论
 - 明确区分“硬事实”“分析判断”“趋势推测”
-- 至少形成一份 `W2-cross-topic-synthesis.md`
+- `04` 的结论已被吸收进最终 workflow baseline 与推荐语法
 
 ### Readiness Check：最终验收闸门
 
@@ -269,7 +370,7 @@ Wave 2 完成最低标准：
 - 任意一个重要判断都能在 `30` 秒内找到本地支撑文档
 - 对每条研究线都能讲清“机制 + 趋势 + 难点”
 - 横向综合已经形成整体结构判断
-- 新接手者只看 `SEED_DIR + REFERENCE_DIR + ARTIFACT_DIR` 就能继续推进
+- 新接手者只看 `SEED_DIR + REFERENCE_DIR + ARTIFACT_DIR + STATUS_PATH` 就能继续推进
 
 ## 证据采集协议
 
@@ -284,9 +385,12 @@ Wave 2 完成最低标准：
 - related_topic:
 - trust_level:
 - why_it_matters:
+- captured_excerpt:
 - claims_supported:
 
 ## 关键事实
+
+## 核心内容摘录
 
 ## 与本研究的关系
 
@@ -301,6 +405,7 @@ Wave 2 完成最低标准：
 - `01` 研究线：`01-skill-methodology-and-spec-<source-slug>.md`
 - `02` 研究线：`02-skill-toolchain-and-lifecycle-<source-slug>.md`
 - `03` 研究线：`03-ecosystem-signals-and-adoption-<source-slug>.md`
+- `04` 研究线：`04-skill-optimization-and-feedback-loops-<source-slug>.md`
 
 硬约束：
 
@@ -318,27 +423,12 @@ Wave 2 完成最低标准：
 - `archive`：继续下钻大概率不会改变核心判断，暂时封存
 - `redirect`：当其他问题更可能改变判断时，立即转向
 
-`suspend` 最低记录格式：
+对 `suspend` 分支，必须至少记录：
 
-```md
-- branch:
-- state: suspended
-- why_suspended:
-- confirmed_so_far:
-- still_missing:
-- reopen_trigger:
-```
-
-## 搜够了没有：停止条件
-
-每条研究线只有同时满足下面条件，才能算这一轮搜集完成：
-
-- 核心对象清单已经稳定，不再持续新增关键名字
-- 新搜材料大多在重复已知事实，而不是贡献新信息
-- 该研究线的固定问题都已有证据支撑
-- 已完成至少 `1` 轮对反例、限制、争议的专门补搜
-- 已完成至少 `1` 次“官方说法 vs 第三方验证 / 实践证据 / 失败复盘”的交叉核验
-- 所有重要但未解的问题，都已被归类为 `继续追`、`suspend`、`archive` 或 `redirect`
+- 已推进到哪里
+- 为什么挂起
+- 已确认了什么 / 仍未确认什么
+- 什么新材料会触发重开
 
 ## 研究线的具体目标
 
@@ -346,161 +436,39 @@ Wave 2 完成最低标准：
 
 研究目标：
 
-- 固定 skill 的定义边界、结构共识和质量维度
-- 为后续两条研究线提供共享术语和判断口径
-
-必须回答：
-
-- 在 coding agent 语境下，什么才算可复用的 skill
-- 当前主流 skill 由哪些固定组成部分构成
-- 哪些结构约定已接近事实标准，哪些仍是局部仓库习惯
-
-证据重点：
-
-- 官方或半官方 skill 样板
-- 明确讨论结构、触发、执行、装载的接口说明
-- 能体现 `SKILL.md` / `AGENTS.md` / 元数据约定的材料
-
-难点重点：
-
-- 术语漂移
-- 结构约定分化
-- “内容质量”与“工程质量”之间的口径混淆
-
-趋势必须回答：
-
-- skill 的结构标准是在收敛还是继续分化
-- 运行时接口与内容格式之间是在合流还是各自演进
-
-难度必须回答：
-
-- 个人作者理解 skill 边界的难度
-- 团队统一 skill 结构与质量标准的难度
-- 长周期维护时保持结构稳定的难度
+- 固定 skill 的定义边界、结构共同层和跨 surface 的最小工作标准
+- 区分 portable core 与 surface-specific extension
 
 ### 研究线 02：Skill 工程化工具链与生命周期
 
 研究目标：
 
-- 建立 skill 生命周期分解框架
-- 把候选对象映射到生命周期不同阶段，明确强弱项与职责边界
-
-必须回答：
-
-- skill 生命周期该如何稳定拆分
-- 各类候选对象分别覆盖了哪些阶段
-- 哪些对象是真正的工程基座能力，哪些只是样板、目录或入口
-
-证据重点：
-
-- tool / runtime / loader / registry 的官方仓库与文档
-- 能体现 post-authoring、audit、validation、distribution、loading 的说明
-- 能体现跨 agent 兼容与安装分发约束的材料
-
-难点重点：
-
-- 生命周期切分口径不统一
-- 单一对象职责重叠或宣传边界模糊
-- 多平台兼容与单一事实源维护的治理难题
-
-趋势必须回答：
-
-- 工具链是在向一体化基座收敛，还是向组合式生态分化
-- 编写、治理、分发、装载哪些环节最先标准化
-
-难度必须回答：
-
-- 个人采用复杂工具链的门槛
-- 团队治理多平台 skill 资产的难度
-- 长期维护组合式链路的漂移成本
+- 固定 lifecycle segmentation 与对象职责边界
+- 判断单一基座与组合式 baseline 的合理性
 
 ### 研究线 03：生态信号、可信度与采用判断
 
 研究目标：
 
-- 建立独立于项目自述的采用与可信度判断框架
-- 为前 `3` 排序或组合推荐提供证据层
-- 回答“借鉴现成 skill 是否能显著缩短成长路径，以及哪些外部资源最有学习杠杆”
+- 固定可信度判断口径与推荐表达方式
+- 区分学习价值、采用价值与工程成熟度
 
-必须回答：
+### 研究线 04：Skill 持续优化、评测闭环与反馈回流
 
-- 哪些外部信号足以支撑“值得持续跟踪”
-- 如何区分官方项目、社区 curated list、个人实验仓库与生态聚合站
-- 最终推荐应偏向单一项目还是组合方案
-- 哪些现成 skill、样板、目录和社区入口最适合作为成长加速器，而不是只提供表面热度
+研究目标：
 
-证据重点：
+- 固定 skill continuous optimization 的对象边界
+- 建立 failure taxonomy、最小 eval loop 与 human-in-the-loop 修订边界
 
-- 被采用、被引用、被教程化、被收录、被集成的外部信号
-- release、维护、跨平台兼容、社区讨论等持续性信号
-- 能体现“强自述、弱回声”或“低调但真实采用”的反例材料
-- 能体现“借鉴他人 skill 能帮助更快上手，而完全闭门从零摸索成本更高”的实践材料、教程路径或经验总结
+## 停止条件
 
-难点重点：
+每条研究线只有同时满足下面条件，才能算第一轮搜集完成：
 
-- 早期生态中弱信号很多、强信号稀缺
-- 目录影响力与工具成熟度容易混淆
-- 短期热点、个人项目和长期基座之间不易区分
-- “学习价值高”与“工程成熟度高”不一定是同一类对象，需要分开判断
+- 核心对象清单已经稳定，不再持续新增关键名字
+- 新搜到的材料大多在重复已知事实，而不是贡献新信息
+- 该研究线的固定问题都已经有证据支撑
+- 至少有 `1` 轮对“反例、限制、争议”的专门补搜
+- 已完成一次“官方说法 vs 第三方验证 / 实践证据 / 失败模式”交叉核验
+- 所有重要但未解的问题，都已经被明确归类为 `继续追`、`suspend`、`archive` 或 `redirect`
 
-趋势必须回答：
-
-- skill 生态是在形成稳定的基座层，还是保持高分散状态
-- 官方样板、第三方工具和社区目录之间是否出现清晰分工
-
-难度必须回答：
-
-- 个人基于弱信号做工具选型的风险
-- 团队把实验项目纳入正式 workflow 的风险
-- 长期跟踪对象池时的维护成本与误判成本
-
-## 并行执行建议
-
-建议采用“主线程 + 研究线线程”的并行方式，但前提是 Wave 0 已完成。
-
-主线程职责：
-
-- 维护共享术语、对象分类与证据格式
-- 维护 `_reference/_INDEX.md`
-- 去重共享来源，避免不同研究线重复抓同一来源
-- 在 Wave 2 做跨 topic 综合
-
-研究线线程职责：
-
-- 深挖自己主题
-- 以 `_reference/*.md` 为单位落库高价值来源
-- 回填对应 topic 文件
-- 维护本研究线的 `evidence-summary` 与 `question-list`
-
-命名分工：
-
-- 主线程写共享地基：`00-shared-*`
-- 研究线 `01` 只写：`01-skill-methodology-and-spec-*`
-- 研究线 `02` 只写：`02-skill-toolchain-and-lifecycle-*`
-- 研究线 `03` 只写：`03-ecosystem-signals-and-adoption-*`
-
-## 执行节奏
-
-推荐顺序：
-
-1. 初始化 `REFERENCE_DIR / REFERENCE_DIR/_INDEX.md / ARTIFACT_DIR`
-2. 完成 Wave 0 共享地基与对象分类草案
-3. 进入 Wave 1，优先扩大每条研究线的核心对象清单，再下钻机制
-4. 对每条研究线补趋势、难点、失败模式与争议
-5. 做至少一轮跨 topic 交叉核验
-6. 完成 Wave 2 横向综合与 Readiness Check
-
-如果某一步还未达到对应检查点，不要机械进入下一步。
-
-## 成功标准
-
-达到下面状态，才算真正满足目标：
-
-- `_reference` 中有一批高可信、可追溯的 ground truth 文档
-- 每条研究线至少形成一组可复用证据包，而不是临时搜索结果
-- 对每条研究线都能解释机制、趋势和难点
-- 每个重要判断都能回指到本地 reference 文档
-- 对趋势、难度、争议都有专门证据，而不是顺手一提
-- 可以回答“什么值得长期追踪，什么只是噪音”
-- 可以明确说清楚哪些问题被主动 `suspend`，以及为什么
-- 新的 agent 接手时，只看 `SEED_DIR + REFERENCE_DIR + ARTIFACT_DIR` 就能继续推进
+如果还没有达到这些条件，就不能草率进入总结。
