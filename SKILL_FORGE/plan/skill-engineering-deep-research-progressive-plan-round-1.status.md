@@ -14,7 +14,7 @@
 - 核心对象稳定度：`stable`
 - 新增信息产出：`medium`
 - 失败 / 反例覆盖度：`partial`
-- 当前还缺的必做项：`为 04 topic 建立首批 reference、evidence-summary、question-list，并把其结论重新吸收到 Wave 2 与 Readiness Check`
+- 当前还缺的必做项：`为 04 topic 建立首批 reference、evidence-summary、question-list、failure taxonomy 草案、最小 eval / replay / regression loop baseline，并把其结论重新吸收到 Wave 2 与 Readiness Check`
 - 当前只剩的可选打磨项：`field-level support matrix、附录式单榜、以及更强的 AGENTS.md / Agent Skills 标准补件`
 - 当前已挂起的高难分支：`暂无新增挂起，但 Wave 2 需在 04 topic 完成后重跑`
 - 如果现在停止，最大缺口：`skill workflow baseline 缺少发布后持续优化、eval / replay / regression 与 feedback loop 这一段`
@@ -88,7 +88,7 @@
 - `evidence_summary`：`/Users/bowhead/ai_dev_skill/SKILL_FORGE/topics/_artifacts/04-skill-optimization-and-feedback-loops-evidence-summary.md`
 - `question_list`：`/Users/bowhead/ai_dev_skill/SKILL_FORGE/topics/_artifacts/04-skill-optimization-and-feedback-loops-question-list.md`
 - `status`：`not_started`
-- `gap`：`新增 formalized topic，seed 已建立，但 Wave 1 证据落库、failure taxonomy 草案、最小 eval / replay / regression loop baseline 尚未开始`
+- `gap`：`新增 formalized topic，seed 已建立；应优先从 skill-forge 这类 skill artifact 级优化对象起步，但 Wave 1 证据落库、failure taxonomy 草案、最小 eval / replay / regression loop baseline 尚未开始`
 
 ## Wave 2：跨主题综合
 

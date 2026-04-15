@@ -104,14 +104,14 @@
 
 初始可关注的外部对象和模式，不应只停在“通用 prompt 优化框架”，而应优先看下面三类：
 
-### 4.1 直接面向 skill artifact 优化的开源对象
+### 直接面向 skill artifact 优化的开源对象
 
 - `skill-forge`
   - 它虽然不是自动优化器，但明确在做 skill 级别的 discoverability、executability、结构一致性、安全与发布前审计。
   - 它值得优先研究的原因，不是“它会写 prompt”，而是它已经把 skill 当成一个可验证、可修复、可发布、可持续治理的工程产物。
   - 对这个 topic 来说，`skill-forge` 的价值在于：它可能代表一种“skill 优化先从结构、描述、步骤执行性和分发一致性做起”的真实开源路线。
 
-### 4.2 可迁移到 skill 的评测与反馈闭环模式
+### 可迁移到 skill 的评测与反馈闭环模式
 
 - dataset / trace / replay
 - eval-driven iteration
@@ -123,7 +123,7 @@
 - 帮我们建立 skill 发布后的观测、回放、对比和修订闭环
 - 让 skill 修改不再只靠作者主观感觉
 
-### 4.3 可借鉴但不应误当成全部的 prompt / program optimization 原型
+### 可借鉴但不应误当成全部的 prompt / program optimization 原型
 
 - OpenAI 的 eval-driven prompt / workflow 迭代思路
 - LangSmith 的 dataset、trace、evaluation、replay 能力
@@ -160,6 +160,7 @@
 - `seed_files`:
   - `../_raw_idea/skill-continuous-optimization.md`
   - `../_raw_idea/skill-engineering-research-plan.md`
+  - `../_raw_idea/github_skill-forge.md`
 
 - `current_hypothesis`:
   - Skill optimization 的真实对象是完整 artifact，而不是单段 prompt。
@@ -206,3 +207,4 @@
 ## 当前判断（本轮综合后）
 
 - 当前最稳的判断是：这已经不是 `01/02/03` 内任何一条研究线的局部补件，而是一个独立问题簇，因此应作为 `04` 独立 topic 推进。
+- 当前最值得作为 `04` 起步样本的对象之一是 `skill-forge`，因为它已经把 skill 的 discoverability、executability、结构一致性和发布前治理视为可优化对象，而不只是把问题退化成 prompt 改写。

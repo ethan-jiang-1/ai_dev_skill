@@ -37,7 +37,7 @@
 
 - `04` / `skill-optimization-and-feedback-loops` / Skill 持续优化、评测闭环与反馈回流
   - file: `04-skill-optimization-and-feedback-loops.md`
-  - focus: Skill 发布后如何基于失败样本、评测、回放与反馈闭环持续精调，而不退化成单纯 prompt tuning
+  - focus: Skill 发布后如何基于失败样本、评测、回放与反馈闭环持续精调，并优先从 `skill-forge` 这类 skill artifact 级优化对象切入，而不退化成单纯 prompt tuning
 
 ## Mapping From Original Plan
 
