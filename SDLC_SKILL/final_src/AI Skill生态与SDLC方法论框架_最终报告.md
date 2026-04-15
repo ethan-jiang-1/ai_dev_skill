@@ -1,0 +1,744 @@
+# AI Skill生态与SDLC方法论框架：从基础规范到工程治理的系统性全景评估
+
+**面向AI工程平台负责人、开发效能团队与技术管理者的实践报告**
+
+---
+
+## 执行摘要
+
+AI Skill 生态正在从“提示词分享”阶段进入“工程资产化”阶段。过去，团队更多把 skill 视为一段高质量 prompt；而当前更重要的变化是：skill、plugin、extension、workflow、MCP server 与方法论框架，正在共同组成一套新的 AI 辅助 SDLC 基础设施。
+
+本报告基于 `round2_src/` 四个主题文档、`reference_src/` 一手资料与跨主题综合结果，系统回答四个问题：  
+1. Skill 的最低层标准是什么，真正的宿主差异又在哪里  
+2. 分发层为何正在变成包管理器、registry 和供应链治理的组合  
+3. 企业第一方供给、社区索引与 MCP 生态怎样构成真实的能力发现网络  
+4. 高杠杆框架究竟如何把 SDLC 方法论编码成可安装、可审计、可升级的工程资产
+
+**核心发现**：
+
+1. **`SKILL.md` 更像最低层 authoring format，不是完整运行时标准**。  
+   Agent Skills 规范已经把“目录 + `SKILL.md` + 可选脚本/引用资料”固化为跨宿主可交换的最小单元，但真实差异来自宿主的 discovery、load、invoke、permission 和 governance 机制，而不是“支不支持 `SKILL.md`”这一个问题。
+
+2. **宿主平台的竞争核心，正在从模型能力转向上下文与权限治理能力**。  
+   Claude、Codex、OpenCode、Windsurf、Cursor、Gemini CLI、Copilot CLI 都在不同层面支持 skill 或类 skill 资产，但它们对作用域扫描、触发方式、插件打包、工具权限、组织共享和企业治理的处理方式显著不同。
+
+3. **分发层已经不再是附属目录，而是在走向包管理器化与 registry 化**。  
+   `npx skills` 一类安装器在做来源解析、目录探测、lock file、update checking；Sundial 一类 hub 在做版本快照、安全扫描与私有分发；well-known endpoint 与 MCP Registry 则把“可发现入口”和“可验证元数据”进一步协议化。
+
+4. **Skill 的真实供给网络不是单一市场，而是“第一方仓库 + 社区索引 + MCP 协议/registry”的组合**。  
+   企业第一方仓库负责准确性、宿主兼容和维护节奏；社区索引负责长尾发现；MCP 负责把运行时能力标准化为 tools/resources/prompts；registry 负责把 server 发布与发现从 README 推向机器接口。
+
+5. **最有价值的高阶对象，不是单个 skill，而是把 SDLC 治理写成系统的框架**。  
+   Superpowers、Spec Kit、OpenSpec、Feature-Driven-Flow、Roo Code、Aider conventions、gstack、BMAD 等项目表明，真正高杠杆的能力不在“多写一点 prompt”，而在把工件化、阶段不变量、显式 gate、规则分层、角色隔离和验证闭环做成可安装资产。
+
+**关键行动建议**：
+
+- 对企业与平台团队，应该把 skills/plugins/extensions 当作依赖项治理，而不是内容素材收藏。
+- 对技术管理者，选型时应优先比较宿主的治理能力，而不是只比较“有没有 marketplace”。
+- 对框架和供给侧作者，必须同时设计 authoring format、安装路径、权限边界、更新机制与验证链路。
+- 对采用团队，推荐先从轻量规则集切入，再根据项目复杂度升级到带 gate 的方法论框架。
+
+**证据透明性声明**：  
+本报告明确区分三类判断。  
+- **硬事实**：规范、官方文档、schema、CLI/manifest 机制、项目 README 中可核验的行为描述  
+- **分析判断**：基于多份一手资料交叉后形成的机制归纳与生态分层  
+- **趋势推测**：基于多个信号推断的演化方向，尚需更多宿主实现与企业消费侧案例验证  
+
+当前仍有三个关键证据缺口：  
+1. Cursor plugins 的运行时权限语义、IDE/CLI 一致性与多插件加载顺序仍缺更直接的一手说明  
+2. `/.well-known/agent-skills/` 与 legacy `/.well-known/skills/` 的生态收敛程度尚未完全稳定  
+3. MCP Registry 在主流 coding host 中的生产级消费路径，仍缺比 ServiceNow 更广泛的企业样本
+
+---
+
+## 第一部分：基础规范与宿主平台生态
+
+### 1.1 从“提示词”到“工程资产”
+
+AI Skill 的重要变化，不是内容更长，而是**承载方式**发生了变化。
+
+在开放规范口径下，一个 skill 的最小单元不再是单条 prompt，而是一个目录。目录至少包含 `SKILL.md`，还可以包含 `scripts/`、`references/`、`assets/` 等辅助材料。这意味着 skill 从一开始就被设计成可版本控制、可打包、可迁移的上下文资产，而不是聊天窗口里的临时输入。
+
+（硬事实：`00-shared-agentskills-specification`）
+
+这一步非常关键，因为它把“能力”从自然语言文本，转移到了软件工程熟悉的对象上：
+
+- 目录结构
+- manifest / frontmatter
+- 引用资料
+- 附属脚本
+- 版本与分发入口
+
+因此，今天讨论 AI Skill 生态，如果仍停留在“这是高级 prompt engineering”这一层，已经不够了。更准确的说法是：**skill 是 AI 辅助工程里的最小上下文包，而不是单次输出技巧**。
+
+### 1.2 `SKILL.md` 统一了格式，但没有统一运行时
+
+Agent Skills 规范与多家宿主的实现，共同推动了一个事实：`SKILL.md` 正在成为跨宿主可交换的最低层格式。
+
+但必须注意，统一的是**authoring format**，不是完整运行时标准。
+
+真实的宿主差异至少体现在五个维度：
+
+1. **发现范围**：会扫描哪些目录，是否从当前工作目录向上递归，是否支持全局与项目级并存
+2. **加载策略**：只预加载 metadata，还是启动就注入完整内容
+3. **触发语义**：自动匹配、显式命令、`@mention`、slash command 或 plugin 安装入口
+4. **权限边界**：能否细分 tools 可见性、可执行性、allow/ask/deny、trusted folders
+5. **治理模型**：是否支持团队共享、私有市场、版本禁用、组织预置与审计
+
+这意味着“兼容 `SKILL.md`”只是起点。  
+一个团队真正关心的问题应该是：**同一份 skill 在不同宿主里，何时会被发现、怎样被加载、能调用什么、谁能分发、谁能禁用、出了问题如何审计**。
+
+### 1.3 Progressive Disclosure 已成为宿主共识
+
+当前多个宿主都把 progressive disclosure 作为公开机制来描述：启动时只加载 `name`、`description` 一类轻量 metadata；模型判定相关时，再读取完整 `SKILL.md`；必要时再递进读取 `references/` 或其他支持文件。
+
+这背后的根本原因不是产品文案，而是上下文预算治理：
+
+- 启动成本必须可控
+- 无关 skill 不应占用上下文窗口
+- 详细规则只在需要时注入
+- 较大引用资料要晚于主体规则加载
+
+这也反向塑造了 skill 的写法。优秀 skill 的 `description` 不再只是简介，它承担了“被模型正确命中”的职责；而高细节、低频使用的说明，则更适合进入正文或引用文件。
+
+（硬事实：`01-host-claude-what-are-skills`、`00-shared-anthropic-engineering-agent-skills-2025`、`01-host-windsurf-skills-docs`、`01-host-openai-codex-agent-skills-docs`）
+
+### 1.4 宿主差异：比较的不是“支持 skill”，而是宿主抽象
+
+如果把当前主流宿主放在一起看，最应该比较的是宿主抽象模型，而不是营销层名称。
+
+| 宿主 | 核心打包单位 | 触发方式 | 权限/治理特征 | 关键判断 |
+|------|--------------|----------|---------------|----------|
+| Claude | Skills | 自动匹配为主 | 组织共享、Team/Enterprise 预置、UI 层治理 | 技能分类清晰，组织级共享能力强 |
+| Codex | Skills + Plugins | progressive disclosure + 安装入口 | `.agents/skills` 扫描、config 禁用、plugins 区分 authoring/distribution | 结构清晰，适合作为分层治理样本 |
+| OpenCode | Skills | 原生 skill tool | allow/ask/deny、tool 禁用、跨目录扫描 | 权限模型细，适合研究最小可控宿主 |
+| Windsurf | Skills + Workflows | skills 可自动，workflows 手动 | workspace/global/system 多作用域 | 适合比较自动触发与手动流程分层 |
+| Cursor | Plugins | marketplace / `/add-plugin` / 插件封装 | 正推进 team marketplace；CLI/IDE 一致性仍有风险 | 更像插件平台，不只是 skills 宿主 |
+| Gemini CLI | Extensions | 扩展安装 + skill bundling | user/workspace scope、`excludeTools`、可捆绑 MCP | “extension 作为安装单位”的代表 |
+| Copilot CLI | Skills + Instructions | skills + repo instructions 并存 | trusted folders、allow/deny tools、repo 路径指令 | 技能与仓库级治理叠加得最明显 |
+
+这个表说明两件事：
+
+第一，`SKILL.md` 是公共地基，但宿主选择决定了团队看到的真实工程面貌。  
+第二，越是面向团队或企业，越不能只看“是否支持 skill”，而应看**作用域、权限、组织共享、安装单元与自动化一致性**。
+
+### 1.5 一个容易被忽视的分水岭：authoring format vs installable unit
+
+生态里最容易被混淆的概念，是把 skill 与 plugin/extension/workflow 当成同一种对象。
+
+事实上，多个宿主正在形成明显分层：
+
+- `skill`：描述工作流与约束的内容单元
+- `plugin` / `extension`：用于安装、升级、分发和捆绑其他能力的打包单元
+- `workflow`：手动触发的流程资产
+- `MCP server`：运行时能力提供者
+
+Codex 把这种分层讲得最清楚：skills 是 authoring format，plugins 是 installable distribution unit。  
+Cursor 与 Gemini CLI 则把这种分层产品化得更彻底：插件或扩展本身可以同时捆绑 skills、rules、hooks、commands、MCP servers。
+
+因此，对团队来说，一个更成熟的理解方式是：
+
+**skill 负责“怎么做”，plugin/extension 负责“怎么装、怎么管、怎么发”，MCP 负责“实际能做什么”。**
+
+### 1.6 第一部分结论
+
+这一部分最重要的结论不是“谁最先进”，而是：
+
+1. `SKILL.md` 已经构成跨宿主的最低层协议
+2. 宿主的真实竞争点是 discovery、trigger、permission、governance
+3. progressive disclosure 已经成为事实标准
+4. installable unit 与 authoring format 正在显式分离
+
+这也解释了为什么后续讨论不能只停留在 host 本身。  
+一旦 skill 变成可安装资产，就必然进入分发、版本、安全与供应链问题。
+
+---
+
+## 第二部分：聚合器、注册表与分发安全
+
+### 2.1 分发层正在形成独立价值
+
+过去，skill 更像“仓库里的一个目录”。  
+现在，分发层正在把它变成“可安装、可追踪、可更新的依赖项”。
+
+以 `vercel-labs/skills` 为代表的安装器，已经在做以下事情：
+
+- 解析多种来源格式
+- 自动探测宿主目录
+- 支持项目级与全局安装
+- 通过 lock file 固化安装状态
+- 通过 hash 比较执行更新检查
+
+（硬事实：`00-shared-vercel-skills-cli-readme`、`02-dist-vercel-skills-docs-lock-files`、`02-dist-vercel-skills-docs-update-system`）
+
+这意味着 skill 的消费方式开始接近包管理器，而不再只是“复制一份 markdown 文件”。
+
+### 2.2 三类分发角色已经出现分工
+
+在当前生态里，至少能看到三类分发角色：
+
+#### 1. 安装器型
+
+代表：Vercel Skills
+
+其核心价值不是做一个网页目录，而是做**来源解析与跨宿主安装层**。  
+这种角色更关心：
+
+- source formats 支持多少
+- 本地如何落盘
+- global / project scope 如何区分
+- copy 与 symlink 的策略如何影响更新
+- 团队如何用 lock file 保持一致
+
+#### 2. Hub / Registry 型
+
+代表：Sundial
+
+这类平台更强调：
+
+- 版本快照
+- verified 主张
+- 私有发现
+- 风险呈现
+- 发布治理
+
+Sundial 的文档很典型：它不仅提供 CLI 安装，还把 immutable snapshots、auto-bump、多重扫描、manual review、private/public/team publish 做成了默认产品能力。
+
+#### 3. 大规模市场型
+
+代表：LobeHub
+
+这类平台的优势主要在规模与发现效率。  
+但对工程团队来说，数量并不等于可控性。  
+如果没有足够的验证、版本与审计链路，规模市场更像“高密度矿区”，而不是“企业级依赖源”。
+
+### 2.3 Lock file、snapshot 与 update checking 为什么重要
+
+一旦 skill 被团队共享，它就会出现和依赖管理相同的问题：
+
+- 每个人装的版本是否一致
+- 上游更新了什么
+- 本地是否被手改过
+- 回滚和审计如何完成
+- 项目级与全局级资产如何区分
+
+Vercel Skills 用 lock file 和 folder hash 解决“已安装状态”的可追溯问题。  
+Sundial 用 immutable snapshot 和版本号策略解决“发布历史”的可追溯问题。
+
+这两种机制分别对应依赖治理中的两个层面：
+
+- **消费侧可追溯**
+- **供给侧可追溯**
+
+企业如果没有这两层能力，就会很快从“团队共享 skill”走向“谁也不知道现在跑的到底是哪一版”。
+
+### 2.4 well-known endpoint：分发层正在协议化
+
+分发层最值得注意的变化之一，是 well-known endpoint 的出现。
+
+在旧口径下，工具通常读取 `/.well-known/skills/index.json`。  
+而更新的规范方向，已经把入口推进到 `/.well-known/agent-skills/index.json`，并引入：
+
+- `$schema`
+- 远端 URL
+- digest / SHA-256
+- 更明确的解包与路径安全约束
+
+（硬事实：`00-shared-cloudflare-agent-skills-discovery-rfc-0-2-0`、`02-dist-vercel-skills-well-known-index-schema`）
+
+这说明一个方向：**分发层正在从“网页可见”走向“工具链可验证”**。  
+当 digest 校验、路径安全、防 archive escape 这类约束进入规范，skill 的分发就不再只是内容索引，而开始拥有供应链语义。
+
+但短期内生态仍处在新旧并存阶段。  
+X、Cognite 等站点已出现新旧双栈；Backstage 等仍停留在 legacy 口径。  
+因此，安装器短期内必须同时承担：
+
+- 向后兼容
+- schema 识别
+- 安全校验
+- 迁移容错
+
+### 2.5 分发安全：真正的风险不是“内容不好”，而是“安装后不可控”
+
+Skill 一旦可携带脚本、hooks、commands、工具调用或插件封装，分发安全就不再只是“看一下 markdown”。
+
+结合 OWASP LLM Top 10，可以把风险面归纳为五类：
+
+1. Prompt injection
+2. Insecure plugin design
+3. Supply chain vulnerabilities
+4. Insecure output handling
+5. Excessive agency
+
+这也是为什么 Sundial 一类平台开始把扫描、模型审查与人工复核纳入默认链路。  
+问题不在于“平台想不想做安全”，而在于**如果平台不把安全做进默认流程，团队采用成本会全部转嫁到下游**。
+
+### 2.6 企业视角：分发层的真正价值是把 skill 变成可控依赖项
+
+对企业来说，分发层最重要的价值从来不是“找到更多 skills”，而是把 skill 变成可以治理的依赖项。
+
+这包括：
+
+- 明确来源
+- 可重复安装
+- 可提交到版本控制
+- 可检测更新
+- 可私有分发
+- 可做安全扫描与风险提示
+- 可在不同宿主里稳定落盘
+
+如果没有这些特征，那么 skill 在企业里就只能停留在“个人工具收藏”，很难进入标准工程流程。
+
+### 2.7 第二部分结论
+
+分发层已经形成了清晰方向：
+
+1. 安装器在向包管理器化演进
+2. hub/registry 在向版本治理与安全治理演进
+3. well-known endpoint 在推动入口协议化
+4. 供应链安全已经成为默认问题，而不是附加问题
+
+这也意味着，后续讨论供给来源时，不能只问“哪里有内容”，还必须问“这些内容如何被发现、验证、安装和更新”。
+
+---
+
+## 第三部分：企业官方来源、社区索引与 MCP 共生
+
+### 3.1 真实供给网络不是单一市场
+
+AI Skill 生态的一个常见误解，是把“市场”当成全部供给。
+
+实际上，当前最值得关注的供给网络，是由三类来源共同构成的：
+
+1. **企业第一方仓库与文档**
+2. **社区索引与 curated lists**
+3. **MCP 协议、servers 与 registry**
+
+这三类来源的价值并不相同，也不应混为一谈。
+
+### 3.2 企业第一方供给：准确性、兼容性与维护节奏
+
+第一方供给的优势，不只是“官方更可信”，而是它通常同时提供：
+
+- 真实产品机制解释
+- 最新兼容信息
+- 宿主安装路径
+- 触发语义说明
+- 与自身 API / 框架同步更新
+
+Expo、Cloudflare、Hugging Face、Cognite 都展示了这种供给模式。
+
+其中最值得注意的一点是：第一方供给往往不是只发一个 `SKILL.md`，而是在交付**完整可用性工程**。
+
+例如：
+
+- Expo 同时讲清楚官网入口、文档、CLI 安装、宿主触发方式
+- Cloudflare 同时交付 skills、commands 与 remote MCP servers
+- Hugging Face 同时提供 agent skills、宿主适配方式、fallback 策略与 CI 校验思路
+- Cognite 把 skill file、MCP server 与 well-known discovery 放在统一文档入口里
+
+这种供给形式的本质，是把“产品能力怎么接进宿主”也当作产品来做，而不是丢给社区自己摸索。
+
+### 3.3 一个关键变化：供给开始产品化，而不是仓库化
+
+第一方供给正在从“GitHub 仓库”升级为“官网入口 + 文档 + 统一安装口径 + 多宿主兼容说明”的组合。
+
+这件事很重要，因为它改变了 skill 的角色：
+
+- 过去：一个可以参考的仓库片段
+- 现在：一个需要持续维护、跨宿主兼容、与产品演进同步的正式资产
+
+这也是为什么第一方来源在长期追踪价值上，明显高于纯社区 prompt 仓库。  
+它们更接近 SDK、CLI 插件或官方集成，而不是内容样例。
+
+### 3.4 社区索引的真实角色：生态雷达，而不是证据库
+
+Awesome 类索引和社区策展列表，最大的价值不在权威性，而在发现效率。
+
+它们适合回答的问题是：
+
+- 最近有哪些长尾实验
+- 哪些组织开始发布相关能力
+- 哪些方向在快速出现新的样本
+- 哪些对象值得回到一手仓库继续核验
+
+但它们不适合直接承担 ground truth 的角色。  
+原因很简单：
+
+- 条目更新速度快
+- 提交与审核口径不统一
+- 质量分布不均
+- 很多对象只在列表里被提及，没有完整治理信息
+
+因此，对专业团队来说，社区索引最合理的用法是：
+
+**先把它当雷达，再把候选对象回溯到第一方仓库、官方文档或可核验 schema。**
+
+### 3.5 MCP 不是 skill 的替代，而是运行时能力层
+
+MCP 生态之所以必须和 skill 放在一起讨论，是因为它解决的是另一个层面的问题。
+
+Skill 负责：
+
+- 何时做
+- 按什么步骤做
+- 哪些约束不能破
+- 哪些验证不能跳过
+
+MCP 负责：
+
+- 到哪里做
+- 用什么工具做
+- 如何访问外部资源
+- 连接边界与授权方式是什么
+
+Cloudflare 与 MCP 官方文档把这一层关系讲得很清楚：  
+host 内嵌 client，连接 MCP server；server 暴露 prompts、resources、tools 三类原语；remote 与 local 连接又对应不同的 transport 和授权口径。
+
+（硬事实：`03-supply-cloudflare-mcp-guide`、`03-supply-mcp-base-protocol-2025-06-18`、`03-supply-mcp-server-features-overview-2025-06-18`）
+
+因此，skills 与 MCP 更像：
+
+- **skills：静态过程编排层**
+- **MCP：运行时能力层**
+
+两者不是竞争关系，而是协作分层。
+
+### 3.6 prompts、resources、tools 的分层，决定了治理不能“一刀切”
+
+MCP 容易在实践中被说混，一个核心原因是大家习惯把它统称为“tools”。
+
+但从协议视角看，至少有三类不同原语：
+
+- `prompts`：更偏用户控制
+- `resources`：更偏应用提供上下文
+- `tools`：更偏模型发起调用
+
+这三类原语有不同的能力协商、列举、读取或调用方式，也有不同的安全治理要求。
+
+这直接影响企业落地：
+
+- prompts 需要防注入与输入输出校验
+- resources 需要 URI 校验和资源级权限
+- tools 需要人类在环、限流、访问控制与审计
+
+如果团队把 MCP 简化成“接几个工具”，会很容易低估实际治理工作量。
+
+### 3.7 MCP Registry：从 README 列表走向机器接口
+
+MCP Registry 的出现，是供给层另一个关键变化。
+
+它把 server 发现从“仓库 README 或 awesome list”推进到：
+
+- 可发布
+- 可认证
+- 可版本化
+- 可被 API 检索
+- 可被 aggregators 再加工
+
+但这里必须保持清醒：  
+MCP Registry 官方明确是 metadata-only，moderation 相对宽松，安全扫描与评级等增值治理预期下放到 aggregators 或 subregistries。
+
+这意味着 registry 的定位更接近：
+
+- 上游元数据源
+- 发布入口
+- 名称与所有权验证系统
+
+而不是“默认可信的安全筛选器”。
+
+ServiceNow 一类企业级消费侧集成已经说明，registry 很可能进入正式企业流程。  
+但一旦进入企业流程，下游就更需要叠加：
+
+- 安全扫描
+- 持久化缓存
+- 白名单或分级审批
+- 内部 subregistry
+- 审计记录
+
+### 3.8 第三部分结论
+
+这一部分可以收敛成三个判断：
+
+1. 高质量供给最值得优先追踪的是第一方产品化来源
+2. 社区索引是发现网络，不是最终证据
+3. MCP 把外部能力标准化成运行时层，registry 把 server 发现推进为机器化接口
+
+因此，团队真正需要建设的不是“一个市场账号”，而是一条**从上游发现、到内部筛选、到宿主接入、到运行时治理**的完整供给链路。
+
+---
+
+## 第四部分：SDLC方法论框架与工程治理
+
+### 4.1 最有价值的对象，不是单个 skill，而是“工程操作系统”
+
+当生态进入更复杂的工程阶段，最值得研究的对象已经不再是“某个技巧很好用的 skill”，而是能把 SDLC 关键阶段整体编码进去的框架。
+
+这类框架的共同特征是：
+
+- 不只规定输出内容
+- 还规定阶段顺序
+- 规定哪些检查不能跳过
+- 规定哪些工件必须落盘
+- 规定什么情况下需要显式批准
+- 规定角色边界、模式隔离和权限范围
+
+它们更像“工程操作系统”，而不是“文本模板集合”。
+
+### 4.2 高杠杆治理原语：框架真正共通的部分
+
+对最终报告最重要的，不是记住每个项目名，而是提炼出这些框架反复出现的治理原语。
+
+#### 1. 工件化
+
+Spec Kit、OpenSpec、FDF 等项目都在做同一件事：  
+把需求、计划、任务、设计、核查清单、变更包等状态，从对话里拉出来，落成文件与目录。
+
+这一步的价值是：
+
+- 状态可追溯
+- 多轮迭代可持续
+- 下游阶段可读取上游工件
+- 团队成员可以在会话外审阅
+- 自动化校验才有抓手
+
+#### 2. 阶段不变量
+
+高质量框架不会只说“建议先做规划”，而是把它做成不可跳过的默认流程。
+
+典型例子：
+
+- FDF 的固定七阶段与 phase gate
+- Superpowers 的 mandatory workflows
+- Spec Kit 的 specify → plan → tasks → implement 顺序
+
+这类不变量的目标不是增加文档，而是降低 LLM 常见失败模式：
+
+- 过早进入实现
+- 跳过澄清
+- 没有验证就宣称完成
+- 多步任务中途漂移
+
+#### 3. 显式批准与验证 gate
+
+FDF 强调 implement 前需要显式批准；  
+Superpowers 明确“没有新鲜验证输出，就不能宣称完成”；  
+TDD 类 skill 明确“没有 failing test，不写 production code”。
+
+这类 gate 的意义是把“经验性工程纪律”变成系统默认行为，而不是靠人临时记住。
+
+#### 4. 规则分层与优先级
+
+Roo Code、FDF、Copilot 指令体系都说明，规则不是单一文件，而是分层叠加的：
+
+- 全局
+- 工作区
+- mode-specific
+- repo instructions
+- `AGENTS.md`
+- plugin / extension 内规则
+
+一旦规则进入团队协作与多宿主场景，优先级和覆盖关系本身就成了治理对象。
+
+#### 5. 角色与模式隔离
+
+gstack 通过 specialist 角色模拟虚拟团队；  
+Roo Code 通过 modes 绑定工具与文件权限；  
+这类机制的本质是：**把组织结构和上下文边界编码进系统**。
+
+这对防止上下文污染、越权操作和职责混乱尤其关键。
+
+### 4.3 框架不是同一种重型系统，而是几类治理流派
+
+将当前典型框架按治理思路划分，可以得到更清晰的地图：
+
+| 流派 | 代表项目 | 核心机制 | 适合场景 |
+|------|----------|----------|----------|
+| 强纪律工作流派 | Superpowers | mandatory workflows、TDD、verification gates | 需要强约束与高可靠性的交付 |
+| 契约驱动派 | Spec Kit | spec/plan/tasks/checklist、命令链路、hooks | 需要前置澄清与规范化计划的团队 |
+| 增量变更包派 | OpenSpec | proposal/specs/design/tasks、apply/archive | Brownfield 与增量改造 |
+| 审计治理派 | FDF | 7 阶段、rule matrix、显式 gate、schema | 高合规、强审计与多人协作 |
+| 轻规则集派 | Roo Code / Aider | rules、modes、conventions、read-only 注入 | 小团队、个人、低摩擦约束 |
+| 虚拟团队派 | gstack / BMAD | 角色分工、流程编排、安装器 | 多角色协作与团队流程模拟 |
+
+这个分类有助于避免一个常见错误：  
+把所有框架都当成“更复杂一点的 prompt 库”。
+
+事实上，它们的真正差异在于：  
+**它们把哪种工程纪律写进系统，又愿意为此引入多大流程摩擦。**
+
+### 4.4 一个现实问题：治理收益通常伴随流程摩擦
+
+方法论框架带来的收益很明显：
+
+- 更少跑偏
+- 更少漏验证
+- 更清晰的中间状态
+- 更容易审计与协作
+- 更适合长期项目
+
+但代价也很明确：
+
+- 阶段更多
+- 反馈更慢
+- 小改动场景会显得重
+- 采用门槛更高
+- 团队需要统一口径
+
+因此，框架选型并不是“越重越好”，而是要匹配项目的失败成本和治理需求。
+
+一个务实的分层做法通常是：
+
+- **个人 / 小团队 / 高频试验**：先用轻规则集
+- **中型项目 / 明显需要前置澄清**：引入契约驱动或增量变更包
+- **高合规 / 多角色 / 长周期项目**：使用带 phase gate 的审计治理框架
+
+### 4.5 高阶框架为何会反向影响宿主与分发层
+
+方法论框架看似是“上层内容”，但实际上正在反向塑造宿主与分发层。
+
+原因在于，一旦框架要求：
+
+- 模式隔离
+- 工件落盘
+- hooks 执行
+- 显式 gate
+- 安装器与更新命令
+- 规则分层
+
+宿主就必须提供更好的：
+
+- plugin / extension 打包能力
+- 目录与作用域治理
+- 权限收敛
+- 自动加载与禁用机制
+- 组织分发能力
+
+换句话说，框架不是依赖宿主“顺便支持一下”。  
+在很多情况下，正是框架的治理需求推动了宿主产品形态往更强工程化方向演进。
+
+### 4.6 第四部分结论
+
+这部分最重要的结论是：
+
+1. 高杠杆框架的核心价值在于把工程纪律编码为系统默认行为
+2. 最值得迁移的不是项目名单，而是治理原语
+3. 框架选型本质上是“可靠性收益与流程摩擦”的平衡
+4. 宿主和分发层的下一轮产品竞争，会越来越受这些治理需求驱动
+
+---
+
+## 第五部分：综合判断、证据边界与采用建议
+
+### 5.1 当前可以稳健成立的结论
+
+基于现有材料，以下结论可以视为高置信度判断：
+
+1. `SKILL.md` 已经成为跨宿主技能资产的最低层 authoring format
+2. progressive disclosure 已经成为多个宿主共同采用的机制
+3. skills、plugins、extensions、workflows 与 MCP servers 正在形成分层协作，而不是互相替代
+4. 分发层已经出现安装器、hub/registry、安全扫描与版本治理的工程化分工
+5. MCP 已把运行时能力抽象为 prompts/resources/tools，并正在通过 registry 进入更正式的发布与发现模式
+6. 高阶框架已经把工件化、阶段 gate、规则分层和角色隔离做成可安装资产
+
+### 5.2 需要保持克制的推论
+
+以下判断有较强依据，但仍应保持边界意识：
+
+1. **宿主会持续向企业治理能力竞争收敛**  
+   当前有多个明确信号，但不同宿主在权限和自动化一致性上仍不均衡。
+
+2. **well-known endpoint 会成为 skills 分发的主干标准**  
+   方向明确，但新旧 schema 并存，生态尚未收敛。
+
+3. **MCP Registry 会进入更多企业治理流程**  
+   已有 ServiceNow 等样本，但主流 coding host 的生产级消费模式还需更多证据。
+
+4. **方法论框架会越来越影响宿主产品形态**  
+   逻辑上成立，已有多个信号，但仍需更长周期的产品演化验证。
+
+### 5.3 当前最值得警惕的四类失败模式
+
+#### 1. 把“格式兼容”误当成“运行时兼容”
+
+同样是 `SKILL.md`，不同宿主在作用域、触发、权限与禁用逻辑上的差异，足以让同一份 skill 在不同环境里出现完全不同的行为。
+
+#### 2. 把“发现入口”误当成“可信供给”
+
+无论是大规模 marketplace 还是 registry，只要缺少下游验证、白名单与版本治理，就不能直接等同于企业可信源。
+
+#### 3. 把“接入 MCP”误当成“只多几个工具”
+
+MCP 带来的是连接方式、授权边界、原语分层与审计要求；它是工程接入问题，不只是功能扩展问题。
+
+#### 4. 把“框架方法学”误当成“可以无成本套用”
+
+越强的治理框架，通常越依赖团队口径统一、安装升级治理和流程纪律。  
+如果项目复杂度与失败成本不匹配，重框架会变成阻力。
+
+### 5.4 对工程团队的采用建议
+
+#### 对平台与开发效能团队
+
+- 先建立宿主抽象对照表：明确 discovery、scope、trigger、permissions、distribution unit
+- 把 skills/plugins/extensions 纳入依赖治理，而不是知识库收藏
+- 对外部供给建立 intake 流程：来源、版本、权限、扫描、审计、回滚
+- 区分可直接使用的第一方来源、需要二次验证的社区来源、以及仅作为线索的索引来源
+
+#### 对技术管理者
+
+- 选型时把治理能力放在第一优先级：组织共享、权限控制、私有分发、自动化一致性
+- 不要把 marketplace 数量等同于成熟度
+- 按项目失败成本决定框架重量，而不是追逐最复杂方案
+- 将 MCP 视为运行时能力工程，而不是工具清单扩展
+
+#### 对 framework / skill 作者
+
+- 同时设计三层对象：内容层、安装层、运行时层
+- 把版本、更新、禁用、回滚和扫描机制设计进默认流程
+- 用工件化、显式 gate、分层规则与角色隔离替代隐性经验
+- 对不同宿主的 trigger 语义和 fallback 路径给出清晰说明
+
+### 5.5 一个更成熟的生态判断
+
+如果把整个生态压缩成一句话，可以表述为：
+
+**AI Skill 生态正在从“内容工程”升级为“上下文工程 + 分发工程 + 运行时工程 + 治理工程”的复合系统。**
+
+这也是为什么最终值得长期追踪的，不是某一个热门 skill，而是下面这些可复用机制：
+
+- 最低层可交换格式
+- progressive disclosure
+- 安装与版本治理
+- 供应链安全与风险提示
+- MCP 的运行时标准化
+- 工件化与阶段 gate
+- 规则优先级与角色隔离
+
+谁能把这些机制组合成稳定、可审计、低摩擦的工程系统，谁就更可能成为下一阶段 AI 辅助 SDLC 的主战场。
+
+---
+
+## 参考资料说明
+
+本报告基于以下本地研究资产综合整理：
+
+- 原始深度研究：`/Users/bowhead/ai_dev_skill/SDLC_SKILL/raw_dr/软件开发智能体能力来源地图.md`
+- 二轮主题分解：`/Users/bowhead/ai_dev_skill/SDLC_SKILL/round2_src/`
+- 参考资料库：`/Users/bowhead/ai_dev_skill/SDLC_SKILL/round2_src/reference_src/`
+- 跨主题综合：`/Users/bowhead/ai_dev_skill/SDLC_SKILL/round2_src/_artifacts/W2-cross-topic-synthesis.md`
+
+完整参考索引见：
+
+- `/Users/bowhead/ai_dev_skill/SDLC_SKILL/round2_src/reference_src/_INDEX.md`
+
+---
+
+**报告完成日期**：2026年4月15日  
+**版本**：v1.0  
+**作者**：基于原始深度研究、round2 分解与 reference_src 证据库的综合整理  
+**目标听众**：AI工程平台负责人、开发效能团队、技术管理人员、方法论框架作者
+
+---
+
+**致谢**：本报告整合了 `round2_src/` 四个主题文档、`reference_src/` 中的一手资料，以及 `W2-cross-topic-synthesis.md` 的术语对齐与交叉验证结果，用于形成一份面向专业人士的系统性最终稿。
