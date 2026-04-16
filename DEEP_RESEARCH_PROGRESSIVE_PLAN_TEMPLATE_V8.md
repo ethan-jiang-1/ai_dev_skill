@@ -53,6 +53,31 @@
 - `RECENT_SOURCE_FLOOR`：每条研究线近期趋势来源最低配额
 - `LIMITATION_SOURCE_FLOOR`：每条研究线限制 / 争议 / 失败模式来源最低配额
 
+## 冷启动使用协议（Cold Start Usage）
+
+本模板必须能在没有任何历史对话上下文的环境中单独使用。新的 agent 只加载这一个文件时，应按下面顺序工作：
+
+1. 确认最小输入：至少需要一个 `SEED_DIR`。如果连 `SEED_DIR` 都没有，无法实例化，应中断并请求用户提供。
+2. 推断或填写参数：从 `SEED_DIR` 读取 seed 文件、README、已有 artifacts / reference，推断 `TOPIC_REGISTRY`、`TOPIC_COUNT`、`FINAL_DELIVERABLE` 与 `AUDIENCE`。无法确定但不阻塞执行的字段，先在 plan 中写成显式假设，不要把它留在对话上下文里。
+3. 生成本轮 plan：复制 `## 可直接复制的 Plan Skeleton` 中的 plan skeleton，替换所有占位符，并把推断依据写进 plan。
+4. 生成本轮 status：复制 `## 配套 Status File Skeleton`，替换占位符，保存到 `STATUS_PATH`。
+5. 初始化目录：创建或更新 `REFERENCE_DIR`、`ARTIFACT_DIR`、`SEED_DIR/README.md`、`REFERENCE_DIR/README.md`、`ARTIFACT_DIR/README.md`、`REFERENCE_DIR/_INDEX.md`。
+6. 开始执行：按 plan 中的 Wave 0 → Wave 1 → Wave 2 → Readiness Check 推进；进度、缺口、挂起分支、失败探索和恢复入口全部写入 status。
+
+冷启动时不要假设：
+
+- 用户记得上一轮对话里的口头约定。
+- 当前 agent 能访问创建模板时的讨论上下文。
+- 未写入 plan / status / README 的判断会被下一位接手者知道。
+- status 可以稍后再补。status 是执行协议的一部分，不是收尾文档。
+
+实例化完成前必须检查：
+
+- 所有 `<PLACEHOLDER>` 都已被替换，或被明确标注为“暂按假设执行”。
+- `PLAN_PATH`、`STATUS_PATH`、`REFERENCE_DIR`、`ARTIFACT_DIR` 都可定位。
+- topic registry 已写入 plan，而不是只存在于临时分析中。
+- status 文件已经存在，并包含当前恢复入口。
+
 默认建议值：
 
 - `WAVE0_SHARED_DOC_FLOOR = max(8, TOPIC_COUNT * 2)`
@@ -276,6 +301,7 @@ Early saturation 只能降低“继续凑数”的优先级，不能绕过 `must
 - 只有主线不可绕开阻塞、研究方向根本性调整、高风险不可逆操作、或用户明确要求实时协同时，才允许中断用户。
 - 不因 Wave 过渡、单线完成、配额达标、可绕开的搜索困难、发现新方向、可自主修复的 readiness 缺口而中断用户。
 - 如果用户中途插入其他任务，恢复时优先读 `<STATUS_PATH>` 的当前状态、worklog、suspended branches、failed explorations 和 resume checkpoint。
+- 任何关键判断、假设、恢复入口、挂起理由都必须写入 plan / status / README / artifact 中；不得依赖当前对话上下文保存。
 
 ## 先反省：当前版本为什么还不够
 
@@ -347,7 +373,7 @@ Early saturation 只能降低“继续凑数”的优先级，不能绕过 `must
 - 任意一个重要判断都能在 30 秒内找到本地支撑文档
 - 对每条研究线都能写出一段“机制 + 趋势 + 难点”的连贯叙述，不需要临时补搜
 - 跨研究线能写出一段“整体结构是什么”的综合判断，而不只是平行描述
-- 一位没有参与调研的专业人士，只看 `<SEED_DIR> + <REFERENCE_DIR>`，能理解研究结论并继续往下走
+- 一位没有参与调研的专业人士，只看 `<SEED_DIR> + <REFERENCE_DIR> + <ARTIFACT_DIR> + <STATUS_PATH>`，能理解研究结论并继续往下走
 
 如果以上任一条不满足，调研不算完成。
 
@@ -406,6 +432,22 @@ Early saturation 只能降低“继续凑数”的优先级，不能绕过 `must
 - recent_change:
 - pending_topic_candidates:
 ```
+
+## Topology Formalization Gate
+
+这一步用于处理中途 scope 扩张时的结构同步。
+
+如果新的研究对象已经形成独立问题簇、独立对象清单或独立工件需求，就应当把它升格为新 topic。
+
+一旦升格为新 topic，必须在进入下一波次前同步：
+
+- `PLAN_PATH`
+- `STATUS_PATH`
+- `TOPIC_REGISTRY`
+- 输入目录中的 topic 索引文件
+- 新 topic seed 文件
+
+不允许继续一边按旧拓扑推进，一边口头承认“这其实已经是新 topic”。
 
 ## 探索 / 利用决策框架
 
@@ -756,15 +798,16 @@ Wave 2 的最低标准：
 - 以“下钻到机制”为深挖目标：关键对象不只看 README，还要沿 docs → schema / code / issue / 反例逐级下钻
 - 以“边取证边回填”避免集成债：新增证据落库后立刻回填到对应 seed 文件和 `<ARTIFACT_DIR>` 中
 - 以“持续自校验”保证 30 秒可回指：每个波次结束后都做一次回指完整性检查，并维护 `<REFERENCE_DIR>/_INDEX.md`
-- 无外部阻塞时按 Wave / Step 检查点持续自主推进，不停下来汇报、不等临时反馈、不请求确认（详见上方 `自主执行协议`）
+- 无外部阻塞时按 Wave / Step 检查点持续自主推进，不停下来汇报、不等临时反馈、不请求确认（详见本计划前部 `自主执行协议`）
 
 ## 自主执行协议提醒
 
-完整规则见模板前部 `## 自主执行协议（Autonomous Execution Protocol，MUST READ）`。本位置只保留提醒：
+完整规则见本计划前部 `## 自主执行协议（本轮必须遵守）`。本位置只保留提醒：
 
 - 默认静默自主推进。
 - 进度写入 `<STATUS_PATH>`。
 - 只有主线不可绕开阻塞、方向根本性调整、高风险不可逆操作、或用户明确要求实时协同时才中断用户。
+- 不依赖对话上下文保存执行状态；所有接手信息写入 status / README / artifact。
 
 ## 什么值得存进 `<REFERENCE_DIR>`
 
@@ -819,7 +862,7 @@ Wave 2 的最低标准：
 
 ### Human-on-the-loop 原则
 
-> 完整的自主执行规则见模板前部 `## 自主执行协议（Autonomous Execution Protocol，MUST READ）`。本节保留核心原则，两节共同生效。
+> 完整的自主执行规则见本计划前部 `## 自主执行协议（本轮必须遵守）`。本节保留核心原则，两节共同生效。
 
 - 长程任务默认不依赖 `human in the loop`。
 - 更推荐的做法是 `human on the loop`：研究线程自主推进；高难分支先 `suspend`；等到阶段性收拢、closeout 或最终汇报时，再把这些挂起分支统一交给人判断是否提供资料、改方向或重启。
