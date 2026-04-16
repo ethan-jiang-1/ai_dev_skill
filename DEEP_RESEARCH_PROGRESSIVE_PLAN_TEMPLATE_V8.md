@@ -274,6 +274,8 @@ Early saturation 只能降低“继续凑数”的优先级，不能绕过 `must
 - 不主动停下来汇报、不等待临时确认、不在对话里重复 status 文件已有内容。
 - 每完成一个有意义步骤，更新 status 后继续下一步。
 - 只有主线不可绕开阻塞、研究方向根本性调整、高风险不可逆操作、或用户明确要求实时协同时，才允许中断用户。
+- 不因 Wave 过渡、单线完成、配额达标、可绕开的搜索困难、发现新方向、可自主修复的 readiness 缺口而中断用户。
+- 如果用户中途插入其他任务，恢复时优先读 `<STATUS_PATH>` 的当前状态、worklog、suspended branches、failed explorations 和 resume checkpoint。
 
 ## 先反省：当前版本为什么还不够
 
@@ -404,6 +406,31 @@ Early saturation 只能降低“继续凑数”的优先级，不能绕过 `must
 - recent_change:
 - pending_topic_candidates:
 ```
+
+## 探索 / 利用决策框架
+
+本轮执行中如果发现新方向，先判断它是应该继续探索、升格为新 topic，还是应该收束、挂起或归档。
+
+探索信号：
+
+- 连续多份 reference 指向同一个现有 topic 难以容纳的新概念。
+- 多个来源指向同一个新的机制、风险、评价维度或生命周期阶段。
+- 配额接近达标，但 `must_answer` 仍有实质性空洞。
+- 新方向会影响多个 topic 的结论、推荐、baseline 或最终产出结构。
+
+利用 / 收束信号：
+
+- 新增材料大多重复已知事实。
+- 旧问题逐步被回答，新问题产生速度明显下降。
+- 专门搜索限制、争议、失败模式后没有发现新的关键反例。
+- 核心机制已经能简洁解释，并且有多个高可信来源支撑。
+
+决策规则：
+
+- 如果新方向满足 Topology Formalization Gate，并且会产生独立 evidence summary / question list / artifact 需求，就 formalize 为新 topic。
+- 如果当前线已接近饱和，但新方向重要、暂时缺材料或访问受限，就登记为 `suspend`，不阻塞主线。
+- 如果继续下钻边际收益低，且不太可能改变核心判断，就 `archive`。
+- 如果探索信号不足以改变拓扑，就继续深挖当前线，并把疑点记录到 question list 或 status。
 
 ## 输出
 
@@ -553,6 +580,8 @@ Wave 0 完成的最低标准：
 - 至少 `<RECENT_SOURCE_FLOOR>` 份能体现趋势变化的近期来源
 - 至少 `<LIMITATION_SOURCE_FLOOR>` 份能体现限制、失败或争议的来源
 
+这些配额是默认 floor。只有在满足 Early Saturation Protocol、并已在 `<STATUS_PATH>` 记录理由时，才允许不继续为了凑数引入低质量来源。
+
 每条研究线都必须形成一份“证据摘要”和一份“问题清单更新”。
 
 对本轮新增的独立 topic，建议额外至少满足下面两条：
@@ -669,7 +698,7 @@ Wave 2 的最低标准：
 - 重要数字、参数、阈值、性能指标（带原文上下文）
 - 关键表格、对比矩阵、分层结构的忠实摘录（尽量保留原始格式）
 - 方法论要点、实验设计、测试条件
-- 重要的原文段落直接引用（用 blockquote `>` 标注，注明原文位置）
+- 必要的短引文（用 blockquote `>` 标注，注明原文位置），其余以结构化摘要和转述为主
 - 事故 / 案例的关键时间线和因果链
 - 标准 / 规范的条款级摘要（保留条款编号）
 
@@ -682,16 +711,17 @@ Wave 2 的最低标准：
 
 篇幅指引（按来源价值弹性控制）：
 
-- 高价值一手来源（official / academic）：500–1500 字，保留论证链、关键数字、表格、原文引用
+- 高价值一手来源（official / academic）：500–1500 字的结构化摘要，保留论证链、关键数字和表格要点；直接引文只保留必要短摘
 - 中等价值来源（practitioner）：200–500 字，聚焦最硬核的段落
 - 低价值来源：可留空，注明"关键事实已充分覆盖，无需额外摘录"
 
 忠实度要求：
 
-- 摘录必须忠实于原文，不改写不美化
+- 摘要和短引文必须忠实于原文，不美化、不夸大、不把推断写成原文结论
 - 如果是翻译，标注原文语言（如 `原文语言: English`）
 - 数字和术语必须与原文一致，不做单位换算或近似处理
 - 如果原文有歧义或矛盾，如实记录，不擅自取舍
+- 遵守来源许可、版权限制和合理引用边界；不要把 reference 写成原文镜像
 
 `captured_excerpt` 字段说明：
 
@@ -954,7 +984,7 @@ Wave 2 的最低标准：
 - 对趋势、难度、争议都有专门证据，而不是顺手一提
 - 可以回答“什么值得长期追踪，什么只是噪音”
 - 可以明确说清楚“哪些问题不是没做，而是被主动 `suspend`，以及为什么”
-- 后续新的 agent 接手时，只看 `<SEED_DIR> + <REFERENCE_DIR> + <STATUS_PATH>` 就能继续往下研究
+- 后续新的 agent 接手时，只看 `<SEED_DIR> + <REFERENCE_DIR> + <ARTIFACT_DIR> + <STATUS_PATH>` 就能继续往下研究
 
 ## Hard Gates（可选但强烈建议）
 
@@ -1012,6 +1042,16 @@ Wave 2 的最低标准：
 - 当前已挂起的高难分支：
 - 如果现在停止，最大缺口：
 - 推荐恢复入口：
+
+## Directory / Integration State
+
+- seed_readme_ready:
+- reference_readme_ready:
+- artifact_readme_ready:
+- reference_index_ready:
+- seed_backfill_status:
+- artifact_status:
+- status_freshness:
 
 ## Topology Formalization
 
