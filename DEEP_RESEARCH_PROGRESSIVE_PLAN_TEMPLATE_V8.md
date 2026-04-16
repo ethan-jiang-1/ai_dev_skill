@@ -309,24 +309,29 @@ Early saturation 只能降低“继续凑数”的优先级，不能绕过 `must
 
 ## Structural Spine（结构主线）
 
-每份实例化 plan 都必须有一条可快速复述的结构主线：
+每份实例化 plan 都必须有一条可快速复述的结构主线；这条主线同时定义各对象的 `Source of Record`、`Derived View` 与 `Mutation Boundary`：
 
-- `PLAN_PATH`：定义目标、拓扑、Wave、验收门和中断规则。
-- `STATUS_PATH`：记录当前关卡、缺口、下一步、挂起分支和恢复入口。
-- `SEED_DIR`：承接 living docs，是本轮输入，也是本轮回填后的输出。
-- `REFERENCE_DIR`：承接可定位、可追溯的 ground truth，不承接临时想法。
-- `ARTIFACT_DIR`：承接证据摘要、问题清单、横向综合和过程性推理。
-- `README / _INDEX`：承接 30 秒导航，不承接长篇论证。
+- `PLAN_PATH`：`design-time Source of Record`；定义目标、拓扑基线、Wave 设计、验收层级和中断规则。
+- `STATUS_PATH`：`run-time Source of Record`；记录当前关卡、当前缺口、下一步、挂起分支和恢复入口。
+- `SEED_DIR`：`living output surface`；承接本轮输入，也是本轮回填后的长期主题文档。
+- `REFERENCE_DIR`：`evidence Source of Record`；承接可定位、可追溯的 ground truth，不承接临时想法。
+- `ARTIFACT_DIR`：`derived synthesis layer`；承接证据摘要、问题清单、横向综合和过程性推理。
+- `README / _INDEX`：`navigation layer`；承接 `Read Path` 与 30 秒导航，不承接长篇论证、执行状态或证据本体。
 
-如果新增规则无法明确落到上面某个对象，先不要加入模板。
+如果新增规则无法明确落到上面某个对象，或者说不清谁是该信息的 `Source of Record`，先不要加入模板。
 
 ## Wave Gate Scoreboard（波次闸门得分板）
 
 游戏性不是制造花哨奖励，而是让执行者始终知道当前在哪一关、怎样过关、下一步最小得分动作是什么。
 
-`Wave Gate Scoreboard` 不是 `Wave 0 / Wave 1 / Wave 2 / Readiness Check` 之外的新流程，而是这些 Wave gate 的通过状态层。
+`Wave Gate Scoreboard` 不是 `Wave 0 / Wave 1 / Wave 2 / Readiness Check` 之外的新流程，而是 `gate model + gate state` 这一对对象的总称。
 
-它只回答“当前推进到哪一关、下一步怎样得分”，不替代“单条研究线是否停搜”或“整轮是否可 closeout”的判定；后两者分别由后文 `## 搜够了没有：停止条件` 与 `### Readiness Check：最终验收闸门` 负责。
+其中：
+
+- `PLAN_PATH` 中的 `Wave Gate Scoreboard` 只定义 `gate model`：允许的关卡集合、默认推进路径和允许的 scoring action。
+- `STATUS_PATH` 中的 `wave_gate_scoreboard` 才是 `run-time authoritative copy`：记录当前 gate、下一 gate、下一得分动作和最近是否真正降低关键 gap。
+
+它只回答“关卡模型是什么、当前推进到哪一关、下一步怎样得分”，但不同层的信息必须分开写；它不替代“单条研究线是否停搜”或“整轮是否可 closeout”的判定；后两者分别由后文 `## 搜够了没有：停止条件` 与 `### Readiness Check：最终验收闸门` 负责。
 
 映射关系：`Setup → setup_ready → Wave 0 → wave0_complete → Wave 1 → wave1_complete → Wave 2 → wave2_complete → Readiness Check → readiness_passed`
 
@@ -363,6 +368,7 @@ Early saturation 只能降低“继续凑数”的优先级，不能绕过 `must
 
 > 执行状态（动态更新）：见 `<STATUS_PATH>`
 > 动态进度、当前阻塞、恢复入口，以及执行中的 gate 变化，一律写入 `<STATUS_PATH>`；本 plan 不承担实时状态面。
+> `<PLAN_PATH>` 是本轮的 `design-time canonical blueprint`；`<STATUS_PATH>` 是执行态的 `run-time Source of Truth`。
 
 - `template_version`：`<TEMPLATE_VERSION>`
 - `round_label`：`<ROUND_LABEL>`
@@ -419,33 +425,33 @@ Early saturation 只能降低“继续凑数”的优先级，不能绕过 `must
 
 | object | role |
 | --- | --- |
-| `<PLAN_PATH>` | 目标、拓扑、Wave、验收门、中断规则 |
-| `<STATUS_PATH>` | 当前关卡、缺口、下一步、挂起分支、恢复入口 |
-| `<SEED_DIR>` | living docs；本轮输入，也是回填后的输出 |
-| `<REFERENCE_DIR>` | 可定位、可追溯的 ground truth |
-| `<ARTIFACT_DIR>` | evidence summary、question list、cross-topic synthesis |
-| `README / _INDEX` | 30 秒导航入口 |
+| `<PLAN_PATH>` | `design-time Source of Record`；目标、拓扑基线、Wave 设计、验收层级、中断规则 |
+| `<STATUS_PATH>` | `run-time Source of Record`；当前关卡、当前缺口、下一步、挂起分支、恢复入口 |
+| `<SEED_DIR>` | `living output surface`；本轮输入，也是回填后的输出 |
+| `<REFERENCE_DIR>` | `evidence Source of Record`；可定位、可追溯的 ground truth 的 `Authoritative Copy` |
+| `<ARTIFACT_DIR>` | `derived synthesis layer`；evidence summary、question list、cross-topic synthesis |
+| `README / _INDEX` | `navigation layer`；默认 `Read Path` 与 30 秒导航入口 |
 
 ### Wave Gate Scoreboard
 
-这里记录的是本轮 plan 采用的 gate 模型与默认推进基线；执行中的当前 gate、下一得分动作与实际推进变化，一律记录到 `<STATUS_PATH>` 中的 `wave_gate_scoreboard`。
+这里记录的是本轮 plan 采用的 `gate model`，不是执行中的当前 gate 面板。`current_gate / next_gate / next_scoring_action / score_since_last_gap_reduction` 的 `run-time authoritative copy` 一律记录到 `<STATUS_PATH>` 中的 `wave_gate_scoreboard`。
 
-| field | value |
+| gate_model_field | design-time definition |
 | --- | --- |
-| current_gate | `setup_ready / wave0_complete / wave1_complete / wave2_complete / readiness_passed` |
-| next_gate |  |
-| next_scoring_action | `+reference / +backfill / +artifact / +index / +decision` |
-| score_since_last_gap_reduction |  |
+| allowed_current_gate_values | `setup_ready / wave0_complete / wave1_complete / wave2_complete / readiness_passed` |
+| default_transition_path | `setup_ready -> wave0_complete -> wave1_complete -> wave2_complete -> readiness_passed` |
+| allowed_next_scoring_actions | `+reference / +backfill / +artifact / +index / +decision` |
+| run-time_authoritative_copy | `<STATUS_PATH>.wave_gate_scoreboard` |
 
 ## Control Hierarchy（本轮执行提醒）
 
 本节只定义 plan 侧的静态控制层级；执行中的当前状态、当前 gate 与恢复入口，以 `<STATUS_PATH>` 为准。
 
-- `Wave Gate Scoreboard` 只跟踪推进关卡与下一得分动作。
-- `搜够了没有：停止条件` 只判断单条研究线何时可以停止继续补搜。
-- `Readiness Check` 是本轮是否可以 closeout 的主闸门。
-- `Hard Gates` 只在高风险 / 高价值最终产出时作为可选加严层。
-- `成功标准` 只描述通过 `Readiness Check` 后应呈现的完成态，不新增独立 gate。
+- `Wave Gate Scoreboard`：在 plan 中只定义 `gate model`，在 status 中记录 `current gate state`；它只回答“关卡系统是什么、下一得分动作是什么”。
+- `搜够了没有：停止条件`：`topic-level stop condition`；只判断单条研究线何时可以停止继续补搜。
+- `Readiness Check`：`round closeout gate`；只判断本轮现在是否可以 closeout。
+- `Hard Gates`：`optional stricter overlay`；只在高风险 / 高价值最终产出时作为可选加严层。
+- `成功标准`：`post-pass success state`；只描述通过 `Readiness Check` 后应呈现的完成态，不新增独立 gate。
 
 ## 目标
 
@@ -545,9 +551,9 @@ Early saturation 只能降低“继续凑数”的优先级，不能绕过 `must
 
 [这里写入稳定后的研究线注册表。不要只写“见 seed 目录”；必须把编号、slug、seed_files、current_hypothesis、why_it_matters、must_answer 明确写在 plan 里。]
 
-## 当前拓扑（Current Topology）
+## 当前拓扑基线（Current Topology Baseline）
 
-这里写的是本轮实例化时正式采用的拓扑基线，不是执行中的实时工作日志。
+这里写的是本轮实例化时正式采用的 `topology baseline`，是 `PLAN_PATH` 中关于拓扑的 `design-time Source of Record`；不是执行中的实时工作日志。
 
 至少写清楚：
 
@@ -560,7 +566,7 @@ Early saturation 只能降低“继续凑数”的优先级，不能绕过 `must
 推荐结构：
 
 ```md
-## 当前拓扑（Current Topology）
+## 当前拓扑基线（Current Topology Baseline）
 
 - topic_count:
 - carry_forward_topics:
@@ -569,7 +575,7 @@ Early saturation 只能降低“继续凑数”的优先级，不能绕过 `must
 - pending_topic_candidates:
 ```
 
-执行中的 topic 增减、formalization 是否已同步、以及推进中的结构变化，一律写入 `<STATUS_PATH>` 的 topology / formalization 区。
+执行中的 topic 增减、formalization 是否已同步、以及推进中的结构变化，一律写入 `<STATUS_PATH>` 的 `Topology Delta / Formalization State` 区。
 
 ## Topology Formalization Gate（本轮执行提醒）
 
@@ -594,6 +600,7 @@ Early saturation 只能降低“继续凑数”的优先级，不能绕过 `must
 存放位置：
 
 - `<REFERENCE_DIR>`
+- `REFERENCE_DIR` 是本轮本地证据的 `evidence Source of Record`；凡进入最终推理链条的重要来源，都应以独立 `md` 的 `Authoritative Copy` 形式落在这里
 
 形式：
 
@@ -625,6 +632,7 @@ Early saturation 只能降低“继续凑数”的优先级，不能绕过 `must
 存放位置：
 
 - `<ARTIFACT_DIR>`
+- `ARTIFACT_DIR` 是 `derived synthesis layer`；它承接 evidence summary、question list 与 cross-topic synthesis，但不替代 `REFERENCE_DIR` 存放证据本体，也不替代 `STATUS_PATH` 存放当前执行状态
 
 至少包括：
 
@@ -768,15 +776,16 @@ Wave 2 的最低标准：
 - Wave 2 完成后，更新 `<STATUS_PATH>` 中的 Wave 2 状态字段，然后直接进入 Readiness Check。
 - 如果 Wave 2 发现需要回补 Wave 1 证据，补完后继续推进 readiness。
 
-### Readiness Check：最终验收闸门
+### Readiness Check：最终验收闸门（round closeout gate）
 
-- purpose: 判断这轮研究是否已经可交付、可接手、可停止。
+- purpose: 判断这轮研究是否已经可交付、可接手、可停止；它只回答“this round can closeout now?”
 
 执行模式说明：
 
 - Readiness Check 是 agent 自行判断的质量门，不是需要用户确认的里程碑。
 - 如果某项未通过，agent 应自行判断是补证据、修 artifact、还是按 Suspended Branch Protocol 挂起。
 - 只有全部关键维度通过后，才 closeout；如果无法自主解决，才按主线阻塞规则中断用户。
+- 它不负责判断单条研究线是否停搜，那是 `搜够了没有：停止条件` 的职责；它也不负责描述通过后的完成态，那是 `成功标准` 的职责。
 
 验收标准：
 
@@ -983,7 +992,9 @@ Wave 2 的最低标准：
 - 已挂起但未来可重开的方向
 - 下一轮最该投入的方向
 
-## 搜够了没有：停止条件
+## 搜够了没有：停止条件（topic-level stop condition）
+
+每条研究线的 `topic-level stop condition` 只回答“这条研究线现在能否停止继续补搜”；它不回答“整轮是否可以 closeout”，那是 `Readiness Check` 的职责。
 
 每条研究线只有同时满足下面条件，才能算第一轮搜集完成：
 
@@ -1092,9 +1103,9 @@ Wave 2 的最低标准：
 
 如果某一步还没有达到对应检查点，不要机械进入下一步。
 
-## 成功标准
+## 成功标准（post-pass success state）
 
-这一节描述的是通过 `Readiness Check` 后应呈现的完成态摘要，不新增独立 gate。
+这一节描述的是通过 `Readiness Check` 后应呈现的 `post-pass success state`；它只回答“通过后应该呈现什么完成态”，不新增独立 gate，也不替代 `Readiness Check`。
 
 达到下面状态，才算真正满足目标：
 
@@ -1109,7 +1120,9 @@ Wave 2 的最低标准：
 
 ## Hard Gates（可选但强烈建议）
 
-这一节不是与 `Readiness Check` 平行的新主闸门，而是只在高风险 / 高价值最终产出场景下附加到 `Readiness Check` 上的加严检查。
+这一节不是与 `Readiness Check` 平行的新主闸门，而是 `optional stricter overlay`：只在高风险 / 高价值最终产出场景下附加到 `Readiness Check` 上的加严检查。
+
+默认不启用；只有当本轮 plan 明确要求时，才把它叠加到 `Readiness Check` 上。
 
 如果这轮研究将直接支撑正式对外报告、方法论评估或高价值决策，建议再加一层硬门槛：
 
@@ -1125,7 +1138,7 @@ Wave 2 的最低标准：
 - 调研目的与最终服务对象
 - 手段策略与 Wave 推进方式
 - 验收标准与最终结果质量要求
-- 当前拓扑状态与待 formalize 内容
+- 当前拓扑基线与待 formalize 内容
 - `STATUS_PATH` 及默认恢复入口
 
 如果这些入口没有写实，这份 plan 就不算合格。
@@ -1147,11 +1160,11 @@ Wave 2 的最低标准：
 # <PLAN_NAME> 执行状态（Progress / State）
 
 > 对应计划：`<PLAN_PATH>`
-> 本文件记录执行中的当前状态、当前缺口、当前 gate 与恢复入口；不重复 plan 中的静态蓝图。
+> 本文件是本轮执行态的 `run-time Source of Truth` / `Source of Record`：记录执行中的当前状态、当前缺口、当前 gate 与恢复入口；不重复 plan 中的静态蓝图。
 
 ## 当前结论 / 进度语义
 
-这里写执行态摘要：当前在哪、卡在哪、下一步是什么；不要在这里重写 plan 中的结构主线、控制层级或拓扑基线。
+这里写执行态摘要：当前在哪、卡在哪、下一步是什么；这是执行中的 `current state`，不要在这里重写 plan 中的结构主线、控制层级或拓扑基线。
 
 - 状态：`not_started / in_progress / blocked / completed`
 - 当前所处波次：`Wave 0 / Wave 1 / Wave 2 / Readiness Check`
@@ -1168,7 +1181,7 @@ Wave 2 的最低标准：
 - 如果现在停止，最大缺口：
 - 推荐恢复入口：
 - quality_calibration_loop：`current_score / smallest_next_move / do_not_change_yet`
-- wave_gate_scoreboard：`current_gate / next_gate / next_scoring_action / score_since_last_gap_reduction`
+- wave_gate_scoreboard（run-time authoritative copy）：`current_gate / next_gate / next_scoring_action / score_since_last_gap_reduction`
 
 ## 目录与集成状态（Directory / Integration State）
 
@@ -1180,9 +1193,9 @@ Wave 2 的最低标准：
 - artifact_status:
 - status_freshness:
 
-## 当前拓扑（Current Topology）与 Formalization State
+## 当前拓扑变化（Topology Delta）与 Formalization State
 
-这里写执行中的拓扑变化、formalization 进度与同步状态；不要把 plan 中的正式拓扑基线再复制一遍。
+这里写执行中的 `topology delta`、formalization 进度与同步状态；不要把 plan 中的 `topology baseline` 再复制一遍。
 
 - topic_count:
 - carry_forward_topics:
@@ -1228,7 +1241,7 @@ Wave 2 的最低标准：
 
 ## Readiness Check
 
-- purpose: 判断是否已经可交付 / 可停止 / 可接手
+- purpose: 作为 `round closeout gate`，记录当前是否已经可交付 / 可停止 / 可接手
 - 30-Second Local Evidence Retrieval：
 - 每线“机制 + 趋势 + 难点”检查：
 - 横向综合检查：
