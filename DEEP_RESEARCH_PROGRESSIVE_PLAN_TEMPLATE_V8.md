@@ -570,8 +570,7 @@ Wave 0 完成的最低标准：
 
 ### 执行模式提醒
 
-- Wave 0 完成后，更新 `.status.md` 中的 Wave 0 状态字段。
-- 直接推进到 Wave 1，不需要停下来向用户汇报。
+- Wave 0 完成后，更新 `.status.md` 中的 Wave 0 状态字段，然后直接进入 Wave 1。
 - 如果 Wave 0 中发现拓扑需要调整，按前文 `Topology Formalization Gate` 同步后继续推进。
 
 ### Wave 1：按研究线分别深挖
@@ -607,8 +606,8 @@ Wave 0 完成的最低标准：
 ### 执行模式提醒
 
 - 每条研究线完成后，更新 `.status.md` 中对应 topic 的状态字段。
-- 所有研究线完成后，直接推进到 Wave 2，不需要停下来向用户汇报。
-- 如果某条研究线遇到需要 suspend / archive / redirect 的分支，登记后继续推进其他主线。
+- 所有研究线完成后，直接进入 Wave 2。
+- 如果某条研究线遇到需要 suspend / archive / redirect 的分支，登记后继续推进其他主线，不停下来汇报。
 
 ### Wave 2：横向比对与综合判断
 
@@ -630,8 +629,7 @@ Wave 2 的最低标准：
 
 ### 执行模式提醒
 
-- Wave 2 完成后，更新 `.status.md` 中的 Wave 2 状态字段。
-- 直接推进到 Readiness Check，不需要停下来向用户汇报。
+- Wave 2 完成后，更新 `.status.md` 中的 Wave 2 状态字段，然后直接进入 Readiness Check。
 - 如果 Wave 2 发现需要回补 Wave 1 证据，补完后继续推进 readiness。
 
 ### Readiness Check：最终验收闸门
@@ -775,10 +773,6 @@ Wave 2 的最低标准：
 - 以“持续自校验”保证 30 秒本地证据可检索性 / 可导航性 / 推荐访问路径：每个波次结束后都做一次相关检查，并维护 `<REFERENCE_DIR>/_INDEX.md`
 - 无外部阻塞时按 Wave / Step 检查点持续自主推进，不停下来汇报、不等临时反馈、不请求确认（详见本计划前部 `自主执行协议`）
 
-## 自主执行协议提醒
-
-完整规则见本计划前部 `## 自主执行协议（本轮必须遵守）`。本位置不再重复规则正文，只提醒：默认静默自主推进，非主线阻塞 / 方向根本性调整 / 高风险不可逆操作 / 用户明确要求实时协同时不中断用户，执行状态写入 status / README / artifact。
-
 ## 什么值得存进 `<REFERENCE_DIR>`
 
 优先入库：
@@ -830,11 +824,7 @@ Wave 2 的最低标准：
 - `suspend`：问题仍然重要，只是当前不值得继续死磕；默认期待未来可能被新线索、新资料或新访问入口重启。
 - `archive`：问题当前已经不值得继续投入；即使未来重开，优先级通常也低于其他未解问题。
 
-### Human-on-the-loop 原则
-
-> 完整的自主执行与中断条件见本计划前部 `## 自主执行协议（本轮必须遵守）`。本节只补充 `suspend` 的处理立场。
-
-- 长程任务默认按 `human on the loop` 处理：高难分支优先 `suspend and continue`；只有满足前部自主执行协议中的中断条件时，才主动请求同步人工介入。
+补充提醒：长程任务默认按 `human on the loop` 处理。高难分支优先 `suspend and continue`；只有满足前部 `自主执行协议` 中的中断条件时，才主动请求同步人工介入。
 
 ### Suspended Branch 最低记录格式
 
@@ -870,9 +860,7 @@ Wave 2 的最低标准：
 
 如果还没有达到这些条件，就不能草率进入总结。
 
-### Early Saturation Protocol（提前饱和）
-
-完整标准见前文 `## Early Saturation Protocol`。本位置不再重述规则，只提醒：只有证据已明显收敛且不影响 `must_answer`、失败模式覆盖或 Readiness Check，才允许 early saturation；一旦采用，必须在 status 中记录当前维度、当前数量、边际收益变低的理由，以及已被现有 reference 支撑的核心判断。
+补充提醒：完整标准见前文 `## Early Saturation Protocol`。在停止条件语境下，只有证据已明显收敛且不影响 `must_answer`、失败模式覆盖或 Readiness Check，才允许 early saturation；一旦采用，必须在 status 中记录当前维度、当前数量、边际收益变低的理由，以及已被现有 reference 支撑的核心判断。
 
 ### 口径澄清
 
