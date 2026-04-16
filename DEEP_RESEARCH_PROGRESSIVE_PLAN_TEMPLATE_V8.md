@@ -230,7 +230,7 @@
 - 所有 topic 的核心术语，都能在 Wave 0 文档或 topic registry 中找到工作定义。
 - 所有 topic 的对象分类，都能映射到共享地基里的共同层或明确说明其差异。
 - 每条研究线都有明确的 Wave 1 起点：优先来源、关键对象、关键问题或已知缺口。
-- `<REFERENCE_DIR>/_INDEX.md` 已能帮助接手者找到共享 ground truth。
+- `<REFERENCE_DIR>/_INDEX.md` 已能作为共享 ground truth 的 `Local Evidence Retrievability, Navigability, and Recommended Access Path` 入口。
 
 如果任何一条不满足，先补 Wave 0 或 topic registry，再进入 Wave 1；不要把共享地基债务推迟到 Wave 1 中途处理。
 
@@ -509,7 +509,7 @@ Early saturation 只能降低“继续凑数”的优先级，不能绕过 `must
 - 每条研究线一份 `evidence-summary`
 - 每条研究线一份 `question-list`
 - 一份横向综合 `W2-cross-topic-synthesis`
-- 一份 `<REFERENCE_DIR>/_INDEX.md` 作为快速回指入口
+- 一份 `<REFERENCE_DIR>/_INDEX.md` 作为 `Local Evidence Retrievability, Navigability, and Recommended Access Path` 入口
 - 一份 `ARTIFACT_DIR/README.md` 说明中间工件的意义、与 `<REFERENCE_DIR>` 的边界，以及常见 artifact 类型
 
 ### 4. 跨主题综合结论
@@ -575,14 +575,14 @@ Wave 0 完成的最低标准：
 
 ### Foundation Sufficiency Check（Wave 0 → Wave 1）
 
-进入 Wave 1 前，先自主检查：
+完整标准见前文 `## Foundation Sufficiency Check（Wave 0 → Wave 1）`。进入 Wave 1 前，这里只做本轮短检查：
 
-- 核心术语是否已经有工作定义。
-- 对象分类是否已经有共享地基。
+- 核心术语是否已有工作定义。
+- 对象分类是否已有共享地基。
 - 每条研究线是否已有明确深挖起点。
-- `<REFERENCE_DIR>/_INDEX.md` 是否能帮助接手者找到共享 ground truth。
+- `<REFERENCE_DIR>/_INDEX.md` 是否已经可用。
 
-如果不满足，先补 Wave 0 或 topic registry。补完后更新 status，继续推进，不需要停下来请求确认。
+如果任一项不满足，先补 Wave 0 或 topic registry，再继续推进。
 
 ### 执行模式提醒
 
@@ -662,11 +662,13 @@ Wave 2 的最低标准：
 
 验收标准：
 
-### 30 秒回指检查
+### 30 秒本地证据可检索性 / 可导航性 / 推荐访问路径检查
 
-- 任意一条核心判断，都能在 30 秒内回指到本地 reference / artifact。
+`30-Second Local Evidence Retrievability, Navigability, and Recommended Access Path Check`
+
+- 任意一条核心判断，都能在 30 秒内通过本地 reference / artifact / index 入口被定位到。
 - 本地 reference 文档足够自给自足，读者不回 URL 也能用它支撑推理。
-- 至少抽查 3 条关键判断，确认回指路径真实可用。
+- 至少抽查 3 条关键判断，确认检索路径、导航路径和推荐入口真实可用。
 
 ### 每线“机制 + 趋势 + 难点”检查
 
@@ -786,7 +788,7 @@ Wave 2 的最低标准：
 - 以“对象清单稳定”为停止前提：围绕同一研究线持续扩对象与对照面，直到核心对象清单稳定
 - 以“下钻到机制”为深挖目标：关键对象不只看 README，还要沿 docs → schema / code / issue / 反例逐级下钻
 - 以“边取证边回填”避免集成债：新增证据落库后立刻回填到对应 seed 文件和 `<ARTIFACT_DIR>` 中
-- 以“持续自校验”保证 30 秒可回指：每个波次结束后都做一次回指完整性检查，并维护 `<REFERENCE_DIR>/_INDEX.md`
+- 以“持续自校验”保证 30 秒本地证据可检索性 / 可导航性 / 推荐访问路径：每个波次结束后都做一次相关检查，并维护 `<REFERENCE_DIR>/_INDEX.md`
 - 无外部阻塞时按 Wave / Step 检查点持续自主推进，不停下来汇报、不等临时反馈、不请求确认（详见本计划前部 `自主执行协议`）
 
 ## 自主执行协议提醒
@@ -891,21 +893,10 @@ Wave 2 的最低标准：
 
 ### Early Saturation Protocol（提前饱和）
 
-如果某一类来源已经明显证据收敛，可以提前停止该维度搜索，不必为了凑满配额引入低质量材料。
+完整标准见前文 `## Early Saturation Protocol`。本位置只补充停止条件语境下的执行提醒：
 
-使用前提：
-
-- 已有材料来自权威一手来源或高可信来源。
-- 连续搜索新增内容主要重复已知事实。
-- 核心机制、趋势或限制判断已经能被本地 reference 支撑。
-- 提前停止不会影响 `must_answer`、失败模式覆盖或 Readiness Check。
-
-必须在 status 中记录：
-
-- 哪个维度 early saturation。
-- 当前数量。
-- 为什么继续搜索边际收益低。
-- 哪些核心判断已经被现有 reference 支撑。
+- 只有证据已明显收敛，且不影响 `must_answer`、失败模式覆盖或 Readiness Check，才允许 early saturation。
+- 一旦采用 early saturation，必须在 status 中记录当前维度、当前数量、边际收益变低的理由，以及已被现有 reference 支撑的核心判断。
 
 ### 口径澄清
 
@@ -985,7 +976,7 @@ Wave 2 的最低标准：
 推荐顺序：
 
 1. 列权威来源优先级清单，只抓高可信来源。
-2. 初始化 `<REFERENCE_DIR> / <REFERENCE_DIR>/_INDEX.md / <ARTIFACT_DIR> / <STATUS_PATH>`，先建可回指入口再写结论。
+2. 初始化 `<REFERENCE_DIR> / <REFERENCE_DIR>/_INDEX.md / <ARTIFACT_DIR> / <STATUS_PATH>`，先建 `Local Evidence Retrievability, Navigability, and Recommended Access Path` 入口再写结论。
    同时准备 `SEED_DIR/README.md`、`REFERENCE_DIR/README.md`、`ARTIFACT_DIR/README.md`，先把目录语义说明清楚。
    检查点：每个关键来源都能独立落库，并说明为什么值得保存。
 3. 扩对象、案例和机制差异。
@@ -1124,7 +1115,7 @@ Wave 2 的最低标准：
 ## Readiness Check
 
 - purpose: 判断是否已经可交付 / 可停止 / 可接手
-- 30 秒回指检查：
+- 30 秒本地证据可检索性 / 可导航性 / 推荐访问路径检查：
 - 每线“机制 + 趋势 + 难点”检查：
 - 横向综合检查：
 - 拓扑稳定性检查：
@@ -1177,7 +1168,7 @@ Wave 2 的最低标准：
 - 每轮都必须要求输入目录本身生长，而不是只生成旁路报告
 - 每轮都必须有停止条件，不允许“感觉差不多了”
 - 每轮都必须能说明哪些高难问题被主动 `suspend`，而不是让它们在过程里无声消失
-- 每轮都必须能做到 30 秒本地回指
+- 每轮都必须做到 30 秒本地证据可检索性 / 可导航性 / 推荐访问路径成立
 - 每轮都必须默认静默自主推进；完整中断条件见前文 `自主执行协议`，进度靠 status 文件、worklog、suspended branches、failed explorations 和 resume checkpoint 承接
 - 每轮都必须维护状态文件，而不是把状态只留在对话里
 - 每轮都必须支持中途拓扑同步，而不是死守旧 registry
