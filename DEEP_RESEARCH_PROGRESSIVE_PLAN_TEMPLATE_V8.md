@@ -395,9 +395,9 @@ Early saturation 只能降低“继续凑数”的优先级，不能绕过 `must
 - 默认静默自主推进，进度写入 `<STATUS_PATH>`。
 - 只有满足前文中断条件时才允许打断用户；关键判断、恢复入口与挂起理由都必须落到本地文件。
 
-## 先反省：当前版本为什么还不够
+## 本轮核心缺口
 
-[这里必须写 3 到 5 条具体缺口。不要写“还不够全面”这种空话，要写“哪类判断还悬空、缺什么证据、为什么影响最终产出”。]
+[这里必须写 3 到 5 条本轮仍未解决的核心缺口。不要写“还不够全面”这种空话，要写“哪类判断还悬空、缺什么证据、为什么影响最终产出”。]
 
 ### 1. <Gap 1>
 
@@ -408,17 +408,6 @@ Early saturation 只能降低“继续凑数”的优先级，不能绕过 `must
 ### 4. <Gap 4，可选>
 
 ### 5. <Gap 5，可选>
-
-## 本轮质量校准
-
-用 1 到 5 分快速自评，不追求完美，只用来决定本轮最小修正动作。
-
-- 系统性 current_score:
-- 结构性 current_score:
-- 游戏性 current_score:
-- 简洁性 current_score:
-- smallest_next_move:
-- do_not_change_yet:
 
 ## 结构主线与波次闸门得分板
 
@@ -435,16 +424,12 @@ Early saturation 只能降低“继续凑数”的优先级，不能绕过 `must
 
 ### Wave Gate Scoreboard
 
-`Wave Gate Scoreboard` 只标记 Wave gate 的通过状态，不新增执行阶段。
-
 | field | value |
 | --- | --- |
 | current_gate | `setup_ready / wave0_complete / wave1_complete / wave2_complete / readiness_passed` |
-| wave_mapping | `Setup → setup_ready → Wave 0 → wave0_complete → Wave 1 → wave1_complete → Wave 2 → wave2_complete → Readiness Check → readiness_passed` |
 | next_gate |  |
 | next_scoring_action | `+reference / +backfill / +artifact / +index / +decision` |
 | score_since_last_gap_reduction |  |
-| redirect_or_suspend_if_no_gap_reduction |  |
 
 ## 目标
 

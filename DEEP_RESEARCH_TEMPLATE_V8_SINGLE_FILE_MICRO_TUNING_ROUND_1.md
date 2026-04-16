@@ -255,6 +255,23 @@ Round 1 完成后，必须同时满足下面条件：
 - 单文件约束是否完全满足
 - 是否没有偷渡到 Round 2 议题
 
+## Round 1 复盘结论
+
+判定：`完成，可结案`
+
+本轮对 `V8` 的实际结果：
+
+- `V8` 仍然保持单文件。
+- `Autonomous Execution Protocol`、`Topology Formalization Gate`、`Exploration-Exploitation Decision Framework`、`Foundation Sufficiency Check`、`Early Saturation Protocol`、`Suspended Branch Protocol / human-on-the-loop` 都已回到“前部 canonical section + 其他位置短提醒”的形态。
+- skeleton 内最重的第二份正文已被压成短提醒；`Plan Skeleton` 仍可直接复制实例化。
+- `Status File Skeleton` 未动。
+- 本轮没有进入 `status schema 精简`、`skeleton 深瘦身`、`游戏性增强` 或结构重排。
+
+结案备注：
+
+- 量化目标原建议净减少约 `20-60` 行；本轮实际从 `1286` 行降到 `1268` 行，净减 `18` 行。这个点略低于建议值，但不影响 Round 1 的定性通过，因为本轮硬目标是“唯一权威源建立 + 最重重复块去重”，而不是追求更激进删减。
+- 仍存在可继续优化的解释性重复，尤其是 skeleton 内的 `Structural Spine / Wave Gate Scoreboard`。这已经更像 Round 2 起点，不再属于 Round 1 必修项。
+
 ## 已登记但推迟到下一轮的问题
 
 下面这些问题已经确认存在，但不在 Round 1 内处理：
@@ -264,6 +281,7 @@ Round 1 完成后，必须同时满足下面条件：
 - `Status File Skeleton` 的伪精确和字段负担
 - 写入同步与回填摩擦
 - 游戏性表达进一步压轻
+- skeleton 内 `Structural Spine / Wave Gate Scoreboard` 的解释性重复
 
 ## 这轮真正的目标
 
