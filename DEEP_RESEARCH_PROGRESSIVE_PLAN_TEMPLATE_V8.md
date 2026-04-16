@@ -33,6 +33,8 @@
 - `Foundation Sufficiency Check`
 - `Early Saturation Protocol`
 - `Quality Calibration Loop`
+- `Structural Spine`
+- `Wave Gate Scoreboard`
 - `Suspended Branch Protocol`
 - `30-Second Local Evidence Retrieval`
 - `human-on-the-loop`
@@ -306,6 +308,49 @@ Early saturation 只能降低“继续凑数”的优先级，不能绕过 `must
 - 每次调整都要写清楚 `current_score`、`smallest_next_move` 和 `do_not_change_yet`。
 - 如果一次改动需要重排多个大章节，先暂停，把它登记为下一轮候选，而不是当场大改。
 
+## Structural Spine（结构主线）
+
+每份实例化 plan 都必须有一条可快速复述的结构主线：
+
+- `PLAN_PATH`：定义目标、拓扑、Wave、验收门和中断规则。
+- `STATUS_PATH`：记录当前关卡、缺口、下一步、挂起分支和恢复入口。
+- `SEED_DIR`：承接 living docs，是本轮输入，也是本轮回填后的输出。
+- `REFERENCE_DIR`：承接可回指的 ground truth，不承接临时想法。
+- `ARTIFACT_DIR`：承接证据摘要、问题清单、横向综合和过程性推理。
+- `README / _INDEX`：承接 30 秒导航，不承接长篇论证。
+
+如果新增规则无法明确落到上面某个对象，先不要加入模板。
+
+## Wave Gate Scoreboard（波次闸门得分板）
+
+游戏性不是制造花哨奖励，而是让执行者始终知道当前在哪一关、怎样过关、下一步最小得分动作是什么。
+
+`Wave Gate Scoreboard` 不是 `Wave 0 / Wave 1 / Wave 2 / Readiness Check` 之外的新流程，而是这些 Wave gate 的通过状态层。
+
+映射关系：`Setup → setup_ready → Wave 0 → wave0_complete → Wave 1 → wave1_complete → Wave 2 → wave2_complete → Readiness Check → readiness_passed`
+
+默认关卡：
+
+- `setup_ready`：plan / status / README / reference / artifact 入口已初始化。
+- `wave0_complete`：Wave 0 达标，并通过 `Foundation Sufficiency Check`。
+- `wave1_complete`：每条研究线都有 evidence summary、question list 和最低证据包。
+- `wave2_complete`：横向综合完成，关键交叉判断可回指。
+- `readiness_passed`：Readiness Check 通过，resume checkpoint 可让新 agent 直接接手。
+
+默认得分单位：
+
+- `+reference`：新增一份可复用 `<REFERENCE_DIR>/*.md`。
+- `+backfill`：把新增证据回填到对应 seed 文件。
+- `+artifact`：完成一份 evidence summary、question list 或 synthesis artifact。
+- `+index`：让一条核心判断能在 30 秒内从本地索引定位。
+- `+decision`：把一个未解分支明确归类为 `continue / suspend / archive / redirect`。
+
+升级规则：
+
+- 只有资产落盘才计分；聊天上下文、浏览记录和口头判断不计分。
+- 只有当前关卡的 hard gate 通过，才允许升级到下一关。
+- 如果连续两个得分动作没有降低关键缺口，必须 `redirect` 或登记 `suspend / archive`。
+
 ---
 
 ## 可直接复制的 Plan Skeleton
@@ -323,7 +368,7 @@ Early saturation 只能降低“继续凑数”的优先级，不能绕过 `must
 >
 > 默认目标是让任务静默自主推进，而不是频繁停下来向用户汇报；进度承接以 `<STATUS_PATH>`、README、reference、artifacts 与 resume checkpoint 为准。
 >
-> Canonical retrieval names: `Autonomous Execution Protocol`, `Topology Formalization Gate`, `Exploration-Exploitation Decision Framework`, `Foundation Sufficiency Check`, `Early Saturation Protocol`, `Quality Calibration Loop`, `Suspended Branch Protocol`, `30-Second Local Evidence Retrieval`, `human-on-the-loop`.
+> Canonical retrieval names: `Autonomous Execution Protocol`, `Topology Formalization Gate`, `Exploration-Exploitation Decision Framework`, `Foundation Sufficiency Check`, `Early Saturation Protocol`, `Quality Calibration Loop`, `Structural Spine`, `Wave Gate Scoreboard`, `Suspended Branch Protocol`, `30-Second Local Evidence Retrieval`, `human-on-the-loop`.
 
 ## 调研的根本目的
 
@@ -380,6 +425,32 @@ Early saturation 只能降低“继续凑数”的优先级，不能绕过 `must
 - 简洁性 current_score:
 - smallest_next_move:
 - do_not_change_yet:
+
+## 结构主线与波次闸门得分板
+
+### Structural Spine
+
+| object | role |
+| --- | --- |
+| `<PLAN_PATH>` | 目标、拓扑、Wave、验收门、中断规则 |
+| `<STATUS_PATH>` | 当前关卡、缺口、下一步、挂起分支、恢复入口 |
+| `<SEED_DIR>` | living docs；本轮输入，也是回填后的输出 |
+| `<REFERENCE_DIR>` | 可回指的 ground truth |
+| `<ARTIFACT_DIR>` | evidence summary、question list、cross-topic synthesis |
+| `README / _INDEX` | 30 秒导航入口 |
+
+### Wave Gate Scoreboard
+
+`Wave Gate Scoreboard` 只标记 Wave gate 的通过状态，不新增执行阶段。
+
+| field | value |
+| --- | --- |
+| current_gate | `setup_ready / wave0_complete / wave1_complete / wave2_complete / readiness_passed` |
+| wave_mapping | `Setup → setup_ready → Wave 0 → wave0_complete → Wave 1 → wave1_complete → Wave 2 → wave2_complete → Readiness Check → readiness_passed` |
+| next_gate |  |
+| next_scoring_action | `+reference / +backfill / +artifact / +index / +decision` |
+| score_since_last_gap_reduction |  |
+| redirect_or_suspend_if_no_gap_reduction |  |
 
 ## 目标
 
@@ -1093,6 +1164,7 @@ Wave 2 的最低标准：
 - 如果现在停止，最大缺口：
 - 推荐恢复入口：
 - quality_loop：`current_score / smallest_next_move / do_not_change_yet`
+- wave_gate_scoreboard：`current_gate / next_gate / next_scoring_action / score_since_last_gap_reduction`
 
 ## Directory / Integration State
 
