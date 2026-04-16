@@ -777,11 +777,7 @@ Wave 2 的最低标准：
 
 ## 自主执行协议提醒
 
-完整规则见本计划前部 `## 自主执行协议（本轮必须遵守）`。本位置只保留提醒：
-
-- 默认静默自主推进，进度以 `<STATUS_PATH>` 为准。
-- 非主线阻塞、方向根本性调整、高风险不可逆操作、或用户明确要求实时协同，不中断用户。
-- 不依赖对话上下文保存执行状态；所有接手信息写入 status / README / artifact。
+完整规则见本计划前部 `## 自主执行协议（本轮必须遵守）`。本位置不再重复规则正文，只提醒：默认静默自主推进，非主线阻塞 / 方向根本性调整 / 高风险不可逆操作 / 用户明确要求实时协同时不中断用户，执行状态写入 status / README / artifact。
 
 ## 什么值得存进 `<REFERENCE_DIR>`
 
@@ -838,8 +834,7 @@ Wave 2 的最低标准：
 
 > 完整的自主执行与中断条件见本计划前部 `## 自主执行协议（本轮必须遵守）`。本节只补充 `suspend` 的处理立场。
 
-- 长程任务默认采用 `human on the loop`，而不是 `human in the loop`。
-- 高难分支优先 `suspend and continue`；只有满足前部自主执行协议中的中断条件时，才主动请求同步人工介入。
+- 长程任务默认按 `human on the loop` 处理：高难分支优先 `suspend and continue`；只有满足前部自主执行协议中的中断条件时，才主动请求同步人工介入。
 
 ### Suspended Branch 最低记录格式
 
@@ -877,10 +872,7 @@ Wave 2 的最低标准：
 
 ### Early Saturation Protocol（提前饱和）
 
-完整标准见前文 `## Early Saturation Protocol`。本位置只补充停止条件语境下的执行提醒：
-
-- 只有证据已明显收敛，且不影响 `must_answer`、失败模式覆盖或 Readiness Check，才允许 early saturation。
-- 一旦采用 early saturation，必须在 status 中记录当前维度、当前数量、边际收益变低的理由，以及已被现有 reference 支撑的核心判断。
+完整标准见前文 `## Early Saturation Protocol`。本位置不再重述规则，只提醒：只有证据已明显收敛且不影响 `must_answer`、失败模式覆盖或 Readiness Check，才允许 early saturation；一旦采用，必须在 status 中记录当前维度、当前数量、边际收益变低的理由，以及已被现有 reference 支撑的核心判断。
 
 ### 口径澄清
 
@@ -1153,7 +1145,7 @@ Wave 2 的最低标准：
 - 每轮都必须有停止条件，不允许“感觉差不多了”
 - 每轮都必须能说明哪些高难问题被主动 `suspend`，而不是让它们在过程里无声消失
 - 每轮都必须做到 30 秒本地证据可检索性 / 可导航性 / 推荐访问路径成立
-- 每轮都必须默认静默自主推进；完整中断条件见前文 `自主执行协议`，进度靠 status 文件、worklog、suspended branches、failed explorations 和 resume checkpoint 承接
+- 每轮都必须默认静默自主推进，进度承接靠 status 文件、worklog、suspended branches、failed explorations 和 resume checkpoint
 - 每轮都必须维护状态文件，而不是把状态只留在对话里
 - 每轮都必须支持中途拓扑同步，而不是死守旧 registry
 - 每轮的 reference 文档都必须做到硬核内容自给自足，读者不回 URL 就能用本地 md 支撑推理
