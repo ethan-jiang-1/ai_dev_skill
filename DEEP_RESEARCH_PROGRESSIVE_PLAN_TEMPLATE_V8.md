@@ -23,6 +23,19 @@
 - 能把进度、判断、缺口、恢复入口写进本地文件，而不是留在聊天上下文里
 - 只有真正满足中断条件时，才主动打断用户
 
+## Canonical Retrieval Names（检索锚点）
+
+后续实例化、执行、handoff 或局部提醒中，优先使用下面这些英文 canonical names 进行检索和回指：
+
+- `Autonomous Execution Protocol`
+- `Topology Formalization Gate`
+- `Exploration-Exploitation Decision Framework`
+- `Foundation Sufficiency Check`
+- `Early Saturation Protocol`
+- `Suspended Branch Protocol`
+- `30-Second Local Evidence Retrieval`
+- `human-on-the-loop`
+
 ## 适用场景
 
 这个模板不是普通研究提纲模板，也不打算覆盖所有研究类型。
@@ -45,7 +58,7 @@
 - 先共享地基，再分题深挖，再横向收束
 - 以“本地可复用落库”作为完成单位，而不是以“看过网页”作为完成单位
 - 以“停止条件”和“Readiness Check”替代“感觉搜够了”
-- 以 `Suspended Branch Protocol` 处理高难但暂不可得的问题，默认 `human on the loop`，不让同步人工反馈阻塞主线
+- 以 `Suspended Branch Protocol` 处理高难但暂不可得的问题，默认 `human-on-the-loop`，不让同步人工反馈阻塞主线
 - 让输入目录持续生长，而不是每轮都另起一堆无法承接的报告
 
 ## 先填这些参数
@@ -144,7 +157,7 @@
 
 只有 topic registry 稳定后，再开始写具体 progressive plan。
 
-## 自主执行协议（Autonomous Execution Protocol，MUST READ）
+## Autonomous Execution Protocol（自主执行协议，MUST READ）
 
 这一节是本模板的核心执行协议。它必须在进入 Wave 0 前被写入具体 plan，并优先于普通“阶段性汇报”习惯生效。
 
@@ -188,10 +201,10 @@
 
 ### 5. 与 human-on-the-loop 原则的关系
 
-- 长程任务默认按 `human on the loop` 处理，而不是依赖 `human in the loop`。
+- 长程任务默认按 `human-on-the-loop` 处理，而不是依赖 `human-in-the-loop`。
 - 高难分支先登记、主线继续推进；用户主动介入时配合，介入结束后恢复自主推进。
 
-## Topology Formalization Gate
+## Topology Formalization Gate（拓扑正式化闸门）
 
 这一步用于处理中途 scope 扩张时的结构同步。
 
@@ -207,7 +220,7 @@
 
 不允许继续一边按旧拓扑推进，一边口头承认“这其实已经是新 topic”。
 
-## Exploration-Exploitation Decision Framework
+## Exploration-Exploitation Decision Framework（探索 / 利用决策框架）
 
 目的：在“探索新方向”和“深挖已知线索”之间做稳定判断，避免机械凑配额，也避免漏掉真正改变拓扑的新方向。
 
@@ -238,7 +251,7 @@
 
 这套框架是判断启发，不是新的硬配额。最终仍以 `FINAL_DELIVERABLE`、`must_answer` 和本地证据质量为准。
 
-## Foundation Sufficiency Check（Wave 0 → Wave 1）
+## Foundation Sufficiency Check（Wave 0 → Wave 1，地基充分性检查）
 
 进入 Wave 1 前，必须确认 Wave 0 不是“配额达标但地基不足”。
 
@@ -247,11 +260,11 @@
 - 所有 topic 的核心术语，都能在 Wave 0 文档或 topic registry 中找到工作定义。
 - 所有 topic 的对象分类，都能映射到共享地基里的共同层或明确说明其差异。
 - 每条研究线都有明确的 Wave 1 起点：优先来源、关键对象、关键问题或已知缺口。
-- `<REFERENCE_DIR>/_INDEX.md` 已能作为共享 ground truth 的 `Local Evidence Retrievability, Navigability, and Recommended Access Path` 入口。
+- `<REFERENCE_DIR>/_INDEX.md` 已能作为共享 ground truth 的 `30-Second Local Evidence Retrieval` 入口。
 
 如果任何一条不满足，先补 Wave 0 或 topic registry，再进入 Wave 1；不要把共享地基债务推迟到 Wave 1 中途处理。
 
-## Early Saturation Protocol
+## Early Saturation Protocol（提前饱和协议）
 
 配额是防止浅搜的下限，不是鼓励低质量凑数的上限。
 
@@ -290,6 +303,8 @@ Early saturation 只能降低“继续凑数”的优先级，不能绕过 `must
 > 这份 plan 的定位不是普通提纲，而是：`template + execution protocol + state machine + handoff contract`
 >
 > 默认目标是让任务静默自主推进，而不是频繁停下来向用户汇报；进度承接以 `<STATUS_PATH>`、README、reference、artifacts 与 resume checkpoint 为准。
+>
+> Canonical retrieval names: `Autonomous Execution Protocol`, `Topology Formalization Gate`, `Exploration-Exploitation Decision Framework`, `Foundation Sufficiency Check`, `Early Saturation Protocol`, `Suspended Branch Protocol`, `30-Second Local Evidence Retrieval`, `human-on-the-loop`.
 
 ## 调研的根本目的
 
@@ -314,7 +329,7 @@ Early saturation 只能降低“继续凑数”的优先级，不能绕过 `must
 
 > 当权威一手来源已经足以支撑某个判断时，不为满足配额额外引入低质量二手来源。配额是防止搜太浅的下限，不是必须凑满的目标。宁缺毋滥。
 
-## 自主执行协议（本轮实例化提醒）
+## Autonomous Execution Protocol（本轮实例化提醒）
 
 完整规则见前文 `## Autonomous Execution Protocol`。
 
@@ -459,7 +474,7 @@ Early saturation 只能降低“继续凑数”的优先级，不能绕过 `must
 - 如果新方向已经形成独立问题簇、独立对象清单或独立工件需求，就应 formalize 为新 topic。
 - 在进入下一波次前，必须同步 `PLAN_PATH`、`STATUS_PATH`、`TOPIC_REGISTRY`、topic 索引入口与新 topic seed 文件。
 
-## 探索 / 利用决策框架（本轮执行提醒）
+## Exploration-Exploitation Decision Framework（本轮执行提醒）
 
 完整规则见前文 `## Exploration-Exploitation Decision Framework`。
 
@@ -513,7 +528,7 @@ Early saturation 只能降低“继续凑数”的优先级，不能绕过 `must
 - 每条研究线一份 `evidence-summary`
 - 每条研究线一份 `question-list`
 - 一份横向综合 `W2-cross-topic-synthesis`
-- 一份 `<REFERENCE_DIR>/_INDEX.md` 作为 `Local Evidence Retrievability, Navigability, and Recommended Access Path` 入口
+- 一份 `<REFERENCE_DIR>/_INDEX.md` 作为 `30-Second Local Evidence Retrieval` 入口
 - 一份 `ARTIFACT_DIR/README.md` 说明中间工件的意义、与 `<REFERENCE_DIR>` 的边界，以及常见 artifact 类型
 
 ### 4. 跨主题综合结论
@@ -664,9 +679,9 @@ Wave 2 的最低标准：
 
 验收标准：
 
-### 30 秒本地证据可检索性 / 可导航性 / 推荐访问路径检查
+### 30-Second Local Evidence Retrieval（30 秒本地证据检索检查）
 
-`30-Second Local Evidence Retrievability, Navigability, and Recommended Access Path Check`
+`30-Second Local Evidence Retrieval` = 本地证据可检索性 / 可导航性 / 推荐访问路径。
 
 - 任意一条核心判断，都能在 30 秒内通过本地 reference / artifact / index 入口被定位到。
 - 本地 reference 文档足够自给自足，读者不回 URL 也能用它支撑推理。
@@ -790,7 +805,7 @@ Wave 2 的最低标准：
 - 以“对象清单稳定”为停止前提：围绕同一研究线持续扩对象与对照面，直到核心对象清单稳定
 - 以“下钻到机制”为深挖目标：关键对象不只看 README，还要沿 docs → schema / code / issue / 反例逐级下钻
 - 以“边取证边回填”避免集成债：新增证据落库后立刻回填到对应 seed 文件和 `<ARTIFACT_DIR>` 中
-- 以“持续自校验”保证 30 秒本地证据可检索性 / 可导航性 / 推荐访问路径：每个波次结束后都做一次相关检查，并维护 `<REFERENCE_DIR>/_INDEX.md`
+- 以“持续自校验”保证 `30-Second Local Evidence Retrieval`：每个波次结束后都做一次相关检查，并维护 `<REFERENCE_DIR>/_INDEX.md`
 - 无外部阻塞时按 Wave / Step 检查点持续自主推进（详见前文 `Autonomous Execution Protocol`）
 
 ## 什么值得存进 `<REFERENCE_DIR>`
@@ -816,7 +831,7 @@ Wave 2 的最低标准：
 
 如果不能满足上面任一条，就不入库。
 
-## 探索分支处置协议（含 Suspended Branch Protocol）
+## Suspended Branch Protocol（探索分支处置协议）
 
 目的：
 
@@ -844,9 +859,9 @@ Wave 2 的最低标准：
 - `suspend`：问题仍然重要，只是当前不值得继续死磕；默认期待未来可能被新线索、新资料或新访问入口重启。
 - `archive`：问题当前已经不值得继续投入；即使未来重开，优先级通常也低于其他未解问题。
 
-### Human-on-the-loop 原则（分支处理提醒）
+### Human-on-the-loop Principle（分支处理提醒）
 
-- 长程任务默认按 `human on the loop` 处理。高难分支优先 `suspend and continue`；需要人工同步介入时，按前文 `Autonomous Execution Protocol` 的中断条件处理。
+- 长程任务默认按 `human-on-the-loop` 处理。高难分支优先 `suspend and continue`；需要人工同步介入时，按前文 `Autonomous Execution Protocol` 的中断条件处理。
 
 ### Suspended Branch 最低记录格式
 
@@ -964,7 +979,7 @@ Wave 2 的最低标准：
 推荐顺序：
 
 1. 列权威来源优先级清单，只抓高可信来源。
-2. 初始化 `<REFERENCE_DIR> / <REFERENCE_DIR>/_INDEX.md / <ARTIFACT_DIR> / <STATUS_PATH>`，先建 `Local Evidence Retrievability, Navigability, and Recommended Access Path` 入口再写结论。
+2. 初始化 `<REFERENCE_DIR> / <REFERENCE_DIR>/_INDEX.md / <ARTIFACT_DIR> / <STATUS_PATH>`，先建 `30-Second Local Evidence Retrieval` 入口再写结论。
    同时准备 `SEED_DIR/README.md`、`REFERENCE_DIR/README.md`、`ARTIFACT_DIR/README.md`，先把目录语义说明清楚。
    检查点：每个关键来源都能独立落库，并说明为什么值得保存。
 3. 扩对象、案例和机制差异。
@@ -1103,7 +1118,7 @@ Wave 2 的最低标准：
 ## Readiness Check
 
 - purpose: 判断是否已经可交付 / 可停止 / 可接手
-- 30 秒本地证据可检索性 / 可导航性 / 推荐访问路径检查：
+- 30-Second Local Evidence Retrieval：
 - 每线“机制 + 趋势 + 难点”检查：
 - 横向综合检查：
 - 拓扑稳定性检查：
@@ -1156,7 +1171,7 @@ Wave 2 的最低标准：
 - 每轮都必须要求输入目录本身生长，而不是只生成旁路报告
 - 每轮都必须有明确停止条件
 - 每轮都必须保留高难问题的 `suspend` 语义
-- 每轮都必须做到 30 秒本地证据可检索性成立
+- 每轮都必须做到 `30-Second Local Evidence Retrieval` 成立
 - 每轮都必须默认静默自主推进
 - 每轮都必须维护状态文件，而不是把状态只留在对话里
 - 每轮都必须支持中途拓扑同步
