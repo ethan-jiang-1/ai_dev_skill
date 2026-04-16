@@ -5,6 +5,24 @@
 >
 > 强约束：本模板默认必须配套生成一个状态文件：`<PLAN_BASENAME>.status.md`
 
+## 这份文件的真实定位
+
+这份文件不是普通“研究提纲模板”，也不是只用来生成一篇 plan 文档的填空框架。
+
+它的真实定位是：
+
+- `template`：定义一轮 Deep Research plan 必须具备的结构、参数、波次、产物与验收方式
+- `execution protocol`：定义默认执行方式、允许中断用户的条件、证据落库规则、推进与 closeout 规则
+- `state machine`：定义任务如何在 `Wave 0 → Wave 1 → Wave 2 → Readiness Check` 之间推进，以及何时 `suspend / archive / redirect / formalize`
+- `handoff contract`：定义 plan、status、README、reference、artifact、resume checkpoint 之间如何协同，保证新 agent 不依赖对话上下文也能接着做
+
+这套东西的设计目标，不是让 agent 更会“汇报进度”，而是让基于它生成出来的 plan 在长程任务中默认静默自主推进：
+
+- 能持续往前跑，而不是做一小步就停下来汇报
+- 能在局部卡住时通过 `suspend / archive / redirect` 维持主线不断流
+- 能把进度、判断、缺口、恢复入口写进本地文件，而不是留在聊天上下文里
+- 只有真正满足中断条件时，才主动打断用户
+
 ## 适用场景
 
 这个模板不是普通研究提纲模板，也不打算覆盖所有研究类型。
@@ -270,6 +288,10 @@ Early saturation 只能降低“继续凑数”的优先级，不能绕过 `must
 
 - `template_version`：`<TEMPLATE_VERSION>`
 
+> 这份 plan 的定位不是普通提纲，而是：`template + execution protocol + state machine + handoff contract`
+>
+> 默认目标是让任务静默自主推进，而不是频繁停下来向用户汇报；进度承接以 `<STATUS_PATH>`、README、reference、artifacts 与 resume checkpoint 为准。
+
 ## 调研的根本目的
 
 这轮 Deep Research 不是为了产出调研笔记本身。
@@ -295,7 +317,7 @@ Early saturation 只能降低“继续凑数”的优先级，不能绕过 `must
 
 ## 自主执行协议（本轮实例化提醒）
 
-完整规则见前文 `## 自主执行协议（Autonomous Execution Protocol，MUST READ）`。这里仅保留实例化提醒：
+如果本 plan 与模板正文一并保存，完整规则见前文 `## 自主执行协议（Autonomous Execution Protocol，MUST READ）`；如果本 plan 被单独复制使用，则以下 3 条就是本轮必须保留的最小执行提醒：
 
 - 默认静默自主推进，进度写入 `<STATUS_PATH>`。
 - 只有主线不可绕开阻塞、研究方向根本性调整、高风险不可逆操作、或用户明确要求实时协同时，才允许中断用户。
@@ -433,14 +455,14 @@ Early saturation 只能降低“继续凑数”的优先级，不能绕过 `must
 
 ## Topology Formalization Gate（本轮执行提醒）
 
-完整规则见前文 `## Topology Formalization Gate`。这里仅保留执行提醒：
+如果本 plan 与模板正文一并保存，完整规则见前文 `## Topology Formalization Gate`；如果本 plan 被单独复制使用，则以下 2 条就是本轮必须保留的最小执行提醒：
 
 - 如果新方向已经形成独立问题簇、独立对象清单或独立工件需求，就应 formalize 为新 topic。
 - 在进入下一波次前，必须同步 `PLAN_PATH`、`STATUS_PATH`、`TOPIC_REGISTRY`、topic 索引入口与新 topic seed 文件。
 
 ## 探索 / 利用决策框架（本轮执行提醒）
 
-完整规则见前文 `## Exploration-Exploitation Decision Framework`。这里仅保留执行提醒：
+如果本 plan 与模板正文一并保存，完整规则见前文 `## Exploration-Exploitation Decision Framework`；如果本 plan 被单独复制使用，则以下 4 条就是本轮必须保留的最小执行提醒：
 
 - 如果新方向满足前文的 formalization 条件，并且会产生独立 evidence summary / question list / artifact 需求，就 formalize 为新 topic。
 - 如果当前线已接近饱和，但新方向重要、暂时缺材料或访问受限，就登记为 `suspend`，不阻塞主线。
@@ -559,7 +581,7 @@ Wave 0 完成的最低标准：
 
 ### Foundation Sufficiency Check（Wave 0 → Wave 1，本轮短检查）
 
-完整标准见前文 `## Foundation Sufficiency Check（Wave 0 → Wave 1）`。进入 Wave 1 前，这里只做短检查：
+如果本 plan 与模板正文一并保存，完整标准见前文 `## Foundation Sufficiency Check（Wave 0 → Wave 1）`；如果本 plan 被单独复制使用，则进入 Wave 1 前至少做下面这组短检查：
 
 - 核心术语是否已有工作定义。
 - 对象分类是否已有共享地基。

@@ -63,17 +63,17 @@
 
 | 规则族 | 当前完整版本保留位置 | 当前重复位置 | Round 1 动作 |
 | --- | --- | --- | --- |
-| 自主执行协议 | `129-175` | `296-304`, `803-810`, `1198`, 以及与其近义的提醒块 | 保留 `129-175` 为唯一完整版本；其他位置改为短提醒，不再复述完整规则 |
-| Topology Formalization Gate | `177-191` | `436-450`, `472`, `602` | 保留 `177-191`；`436-450` 改为 skeleton 内短提醒；其余只保留引用式句子 |
-| Exploration-Exploitation Decision Framework | `193-222` | `452-475` | 保留 `193-222`；`452-475` 改成 skeleton 里的简短执行提醒 |
-| Foundation Sufficiency Check | `224-235` | `587-596` | 保留 `224-235`；`587-596` 改为 Wave 0 到 Wave 1 的局部提醒，不再完整重讲标准 |
-| Early Saturation Protocol | `237-255` | `625`, `909-925` | 保留 `237-255`；`909-925` 缩成 stop condition 下的短提醒；`625` 保留一句引用即可 |
-| Suspended Branch / Human-on-the-loop | `835-886` | `171-175`, `668-672`, `863-873` | 保留 `835-886` 为详细协议；其余位置只保留与当前上下文直接相关的最短提醒 |
+| 自主执行协议 | 前部 canonical section：`## 自主执行协议（Autonomous Execution Protocol，MUST READ）` | skeleton 中的 `## 自主执行协议（本轮实例化提醒）`，以及后文与其近义的提醒块 | 保留前部 canonical section 为唯一完整版本；其他位置改为短提醒，不再复述完整规则 |
+| Topology Formalization Gate | 前部 canonical section：`## Topology Formalization Gate` | skeleton 中的 `## Topology Formalization Gate（本轮执行提醒）` 及相关近义提醒 | 保留前部 canonical section；skeleton 内只保留短提醒；其余只保留引用式句子 |
+| Exploration-Exploitation Decision Framework | 前部 canonical section：`## Exploration-Exploitation Decision Framework` | skeleton 中的 `## 探索 / 利用决策框架（本轮执行提醒）` | 保留前部 canonical section；skeleton 内只保留简短执行提醒 |
+| Foundation Sufficiency Check | 前部 canonical section：`## Foundation Sufficiency Check（Wave 0 → Wave 1）` | Wave 0 中的 `### Foundation Sufficiency Check（Wave 0 → Wave 1，本轮短检查）` | 保留前部 canonical section；Wave 0 中只保留局部短检查，不再完整重讲标准 |
+| Early Saturation Protocol | 前部 canonical section：`## Early Saturation Protocol` | 停止条件中的 `### Early Saturation Protocol（停止条件语境提醒）` 及相关一句式提醒 | 保留前部 canonical section；停止条件语境下只保留短提醒 |
+| Suspended Branch / Human-on-the-loop | 后部详细协议：`## 探索分支处置协议（含 Suspended Branch Protocol）` | 前部 `### 5. 与 human-on-the-loop 原则的关系`，以及分支处置区内的 `### Human-on-the-loop 原则（分支处理提醒）` | 保留后部详细协议为主要展开位置；其余位置只保留与当前上下文直接相关的最短提醒 |
 | 权威信源优先规则 | `292-294` | 无全文重复，但其精神散落多处 | 不新建章节；保留此处为权威版，其余不扩写 |
 
 说明：
 
-- 行号基于当前 `DEEP_RESEARCH_PROGRESSIVE_PLAN_TEMPLATE_V8.md` 快照。
+- 章节名比行号更稳定；本表后续维护以章节名为准，不再依赖旧行号。
 - 本轮不追求“所有类似含义都消失”，而是追求“只有一个完整版本，其他地方不再近似全文复述”。
 
 ## 本轮具体要改什么
@@ -102,25 +102,25 @@
 
 具体目标：
 
-- `296-304` 保留为极短版自主执行提醒，明确“完整规则见前文”
-- `436-450` 改为 topology 提醒，不再全文复述 gate
-- `452-475` 改为探索 / 利用决策提醒，不再完整展开信号列表
-- `587-596` 改为 Wave 0 进入 Wave 1 前的短检查
-- `909-925` 改为 stop condition 中的引用式提醒
+- skeleton 中的 `自主执行协议（本轮实例化提醒）` 保留为极短版执行提醒，明确 canonical section 在前文
+- skeleton 中的 `Topology Formalization Gate（本轮执行提醒）` 改为 topology 提醒，不再全文复述 gate
+- skeleton 中的 `探索 / 利用决策框架（本轮执行提醒）` 改为探索 / 利用决策提醒，不再完整展开信号列表
+- Wave 0 中的 `Foundation Sufficiency Check（Wave 0 → Wave 1，本轮短检查）` 改为进入 Wave 1 前的局部短检查
+- 停止条件中的 `Early Saturation Protocol（停止条件语境提醒）` 改为引用式短提醒
 
 ### 3. reminder 类章节只保留扫描价值，不保留第二份规则正文
 
 这类块的功能应从“再讲一遍规则”改成“帮助扫读和执行”：
 
-- `803-810` 的 `自主执行协议提醒`
-- `863-873` 的 `Human-on-the-loop 原则`
-- 底部 `1186-1206` 的“真正要守住的东西”
+- 后半段的 `自主执行协议` 近义 reminder 块
+- 停止条件与分支处置里的 `Human-on-the-loop` 相关提醒
+- 底部的“真正要守住的东西”
 
 具体处理：
 
-- `803-810` 保留 2 到 4 行的导航式提醒
-- `863-873` 只保留与 `suspend` 决策强相关的最短说明，不再展开完整人工介入条件
-- `1186-1206` 保留为高层 invariant 列表，但不再塞入长句式的完整执行协议复述
+- 后半段自主执行 reminder 只保留 2 到 4 行的导航式提醒
+- `Human-on-the-loop` 相关提醒只保留与 `suspend` 决策强相关的最短说明，不再展开完整人工介入条件
+- 底部 invariant 列表保留高层原则，但不再塞入长句式的完整执行协议复述
 
 ### 4. 本轮不移动大章节，只做“单文件内部降重”
 
