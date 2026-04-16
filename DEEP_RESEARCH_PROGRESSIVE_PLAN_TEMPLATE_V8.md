@@ -293,9 +293,9 @@ Early saturation 只能降低“继续凑数”的优先级，不能绕过 `must
 
 > 当权威一手来源已经足以支撑某个判断时，不为满足配额额外引入低质量二手来源。配额是防止搜太浅的下限，不是必须凑满的目标。宁缺毋滥。
 
-## 自主执行协议（本轮必须遵守）
+## 自主执行协议（本轮实例化提醒）
 
-完整规则见前文 `## 自主执行协议（Autonomous Execution Protocol，MUST READ）`。本位置只保留本轮实例化提醒：
+完整规则见前文 `## 自主执行协议（Autonomous Execution Protocol，MUST READ）`。这里仅保留实例化提醒：
 
 - 默认静默自主推进，进度写入 `<STATUS_PATH>`。
 - 只有主线不可绕开阻塞、研究方向根本性调整、高风险不可逆操作、或用户明确要求实时协同时，才允许中断用户。
@@ -431,16 +431,16 @@ Early saturation 只能降低“继续凑数”的优先级，不能绕过 `must
 - pending_topic_candidates:
 ```
 
-## Topology Formalization Gate
+## Topology Formalization Gate（本轮执行提醒）
 
-完整规则见前文 `## Topology Formalization Gate`。本位置只保留本轮执行提醒：
+完整规则见前文 `## Topology Formalization Gate`。这里仅保留执行提醒：
 
 - 如果新方向已经形成独立问题簇、独立对象清单或独立工件需求，就应 formalize 为新 topic。
 - 在进入下一波次前，必须同步 `PLAN_PATH`、`STATUS_PATH`、`TOPIC_REGISTRY`、topic 索引入口与新 topic seed 文件。
 
-## 探索 / 利用决策框架
+## 探索 / 利用决策框架（本轮执行提醒）
 
-完整规则见前文 `## Exploration-Exploitation Decision Framework`。本位置只保留本轮执行提醒：
+完整规则见前文 `## Exploration-Exploitation Decision Framework`。这里仅保留执行提醒：
 
 - 如果新方向满足前文的 formalization 条件，并且会产生独立 evidence summary / question list / artifact 需求，就 formalize 为新 topic。
 - 如果当前线已接近饱和，但新方向重要、暂时缺材料或访问受限，就登记为 `suspend`，不阻塞主线。
@@ -557,9 +557,9 @@ Wave 0 完成的最低标准：
 
 只有 Wave 0 达标，才进入 Wave 1。
 
-### Foundation Sufficiency Check（Wave 0 → Wave 1）
+### Foundation Sufficiency Check（Wave 0 → Wave 1，本轮短检查）
 
-完整标准见前文 `## Foundation Sufficiency Check（Wave 0 → Wave 1）`。进入 Wave 1 前，这里只做本轮短检查：
+完整标准见前文 `## Foundation Sufficiency Check（Wave 0 → Wave 1）`。进入 Wave 1 前，这里只做短检查：
 
 - 核心术语是否已有工作定义。
 - 对象分类是否已有共享地基。
@@ -568,7 +568,7 @@ Wave 0 完成的最低标准：
 
 如果任一项不满足，先补 Wave 0 或 topic registry，再继续推进。
 
-### 执行模式提醒
+### Wave 0 执行模式提醒
 
 - Wave 0 完成后，更新 `.status.md` 中的 Wave 0 状态字段，然后直接进入 Wave 1。
 - 如果 Wave 0 中发现拓扑需要调整，按前文 `Topology Formalization Gate` 同步后继续推进。
@@ -603,7 +603,7 @@ Wave 0 完成的最低标准：
 - 至少 1 份首批专属 reference
 - 至少 1 份首批专属 artifact
 
-### 执行模式提醒
+### Wave 1 执行模式提醒
 
 - 每条研究线完成后，更新 `.status.md` 中对应 topic 的状态字段。
 - 所有研究线完成后，直接进入 Wave 2。
@@ -627,7 +627,7 @@ Wave 2 的最低标准：
 - 每条研究线至少有 2 个与其他研究线发生交叉验证的结论
 - 明确区分“硬事实”“分析判断”“趋势推测”
 
-### 执行模式提醒
+### Wave 2 执行模式提醒
 
 - Wave 2 完成后，更新 `.status.md` 中的 Wave 2 状态字段，然后直接进入 Readiness Check。
 - 如果 Wave 2 发现需要回补 Wave 1 证据，补完后继续推进 readiness。
@@ -824,7 +824,9 @@ Wave 2 的最低标准：
 - `suspend`：问题仍然重要，只是当前不值得继续死磕；默认期待未来可能被新线索、新资料或新访问入口重启。
 - `archive`：问题当前已经不值得继续投入；即使未来重开，优先级通常也低于其他未解问题。
 
-补充提醒：长程任务默认按 `human on the loop` 处理。高难分支优先 `suspend and continue`；只有满足前部 `自主执行协议` 中的中断条件时，才主动请求同步人工介入。
+### Human-on-the-loop 原则（分支处理提醒）
+
+- 长程任务默认按 `human on the loop` 处理。高难分支优先 `suspend and continue`；只有满足前部 `自主执行协议` 中的中断条件时，才主动请求同步人工介入。
 
 ### Suspended Branch 最低记录格式
 
@@ -860,7 +862,9 @@ Wave 2 的最低标准：
 
 如果还没有达到这些条件，就不能草率进入总结。
 
-补充提醒：完整标准见前文 `## Early Saturation Protocol`。在停止条件语境下，只有证据已明显收敛且不影响 `must_answer`、失败模式覆盖或 Readiness Check，才允许 early saturation；一旦采用，必须在 status 中记录当前维度、当前数量、边际收益变低的理由，以及已被现有 reference 支撑的核心判断。
+### Early Saturation Protocol（停止条件语境提醒）
+
+- 完整标准见前文 `## Early Saturation Protocol`。在停止条件语境下，只有证据已明显收敛且不影响 `must_answer`、失败模式覆盖或 Readiness Check，才允许 early saturation；一旦采用，必须在 status 中记录当前维度、当前数量、边际收益变低的理由，以及已被现有 reference 支撑的核心判断。
 
 ### 口径澄清
 
@@ -1133,7 +1137,7 @@ Wave 2 的最低标准：
 - 每轮都必须有停止条件，不允许“感觉差不多了”
 - 每轮都必须能说明哪些高难问题被主动 `suspend`，而不是让它们在过程里无声消失
 - 每轮都必须做到 30 秒本地证据可检索性 / 可导航性 / 推荐访问路径成立
-- 每轮都必须默认静默自主推进，进度承接靠 status 文件、worklog、suspended branches、failed explorations 和 resume checkpoint
+- 每轮都必须默认静默自主推进，执行状态承接靠 status 文件、worklog、suspended branches、failed explorations 和 resume checkpoint
 - 每轮都必须维护状态文件，而不是把状态只留在对话里
 - 每轮都必须支持中途拓扑同步，而不是死守旧 registry
 - 每轮的 reference 文档都必须做到硬核内容自给自足，读者不回 URL 就能用本地 md 支撑推理
