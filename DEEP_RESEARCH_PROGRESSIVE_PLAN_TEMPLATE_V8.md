@@ -295,13 +295,11 @@ Early saturation 只能降低“继续凑数”的优先级，不能绕过 `must
 
 ## 自主执行协议（本轮必须遵守）
 
-- 默认模式是静默自主推进：按 Wave / Step 检查点持续推进，状态写入 `<STATUS_PATH>`。
-- 不主动停下来汇报、不等待临时确认、不在对话里重复 status 文件已有内容。
-- 每完成一个有意义步骤，更新 status 后继续下一步。
+完整规则见前文 `## 自主执行协议（Autonomous Execution Protocol，MUST READ）`。本位置只保留本轮实例化提醒：
+
+- 默认静默自主推进，进度写入 `<STATUS_PATH>`。
 - 只有主线不可绕开阻塞、研究方向根本性调整、高风险不可逆操作、或用户明确要求实时协同时，才允许中断用户。
-- 不因 Wave 过渡、单线完成、配额达标、可绕开的搜索困难、发现新方向、可自主修复的 readiness 缺口而中断用户。
-- 如果用户中途插入其他任务，恢复时优先读 `<STATUS_PATH>` 的当前状态、worklog、suspended branches、failed explorations 和 resume checkpoint。
-- 任何关键判断、假设、恢复入口、挂起理由都必须写入 plan / status / README / artifact 中；不得依赖当前对话上下文保存。
+- 关键判断、假设、恢复入口、挂起理由都必须写入 plan / status / README / artifact；不得依赖对话上下文保存。
 
 ## 先反省：当前版本为什么还不够
 
@@ -435,19 +433,10 @@ Early saturation 只能降低“继续凑数”的优先级，不能绕过 `must
 
 ## Topology Formalization Gate
 
-这一步用于处理中途 scope 扩张时的结构同步。
+完整规则见前文 `## Topology Formalization Gate`。本位置只保留本轮执行提醒：
 
-如果新的研究对象已经形成独立问题簇、独立对象清单或独立工件需求，就应当把它升格为新 topic。
-
-一旦升格为新 topic，必须在进入下一波次前同步：
-
-- `PLAN_PATH`
-- `STATUS_PATH`
-- `TOPIC_REGISTRY`
-- 输入目录中的 topic 索引文件
-- 新 topic seed 文件
-
-不允许继续一边按旧拓扑推进，一边口头承认“这其实已经是新 topic”。
+- 如果新方向已经形成独立问题簇、独立对象清单或独立工件需求，就应 formalize 为新 topic。
+- 在进入下一波次前，必须同步 `PLAN_PATH`、`STATUS_PATH`、`TOPIC_REGISTRY`、topic 索引入口与新 topic seed 文件。
 
 ## 探索 / 利用决策框架
 
@@ -599,7 +588,7 @@ Wave 0 完成的最低标准：
 
 - Wave 0 完成后，更新 `.status.md` 中的 Wave 0 状态字段。
 - 直接推进到 Wave 1，不需要停下来向用户汇报。
-- 如果 Wave 0 中发现拓扑需要调整，按 Topology Formalization Gate 同步后继续推进。
+- 如果 Wave 0 中发现拓扑需要调整，按前文 `Topology Formalization Gate` 同步后继续推进。
 
 ### Wave 1：按研究线分别深挖
 
@@ -804,9 +793,8 @@ Wave 2 的最低标准：
 
 完整规则见本计划前部 `## 自主执行协议（本轮必须遵守）`。本位置只保留提醒：
 
-- 默认静默自主推进。
-- 进度写入 `<STATUS_PATH>`。
-- 只有主线不可绕开阻塞、方向根本性调整、高风险不可逆操作、或用户明确要求实时协同时才中断用户。
+- 默认静默自主推进，进度以 `<STATUS_PATH>` 为准。
+- 非主线阻塞、方向根本性调整、高风险不可逆操作、或用户明确要求实时协同，不中断用户。
 - 不依赖对话上下文保存执行状态；所有接手信息写入 status / README / artifact。
 
 ## 什么值得存进 `<REFERENCE_DIR>`
@@ -862,15 +850,10 @@ Wave 2 的最低标准：
 
 ### Human-on-the-loop 原则
 
-> 完整的自主执行规则见本计划前部 `## 自主执行协议（本轮必须遵守）`。本节保留核心原则，两节共同生效。
+> 完整的自主执行与中断条件见本计划前部 `## 自主执行协议（本轮必须遵守）`。本节只补充 `suspend` 的处理立场。
 
-- 长程任务默认不依赖 `human in the loop`。
-- 更推荐的做法是 `human on the loop`：研究线程自主推进；高难分支先 `suspend`；等到阶段性收拢、closeout 或最终汇报时，再把这些挂起分支统一交给人判断是否提供资料、改方向或重启。
-- 只有在下面几种情况之一成立时，才值得主动请求同步人工介入：
-  - 用户明确要求实时协同
-  - 整条主线被阻塞，且无法通过 `suspend` 绕开（单个分支卡住不算）
-  - 已知存在用户手里的专有材料、内部文档或访问入口，且不拿到就无法继续
-  - 研究方向需要根本性调整（核心假设错误或最终产出定义变更）
+- 长程任务默认采用 `human on the loop`，而不是 `human in the loop`。
+- 高难分支优先 `suspend and continue`；只有满足前部自主执行协议中的中断条件时，才主动请求同步人工介入。
 
 ### Suspended Branch 最低记录格式
 
@@ -1195,7 +1178,7 @@ Wave 2 的最低标准：
 - 每轮都必须有停止条件，不允许“感觉差不多了”
 - 每轮都必须能说明哪些高难问题被主动 `suspend`，而不是让它们在过程里无声消失
 - 每轮都必须能做到 30 秒本地回指
-- 每轮都必须默认静默自主推进，只在主线阻塞、方向根本性调整、高风险不可逆操作、或用户明确要求实时协同时才中断用户；进度靠 status 文件、worklog、suspended branches、failed explorations 和 resume checkpoint 承接
+- 每轮都必须默认静默自主推进；完整中断条件见前文 `自主执行协议`，进度靠 status 文件、worklog、suspended branches、failed explorations 和 resume checkpoint 承接
 - 每轮都必须维护状态文件，而不是把状态只留在对话里
 - 每轮都必须支持中途拓扑同步，而不是死守旧 registry
 - 每轮的 reference 文档都必须做到硬核内容自给自足，读者不回 URL 就能用本地 md 支撑推理
