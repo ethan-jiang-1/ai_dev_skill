@@ -188,9 +188,8 @@
 
 ### 5. 与 human-on-the-loop 原则的关系
 
-- 长程任务默认不依赖 `human in the loop`。
-- 更推荐 `human on the loop`：研究线程自主推进；高难分支先登记；阶段性收拢、closeout 或用户主动询问时再统一交代。
-- 如果用户在执行过程中主动介入，agent 应当配合；介入结束后必须恢复自主推进模式。
+- 长程任务默认按 `human on the loop` 处理，而不是依赖 `human in the loop`。
+- 高难分支先登记、主线继续推进；用户主动介入时配合，介入结束后恢复自主推进。
 
 ## Topology Formalization Gate
 
@@ -317,11 +316,11 @@ Early saturation 只能降低“继续凑数”的优先级，不能绕过 `must
 
 ## 自主执行协议（本轮实例化提醒）
 
-如果本 plan 与模板正文一并保存，完整规则见前文 `## 自主执行协议（Autonomous Execution Protocol，MUST READ）`；如果本 plan 被单独复制使用，则以下 3 条就是本轮必须保留的最小执行提醒：
+完整规则见前文 `## 自主执行协议（Autonomous Execution Protocol，MUST READ）`。
 
 - 默认静默自主推进，进度写入 `<STATUS_PATH>`。
-- 只有主线不可绕开阻塞、研究方向根本性调整、高风险不可逆操作、或用户明确要求实时协同时，才允许中断用户。
-- 关键判断、假设、恢复入口、挂起理由都必须写入 plan / status / README / artifact；不得依赖对话上下文保存。
+- 只有满足前文定义的中断条件时，才允许打断用户。
+- 关键判断、假设、恢复入口、挂起理由都必须写入 plan / status / README / artifact。
 
 ## 先反省：当前版本为什么还不够
 
@@ -455,19 +454,18 @@ Early saturation 只能降低“继续凑数”的优先级，不能绕过 `must
 
 ## Topology Formalization Gate（本轮执行提醒）
 
-如果本 plan 与模板正文一并保存，完整规则见前文 `## Topology Formalization Gate`；如果本 plan 被单独复制使用，则以下 2 条就是本轮必须保留的最小执行提醒：
+完整规则见前文 `## Topology Formalization Gate`。
 
 - 如果新方向已经形成独立问题簇、独立对象清单或独立工件需求，就应 formalize 为新 topic。
 - 在进入下一波次前，必须同步 `PLAN_PATH`、`STATUS_PATH`、`TOPIC_REGISTRY`、topic 索引入口与新 topic seed 文件。
 
 ## 探索 / 利用决策框架（本轮执行提醒）
 
-如果本 plan 与模板正文一并保存，完整规则见前文 `## Exploration-Exploitation Decision Framework`；如果本 plan 被单独复制使用，则以下 4 条就是本轮必须保留的最小执行提醒：
+完整规则见前文 `## Exploration-Exploitation Decision Framework`。
 
-- 如果新方向满足前文的 formalization 条件，并且会产生独立 evidence summary / question list / artifact 需求，就 formalize 为新 topic。
-- 如果当前线已接近饱和，但新方向重要、暂时缺材料或访问受限，就登记为 `suspend`，不阻塞主线。
-- 如果继续下钻边际收益低，且不太可能改变核心判断，就 `archive`。
-- 如果探索信号不足以改变拓扑，就继续深挖当前线，并把疑点记录到 question list 或 status。
+- 新方向改变拓扑时，formalize 为新 topic。
+- 当前线重要但暂时不值得继续死磕时，登记为 `suspend`，不阻塞主线。
+- 继续下钻边际收益低时，`archive` 或继续深挖当前线，并把疑点记录到 question list 或 status。
 
 ## 输出
 
@@ -581,7 +579,7 @@ Wave 0 完成的最低标准：
 
 ### Foundation Sufficiency Check（Wave 0 → Wave 1，本轮短检查）
 
-如果本 plan 与模板正文一并保存，完整标准见前文 `## Foundation Sufficiency Check（Wave 0 → Wave 1）`；如果本 plan 被单独复制使用，则进入 Wave 1 前至少做下面这组短检查：
+完整标准见前文 `## Foundation Sufficiency Check（Wave 0 → Wave 1）`。进入 Wave 1 前至少做下面这组短检查：
 
 - 核心术语是否已有工作定义。
 - 对象分类是否已有共享地基。
@@ -848,7 +846,7 @@ Wave 2 的最低标准：
 
 ### Human-on-the-loop 原则（分支处理提醒）
 
-- 长程任务默认按 `human on the loop` 处理。高难分支优先 `suspend and continue`；只有满足前部 `自主执行协议` 中的中断条件时，才主动请求同步人工介入。
+- 长程任务默认按 `human on the loop` 处理。高难分支优先 `suspend and continue`；需要人工同步介入时，按前文 `自主执行协议` 的中断条件处理。
 
 ### Suspended Branch 最低记录格式
 
@@ -886,7 +884,7 @@ Wave 2 的最低标准：
 
 ### Early Saturation Protocol（停止条件语境提醒）
 
-- 完整标准见前文 `## Early Saturation Protocol`。在停止条件语境下，只有证据已明显收敛且不影响 `must_answer`、失败模式覆盖或 Readiness Check，才允许 early saturation；一旦采用，必须在 status 中记录当前维度、当前数量、边际收益变低的理由，以及已被现有 reference 支撑的核心判断。
+- 完整标准见前文 `## Early Saturation Protocol`。只有证据已明显收敛且不影响 `must_answer`、失败模式覆盖或 Readiness Check，才允许 early saturation；一旦采用，必须在 status 中记录理由。
 
 ### 口径澄清
 
@@ -1159,12 +1157,12 @@ Wave 2 的最低标准：
 - 每轮都必须有停止条件，不允许“感觉差不多了”
 - 每轮都必须能说明哪些高难问题被主动 `suspend`，而不是让它们在过程里无声消失
 - 每轮都必须做到 30 秒本地证据可检索性 / 可导航性 / 推荐访问路径成立
-- 每轮都必须默认静默自主推进，执行状态承接靠 status 文件、worklog、suspended branches、failed explorations 和 resume checkpoint
+- 每轮都必须默认静默自主推进，而不是频繁停下来汇报
 - 每轮都必须维护状态文件，而不是把状态只留在对话里
 - 每轮都必须支持中途拓扑同步，而不是死守旧 registry
 - 每轮的 reference 文档都必须做到硬核内容自给自足，读者不回 URL 就能用本地 md 支撑推理
 - 每轮都必须在 Wave 0 到 Wave 1 之间做 foundation sufficiency 判断，避免地基不足时硬进深挖
-- 每轮都必须允许 early saturation，但必须在 status 中记录理由，不能把它当作降低证据标准的借口
+- 每轮都必须允许 early saturation，但不能把它当作降低证据标准的借口
 - 每轮都必须记录有代表性的 failed explorations，避免后续重复无效探索
 
 如果这些约束还在，这个框架就还是同一个框架。具体主题、目录名、研究线数量、配额数字，都只是实例化参数。
