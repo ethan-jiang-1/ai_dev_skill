@@ -316,7 +316,7 @@ Early saturation 只能降低“继续凑数”的优先级，不能绕过 `must
 
 ## 自主执行协议（本轮实例化提醒）
 
-完整规则见前文 `## 自主执行协议（Autonomous Execution Protocol，MUST READ）`。
+完整规则见前文 `## Autonomous Execution Protocol`。
 
 - 默认静默自主推进，进度写入 `<STATUS_PATH>`。
 - 只有满足前文定义的中断条件时，才允许打断用户。
@@ -579,7 +579,7 @@ Wave 0 完成的最低标准：
 
 ### Foundation Sufficiency Check（Wave 0 → Wave 1，本轮短检查）
 
-完整标准见前文 `## Foundation Sufficiency Check（Wave 0 → Wave 1）`。进入 Wave 1 前至少做下面这组短检查：
+完整标准见前文 `## Foundation Sufficiency Check`。进入 Wave 1 前至少做下面这组短检查：
 
 - 核心术语是否已有工作定义。
 - 对象分类是否已有共享地基。
@@ -791,7 +791,7 @@ Wave 2 的最低标准：
 - 以“下钻到机制”为深挖目标：关键对象不只看 README，还要沿 docs → schema / code / issue / 反例逐级下钻
 - 以“边取证边回填”避免集成债：新增证据落库后立刻回填到对应 seed 文件和 `<ARTIFACT_DIR>` 中
 - 以“持续自校验”保证 30 秒本地证据可检索性 / 可导航性 / 推荐访问路径：每个波次结束后都做一次相关检查，并维护 `<REFERENCE_DIR>/_INDEX.md`
-- 无外部阻塞时按 Wave / Step 检查点持续自主推进，不停下来汇报、不等临时反馈、不请求确认（详见本计划前部 `自主执行协议`）
+- 无外部阻塞时按 Wave / Step 检查点持续自主推进（详见前文 `Autonomous Execution Protocol`）
 
 ## 什么值得存进 `<REFERENCE_DIR>`
 
@@ -846,7 +846,7 @@ Wave 2 的最低标准：
 
 ### Human-on-the-loop 原则（分支处理提醒）
 
-- 长程任务默认按 `human on the loop` 处理。高难分支优先 `suspend and continue`；需要人工同步介入时，按前文 `自主执行协议` 的中断条件处理。
+- 长程任务默认按 `human on the loop` 处理。高难分支优先 `suspend and continue`；需要人工同步介入时，按前文 `Autonomous Execution Protocol` 的中断条件处理。
 
 ### Suspended Branch 最低记录格式
 
@@ -1015,7 +1015,7 @@ Wave 2 的最低标准：
 
 补充要求：
 
-- 长程任务必须支持 `suspend and continue`，而不是一遇到高难问题就把主线卡住
+- 长程任务必须支持 `suspend and continue`；具体挂起与中断规则见前文 `Autonomous Execution Protocol` 与 `Suspended Branch Protocol`
 - 最终 closeout 必须能交代：哪些分支被主动挂起、为什么挂起、什么条件下值得重开
 
 ## 备注
@@ -1154,15 +1154,15 @@ Wave 2 的最低标准：
 - 每轮都必须有 Wave 0 / 1 / 2 和 Readiness Check
 - 每轮都必须以本地 evidence 落库作为完成单位
 - 每轮都必须要求输入目录本身生长，而不是只生成旁路报告
-- 每轮都必须有停止条件，不允许“感觉差不多了”
-- 每轮都必须能说明哪些高难问题被主动 `suspend`，而不是让它们在过程里无声消失
-- 每轮都必须做到 30 秒本地证据可检索性 / 可导航性 / 推荐访问路径成立
-- 每轮都必须默认静默自主推进，而不是频繁停下来汇报
+- 每轮都必须有明确停止条件
+- 每轮都必须保留高难问题的 `suspend` 语义
+- 每轮都必须做到 30 秒本地证据可检索性成立
+- 每轮都必须默认静默自主推进
 - 每轮都必须维护状态文件，而不是把状态只留在对话里
-- 每轮都必须支持中途拓扑同步，而不是死守旧 registry
-- 每轮的 reference 文档都必须做到硬核内容自给自足，读者不回 URL 就能用本地 md 支撑推理
-- 每轮都必须在 Wave 0 到 Wave 1 之间做 foundation sufficiency 判断，避免地基不足时硬进深挖
-- 每轮都必须允许 early saturation，但不能把它当作降低证据标准的借口
-- 每轮都必须记录有代表性的 failed explorations，避免后续重复无效探索
+- 每轮都必须支持中途拓扑同步
+- 每轮的 reference 文档都必须做到硬核内容自给自足
+- 每轮都必须在 Wave 0 到 Wave 1 之间做 foundation sufficiency 判断
+- 每轮都必须允许 early saturation
+- 每轮都必须记录有代表性的 failed explorations
 
 如果这些约束还在，这个框架就还是同一个框架。具体主题、目录名、研究线数量、配额数字，都只是实例化参数。
