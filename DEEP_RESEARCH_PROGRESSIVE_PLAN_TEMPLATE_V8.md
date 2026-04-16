@@ -440,25 +440,9 @@ Early saturation 只能降低“继续凑数”的优先级，不能绕过 `must
 
 ## 探索 / 利用决策框架
 
-本轮执行中如果发现新方向，先判断它是应该继续探索、升格为新 topic，还是应该收束、挂起或归档。
+完整规则见前文 `## Exploration-Exploitation Decision Framework`。本位置只保留本轮执行提醒：
 
-探索信号：
-
-- 连续多份 reference 指向同一个现有 topic 难以容纳的新概念。
-- 多个来源指向同一个新的机制、风险、评价维度或生命周期阶段。
-- 配额接近达标，但 `must_answer` 仍有实质性空洞。
-- 新方向会影响多个 topic 的结论、推荐、baseline 或最终产出结构。
-
-利用 / 收束信号：
-
-- 新增材料大多重复已知事实。
-- 旧问题逐步被回答，新问题产生速度明显下降。
-- 专门搜索限制、争议、失败模式后没有发现新的关键反例。
-- 核心机制已经能简洁解释，并且有多个高可信来源支撑。
-
-决策规则：
-
-- 如果新方向满足 Topology Formalization Gate，并且会产生独立 evidence summary / question list / artifact 需求，就 formalize 为新 topic。
+- 如果新方向满足前文的 formalization 条件，并且会产生独立 evidence summary / question list / artifact 需求，就 formalize 为新 topic。
 - 如果当前线已接近饱和，但新方向重要、暂时缺材料或访问受限，就登记为 `suspend`，不阻塞主线。
 - 如果继续下钻边际收益低，且不太可能改变核心判断，就 `archive`。
 - 如果探索信号不足以改变拓扑，就继续深挖当前线，并把疑点记录到 question list 或 status。
