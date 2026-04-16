@@ -23,9 +23,9 @@
 - 能把进度、判断、缺口、恢复入口写进本地文件，而不是留在聊天上下文里
 - 只有真正满足中断条件时，才主动打断用户
 
-## Canonical Retrieval Names（检索锚点）
+## Canonical Retrieval Names（固定检索名）
 
-后续实例化、执行、handoff 或局部提醒中，优先使用下面这些英文 canonical names 进行检索和回指：
+后续实例化、执行、handoff 或局部提醒中，优先使用下面这些英文 canonical names 做检索、定位和引用：
 
 - `Autonomous Execution Protocol`
 - `Topology Formalization Gate`
@@ -79,7 +79,7 @@
 - `FINAL_DELIVERABLE`：这轮调研最终服务于什么产出
 - `AUDIENCE`：谁会读最终产出
 - `TOPIC_COUNT`：这轮最终拆成几条研究线
-- `TOPIC_REGISTRY`：每条研究线的编号、slug、标题、seed 来源、初步假设、必须回答的问题
+- `TOPIC_REGISTRY`：研究线注册表（topic registry）；每条研究线的编号、slug、标题、seed 来源、初步假设、必须回答的问题
 - `WAVE0_SHARED_DOC_FLOOR`：Wave 0 共享资料最低配额
 - `WAVE1_DOC_FLOOR_PER_TOPIC`：每条研究线的最低文档配额
 - `PRIMARY_SOURCE_FLOOR`：每条研究线一手来源最低配额
@@ -109,7 +109,7 @@
 
 - 所有 `<PLACEHOLDER>` 都已被替换，或被明确标注为“暂按假设执行”。
 - `PLAN_PATH`、`STATUS_PATH`、`REFERENCE_DIR`、`ARTIFACT_DIR` 都可定位。
-- topic registry 已写入 plan，而不是只存在于临时分析中。
+- 研究线注册表（topic registry）已写入 plan，而不是只存在于临时分析中。
 - status 文件已经存在，并包含当前恢复入口。
 
 默认建议值：
@@ -137,12 +137,12 @@
 
 在把模板变成某一轮具体 plan 时，先做 4 件事：
 
-1. 从 `SEED_DIR` 中抽出 topic registry，而不是直接拿目录名代替研究结构。
+1. 从 `SEED_DIR` 中抽出研究线注册表（topic registry），而不是直接拿目录名代替研究结构。
 2. 为每条研究线分配稳定编号和 slug，确保后续 `reference` 与 `artifacts` 命名可以长期延续。
 3. 明确这轮是“扩事实”“补机制”“补趋势”“补限制”中的哪一种主任务，避免每轮都写成泛泛而谈。
 4. 明确这轮的输入即输出：本轮结束后，`SEED_DIR` 不是保持原样，而是要作为 living docs 被更新。
 
-建议把 topic registry 先整理成下面这种形式：
+建议把研究线注册表先整理成下面这种形式：
 
 ```md
 - 01 / <topic-slug-1> / <topic-title-1>
@@ -158,7 +158,7 @@
   - must_answer:
 ```
 
-只有 topic registry 稳定后，再开始写具体 progressive plan。
+只有研究线注册表稳定后，再开始写具体 progressive plan。
 
 ## Autonomous Execution Protocol（自主执行协议，MUST READ）
 
@@ -177,7 +177,7 @@
 **ONLY interrupt when** 下面四种情况之一成立：
 
 1. **主线阻塞且无法绕开**：整条主线被阻塞，且无法通过 `suspend`、`archive`、`redirect` 绕开。单个分支卡住不算主线阻塞。
-2. **研究方向需要根本性调整**：核心假设错误、最终产出定义需要变更、或 topic registry 需要重大重构。补证据、扩对象、换搜索策略不算根本性调整。
+2. **研究方向需要根本性调整**：核心假设错误、最终产出定义需要变更、或研究线注册表需要重大重构。补证据、扩对象、换搜索策略不算根本性调整。
 3. **涉及高风险、不可逆或难回滚操作**：下一步会带来高风险真实动作、难以回滚的写入、外部发布、付费、删除或权限风险。
 4. **用户明确要求实时协同**：用户在本轮任务中明确要求同步讨论、逐步确认或实时汇报。
 
@@ -259,12 +259,12 @@
 
 验收标准：
 
-- 所有 topic 的核心术语，都能在 Wave 0 文档或 topic registry 中找到工作定义。
+- 所有 topic 的核心术语，都能在 Wave 0 文档或研究线注册表中找到工作定义。
 - 所有 topic 的对象分类，都能映射到共享地基里的共同层或明确说明其差异。
 - 每条研究线都有明确的 Wave 1 起点：优先来源、关键对象、关键问题或已知缺口。
 - `<REFERENCE_DIR>/_INDEX.md` 已能作为共享 ground truth 的 `30-Second Local Evidence Retrieval` 入口。
 
-如果任何一条不满足，先补 Wave 0 或 topic registry，再进入 Wave 1；不要把共享地基债务推迟到 Wave 1 中途处理。
+如果任何一条不满足，先补 Wave 0 或研究线注册表，再进入 Wave 1；不要把共享地基债务推迟到 Wave 1 中途处理。
 
 ## Early Saturation Protocol（提前饱和协议）
 
@@ -296,7 +296,7 @@ Early saturation 只能降低“继续凑数”的优先级，不能绕过 `must
 校准维度：
 
 - 系统性：关键对象、证据类型、失败模式和最终产出需求是否都被覆盖。
-- 结构性：topic registry、Wave、reference、artifact、status 之间是否有清晰依赖关系。
+- 结构性：研究线注册表（topic registry）、Wave、reference、artifact、status 之间是否有清晰依赖关系。
 - 游戏性：执行者是否知道下一步怎样得分、何时升级、何时停止、何时挂起分支。
 - 简洁性：是否存在重复规则、过长说明、低价值约束或会让执行者跳读的噪音。
 
@@ -314,7 +314,7 @@ Early saturation 只能降低“继续凑数”的优先级，不能绕过 `must
 - `PLAN_PATH`：定义目标、拓扑、Wave、验收门和中断规则。
 - `STATUS_PATH`：记录当前关卡、缺口、下一步、挂起分支和恢复入口。
 - `SEED_DIR`：承接 living docs，是本轮输入，也是本轮回填后的输出。
-- `REFERENCE_DIR`：承接可回指的 ground truth，不承接临时想法。
+- `REFERENCE_DIR`：承接可定位、可追溯的 ground truth，不承接临时想法。
 - `ARTIFACT_DIR`：承接证据摘要、问题清单、横向综合和过程性推理。
 - `README / _INDEX`：承接 30 秒导航，不承接长篇论证。
 
@@ -326,6 +326,8 @@ Early saturation 只能降低“继续凑数”的优先级，不能绕过 `must
 
 `Wave Gate Scoreboard` 不是 `Wave 0 / Wave 1 / Wave 2 / Readiness Check` 之外的新流程，而是这些 Wave gate 的通过状态层。
 
+它只回答“当前推进到哪一关、下一步怎样得分”，不替代“单条研究线是否停搜”或“整轮是否可 closeout”的判定；后两者分别由后文 `## 搜够了没有：停止条件` 与 `### Readiness Check：最终验收闸门` 负责。
+
 映射关系：`Setup → setup_ready → Wave 0 → wave0_complete → Wave 1 → wave1_complete → Wave 2 → wave2_complete → Readiness Check → readiness_passed`
 
 默认关卡：
@@ -333,7 +335,7 @@ Early saturation 只能降低“继续凑数”的优先级，不能绕过 `must
 - `setup_ready`：plan / status / README / reference / artifact 入口已初始化。
 - `wave0_complete`：Wave 0 达标，并通过 `Foundation Sufficiency Check`。
 - `wave1_complete`：每条研究线都有 evidence summary、question list 和最低证据包。
-- `wave2_complete`：横向综合完成，关键交叉判断可回指。
+- `wave2_complete`：横向综合完成，关键交叉判断可追溯到具体证据。
 - `readiness_passed`：Readiness Check 通过，resume checkpoint 可让新 agent 直接接手。
 
 默认得分单位：
@@ -347,7 +349,7 @@ Early saturation 只能降低“继续凑数”的优先级，不能绕过 `must
 升级规则：
 
 - 只有资产落盘才计分；聊天上下文、浏览记录和口头判断不计分。
-- 只有当前关卡的 hard gate 通过，才允许升级到下一关。
+- 只有当前关卡的通过条件满足，才允许升级到下一关。
 - 如果连续两个得分动作没有降低关键缺口，必须 `redirect` 或登记 `suspend / archive`。
 
 ---
@@ -362,6 +364,7 @@ Early saturation 只能降低“继续凑数”的优先级，不能绕过 `must
 > 执行状态（动态更新）：见 `<STATUS_PATH>`
 
 - `template_version`：`<TEMPLATE_VERSION>`
+- `round_label`：`<ROUND_LABEL>`
 
 > 这份 plan 按前文定义，既是研究计划，也是执行与交接入口；进度承接以 `<STATUS_PATH>` 和本地落盘资产为准。
 
@@ -390,7 +393,7 @@ Early saturation 只能降低“继续凑数”的优先级，不能绕过 `must
 
 ## Autonomous Execution Protocol（本轮实例化提醒）
 
-完整规则见前文 `## Autonomous Execution Protocol`。
+完整规则见模板中的 `## Autonomous Execution Protocol`。
 
 - 默认静默自主推进，进度写入 `<STATUS_PATH>`。
 - 只有满足前文中断条件时才允许打断用户；关键判断、恢复入口与挂起理由都必须落到本地文件。
@@ -418,7 +421,7 @@ Early saturation 只能降低“继续凑数”的优先级，不能绕过 `must
 | `<PLAN_PATH>` | 目标、拓扑、Wave、验收门、中断规则 |
 | `<STATUS_PATH>` | 当前关卡、缺口、下一步、挂起分支、恢复入口 |
 | `<SEED_DIR>` | living docs；本轮输入，也是回填后的输出 |
-| `<REFERENCE_DIR>` | 可回指的 ground truth |
+| `<REFERENCE_DIR>` | 可定位、可追溯的 ground truth |
 | `<ARTIFACT_DIR>` | evidence summary、question list、cross-topic synthesis |
 | `README / _INDEX` | 30 秒导航入口 |
 
@@ -430,6 +433,14 @@ Early saturation 只能降低“继续凑数”的优先级，不能绕过 `must
 | next_gate |  |
 | next_scoring_action | `+reference / +backfill / +artifact / +index / +decision` |
 | score_since_last_gap_reduction |  |
+
+## Control Hierarchy（本轮执行提醒）
+
+- `Wave Gate Scoreboard` 只跟踪推进关卡与下一得分动作。
+- `搜够了没有：停止条件` 只判断单条研究线何时可以停止继续补搜。
+- `Readiness Check` 是本轮是否可以 closeout 的主闸门。
+- `Hard Gates` 只在高风险 / 高价值最终产出时作为可选加严层。
+- `成功标准` 只描述通过 `Readiness Check` 后应呈现的完成态，不新增独立 gate。
 
 ## 目标
 
@@ -464,7 +475,7 @@ Early saturation 只能降低“继续凑数”的优先级，不能绕过 `must
 
 ### 1. 证据可追溯性
 
-- 每个关键判断都能回指到 `<REFERENCE_DIR>` 中的具体文档
+- 每个关键判断都能追溯到 `<REFERENCE_DIR>` 中的具体文档
 - 没有悬空结论
 - 没有孤立来源
 
@@ -503,7 +514,7 @@ Early saturation 只能降低“继续凑数”的优先级，不能绕过 `must
 
 ## 输入对象建模
 
-在正式执行前，必须先把输入目录建模成“研究线注册表”。
+在正式执行前，必须先把输入目录建模成“研究线注册表（topic registry）”。
 
 每条研究线至少要写清楚：
 
@@ -525,7 +536,11 @@ Early saturation 只能降低“继续凑数”的优先级，不能绕过 `must
 
 只有研究线注册表稳定后，才允许进入 Wave 0。
 
-## 当前拓扑
+## 研究线注册表（topic registry）
+
+[这里写入稳定后的研究线注册表。不要只写“见 seed 目录”；必须把编号、slug、seed_files、current_hypothesis、why_it_matters、must_answer 明确写在 plan 里。]
+
+## 当前拓扑（Current Topology）
 
 至少写清楚：
 
@@ -538,7 +553,7 @@ Early saturation 只能降低“继续凑数”的优先级，不能绕过 `must
 推荐结构：
 
 ```md
-## Current Topology
+## 当前拓扑（Current Topology）
 
 - topic_count:
 - carry_forward_topics:
@@ -549,14 +564,14 @@ Early saturation 只能降低“继续凑数”的优先级，不能绕过 `must
 
 ## Topology Formalization Gate（本轮执行提醒）
 
-完整规则见前文 `## Topology Formalization Gate`。
+完整规则见模板中的 `## Topology Formalization Gate`。
 
 - 如果新方向已经形成独立问题簇、独立对象清单或独立工件需求，就应 formalize 为新 topic。
 - formalize 后，在进入下一波次前同步 `PLAN_PATH`、`STATUS_PATH`、`TOPIC_REGISTRY`、topic 索引入口与新 topic seed 文件。
 
 ## Exploration-Exploitation Decision Framework（本轮执行提醒）
 
-完整规则见前文 `## Exploration-Exploitation Decision Framework`。
+完整规则见模板中的 `## Exploration-Exploitation Decision Framework`。
 
 - 新方向改变拓扑时，formalize 为新 topic，并同步相关入口。
 - 当前线重要但暂时不值得继续死磕时，登记为 `suspend`；边际收益低且不太可能改变核心判断时，`archive` 或 `redirect`。
@@ -576,7 +591,7 @@ Early saturation 只能降低“继续凑数”的优先级，不能绕过 `must
 - 每个高价值来源单独存成一个 `md`
 - 不追求全文镜像，但要求硬核内容自给自足：关键事实 + 核心内容摘录两节加起来，应足以让读者不回原文就能用这份 reference 支撑推理
 - 所有辛苦收集到、后续推理会反复用到的重要内容，都必须真正落进 `<REFERENCE_DIR>`，不能只停留在浏览记录、聊天上下文或零散笔记里
-- `REFERENCE_DIR` 的完成单位不是”看过这个链接”，而是”这个链接已经被整理成可复用、可回指、可自给自足的独立 `md` 文档”
+- `REFERENCE_DIR` 的完成单位不是”看过这个链接”，而是”这个链接已经被整理成可复用、可定位、可引用、可自给自足的独立 `md` 文档”
 - `REFERENCE_DIR/README.md` 必须说明这个目录为什么存在、什么内容应该放这里、如何快速定位关键 reference
 
 ### 2. 输入目录的持续生长
@@ -627,7 +642,7 @@ Early saturation 只能降低“继续凑数”的优先级，不能绕过 `must
 ## 历史摘要（保留，不修改）
 
 ## 本轮新增证据
-<!-- 每条新增事实都带 <REFERENCE_DIR>/*.md 回指 -->
+<!-- 每条新增事实都带 <REFERENCE_DIR>/*.md 本地引用 -->
 
 ## 本轮新增机制理解
 <!-- 从描述上升到为什么这样设计 -->
@@ -636,14 +651,14 @@ Early saturation 只能降低“继续凑数”的优先级，不能绕过 `must
 <!-- 有时间证据支撑的趋势 + 实践难点与失败模式 -->
 
 ## 当前判断（本轮综合后）
-<!-- 综合历史内容与本轮新增后的判断，每条判断带本地回指 -->
+<!-- 综合历史内容与本轮新增后的判断，每条判断带本地引用 -->
 ```
 
 规则：
 
 - 历史摘要不删改，只保留
 - 所有本轮新增内容进入固定章节
-- 每条新增关键判断都必须带本地回指
+- 每条新增关键判断都必须带本地引用
 - 如果某个判断被本轮推翻或修正，在“当前判断”中注明，不删除旧内容
 
 ## 总体策略
@@ -673,16 +688,16 @@ Wave 0 完成的最低标准：
 
 ### Foundation Sufficiency Check（Wave 0 → Wave 1，本轮短检查）
 
-完整标准见前文 `## Foundation Sufficiency Check`。进入 Wave 1 前至少确认：
+完整标准见模板中的 `## Foundation Sufficiency Check`。进入 Wave 1 前至少确认：
 
 - 核心术语已有工作定义，对象分类已有共享地基。
 - 每条研究线已有明确深挖起点，且 `<REFERENCE_DIR>/_INDEX.md` 已经可用。
 
-如果任一项不满足，先补 Wave 0 或 topic registry，再继续推进。
+如果任一项不满足，先补 Wave 0 或研究线注册表，再继续推进。
 
 ### Wave 0 执行模式提醒
 
-- Wave 0 完成后，更新 `.status.md` 中的 Wave 0 状态字段，然后直接进入 Wave 1。
+- Wave 0 完成后，更新 `<STATUS_PATH>` 中的 Wave 0 状态字段，然后直接进入 Wave 1。
 - 如果 Wave 0 中发现拓扑需要调整，按前文 `Topology Formalization Gate` 同步后继续推进。
 
 ### Wave 1：按研究线分别深挖
@@ -717,7 +732,7 @@ Wave 0 完成的最低标准：
 
 ### Wave 1 执行模式提醒
 
-- 每条研究线完成后，更新 `.status.md` 中对应 topic 的状态字段。
+- 每条研究线完成后，更新 `<STATUS_PATH>` 中对应 topic 的状态字段。
 - 所有研究线完成后，直接进入 Wave 2。
 - 如果某条研究线遇到需要 suspend / archive / redirect 的分支，登记后继续推进其他主线，不停下来汇报。
 
@@ -735,13 +750,13 @@ Wave 0 完成的最低标准：
 
 Wave 2 的最低标准：
 
-- 每个横向判断都能回指到具体 `<REFERENCE_DIR>/*.md`
+- 每个横向判断都能追溯到具体 `<REFERENCE_DIR>/*.md`
 - 每条研究线至少有 2 个与其他研究线发生交叉验证的结论
 - 明确区分“硬事实”“分析判断”“趋势推测”
 
 ### Wave 2 执行模式提醒
 
-- Wave 2 完成后，更新 `.status.md` 中的 Wave 2 状态字段，然后直接进入 Readiness Check。
+- Wave 2 完成后，更新 `<STATUS_PATH>` 中的 Wave 2 状态字段，然后直接进入 Readiness Check。
 - 如果 Wave 2 发现需要回补 Wave 1 证据，补完后继续推进 readiness。
 
 ### Readiness Check：最终验收闸门
@@ -769,17 +784,17 @@ Wave 2 的最低标准：
 - 每条研究线都能用简洁语言解释核心机制、关键依赖和常见误解。
 - 每条研究线都能说明近期变化、演进方向和趋势判断的证据来源。
 - 每条研究线都能列出主要现实约束、失败模式和争议点。
-- 机制、趋势、难点三类判断都能回指到本地 reference，而不是只停留在综合文本里。
+- 机制、趋势、难点三类判断都能追溯到本地 reference，而不是只停留在综合文本里。
 
 ### 横向综合检查
 
 - 已形成 cross-topic synthesis、comparison table、recommendation 或等价综合 artifact。
 - 能指出研究线之间的关键共性、差异、依赖、冲突或口径分歧。
-- 每个横向判断都能回指到至少两条研究线的本地证据，或明确说明为什么只适用于局部。
+- 每个横向判断都能追溯到至少两条研究线的本地证据，或明确说明为什么只适用于局部。
 
 ### 拓扑稳定性检查
 
-- topic registry 与实际研究内容同步。
+- 研究线注册表（topic registry）与实际研究内容同步。
 - 没有明显应独立但未独立的方向。
 - 新增 topic、挂起分支、归档分支都已经同步到 plan / status / topic 索引或等价入口。
 
@@ -872,7 +887,7 @@ Wave 2 的最低标准：
 额外硬约束：
 
 - 每个进入最终推理链条的重要来源，都必须在 `<REFERENCE_DIR>` 中有自己独立的一份 `md`
-- 不允许把多个关键来源随手混写成一页，导致后续无法精确回指
+- 不允许把多个关键来源随手混写成一页，导致后续无法精确定位和引用
 - 不允许只在 `_artifacts` 或 seed 文件里留下摘要，而不把原始证据整理进 `<REFERENCE_DIR>`
 - 如果某条内容“辛苦搜到了、后面还会反复用”，默认就应该落库到 `<REFERENCE_DIR>`
 
@@ -986,7 +1001,7 @@ Wave 2 的最低标准：
 
 ## 研究线的具体目标
 
-[这里按 topic registry 展开。每条研究线都要写到同样粒度。]
+[这里按研究线注册表（topic registry）展开。每条研究线都要写到同样粒度。]
 
 ### 研究线 <NN>：<topic-title>
 
@@ -1070,18 +1085,22 @@ Wave 2 的最低标准：
 
 ## 成功标准
 
+这一节描述的是通过 `Readiness Check` 后应呈现的完成态摘要，不新增独立 gate。
+
 达到下面状态，才算真正满足目标：
 
 - `<REFERENCE_DIR>` 中有一批高可信、可追溯的 ground truth 文档
 - 每条研究线至少形成一组可复用证据包，而不是临时搜索结果
 - 对每条研究线都能解释机制、趋势和难点
-- 每个重要判断都能回指到本地 reference 文档
+- 每个重要判断都能追溯到本地 reference 文档
 - 对趋势、难度、争议都有专门证据，而不是顺手一提
 - 可以回答“什么值得长期追踪，什么只是噪音”
 - 可以明确说清楚“哪些问题不是没做，而是被主动 `suspend`，以及为什么”
 - 后续新的 agent 接手时，只看 `<SEED_DIR> + <REFERENCE_DIR> + <ARTIFACT_DIR> + <STATUS_PATH>` 就能继续往下研究
 
 ## Hard Gates（可选但强烈建议）
+
+这一节不是与 `Readiness Check` 平行的新主闸门，而是只在高风险 / 高价值最终产出场景下附加到 `Readiness Check` 上的加严检查。
 
 如果这轮研究将直接支撑正式对外报告、方法论评估或高价值决策，建议再加一层硬门槛：
 
@@ -1125,7 +1144,7 @@ Wave 2 的最低标准：
 - 状态：`not_started / in_progress / blocked / completed`
 - 当前所处波次：`Wave 0 / Wave 1 / Wave 2 / Readiness Check`
 - 当前工作模式：`opening / widening / deepening / synthesizing / closing / interruptible_handoff_ready`
-- 当前拓扑：`<N>-topic`
+- 当前拓扑摘要：`topic_count=<N>; new_topics=...; pending_topic_candidates=...`
 - 当前最大阻塞：
 - 收口距离：`far / mid / near / ready`
 - 核心对象稳定度：`unstable / forming / stable`
@@ -1136,10 +1155,10 @@ Wave 2 的最低标准：
 - 当前已挂起的高难分支：
 - 如果现在停止，最大缺口：
 - 推荐恢复入口：
-- quality_loop：`current_score / smallest_next_move / do_not_change_yet`
+- quality_calibration_loop：`current_score / smallest_next_move / do_not_change_yet`
 - wave_gate_scoreboard：`current_gate / next_gate / next_scoring_action / score_since_last_gap_reduction`
 
-## Directory / Integration State
+## 目录与集成状态（Directory / Integration State）
 
 - seed_readme_ready:
 - reference_readme_ready:
@@ -1149,11 +1168,13 @@ Wave 2 的最低标准：
 - artifact_status:
 - status_freshness:
 
-## Topology Formalization
+## 当前拓扑（Current Topology）与 Formalization State
 
-- current_topic_count:
-- recently_changed:
-- pending_candidates:
+- topic_count:
+- carry_forward_topics:
+- new_topics:
+- recent_change:
+- pending_topic_candidates:
 - registry_sync_done:
 
 ## Wave 0：共享 Ground Truth 地基
