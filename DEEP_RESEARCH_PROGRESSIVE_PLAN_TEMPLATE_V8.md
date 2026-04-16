@@ -32,6 +32,7 @@
 - `Exploration-Exploitation Decision Framework`
 - `Foundation Sufficiency Check`
 - `Early Saturation Protocol`
+- `Quality Calibration Loop`
 - `Suspended Branch Protocol`
 - `30-Second Local Evidence Retrieval`
 - `human-on-the-loop`
@@ -287,6 +288,24 @@ status 记录建议：
 
 Early saturation 只能降低“继续凑数”的优先级，不能绕过 `must_answer`、失败模式覆盖、Readiness Check 或关键结论的证据要求。
 
+## Quality Calibration Loop（四维质量校准）
+
+每次实例化或迭代本模板时，先做一轮轻量质量校准，不要一上来大改结构。
+
+校准维度：
+
+- 系统性：关键对象、证据类型、失败模式和最终产出需求是否都被覆盖。
+- 结构性：topic registry、Wave、reference、artifact、status 之间是否有清晰依赖关系。
+- 游戏性：执行者是否知道下一步怎样得分、何时升级、何时停止、何时挂起分支。
+- 简洁性：是否存在重复规则、过长说明、低价值约束或会让执行者跳读的噪音。
+
+迭代规则：
+
+- 每轮只选 1 到 2 个最影响执行质量的问题修。
+- 优先修会改变执行行为的规则，其次修表达，最后才修版式。
+- 每次调整都要写清楚 `current_score`、`smallest_next_move` 和 `do_not_change_yet`。
+- 如果一次改动需要重排多个大章节，先暂停，把它登记为下一轮候选，而不是当场大改。
+
 ---
 
 ## 可直接复制的 Plan Skeleton
@@ -304,7 +323,7 @@ Early saturation 只能降低“继续凑数”的优先级，不能绕过 `must
 >
 > 默认目标是让任务静默自主推进，而不是频繁停下来向用户汇报；进度承接以 `<STATUS_PATH>`、README、reference、artifacts 与 resume checkpoint 为准。
 >
-> Canonical retrieval names: `Autonomous Execution Protocol`, `Topology Formalization Gate`, `Exploration-Exploitation Decision Framework`, `Foundation Sufficiency Check`, `Early Saturation Protocol`, `Suspended Branch Protocol`, `30-Second Local Evidence Retrieval`, `human-on-the-loop`.
+> Canonical retrieval names: `Autonomous Execution Protocol`, `Topology Formalization Gate`, `Exploration-Exploitation Decision Framework`, `Foundation Sufficiency Check`, `Early Saturation Protocol`, `Quality Calibration Loop`, `Suspended Branch Protocol`, `30-Second Local Evidence Retrieval`, `human-on-the-loop`.
 
 ## 调研的根本目的
 
@@ -350,6 +369,17 @@ Early saturation 只能降低“继续凑数”的优先级，不能绕过 `must
 ### 4. <Gap 4，可选>
 
 ### 5. <Gap 5，可选>
+
+## 本轮质量校准
+
+用 1 到 5 分快速自评，不追求完美，只用来决定本轮最小修正动作。
+
+- 系统性 current_score:
+- 结构性 current_score:
+- 游戏性 current_score:
+- 简洁性 current_score:
+- smallest_next_move:
+- do_not_change_yet:
 
 ## 目标
 
@@ -1062,6 +1092,7 @@ Wave 2 的最低标准：
 - 当前已挂起的高难分支：
 - 如果现在停止，最大缺口：
 - 推荐恢复入口：
+- quality_loop：`current_score / smallest_next_move / do_not_change_yet`
 
 ## Directory / Integration State
 
