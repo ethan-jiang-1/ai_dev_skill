@@ -204,8 +204,7 @@
 
 ### 5. 与 human-on-the-loop 原则的关系
 
-- 长程任务默认按 `human-on-the-loop` 处理，而不是依赖 `human-in-the-loop`。
-- 高难分支先登记、主线继续推进；用户主动介入时配合，介入结束后恢复自主推进。
+- 长程任务默认按 `human-on-the-loop` 处理；高难分支优先登记后继续推进。分支处置细则见后文 `## Suspended Branch Protocol`。
 
 ## Topology Formalization Gate（拓扑正式化闸门）
 
@@ -364,11 +363,7 @@ Early saturation 只能降低“继续凑数”的优先级，不能绕过 `must
 
 - `template_version`：`<TEMPLATE_VERSION>`
 
-> 这份 plan 的定位不是普通提纲，而是：`template + execution protocol + state machine + handoff contract`
->
-> 默认目标是让任务静默自主推进，而不是频繁停下来向用户汇报；进度承接以 `<STATUS_PATH>`、README、reference、artifacts 与 resume checkpoint 为准。
->
-> Canonical retrieval names: `Autonomous Execution Protocol`, `Topology Formalization Gate`, `Exploration-Exploitation Decision Framework`, `Foundation Sufficiency Check`, `Early Saturation Protocol`, `Quality Calibration Loop`, `Structural Spine`, `Wave Gate Scoreboard`, `Suspended Branch Protocol`, `30-Second Local Evidence Retrieval`, `human-on-the-loop`.
+> 这份 plan 按前文定义，既是研究计划，也是执行与交接入口；进度承接以 `<STATUS_PATH>` 和本地落盘资产为准。
 
 ## 调研的根本目的
 
@@ -398,8 +393,7 @@ Early saturation 只能降低“继续凑数”的优先级，不能绕过 `must
 完整规则见前文 `## Autonomous Execution Protocol`。
 
 - 默认静默自主推进，进度写入 `<STATUS_PATH>`。
-- 只有满足前文定义的中断条件时，才允许打断用户。
-- 关键判断、假设、恢复入口、挂起理由都必须写入 plan / status / README / artifact。
+- 只有满足前文中断条件时才允许打断用户；关键判断、恢复入口与挂起理由都必须落到本地文件。
 
 ## 先反省：当前版本为什么还不够
 
@@ -573,15 +567,14 @@ Early saturation 只能降低“继续凑数”的优先级，不能绕过 `must
 完整规则见前文 `## Topology Formalization Gate`。
 
 - 如果新方向已经形成独立问题簇、独立对象清单或独立工件需求，就应 formalize 为新 topic。
-- 在进入下一波次前，必须同步 `PLAN_PATH`、`STATUS_PATH`、`TOPIC_REGISTRY`、topic 索引入口与新 topic seed 文件。
+- formalize 后，在进入下一波次前同步 `PLAN_PATH`、`STATUS_PATH`、`TOPIC_REGISTRY`、topic 索引入口与新 topic seed 文件。
 
 ## Exploration-Exploitation Decision Framework（本轮执行提醒）
 
 完整规则见前文 `## Exploration-Exploitation Decision Framework`。
 
-- 新方向改变拓扑时，formalize 为新 topic。
-- 当前线重要但暂时不值得继续死磕时，登记为 `suspend`，不阻塞主线。
-- 继续下钻边际收益低时，`archive` 或继续深挖当前线，并把疑点记录到 question list 或 status。
+- 新方向改变拓扑时，formalize 为新 topic，并同步相关入口。
+- 当前线重要但暂时不值得继续死磕时，登记为 `suspend`；边际收益低且不太可能改变核心判断时，`archive` 或 `redirect`。
 
 ## 输出
 
@@ -695,12 +688,10 @@ Wave 0 完成的最低标准：
 
 ### Foundation Sufficiency Check（Wave 0 → Wave 1，本轮短检查）
 
-完整标准见前文 `## Foundation Sufficiency Check`。进入 Wave 1 前至少做下面这组短检查：
+完整标准见前文 `## Foundation Sufficiency Check`。进入 Wave 1 前至少确认：
 
-- 核心术语是否已有工作定义。
-- 对象分类是否已有共享地基。
-- 每条研究线是否已有明确深挖起点。
-- `<REFERENCE_DIR>/_INDEX.md` 是否已经可用。
+- 核心术语已有工作定义，对象分类已有共享地基。
+- 每条研究线已有明确深挖起点，且 `<REFERENCE_DIR>/_INDEX.md` 已经可用。
 
 如果任一项不满足，先补 Wave 0 或 topic registry，再继续推进。
 
@@ -960,9 +951,7 @@ Wave 2 的最低标准：
 - `suspend`：问题仍然重要，只是当前不值得继续死磕；默认期待未来可能被新线索、新资料或新访问入口重启。
 - `archive`：问题当前已经不值得继续投入；即使未来重开，优先级通常也低于其他未解问题。
 
-### Human-on-the-loop Principle（分支处理提醒）
-
-- 长程任务默认按 `human-on-the-loop` 处理。高难分支优先 `suspend and continue`；需要人工同步介入时，按前文 `Autonomous Execution Protocol` 的中断条件处理。
+- `human-on-the-loop` 提醒：高难分支优先 `suspend and continue`；需要人工同步介入时，按前文 `Autonomous Execution Protocol` 的中断条件处理。
 
 ### Suspended Branch 最低记录格式
 
@@ -1118,16 +1107,15 @@ Wave 2 的最低标准：
 
 ## Progressive Plan 元规则
 
-每一轮 progressive plan，不论是第几轮，都必须在开头写清楚以下 6 件事：
+每一轮 progressive plan，不论是第几轮，至少都要把下面这些入口写实，而不是只留抽象口号：
 
-1. 调研目的：这一轮调研最终服务于什么产出？谁是读者？读者期待什么质量？
-2. 手段策略：用什么结构推进？分几个阶段？各阶段的最低标准是什么？
-3. 验收标准：如何客观判断调研结果质量合格？验收不依赖主观感觉，必须可检查。
-4. 最终结果质量要求：调研完后能直接支撑的产出是什么？这个产出对专业读者意味着什么？
-5. 当前拓扑状态：topic registry 当前是否稳定？是否存在待升级为正式研究对象的内容？
-6. 进度可见性：`STATUS_PATH` 在哪，谁来维护，接手者应先读哪里？
+- 调研目的与最终服务对象
+- 手段策略与 Wave 推进方式
+- 验收标准与最终结果质量要求
+- 当前拓扑状态与待 formalize 内容
+- `STATUS_PATH` 及默认恢复入口
 
-不满足这 6 条的 plan，不算一份合格的 progressive plan。
+如果这些入口没有写实，这份 plan 就不算合格。
 
 补充要求：
 
@@ -1275,12 +1263,6 @@ Wave 2 的最低标准：
 - 每轮都必须有明确停止条件
 - 每轮都必须保留高难问题的 `suspend` 语义
 - 每轮都必须做到 `30-Second Local Evidence Retrieval` 成立
-- 每轮都必须默认静默自主推进
-- 每轮都必须维护状态文件，而不是把状态只留在对话里
-- 每轮都必须支持中途拓扑同步
 - 每轮的 reference 文档都必须做到硬核内容自给自足
-- 每轮都必须在 Wave 0 到 Wave 1 之间做 foundation sufficiency 判断
-- 每轮都必须允许 early saturation
-- 每轮都必须记录有代表性的 failed explorations
 
 如果这些约束还在，这个框架就还是同一个框架。具体主题、目录名、研究线数量、配额数字，都只是实例化参数。
