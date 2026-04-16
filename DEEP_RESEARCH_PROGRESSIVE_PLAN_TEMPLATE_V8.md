@@ -362,6 +362,7 @@ Early saturation 只能降低“继续凑数”的优先级，不能绕过 `must
 # <PLAN_NAME>
 
 > 执行状态（动态更新）：见 `<STATUS_PATH>`
+> 动态进度、当前阻塞、恢复入口，以及执行中的 gate 变化，一律写入 `<STATUS_PATH>`；本 plan 不承担实时状态面。
 
 - `template_version`：`<TEMPLATE_VERSION>`
 - `round_label`：`<ROUND_LABEL>`
@@ -427,6 +428,8 @@ Early saturation 只能降低“继续凑数”的优先级，不能绕过 `must
 
 ### Wave Gate Scoreboard
 
+这里记录的是本轮 plan 采用的 gate 模型与默认推进基线；执行中的当前 gate、下一得分动作与实际推进变化，一律记录到 `<STATUS_PATH>` 中的 `wave_gate_scoreboard`。
+
 | field | value |
 | --- | --- |
 | current_gate | `setup_ready / wave0_complete / wave1_complete / wave2_complete / readiness_passed` |
@@ -435,6 +438,8 @@ Early saturation 只能降低“继续凑数”的优先级，不能绕过 `must
 | score_since_last_gap_reduction |  |
 
 ## Control Hierarchy（本轮执行提醒）
+
+本节只定义 plan 侧的静态控制层级；执行中的当前状态、当前 gate 与恢复入口，以 `<STATUS_PATH>` 为准。
 
 - `Wave Gate Scoreboard` 只跟踪推进关卡与下一得分动作。
 - `搜够了没有：停止条件` 只判断单条研究线何时可以停止继续补搜。
@@ -542,13 +547,15 @@ Early saturation 只能降低“继续凑数”的优先级，不能绕过 `must
 
 ## 当前拓扑（Current Topology）
 
+这里写的是本轮实例化时正式采用的拓扑基线，不是执行中的实时工作日志。
+
 至少写清楚：
 
-- 当前 topic 总数
+- 本轮正式采用的 topic 总数
 - 哪些是稳定延续的研究线
-- 哪些是本轮新增 topic
-- 最近一次结构变化是什么
-- 当前是否还有待升格为独立 topic 的内容
+- 哪些在本轮实例化时已被正式纳入的新 topic
+- 本轮开始时最近一次已确认的结构变化是什么
+- 当前是否已有明确待 formalize 为独立 topic 的内容
 
 推荐结构：
 
@@ -561,6 +568,8 @@ Early saturation 只能降低“继续凑数”的优先级，不能绕过 `must
 - recent_change:
 - pending_topic_candidates:
 ```
+
+执行中的 topic 增减、formalization 是否已同步、以及推进中的结构变化，一律写入 `<STATUS_PATH>` 的 topology / formalization 区。
 
 ## Topology Formalization Gate（本轮执行提醒）
 
@@ -1138,8 +1147,11 @@ Wave 2 的最低标准：
 # <PLAN_NAME> 执行状态（Progress / State）
 
 > 对应计划：`<PLAN_PATH>`
+> 本文件记录执行中的当前状态、当前缺口、当前 gate 与恢复入口；不重复 plan 中的静态蓝图。
 
 ## 当前结论 / 进度语义
+
+这里写执行态摘要：当前在哪、卡在哪、下一步是什么；不要在这里重写 plan 中的结构主线、控制层级或拓扑基线。
 
 - 状态：`not_started / in_progress / blocked / completed`
 - 当前所处波次：`Wave 0 / Wave 1 / Wave 2 / Readiness Check`
@@ -1169,6 +1181,8 @@ Wave 2 的最低标准：
 - status_freshness:
 
 ## 当前拓扑（Current Topology）与 Formalization State
+
+这里写执行中的拓扑变化、formalization 进度与同步状态；不要把 plan 中的正式拓扑基线再复制一遍。
 
 - topic_count:
 - carry_forward_topics:
@@ -1243,6 +1257,7 @@ Wave 2 的最低标准：
 ## Resume Checkpoint
 
 当任务可能被打断、用户中途插入其他事情、或 closeout 前需要明确接手点时维护。
+这里只维护恢复入口，不重复总进度摘要或结构性规范说明。
 
 - last_completed_step:
 - last_verified_command:
