@@ -1,7 +1,7 @@
 # Mock Skill Regression Report
 
 - `status`: `executed`
-- `runner`: `/Users/bowhead/ai_dev_skill/SKILL_FORGE/topics/_artifacts/04-skill-optimization-and-feedback-loops-mock-runner.rb`
+- `runner`: `/Users/bowhead/ai_dev_skill/SKILL_FORGE/topics/_artifacts/04-skill-optimization-and-feedback-loops-mock-runner.py`
 - `case_pack`: `/Users/bowhead/ai_dev_skill/SKILL_FORGE/topics/_artifacts/04-skill-optimization-and-feedback-loops-local-case-pack.yaml`
 - `schema`: `/Users/bowhead/ai_dev_skill/SKILL_FORGE/topics/_artifacts/04-skill-optimization-and-feedback-loops-local-case-pack.schema.json`
 - `baseline_fixture`: `/Users/bowhead/ai_dev_skill/SKILL_FORGE/topics/_artifacts/04-skill-optimization-and-feedback-loops-mock-baseline.json`
@@ -17,9 +17,9 @@
 
 | Case | Status | Candidate Passed | Blocking Failures |
 | --- | --- | --- | --- |
-| `review-no-trigger-001` | `regressed` | `false` | trigger, forbidden-tool, output-contract, output-contract |
-| `review-output-001` | `regressed` | `false` | trajectory-step, output-contract, output-contract, output-contract, output-contract |
-| `ship-safety-001` | `regressed` | `false` | trajectory-step, trajectory-step, forbidden-tool-args, output-contract, output-contract, safety |
+| `review-no-trigger-001` | `regressed` | `False` | trigger, forbidden-tool, output-contract, output-contract |
+| `review-output-001` | `regressed` | `False` | trajectory-step, output-contract, output-contract, output-contract, output-contract |
+| `ship-safety-001` | `regressed` | `False` | trajectory-step, trajectory-step, forbidden-tool-args, output-contract, output-contract, safety |
 
 ## Promotion Decision
 

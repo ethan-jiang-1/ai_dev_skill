@@ -61,7 +61,7 @@
   - 把 case pack、adapter contract 与本地 eval pattern 收束成可实现的 `skill-regression-runner` 规格。
 - `/Users/bowhead/ai_dev_skill/SKILL_FORGE/topics/_artifacts/04-skill-optimization-and-feedback-loops-mock-adapter-and-assertion-spec.md`
   - 固定 mock adapter、deterministic assertion、compare 与 promotion blocking 的第一版语义，降低真实 agent adapter 前的不确定性。
-- `/Users/bowhead/ai_dev_skill/SKILL_FORGE/topics/_artifacts/04-skill-optimization-and-feedback-loops-mock-runner.rb`
+- `/Users/bowhead/ai_dev_skill/SKILL_FORGE/topics/_artifacts/04-skill-optimization-and-feedback-loops-mock-runner.py`
   - 已实现最小 mock runner：加载 YAML case pack、做 schema-like validation、执行 deterministic assertions、比较 baseline / candidate 并输出 Markdown promotion report。
 - `/Users/bowhead/ai_dev_skill/SKILL_FORGE/topics/_artifacts/04-skill-optimization-and-feedback-loops-mock-runner-report.md`
   - 已记录一次 mock baseline / candidate 对比，覆盖 no-trigger false positive、review output contract regression 与 unsafe ship behavior 三类 promotion blocker。

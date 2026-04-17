@@ -10,21 +10,21 @@
 
 ### current_task
 
-- action: `add the first real Codex adapter on the YAML-covered subset`
-- done_condition: `at least one no-trigger case, one output-contract case, and one safety case run through a real Codex adapter with normalized run records`
+- action: `rerun the landed Python Codex smoke adapter on the YAML-covered subset with backend connectivity`
+- done_condition: `at least one no-trigger case, one output-contract case, and one safety case run through the Python real Codex adapter with normalized records that reflect model behavior instead of sandbox network failure`
 - writes_to: `adapter implementation files, reports, and /Users/bowhead/ai_dev_skill/SKILL_FORGE/plan/skill-engineering-deep-research-progressive-plan-round-1.status.md`
-- status_sync: `update real Codex adapter execution branch and Resume Checkpoint`
+- status_sync: `update real Codex adapter execution branch, blocked-state semantics if needed, and Resume Checkpoint`
 
 ### next_task
 
-- action: `expand machine-readable case-pack parity beyond the first 9 cases if the Codex adapter stabilizes`
+- action: `expand machine-readable case-pack parity beyond the first 9 cases if the Python Codex adapter stabilizes after unrestricted rerun`
 - done_condition: `the machine-readable case pack either includes the superpowers extension cases or an explicit parity policy is written`
 - writes_to: `/Users/bowhead/ai_dev_skill/SKILL_FORGE/topics/_artifacts/04-skill-optimization-and-feedback-loops-local-case-pack.yaml; /Users/bowhead/ai_dev_skill/SKILL_FORGE/plan/skill-engineering-deep-research-progressive-plan-round-1.status.md`
 - status_sync: `update topic 04 gap and Resume Checkpoint`
 
 ### next_after_next
 
-- action: `reassess whether 04 should continue implementation expansion or pause after the first real-adapter milestone`
+- action: `reassess whether 04 should continue implementation expansion or pause after the first Python real-adapter milestone`
 - done_condition: `status explicitly records whether 04 stays on implementation mainline or returns to a suspended branch after the first adapter milestone`
 - writes_to: `/Users/bowhead/ai_dev_skill/SKILL_FORGE/plan/skill-engineering-deep-research-progressive-plan-round-1.status.md`
 - status_sync: `update topic 04 stop decision or suspended branch state`
@@ -45,7 +45,7 @@ Repeat the following candidate block as needed. Do not collapse multiple candida
 
 - candidate: `implement JSON comparison output using the documented artifact contract`
 - done_condition: `mock runner emits the JSON comparison artifact defined by 04-skill-optimization-and-feedback-loops-json-comparison-output-spec.md and Markdown summary stays aligned`
-- writes_to: `/Users/bowhead/ai_dev_skill/SKILL_FORGE/topics/_artifacts/04-skill-optimization-and-feedback-loops-mock-runner.rb; /Users/bowhead/ai_dev_skill/SKILL_FORGE/topics/_artifacts/04-skill-optimization-and-feedback-loops-mock-runner-report.md; optional JSON report artifact; status`
+- writes_to: `/Users/bowhead/ai_dev_skill/SKILL_FORGE/topics/_artifacts/04-skill-optimization-and-feedback-loops-mock-runner.py; /Users/bowhead/ai_dev_skill/SKILL_FORGE/topics/_artifacts/04-skill-optimization-and-feedback-loops-mock-runner-report.md; optional JSON report artifact; status`
 - status_sync: `update Resume Checkpoint.last_completed_step, last_verified_command, last_verified_result, and Worklog`
 - why_next: `converts the current 04 compare semantics into a machine-readable SSOT when non-MD implementation is in scope`
 - prerequisite: `non-MD implementation work is explicitly allowed`

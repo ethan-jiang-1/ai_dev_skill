@@ -44,7 +44,8 @@ Artifacts 可以综合 reference、维护问题清单、保存横向判断、记
 - `04-skill-optimization-and-feedback-loops-local-case-pack.yaml`
 - `04-skill-optimization-and-feedback-loops-local-case-pack.schema.json`
 - `04-skill-optimization-and-feedback-loops-mock-adapter-and-assertion-spec.md`
-- `04-skill-optimization-and-feedback-loops-mock-runner.rb`
+- `04-skill-optimization-and-feedback-loops-mock-runner.py`
+- `04-skill-optimization-and-feedback-loops-codex-adapter-smoke.py`
 - `04-skill-optimization-and-feedback-loops-mock-runner-report.md`
 - `04-skill-optimization-and-feedback-loops-runner-prototype-spec.md`
 
