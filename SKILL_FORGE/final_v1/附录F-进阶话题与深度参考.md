@@ -21,6 +21,8 @@
 
 ### agent-skills——结构化学习的最佳起点
 
+**GitHub 地址：** [vercel-labs/agent-skills](https://github.com/vercel-labs/agent-skills)
+
 **一句话定位：** 按软件工程生命周期分层的 skill 样板库，不是提示词合集。
 
 这个仓库把 AI agent 在真实工程中应该遵守的行为，拆成了可组合的 skill。它的核心目标不是让 agent "更会写代码"，而是让 agent 少跳步骤、少靠猜、少过度实现、少把没验证的结果当完成——更像一个有流程纪律的资深工程师。
@@ -52,6 +54,8 @@
 
 ### gstack——产品化 AI sprint 系统的天花板
 
+**怎么找到它：** gstack 不是一个公开的大众仓库，而是一个私有/半私有的产品化项目。你不太可能在 GitHub 搜索里直接找到它。最现实的途径是通过 skill 社区和聚合站（如 `awesome-copilot`）关注相关讨论，或者通过团队内部渠道获取。我们之所以能研究它，是因为做了完整的本地 snapshot 拆解。
+
 **一句话定位：** 一套把 AI 工程流程产品化的完整 sprint 系统，远超 slash command 集合。
 
 如果说 agent-skills 是"教科书"，gstack 就是"毕业论文级的工程实践"。它不是给 agent 多装几个命令，而是把整个 sprint 流程——从策略评审到构建、QA、发布、回顾——变成了一套可运行的系统。
@@ -81,6 +85,8 @@
 
 ### superpowers——workflow 强制执行的进阶形态
 
+**GitHub 地址：** [obra/superpowers](https://github.com/obra/superpowers)
+
 **一句话定位：** 通过 hooks、宿主适配和行为测试来**强制** agent 遵循工作流的 skill 插件。
 
 大多数 skill 仓库的隐含假设是："我把规则写好了，agent 应该会遵守。" superpowers 不这样想。它关心的核心问题是：**agent 是否真的按规则使用了 skill？** 这让它在 skill 领域里占据了一个很独特的位置。
@@ -105,6 +111,8 @@
 ---
 
 ### get-shit-done——五层组合系统的另一种可能
+
+**怎么找到它：** 和 gstack 类似，get-shit-done 也不是一个容易在 GitHub 上直接搜到的公开仓库。它更像一个特定团队/社区的工程实践产物。你可以通过 `awesome-copilot` 聚合站或 skill 社区的讨论来追踪相关线索。我们的研究基于完整的本地 snapshot 拆解。
 
 **一句话定位：** 一套由 command / agent / workflow / reference / template 五层组成的 skill runtime 系统。
 
@@ -461,9 +469,9 @@ gstack 的 eval-compare 提供了一套对比逻辑，核心思路是：
 
 **Codex**：从当前目录向上扫描 `.agents/skills/` 直到 repo 根；同时查找用户级 `$HOME/.agents/skills` 和系统级 `/etc/codex/skills`；还支持在 `~/.codex/config.toml` 中配置 `[[skills.config]]`。
 
-**Claude CLI**：有自己的发现路径，支持 plugin manifest 声明。
+**Claude CLI（Claude Code）**：在项目级查找 `.claude/skills/` 目录下的 skill；个人级查找 `~/.claude/skills/`。此外也兼容 `.agents/skills/` 路径。CLI 还支持 plugin manifest 声明和 session-start hooks——superpowers 用的就是这条路。需要注意的是，CLI 特有的 frontmatter 字段（`allowed-tools`、`hooks`、`shell`、`agent` 等）不会在其他 surface 上自动生效。
 
-**GitHub Copilot**：通过特定路径和 repo 配置发现 skill。
+**GitHub Copilot**：在项目级查找 `.github/skills/`、`.claude/skills/`、`.agents/skills/` 三个目录；个人级查找 `~/.copilot/skills/`、`~/.claude/skills/`、`~/.agents/skills/`。GitHub Copilot 是目前对多路径约定支持最广的 surface——它同时接受 GitHub 原生路径、Claude 路径和通用 `.agents` 路径。官方还推荐通过 `anthropics/skills` 和 `github/awesome-copilot` 发现社区 skill。
 
 这意味着同一个 skill 包，在不同 surface 上的安装位置和发现机制不同。如果你要做多 surface 分发，需要为每个 surface 写安装说明或安装脚本——superpowers 在这方面做了很好的示范（参见 F1 中对 superpowers 适配层的描述）。
 
