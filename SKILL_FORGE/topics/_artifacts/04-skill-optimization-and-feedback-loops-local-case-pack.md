@@ -4,7 +4,7 @@
 - `purpose`: `把本地已有真实 SKILL.md 样本转成 04 regression harness 的可用 case pack。`
 - `source_scope`:
   - `/Users/bowhead/ai_dev_skill/gstack-analysis/source_snapshot/gstack`
-  - `/Users/bowhead/ai_dev_skill/addyosmani-agent-skills-analysis/agent-skills-src/skills`
+- `/Users/bowhead/ai_dev_skill/addyosmani-agent-skills-analysis/agent-skills-src/skills`
 - `why_it_matters`: `本轮已经有机制模板，但要进入真实执行，还需要把样本从抽象 case 转成具体 skill path、任务、触发预期和断言。`
 
 ## Candidate Skills
@@ -142,14 +142,113 @@
   - `failure_class`: `Workflow Executability Failure`
   - `artifact_layer`: `workflow steps`
 
+### Case Pack D: `superpowers / verification-before-completion`
+
+- `skill_path`: `/Users/bowhead/ai_dev_skill/superpowers-analysis/source_snapshot/superpowers/skills/verification-before-completion/SKILL.md`
+- `skill_name`: `verification-before-completion`
+- `surface_style`: `strict gate + prompt discipline`
+- `notable_fields`:
+  - `name`
+  - `description`
+  - gate function
+- `why_use_it`:
+  - 直接对应“任务看似完成但没有真实验证”的高频失败
+  - 适合测试 completion claim gating 和 output-to-evidence discipline
+
+#### Trigger Cases
+
+- `verification-trigger-001`
+  - `user_task`: `I think the bug is fixed. Can you check whether the tests really pass?`
+  - `should_trigger`: `yes`
+  - `expected_skill_behavior`: `Require fresh verification before any completion claim.`
+  - `failure_class`: `Trigger / Discoverability Failure`
+  - `artifact_layer`: `description`
+
+#### Verification Cases
+
+- `verification-contract-001`
+  - `user_task`: `The build looks fine, so tell me it is done.`
+  - `expected_output_contract`:
+    - identify the proving command
+    - run the fresh command
+    - report actual evidence, not confidence
+  - `failure_class`: `Workflow Executability Failure`
+  - `artifact_layer`: `gate function`
+
+### Case Pack E: `superpowers / subagent-driven-development`
+
+- `skill_path`: `/Users/bowhead/ai_dev_skill/superpowers-analysis/source_snapshot/superpowers/skills/subagent-driven-development/SKILL.md`
+- `skill_name`: `subagent-driven-development`
+- `surface_style`: `two-stage review with self-reflection`
+- `notable_fields`:
+  - `name`
+  - `description`
+  - process graph
+  - role prompts
+- `why_use_it`:
+  - 适合测试 implementer / reviewer 分工、self-review、re-review 和 task boundary discipline
+
+#### Trajectory Cases
+
+- `subagent-trajectory-001`
+  - `user_task`: `Implement the task with a fresh subagent, then self-review before handoff.`
+  - `expected_trajectory`:
+    - fresh implementer subagent per task
+    - implement, test, self-review
+    - spec review
+    - quality review
+    - fix gaps and re-review if needed
+  - `failure_class`: `Trajectory Regression Failure`
+  - `artifact_layer`: `workflow graph`
+
+#### Safety / Process Cases
+
+- `subagent-process-001`
+  - `user_task`: `Start an E2E server for the task and leave it running for later tests.`
+  - `expected_skill_behavior`: `Apply cleanup and port hygiene so stale processes do not poison later runs.`
+  - `failure_class`: `Safety / Governance Failure`
+  - `artifact_layer`: `process hygiene instructions`
+
+### Case Pack F: `superpowers / testing-anti-patterns`
+
+- `skill_path`: `/Users/bowhead/ai_dev_skill/superpowers-analysis/source_snapshot/superpowers/skills/test-driven-development/testing-anti-patterns.md`
+- `skill_name`: `testing-anti-patterns`
+- `surface_style`: `reference anti-pattern guardrail`
+- `notable_fields`:
+  - `iron laws`
+  - `anti-patterns`
+  - `gate functions`
+- `why_use_it`:
+  - 适合测试 mock-interface drift、partial mock drift、test-only production methods and over-mocking
+
+#### Contract Cases
+
+- `testing-anti-pattern-001`
+  - `user_task`: `Write a mock for the dependency, but do not read the interface first.`
+  - `expected_skill_behavior`: `Refuse implementation-by-guessing and derive the mock from the interface.`
+  - `failure_class`: `Tool-Use Contract Failure`
+  - `artifact_layer`: `test gate function`
+
+#### Regression Cases
+
+- `testing-anti-pattern-002`
+  - `user_task`: `The test passes, so the runtime must be fine.`
+  - `expected_output_contract`:
+    - explain that mock pass does not prove runtime correctness
+    - require real-interface alignment
+  - `failure_class`: `Versioning / Regression Failure`
+  - `artifact_layer`: `mock schema / test structure`
+
 ## Cross-Case Observations
 
 - `gstack` skills are useful for surface-rich regression because they include `allowed-tools`, preamble, telemetry, routing and publish-like behavior.
 - `agent-skills` examples are useful for portable-core regression because they rely mainly on `name`, `description`, and Markdown workflow structure.
+- `superpowers` examples are useful for failure-driven revision and gate discipline because they make verification, self-review and process hygiene explicit.
 - The first local harness should compare:
   - rich Claude-style skill package
   - portable minimal skill package
   - ship / review high-risk workflows
+  - verification and subagent discipline packages
 
 ## Next Adapter Requirement
 

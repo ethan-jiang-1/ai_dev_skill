@@ -10,24 +10,24 @@
 
 ### current_task
 
-- action: `find public before/after skill optimization or regression practice cases and land them into topic 04`
-- done_condition: `at least one new authoritative reference or one explicit failed-exploration record clarifies whether public skill-specific before/after optimization cases exist`
-- writes_to: `new 04 reference under /Users/bowhead/ai_dev_skill/SKILL_FORGE/topics/_reference if found; /Users/bowhead/ai_dev_skill/SKILL_FORGE/topics/_artifacts/04-skill-optimization-and-feedback-loops-evidence-summary.md; /Users/bowhead/ai_dev_skill/SKILL_FORGE/topics/_artifacts/04-skill-optimization-and-feedback-loops-question-list.md; /Users/bowhead/ai_dev_skill/SKILL_FORGE/plan/skill-engineering-deep-research-progressive-plan-round-1.status.md`
-- status_sync: `update topic 04 counts if evidence lands, or Failed Explorations if the search proves structurally thin`
+- action: `review the new 04 case-pack / scorecard / delivery-checklist trio for coverage gaps before any implementation reopen`
+- done_condition: `the three new artifacts agree on failure classes, compare contract, and promotion discipline, or one targeted follow-up artifact is added`
+- writes_to: `/Users/bowhead/ai_dev_skill/SKILL_FORGE/topics/_artifacts/04-skill-optimization-and-feedback-loops-local-case-pack.md; /Users/bowhead/ai_dev_skill/SKILL_FORGE/topics/_artifacts/04-skill-optimization-and-feedback-loops-method-stack-scorecard.md; /Users/bowhead/ai_dev_skill/SKILL_FORGE/topics/_artifacts/04-skill-optimization-and-feedback-loops-delivery-checklist.md; /Users/bowhead/ai_dev_skill/SKILL_FORGE/plan/skill-engineering-deep-research-progressive-plan-round-1.status.md`
+- status_sync: `update topic 04 gap and Resume Checkpoint`
 
 ### next_task
 
-- action: `expand 04 failure taxonomy with promotion decision examples and artifact-layer mapping`
-- done_condition: `failure taxonomy includes concrete mappings from trigger, trajectory, safety, and regression failures to specific artifact-layer revisions`
-- writes_to: `/Users/bowhead/ai_dev_skill/SKILL_FORGE/topics/_artifacts/04-skill-optimization-and-feedback-loops-failure-taxonomy-draft.md; /Users/bowhead/ai_dev_skill/SKILL_FORGE/plan/skill-engineering-deep-research-progressive-plan-round-1.status.md`
-- status_sync: `update topic 04 gap and Resume Checkpoint`
+- action: `prepare the minimum MD-only handoff package required to reopen runner implementation safely`
+- done_condition: `implementation reopen has an explicit precondition list grounded in the new checklist and scorecard`
+- writes_to: `new or updated 04 artifact under /Users/bowhead/ai_dev_skill/SKILL_FORGE/topics/_artifacts; status`
+- status_sync: `update Suspended Branches.real Codex adapter execution and Resume Checkpoint`
 
 ### next_after_next
 
-- action: `expand the 04 local case pack at the MD level before reopening runner implementation`
-- done_condition: `local-case-pack.md covers a broader set of trigger, no-trigger, trajectory, tool-contract, and safety patterns aligned with the current methodology stack`
-- writes_to: `/Users/bowhead/ai_dev_skill/SKILL_FORGE/topics/_artifacts/04-skill-optimization-and-feedback-loops-local-case-pack.md; /Users/bowhead/ai_dev_skill/SKILL_FORGE/plan/skill-engineering-deep-research-progressive-plan-round-1.status.md`
-- status_sync: `update topic 04 gap and Resume Checkpoint`
+- action: `reassess whether 04 should remain in mainline deepening or move to implementation-prep state`
+- done_condition: `status explicitly says continue / suspend / redirect with a concrete reason after the doc-baseline review`
+- writes_to: `/Users/bowhead/ai_dev_skill/SKILL_FORGE/plan/skill-engineering-deep-research-progressive-plan-round-1.status.md`
+- status_sync: `update topic 04 stop decision or branch state explicitly`
 
 ## Blocked State
 
@@ -53,22 +53,22 @@ Repeat the following candidate block as needed. Do not collapse multiple candida
 
 ### Candidate Block
 
-- candidate: `compare the current public optimization mechanisms into a compact 04 scorecard`
-- done_condition: `a scorecard makes it easier to compare governance, trigger tuning, regression, feedback loop, and candidate revision roles across the current method stack`
+- candidate: `prepare an implementation-reopen handoff note grounded in the new case pack, scorecard, and delivery checklist`
+- done_condition: `the suspended real-adapter branch has an explicit MD-only reopen note with prerequisites, boundaries, and acceptance order`
 - writes_to: `new or updated 04 artifact under /Users/bowhead/ai_dev_skill/SKILL_FORGE/topics/_artifacts; status`
-- status_sync: `update topic 04 gap and Resume Checkpoint`
-- why_next: `reduces the risk that 04 keeps drifting back into tool-name collection instead of stack design`
-- prerequisite: `current active 04 queue closes one of the evidence or taxonomy gaps`
+- status_sync: `update Suspended Branches.real Codex adapter execution and Resume Checkpoint`
+- why_next: `reduces ambiguity when 04 moves from document baseline into implementation prep`
+- prerequisite: `current active 04 queue confirms the trio is internally consistent`
 - promotion_trigger: `queue becomes thin after current active tasks`
 
 ### Candidate Block
 
-- candidate: `draft skill workflow delivery checklist from the final recommendation`
-- done_condition: `a concise checklist turns the final recommendation into a handoff-ready authoring / install / trust / eval / rollback workflow`
-- writes_to: `new or updated artifact under /Users/bowhead/ai_dev_skill/SKILL_FORGE/topics/_artifacts; status`
-- status_sync: `update Wave 2 final recommendation residual risk if adopted`
-- why_next: `turns research conclusions into a reusable delivery surface without touching implementation code`
-- prerequisite: `04 methodology stack is stable enough that delivery hardening will not get ahead of the evidence`
+- candidate: `write a final 04 branch-state review that decides continue vs implementation-prep`
+- done_condition: `status makes an explicit mainline decision after reviewing the trio and the suspended real-adapter branch`
+- writes_to: `/Users/bowhead/ai_dev_skill/SKILL_FORGE/plan/skill-engineering-deep-research-progressive-plan-round-1.status.md`
+- status_sync: `update topic 04 stop decision, gap, and Resume Checkpoint`
+- why_next: `prevents 04 from hovering indefinitely between deep research and implementation-prep`
+- prerequisite: `implementation-reopen handoff note exists or is judged unnecessary`
 - promotion_trigger: `queue becomes thin after current active tasks`
 
 ## Promotion Rules

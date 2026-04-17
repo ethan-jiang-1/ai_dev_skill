@@ -11,12 +11,12 @@
 - current_wave: `Wave 1`
 - blocking_issue: `not_applicable`
 - required_next_step: `continue 04 methodology and automation deepening via QUEUE_PATH`
-- largest_gap_if_stop_now: `04 still lacks enough consolidated public practice evidence for stable skill optimization methodology, and real adapter execution / JSON compare / configurable matcher remain open implementation gaps`
+- largest_gap_if_stop_now: `04 now has public evidence, taxonomy, case pack, scorecard, and delivery checklist, but they still need one explicit consistency pass before any implementation reopen or state transition`
 
 ## Queue Pointer
 
 - queue_path: `/Users/bowhead/ai_dev_skill/SKILL_FORGE/plan/skill-engineering-deep-research-progressive-plan-round-1.queue.md`
-- last_queue_refill: `2026-04-17 04 methodology-and-automation reprioritization`
+- last_queue_refill: `2026-04-17 04 docs advanced from evidence landing to case pack, scorecard, checklist, and implementation-reopen review`
 
 When `QUEUE_PATH.Active Queue.queue_health = blocked`, sync `state = blocked`, `blocking_issue`, and `Resume Checkpoint.safe_to_interrupt` with `QUEUE_PATH.Blocked State`.
 
@@ -24,9 +24,9 @@ When `QUEUE_PATH.Active Queue.queue_health = blocked`, sync `state = blocked`, `
 
 - current_gate: `wave0_complete`
 - next_gate: `wave1_complete`
-- next_scoring_action: `+reference`
+- next_scoring_action: `+artifact`
 - stalled_scoring_actions_since_last_gap_reduction: `0`
-- last_gap_reduction: `04 reopened as the current priority line after consolidating the existing optimization stack and automation boundary`
+- last_gap_reduction: `added a public feedback-driven revision practice reference, expanded the 04 taxonomy, widened the local case pack, compressed the method stack into a scorecard, and added a delivery checklist`
 
 ## Plan / Status Sync
 
@@ -120,18 +120,18 @@ When `QUEUE_PATH.Active Queue.queue_health = blocked`, sync `state = blocked`, `
 - registry_ref: `PLAN_PATH -> 研究线注册表（topic registry） -> 04/skill-optimization-and-feedback-loops`
 - topic_id: `04`
 - topic_slug: `skill-optimization-and-feedback-loops`
-- doc_count: `9`
-- primary_count: `8`
+- doc_count: `10`
+- primary_count: `9`
 - primary_source_coverage: `saturated`
 - secondary_count: `1`
-- recent_count: `8`
-- limitation_count: `4`
+- recent_count: `9`
+- limitation_count: `5`
 - topic_stop_decision: `continue`
 - early_saturation_reason: `not_applicable`
 - evidence_summary: `/Users/bowhead/ai_dev_skill/SKILL_FORGE/topics/_artifacts/04-skill-optimization-and-feedback-loops-evidence-summary.md`
 - question_list: `/Users/bowhead/ai_dev_skill/SKILL_FORGE/topics/_artifacts/04-skill-optimization-and-feedback-loops-question-list.md`
 - status: `in_progress`
-- gap: `current evidence supports a composite optimization stack, but public before/after practice cases, automation boundary calibration, and a clearer minimum skill optimization baseline still need further consolidation`
+- gap: `current evidence now supports a composite optimization stack plus one public feedback-driven revision practice; the remaining practical gap is a final doc-baseline consistency pass before deciding whether to reopen implementation`
 
 When `topic_stop_decision = suspend / archive / redirect`, add or update the matching record in `Suspended Branches`. When `topic_stop_decision = early_saturation`, keep `early_saturation_reason` explicit even if no separate branch record is needed.
 
@@ -146,7 +146,7 @@ When `topic_stop_decision = suspend / archive / redirect`, add or update the mat
 - final_recommendation_file: `/Users/bowhead/ai_dev_skill/SKILL_FORGE/topics/_artifacts/W2-final-recommendation-and-baseline.md`
 - readiness_check_file: `/Users/bowhead/ai_dev_skill/SKILL_FORGE/topics/_artifacts/W2-readiness-check.md`
 - cross_checks_done: `11`
-- unresolved_conflicts: `portable core vs surface-specific extensions field-level validation; 04 methodology stack still lacks enough public before/after practice evidence; real adapter execution; JSON comparison artifact implementation; configurable matcher implementation`
+- unresolved_conflicts: `portable core vs surface-specific extensions field-level validation; public score-based skill before/after evidence remains thin; real adapter execution; JSON comparison artifact implementation; configurable matcher implementation`
 - status: `passed`
 
 ## Readiness Check
@@ -180,7 +180,11 @@ When `topic_stop_decision = suspend / archive / redirect`, add or update the mat
 
 只记录有代表性的失败探索，避免后续重复无效路径。
 
-- none_recorded_yet: `yes`
+- exploration: `search for public score-based before/after skill-package optimization cases`
+- why_tried: `04 needed direct evidence that a skill artifact revision can be compared quantitatively instead of being justified only by qualitative intuition`
+- what_found: `found strong adjacent mechanism docs and one better public-practice-shaped artifact from superpowers where real failures were mapped to localized skill revisions, phased rollout, and success metrics; did not find many public cases with explicit baseline/candidate score tables or regression scorecards for individual skill package revisions`
+- why_failed: `public skill repos more often expose feedback-driven revision plans, changelog-style updates, and qualitative failure writeups than benchmark datasets, before/after score tables, or promote/reject reports for specific skill revisions`
+- lesson: `treat public quantitative before/after skill optimization as structurally thin evidence; invest more in feedback-to-revision practice, local runnable case packs, and compare contracts than in repeated open-web benchmark hunting`
 
 When first representative miss appears, delete `none_recorded_yet` and add exactly these fields: `exploration / why_tried / what_found / why_failed / lesson`.
 
@@ -188,12 +192,12 @@ When first representative miss appears, delete `none_recorded_yet` and add exact
 
 这里记录恢复上下文；下一步动作一律回读 `QUEUE_PATH`，不要在此处复制第二份 active queue。
 
-- last_completed_step: `reopened 04 as the current priority line and consolidated the existing skill optimization stack into a dedicated artifact`
+- last_completed_step: `landed a public feedback-driven revision reference for 04, expanded the taxonomy, widened the local case pack, added a compact method-stack scorecard, and drafted a handoff-ready delivery checklist`
 - last_verified_command: `ruby SKILL_FORGE/topics/_artifacts/04-skill-optimization-and-feedback-loops-mock-runner.rb`
 - last_verified_result: `promotion_blocked=yes, total_cases=3, regressions=3, improvements=0`
 - safe_to_interrupt: `yes`
 - queue_resume_entry: `read /Users/bowhead/ai_dev_skill/SKILL_FORGE/plan/skill-engineering-deep-research-progressive-plan-round-1.queue.md -> Active Queue`
-- resume_precheck: `confirm 04 methodology artifact, question list, and queue priority are aligned before landing more references`
+- resume_precheck: `confirm local case pack, scorecard, and delivery checklist are mutually consistent before reopening implementation or changing 04 branch state`
 - do_not_forget: `do not reduce skill optimization to prompt tuning; keep artifact / trigger / workflow / tool contract / feedback loop perspective`
 
 ## Worklog
@@ -206,3 +210,7 @@ When first representative miss appears, delete `none_recorded_yet` and add exact
 - `2026-04-17`: migrated round-1 plan/status to V8 three-file runtime model and added explicit execution queue for optional deepening.
 - `2026-04-17`: added MD-only execution scaffolds for 04 JSON comparison output, deterministic matcher rules, and first-pass Codex adapter handoff without changing runner code.
 - `2026-04-17`: reopened round-1 around topic 04 methodology and automation deepening, added a dedicated existing-methodology stack artifact, and reprioritized the queue toward stable skill optimization research.
+- `2026-04-17`: added a public-practice-shaped `superpowers` reference showing failure-driven skill revision, phased rollout, and success metrics.
+- `2026-04-17`: recorded the structural scarcity of public score-based before/after skill-package cases, expanded the 04 failure taxonomy with artifact-layer mapping and promotion examples, and advanced the queue to local case pack expansion.
+- `2026-04-17`: widened the 04 local case pack with `superpowers` verification / subagent / anti-pattern cases and added a compact method-stack scorecard.
+- `2026-04-17`: drafted a handoff-ready 04 delivery checklist and advanced the queue to a final doc-baseline consistency review before any implementation reopen.

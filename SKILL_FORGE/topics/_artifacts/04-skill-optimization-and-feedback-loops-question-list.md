@@ -33,7 +33,7 @@
 
 ## 仍待补充
 
-- 公开案例中是否存在 skill 版本前后量化比较
+- 公开案例中是否存在 skill 版本前后量化比较，还是公开世界更常见 qualitative feedback-driven revision plan
 - promptfoo / LangSmith / DSPy / OpenAI evals 如何组合成一条最小可执行 skill regression harness
 - `failure taxonomy` 是否需要拆出单独的 `trajectory failure` 与 `CI gate failure`
 - `eval loop baseline` 是否需要明确样本文件格式、assertion schema 与 promote / reject 阈值
@@ -44,6 +44,8 @@
   - 存在。`gstack` 的 eval code 已覆盖 LLM judge、agent E2E runner、trace parsing、tool-call extraction、touchfile selection、structured result store 与 before / after compare。
 - 下一步应该继续写抽象研究，还是推进 runner 规格
   - 应推进 runner 规格。`04` 已经有足够方法论证据，当前更高价值缺口是把 case pack、adapter contract 和 local eval pattern 收束成可实现 runner。
+- 公开世界里 skill 优化案例更常见的形态是什么
+  - 已有一条更强公开线索：`superpowers` 把真实使用失败整理成局部 skill 修订计划、phase rollout、success metrics 与风险缓释。也就是说，公开世界里更常见的是 feedback-driven revision practice，而不是公开的 baseline / candidate score table。
 
 ## 已新增工件
 
@@ -79,30 +81,23 @@
 
 ## 当前优先继续研究
 
-- 找公开 before / after 的 skill 优化案例，最好能明确：
-  - 改了哪个 artifact 层
-  - 用什么 cases / traces 证明提升
-  - 是否引入了新的回归
-- 找更接近 `SKILL.md` package 的 regression harness / compare pattern，而不是只看一般 prompt eval。
-- 找 automation 真正能落在哪些局部部件：
-  - `description`
-  - examples
-  - workflow steps
-  - tool contract
-  - supporting file structure
-- 找自动 candidate revision 和 human promotion gate 的真实分界，而不是抽象地说 human-in-the-loop。
+- 把现有 failure taxonomy 继续压实到 local case pack，让每类失败都能映射到至少一个代表性 case。
+- 做一版紧凑的 `04` scorecard，把 governance、trigger tuning、trajectory regression、feedback loop、candidate revision 与 promotion gate 放到同一张比较表。
+- 把最终 recommendation 收束成 delivery checklist，避免 `04` 再漂回工具名收集。
+- 如果后续再补公开案例，优先找 baseline / candidate compare 真正公开的 skill package revision，而不是继续泛搜 prompt optimization。
 
 ## 下一轮 TODO
 
-- 优先补公开 skill optimization / regression / feedback 真实案例，而不是再泛搜 prompt optimization 框架。
-- 优先补 `04` 的 failure taxonomy examples，尤其是 trigger / trajectory / safety / regression 之间的边界。
-- 优先把现有方法学栈进一步映射成一套最小 skill optimization baseline。
+- 扩展 `04` 的 local case pack，补 trigger、no-trigger、trajectory、tool-contract 与 safety 的代表性 patterns。
+- 产出 `04` scorecard，压缩当前方法学栈，减少 topic 漂移。
+- 起草 handoff-ready 的 skill workflow delivery checklist。
 - 在允许非 MD 改动时，再按 JSON comparison output spec、matcher rules spec 和 Codex adapter handoff 推进 runner implementation。
 
 ## 当前判断
 
 - `04` 当前不该从“再找几个 prompt 优化框架”起步，而应从 skill artifact 级对象和可迁移的评测闭环模式起步。
 - `skill-forge` 是当前最值得作为 `04` 起步样本之一的开源对象，因为它已经把 skill 的 discoverability、executability、结构一致性与发布前治理视为优化对象。
+- `superpowers` 说明公开世界里确实存在真实 skill feedback loop，但它更常以 failure-driven revision plan 形式出现，而不是公开 benchmark 表。
 - 对我们自己的 skill workflow 来说，最值得继续投的不是“找一个万能 optimizer”，而是把现成组合栈拼成稳定流程：
   - governance
   - trigger tuning

@@ -144,6 +144,10 @@
   - category: `local-code-evidence`
   - use: 本地 `gstack` eval / E2E / runner / compare 机制，支撑 skill regression runner 的真实实现参考
 
+- `04-skill-optimization-and-feedback-loops-superpowers-feedback-driven-revision.md`
+  - category: `feedback-driven-revision-practice`
+  - use: 公开 skill 实践里从真实失败报告出发，映射到局部 skill 修订、分阶段 rollout 与 success metrics 的优化路径
+
 ## Topic 02 Docs
 
 - `02-skill-toolchain-and-lifecycle-github-loader-paths-and-scope.md`
@@ -247,3 +251,4 @@
 - `trace-feedback-loop`: covered via `04-skill-optimization-and-feedback-loops-langsmith-offline-online-feedback-loop.md`
 - `program-optimizer-pattern`: covered via `04-skill-optimization-and-feedback-loops-dspy-program-optimizer-pattern.md`
 - `eval-driven-optimization`: covered via `04-skill-optimization-and-feedback-loops-openai-evals-optimization-flywheel.md`
+- `feedback-driven-revision-practice`: covered via `04-skill-optimization-and-feedback-loops-superpowers-feedback-driven-revision.md`

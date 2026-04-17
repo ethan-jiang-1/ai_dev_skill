@@ -2,8 +2,8 @@
 
 - `status`: `reopened_for_methodology_and_automation_deepening`
 - `wave`: `Wave 1 + Wave 2 backfill + runner-spec extension`
-- `doc_count`: `9`
-- `current_focus`: `把 04 从 skill artifact 优化扩展到现成 optimization stack：trajectory regression、CI quality gate、offline / online feedback loop、program optimizer、eval-driven optimization flywheel 与本地 runner 实现模式。`
+- `doc_count`: `10`
+- `current_focus`: `把 04 从 skill artifact 优化扩展到现成 optimization stack，并补上公开 feedback-driven revision practice：trajectory regression、CI quality gate、offline / online feedback loop、program optimizer、eval-driven optimization flywheel、真实失败回流与本地 runner 实现模式。`
 
 ## 本轮新增证据栈
 
@@ -25,6 +25,8 @@
   - 确认 eval baseline、representative test data、feedback 与 iterative optimization flywheel 是修改前后比较的基础。
 - `04-skill-optimization-and-feedback-loops-local-gstack-eval-harness.md`
   - 确认本地 `gstack` 已有可迁移的 skill eval 工程模式：LLM judge、agent E2E runner、NDJSON / JSONL trace parsing、tool-call extraction、touchfile selection、structured eval store 与 before / after compare。
+- `04-skill-optimization-and-feedback-loops-superpowers-feedback-driven-revision.md`
+  - 确认公开 skill 实践里已经出现“真实失败报告 -> 局部 skill 修订 -> phased rollout -> success metrics”的反馈回流模式，但这类证据通常是定性 revision plan，不是公开 score-based compare。
 
 ## 当前最稳的判断
 
@@ -36,6 +38,7 @@
   - offline / online feedback loop
   - candidate revision / optimizer pattern
   - human promotion gate
+- 公开世界里已经能找到真实 feedback-driven skill revision practice，但公开的 score-based before / after 比较仍然明显更稀薄。
 - `skill-forge` 代表的是一种 post-authoring optimization 路线：
   - 结构审计
   - discoverability 检查
@@ -69,10 +72,11 @@
 - LangSmith 证据补上了 production trace 到 offline regression dataset 的 feedback loop。
 - DSPy / OpenAI 证据补上了 metric / baseline / candidate revision / eval feedback 的优化 flywheel。
 - 本地 `gstack` 证据补上了真实 runner / collector / compare 的实现形态，说明 `04` 可以继续从文档模板推进到可执行 regression runner。
+- `superpowers` 证据补上了另一个关键环节：真实失败样本如何被人工整理成局部 skill 修订计划、风险分期、success metrics 和 promotion 边界。
 
 ## 当前缺口
 
-- 还缺公开 before / after 的 skill 优化案例，能把“修改了什么 artifact、为什么提升、如何验证”讲完整。
-- 还缺公开案例说明一次 skill 修订如何被量化比较。
+- 已经有一条较强的公开 feedback-driven revision practice 线索，但公开的 skill package score-based before / after 案例仍然稀薄。
+- 还缺公开案例把一次 skill 修订的 baseline / candidate compare、regression table 和 promote / reject 结果讲完整。
 - `04` 的结论已回填到 W2 synthesis、workflow baseline、formal comparison、final recommendation 和 readiness check。
 - 已补出一版 `SKILL.md regression harness` 模板、tool config sketch、agent adapter contract、local case pack、机器可读 YAML、case pack JSON schema、mock adapter / assertion spec、mock runner、mock run report 与 runner prototype spec；后续缺口从“有没有 harness 样板”转为“是否把 mock runner 产品化为 JSON report、可配置 matcher，并接入真实 Codex adapter 跑 baseline / candidate 对比”。

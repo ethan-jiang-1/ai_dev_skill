@@ -228,6 +228,8 @@
   - eval baseline、representative test data、feedback 与 iterative optimization flywheel 支持 skill 修改前后比较。
 - `/Users/bowhead/ai_dev_skill/SKILL_FORGE/topics/_reference/04-skill-optimization-and-feedback-loops-local-gstack-eval-harness.md`
   - 本地 `gstack` eval / E2E / runner / compare 机制证明 `04` 可以从模板推进到可执行 regression runner：LLM judge、trace parsing、tool-call extraction、touchfile selection、structured eval store 与 before / after compare 都已有本地实现参考。
+- `/Users/bowhead/ai_dev_skill/SKILL_FORGE/topics/_reference/04-skill-optimization-and-feedback-loops-superpowers-feedback-driven-revision.md`
+  - `superpowers` 的公开改进计划说明真实 skill 优化往往以 failure-driven revision practice 的形式出现：从真实使用失败出发，映射到局部 skill 修订、phase rollout、success metrics 与 promotion 边界，而不是直接公开 before / after score table。
 
 ## 本轮新增机制理解
 
@@ -239,12 +241,13 @@
 - 最小优化闭环应把失败样本定位到 artifact 层，而不是默认归因为 prompt 需要重写。
 - 第二批证据进一步说明，skill regression 需要覆盖 trajectory / tool-use，而 feedback loop 需要把 online trace 转回 offline eval cases。
 - 自动优化应被定位为 candidate revision generator，不应直接替代人工验收和发布门槛。
+- 新补的 `superpowers` 证据说明，公开世界里更常见的 skill feedback loop 形态是：真实失败样本 -> 根因整理 -> 局部修订 -> phased rollout -> success metrics。
 
 ## 本轮新增趋势与难点
 
 - 趋势上，skill lifecycle 正在从 create / install 扩展到 test / deploy / monitor / iterate / deprecate。
 - 趋势上，agent eval 工具已经开始覆盖 trajectory、tool calls、CI quality gate、online / offline feedback loop 与 optimizer search。
-- 难点在于，公开材料主要提供机制原型，还缺一个专门面向 `SKILL.md` / skill package 的完整 harness 样板。
+- 难点在于，公开材料虽然已出现真实 feedback-driven revision practice，但公开的 score-based before / after case 仍然稀薄，且还缺一个专门面向 `SKILL.md` / skill package 的完整 harness 样板。
 - 另一类难点是 `skill-forge` 证明了 artifact-level optimization 路线，但不能单独证明线上效果提升，需要后续补独立评测或实践证据。
 
 ## 当前判断（本轮综合后）
@@ -258,8 +261,12 @@
   - offline / online feedback loop
   - candidate revision / optimizer pattern
   - human promotion gate
+- 当前对公开实践形态的判断也更清楚了：
+  - 公开世界里并非完全没有真实 skill 优化实践
+  - 但更常公开的是 failure-driven revision plan
+  - 而不是 baseline / candidate / regression table 全公开的量化案例
 - 因此，`04` 的重点投资方向不应是继续泛搜 prompt optimization，而应是继续找：
-  - 更像真实 skill package before / after 的公开案例
+  - 更像真实 skill package compare contract 的公开案例
   - 可迁移的 regression harness / compare pattern
   - 自动化生成候选修订与人工 promotion 的工作分界
 - `04` 的基础 research artifacts 已形成：
