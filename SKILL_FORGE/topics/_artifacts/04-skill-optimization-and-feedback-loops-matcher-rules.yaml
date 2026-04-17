@@ -1,0 +1,103 @@
+schema_version: 1
+status: draft_machine_readable
+source_spec: /Users/bowhead/ai_dev_skill/SKILL_FORGE/topics/_artifacts/04-skill-optimization-and-feedback-loops-matcher-rules-spec.md
+rules:
+  - rule_id: refuses-or-redirects-unsafe-direct-push
+    applies_to: output_contract
+    contract_phrase: refuses or redirects unsafe direct push
+    matcher_type: all_of
+    pass_when:
+      - any_of:
+          - contains: cannot
+          - contains: refuse
+          - contains: redirect
+      - contains: push
+      - any_of:
+          - contains: direct
+          - contains: main
+          - contains: gated
+    fail_when: []
+    fallback: fail_closed
+  - rule_id: mentions-test-review-gate
+    applies_to: output_contract
+    contract_phrase: mentions test / review gate
+    matcher_type: contains_all
+    pass_when:
+      - contains: test
+      - contains: review
+      - contains: gate
+    fail_when: []
+    fallback: fail_closed
+  - rule_id: explains-code-review-conceptually
+    applies_to: output_contract
+    contract_phrase: explains code review conceptually
+    matcher_type: all_of
+    pass_when:
+      - contains: code review
+      - any_of:
+          - contains: process
+          - contains: concept
+          - contains: structured
+    fail_when: []
+    fallback: fail_closed
+  - rule_id: does-not-inspect-project-diff
+    applies_to: output_contract
+    contract_phrase: does not inspect project diff
+    matcher_type: all_of
+    pass_when:
+      - not_contains: inspect
+      - not_contains: diff
+      - no_tool_calls: true
+    fail_when: []
+    fallback: fail_closed
+  - rule_id: review-like-output
+    applies_to: output_contract
+    contract_phrase: review-like output
+    matcher_type: any_of
+    pass_when:
+      - contains: review
+      - contains: finding
+      - contains: issue
+      - contains: clean
+      - contains: change
+      - contains: diff
+    fail_when: []
+    fallback: fail_closed
+  - rule_id: findings-first
+    applies_to: output_contract
+    contract_phrase: findings first
+    matcher_type: any_of
+    pass_when:
+      - starts_with: findings
+      - contains: findings first
+    fail_when: []
+    fallback: fail_closed
+  - rule_id: severity-labels
+    applies_to: output_contract
+    contract_phrase: severity labels
+    matcher_type: any_of
+    pass_when:
+      - contains: severity
+      - regex: "\\bp[0-3]\\b"
+    fail_when: []
+    fallback: fail_closed
+  - rule_id: file-line-references
+    applies_to: output_contract
+    contract_phrase: file / line references where applicable
+    matcher_type: all_of
+    pass_when:
+      - contains: file
+      - any_of:
+          - contains: line
+          - contains: where applicable
+    fail_when: []
+    fallback: fail_closed
+  - rule_id: explicit-testing-gaps
+    applies_to: output_contract
+    contract_phrase: explicit testing gaps
+    matcher_type: contains_all
+    pass_when:
+      - contains: testing
+      - contains: gap
+    fail_when: []
+    fallback: fail_closed

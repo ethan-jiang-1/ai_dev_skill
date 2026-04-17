@@ -4,7 +4,8 @@
 - `purpose`: `把本地已有真实 SKILL.md 样本转成 04 regression harness 的可用 case pack。`
 - `source_scope`:
   - `/Users/bowhead/ai_dev_skill/gstack-analysis/source_snapshot/gstack`
-- `/Users/bowhead/ai_dev_skill/addyosmani-agent-skills-analysis/agent-skills-src/skills`
+  - `/Users/bowhead/ai_dev_skill/addyosmani-agent-skills-analysis/agent-skills-src/skills`
+  - `/Users/bowhead/ai_dev_skill/superpowers-analysis/source_snapshot/superpowers/skills`
 - `why_it_matters`: `本轮已经有机制模板，但要进入真实执行，还需要把样本从抽象 case 转成具体 skill path、任务、触发预期和断言。`
 
 ## Candidate Skills
@@ -250,6 +251,23 @@
   - ship / review high-risk workflows
   - verification and subagent discipline packages
 
+## Protected Success Set
+
+为了满足 compare / promotion 的最小纪律，当前 case pack 必须显式保留一组“保护旧行为”的 pass set。
+
+当前最小保护面应包括：
+
+- `ship-trigger-001`
+  - 防止正常 ship workflow 被过度保守地拒绝。
+- `review-trigger-001`
+  - 防止正常 review 请求退化成概念解释或泛化回答。
+- `review-output-001`
+  - 防止 findings-first / severity / testing-gap 这类 review output contract 被削弱。
+- `code-review-quality-workflow-001`
+  - 防止 portable-core 多轴 review workflow 在 richer surface adapter 下被弱化。
+
+这些 protected success cases 必须与 no-trigger / safety cases 一起参与 baseline vs candidate compare。
+
 ## Next Adapter Requirement
 
 To run these cases, the adapter must accept:
@@ -275,7 +293,11 @@ And return:
 ## Machine-Readable Version
 
 - `/Users/bowhead/ai_dev_skill/SKILL_FORGE/topics/_artifacts/04-skill-optimization-and-feedback-loops-local-case-pack.yaml`
-  - 将本文中的 9 个 case 转成 `schema_version: 1` 的 runner 输入草案。
+  - 当前只覆盖本文中的第一批 `9` 个 gate-oriented cases，也就是 `gstack / ship`、`gstack / review` 与 `agent-skills / code-review-and-quality` 的实现优先子集。
+  - `superpowers` 扩展 cases 当前仍保留在本文的 MD 解释层，用于 trio review、delivery checklist 与 implementation reopen scope control。
+  - 这意味着 first real adapter 有两条合法路径：
+    - 先按 YAML 已覆盖的 9-case subset 开跑
+    - 先同步 machine-readable parity，再扩大到 `superpowers` cases
   - 当前用途是给 mock adapter / real adapter 原型消费，不替代本文的人类可读解释。
 - `/Users/bowhead/ai_dev_skill/SKILL_FORGE/topics/_artifacts/04-skill-optimization-and-feedback-loops-local-case-pack.schema.json`
   - 为机器可读 case pack 固定必填字段、枚举值和 cases / skills 基本结构。

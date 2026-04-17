@@ -10,24 +10,24 @@
 
 ### current_task
 
-- action: `review the new 04 case-pack / scorecard / delivery-checklist trio for coverage gaps before any implementation reopen`
-- done_condition: `the three new artifacts agree on failure classes, compare contract, and promotion discipline, or one targeted follow-up artifact is added`
-- writes_to: `/Users/bowhead/ai_dev_skill/SKILL_FORGE/topics/_artifacts/04-skill-optimization-and-feedback-loops-local-case-pack.md; /Users/bowhead/ai_dev_skill/SKILL_FORGE/topics/_artifacts/04-skill-optimization-and-feedback-loops-method-stack-scorecard.md; /Users/bowhead/ai_dev_skill/SKILL_FORGE/topics/_artifacts/04-skill-optimization-and-feedback-loops-delivery-checklist.md; /Users/bowhead/ai_dev_skill/SKILL_FORGE/plan/skill-engineering-deep-research-progressive-plan-round-1.status.md`
-- status_sync: `update topic 04 gap and Resume Checkpoint`
+- action: `add the first real Codex adapter on the YAML-covered subset`
+- done_condition: `at least one no-trigger case, one output-contract case, and one safety case run through a real Codex adapter with normalized run records`
+- writes_to: `adapter implementation files, reports, and /Users/bowhead/ai_dev_skill/SKILL_FORGE/plan/skill-engineering-deep-research-progressive-plan-round-1.status.md`
+- status_sync: `update real Codex adapter execution branch and Resume Checkpoint`
 
 ### next_task
 
-- action: `prepare the minimum MD-only handoff package required to reopen runner implementation safely`
-- done_condition: `implementation reopen has an explicit precondition list grounded in the new checklist and scorecard`
-- writes_to: `new or updated 04 artifact under /Users/bowhead/ai_dev_skill/SKILL_FORGE/topics/_artifacts; status`
-- status_sync: `update Suspended Branches.real Codex adapter execution and Resume Checkpoint`
+- action: `expand machine-readable case-pack parity beyond the first 9 cases if the Codex adapter stabilizes`
+- done_condition: `the machine-readable case pack either includes the superpowers extension cases or an explicit parity policy is written`
+- writes_to: `/Users/bowhead/ai_dev_skill/SKILL_FORGE/topics/_artifacts/04-skill-optimization-and-feedback-loops-local-case-pack.yaml; /Users/bowhead/ai_dev_skill/SKILL_FORGE/plan/skill-engineering-deep-research-progressive-plan-round-1.status.md`
+- status_sync: `update topic 04 gap and Resume Checkpoint`
 
 ### next_after_next
 
-- action: `reassess whether 04 should remain in mainline deepening or move to implementation-prep state`
-- done_condition: `status explicitly says continue / suspend / redirect with a concrete reason after the doc-baseline review`
+- action: `reassess whether 04 should continue implementation expansion or pause after the first real-adapter milestone`
+- done_condition: `status explicitly records whether 04 stays on implementation mainline or returns to a suspended branch after the first adapter milestone`
 - writes_to: `/Users/bowhead/ai_dev_skill/SKILL_FORGE/plan/skill-engineering-deep-research-progressive-plan-round-1.status.md`
-- status_sync: `update topic 04 stop decision or branch state explicitly`
+- status_sync: `update topic 04 stop decision or suspended branch state`
 
 ## Blocked State
 

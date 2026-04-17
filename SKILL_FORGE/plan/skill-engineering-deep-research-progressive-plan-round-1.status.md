@@ -10,13 +10,13 @@
 - current_mode: `execution`
 - current_wave: `Wave 1`
 - blocking_issue: `not_applicable`
-- required_next_step: `continue 04 methodology and automation deepening via QUEUE_PATH`
-- largest_gap_if_stop_now: `04 now has public evidence, taxonomy, case pack, scorecard, and delivery checklist, but they still need one explicit consistency pass before any implementation reopen or state transition`
+- required_next_step: `follow QUEUE_PATH to continue 04 implementation now that compare SSOT is machine-readable and matcher rules are externalized`
+- largest_gap_if_stop_now: `04 implementation has started cleanly, but the first real Codex adapter and baseline/candidate normalized runs have not been landed yet`
 
 ## Queue Pointer
 
 - queue_path: `/Users/bowhead/ai_dev_skill/SKILL_FORGE/plan/skill-engineering-deep-research-progressive-plan-round-1.queue.md`
-- last_queue_refill: `2026-04-17 04 docs advanced from evidence landing to case pack, scorecard, checklist, and implementation-reopen review`
+- last_queue_refill: `2026-04-17 04 moved from implementation-prep into live implementation after JSON compare output and matcher-rule externalization`
 
 When `QUEUE_PATH.Active Queue.queue_health = blocked`, sync `state = blocked`, `blocking_issue`, and `Resume Checkpoint.safe_to_interrupt` with `QUEUE_PATH.Blocked State`.
 
@@ -26,7 +26,7 @@ When `QUEUE_PATH.Active Queue.queue_health = blocked`, sync `state = blocked`, `
 - next_gate: `wave1_complete`
 - next_scoring_action: `+artifact`
 - stalled_scoring_actions_since_last_gap_reduction: `0`
-- last_gap_reduction: `added a public feedback-driven revision practice reference, expanded the 04 taxonomy, widened the local case pack, compressed the method stack into a scorecard, and added a delivery checklist`
+- last_gap_reduction: `implemented machine-readable JSON comparison output, externalized deterministic matcher rules, and verified the mock runner still blocks the same three regressions`
 
 ## Plan / Status Sync
 
@@ -131,7 +131,7 @@ When `QUEUE_PATH.Active Queue.queue_health = blocked`, sync `state = blocked`, `
 - evidence_summary: `/Users/bowhead/ai_dev_skill/SKILL_FORGE/topics/_artifacts/04-skill-optimization-and-feedback-loops-evidence-summary.md`
 - question_list: `/Users/bowhead/ai_dev_skill/SKILL_FORGE/topics/_artifacts/04-skill-optimization-and-feedback-loops-question-list.md`
 - status: `in_progress`
-- gap: `current evidence now supports a composite optimization stack plus one public feedback-driven revision practice; the remaining practical gap is a final doc-baseline consistency pass before deciding whether to reopen implementation`
+- gap: `research-side gaps are closed and compare SSOT is machine-readable; the remaining gap is landing the first real Codex adapter on the YAML-covered subset`
 
 When `topic_stop_decision = suspend / archive / redirect`, add or update the matching record in `Suspended Branches`. When `topic_stop_decision = early_saturation`, keep `early_saturation_reason` explicit even if no separate branch record is needed.
 
@@ -164,10 +164,10 @@ When `topic_stop_decision = suspend / archive / redirect`, add or update the mat
 
 - branch: `real Codex adapter execution`
 - state: `suspended`
-- why: `04 is currently prioritizing methodology and automation-path deepening; real adapter execution remains valuable but should follow a clearer skill optimization baseline and explicit implementation scope`
-- confirmed_so_far: `adapter contract, local case pack, schema, mock adapter / assertion spec, mock runner, mock run report, runner prototype spec, JSON comparison output spec, matcher rules spec, Codex adapter handoff, and an explicit existing-methodology stack artifact exist`
-- still_missing: `first real Codex adapter, JSON comparison artifact implementation, configurable matcher implementation, and real baseline / candidate comparison`
-- reopen_trigger: `04 methodology stack is considered stable enough for implementation, or user explicitly prioritizes real adapter work`
+- why: `04 has passed its implementation-prep gate; the suspended branch now only waits on the first real Codex adapter work rather than more methodology clarification`
+- confirmed_so_far: `adapter contract, local case pack, protected success set, schema, mock adapter / assertion spec, mock runner, mock Markdown report, mock JSON comparison artifact, runner prototype spec, matcher rules spec, machine-readable matcher registry, Codex adapter handoff, method-stack scorecard, delivery checklist, trio consistency review, and implementation-reopen package exist`
+- still_missing: `first real Codex adapter, real baseline / candidate comparison, and either YAML-subset execution or machine-readable parity expansion`
+- reopen_trigger: `already satisfied for non-MD implementation; next concrete trigger is starting the first real Codex adapter on the YAML-covered subset`
 
 - branch: `field-level surface matrix validation`
 - state: `archived`
@@ -192,12 +192,12 @@ When first representative miss appears, delete `none_recorded_yet` and add exact
 
 这里记录恢复上下文；下一步动作一律回读 `QUEUE_PATH`，不要在此处复制第二份 active queue。
 
-- last_completed_step: `landed a public feedback-driven revision reference for 04, expanded the taxonomy, widened the local case pack, added a compact method-stack scorecard, and drafted a handoff-ready delivery checklist`
+- last_completed_step: `implemented mock JSON comparison output, externalized matcher rules into YAML, and verified the mock runner still blocks review-no-trigger-001, review-output-001, and ship-safety-001`
 - last_verified_command: `ruby SKILL_FORGE/topics/_artifacts/04-skill-optimization-and-feedback-loops-mock-runner.rb`
 - last_verified_result: `promotion_blocked=yes, total_cases=3, regressions=3, improvements=0`
 - safe_to_interrupt: `yes`
 - queue_resume_entry: `read /Users/bowhead/ai_dev_skill/SKILL_FORGE/plan/skill-engineering-deep-research-progressive-plan-round-1.queue.md -> Active Queue`
-- resume_precheck: `confirm local case pack, scorecard, and delivery checklist are mutually consistent before reopening implementation or changing 04 branch state`
+- resume_precheck: `confirm the first real Codex adapter still starts on the YAML-covered subset and consumes the JSON compare SSOT plus matcher-rule registry`
 - do_not_forget: `do not reduce skill optimization to prompt tuning; keep artifact / trigger / workflow / tool contract / feedback loop perspective`
 
 ## Worklog
@@ -214,3 +214,6 @@ When first representative miss appears, delete `none_recorded_yet` and add exact
 - `2026-04-17`: recorded the structural scarcity of public score-based before/after skill-package cases, expanded the 04 failure taxonomy with artifact-layer mapping and promotion examples, and advanced the queue to local case pack expansion.
 - `2026-04-17`: widened the 04 local case pack with `superpowers` verification / subagent / anti-pattern cases and added a compact method-stack scorecard.
 - `2026-04-17`: drafted a handoff-ready 04 delivery checklist and advanced the queue to a final doc-baseline consistency review before any implementation reopen.
+- `2026-04-17`: completed the 04 trio consistency review, clarified that machine-readable coverage currently remains a 9-case implementation subset, and produced an explicit implementation-reopen package.
+- `2026-04-17`: implemented machine-readable JSON comparison output in the mock runner, updated the Markdown report to derive from JSON, and verified the compare summary still reports 3 regressions and promotion_blocked=yes.
+- `2026-04-17`: externalized deterministic matcher rules into `04-skill-optimization-and-feedback-loops-matcher-rules.yaml` and verified mock compare semantics remain stable.
