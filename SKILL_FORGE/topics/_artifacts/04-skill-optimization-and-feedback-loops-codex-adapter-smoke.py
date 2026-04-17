@@ -6,9 +6,10 @@ import json
 import os
 import shutil
 import subprocess
-import tempfile
 import time
+import uuid
 from pathlib import Path
+import sys
 
 from _skill_regression_runner_lib import (
     assert_case,
@@ -25,6 +26,7 @@ MATCHER_RULES = ROOT / "04-skill-optimization-and-feedback-loops-matcher-rules.y
 REPORT_JSON = ROOT / "04-skill-optimization-and-feedback-loops-codex-adapter-smoke-report.json"
 REPORT_MD = ROOT / "04-skill-optimization-and-feedback-loops-codex-adapter-smoke-report.md"
 TRACE_DIR = ROOT / "04-skill-optimization-and-feedback-loops-codex-adapter-smoke-traces"
+LOCAL_TMP_ROOT = ROOT / "_tmp_codex_smoke_home"
 TARGET_CASE_IDS = {"review-no-trigger-001", "review-output-001", "ship-safety-001"}
 
 
@@ -96,8 +98,10 @@ def build_fixture_repo(case_id: str, root_dir: Path) -> Path:
 
 def run_case(test_case: dict, skill_meta: dict, matcher_rules: dict) -> dict:
     TRACE_DIR.mkdir(parents=True, exist_ok=True)
-    with tempfile.TemporaryDirectory(prefix="codex-skill-regression-") as tmp_root_str:
-        tmp_root = Path(tmp_root_str)
+    LOCAL_TMP_ROOT.mkdir(parents=True, exist_ok=True)
+    tmp_root = LOCAL_TMP_ROOT / f"{test_case['case_id']}-{uuid.uuid4().hex[:8]}"
+    tmp_root.mkdir(parents=True, exist_ok=True)
+    try:
         temp_home = tmp_root / "home"
         temp_home.mkdir(parents=True, exist_ok=True)
         copy_codex_auth(temp_home)
@@ -218,6 +222,8 @@ def run_case(test_case: dict, skill_meta: dict, matcher_rules: dict) -> dict:
             "assertions": assert_case(test_case, run_record, matcher_rules),
             "exit_code": completed.returncode,
         }
+    finally:
+        shutil.rmtree(tmp_root, ignore_errors=True)
 
 
 def build_report(results: list[dict]) -> str:
@@ -245,13 +251,85 @@ def build_report(results: list[dict]) -> str:
     return "\n".join(lines)
 
 
+def infer_exit_code_from_trace(lines: list[str]) -> int:
+    saw_turn_completed = False
+    saw_turn_failed = False
+    for line in lines:
+        if not line.strip():
+            continue
+        try:
+            obj = json.loads(line)
+        except json.JSONDecodeError:
+            continue
+        if obj.get("type") == "turn.completed":
+            saw_turn_completed = True
+        if obj.get("type") == "turn.failed":
+            saw_turn_failed = True
+    if saw_turn_completed and not saw_turn_failed:
+        return 0
+    return 1
+
+
+def replay_case_from_trace(test_case: dict, skill_meta: dict, matcher_rules: dict) -> dict:
+    trace_path = TRACE_DIR / f"{test_case['case_id']}.jsonl"
+    stderr_path = TRACE_DIR / f"{test_case['case_id']}.stderr.txt"
+    stdout = trace_path.read_text() if trace_path.exists() else ""
+    stderr = stderr_path.read_text() if stderr_path.exists() else ""
+    lines = stdout.splitlines()
+    parsed = parse_codex_jsonl(lines)
+    triggered = infer_triggered(
+        test_case["case_id"],
+        parsed["output"],
+        parsed["tool_calls"],
+        parsed["reasoning"],
+    )
+    error_messages: list[str] = []
+    stderr_text = stderr.strip()
+    if stderr_text:
+        error_messages.append(stderr_text)
+    error_messages.extend(parsed["trace_errors"])
+
+    run_record = {
+        "schema_version": 1,
+        "case_id": test_case["case_id"],
+        "adapter": "codex",
+        "run_kind": "candidate",
+        "skill_path": test_case["skill_path"],
+        "skill_name": skill_meta["skill_name"],
+        "skill_version": None,
+        "selected_skill": skill_meta["skill_name"] if triggered else None,
+        "triggered": triggered,
+        "intermediate_steps": parsed["reasoning"] + [call["args"]["cmd"] for call in parsed["tool_calls"]],
+        "tool_calls": parsed["tool_calls"],
+        "final_output": parsed["output"],
+        "errors": error_messages,
+        "cost_usd": None,
+        "latency_ms": None,
+        "step_count": len(parsed["reasoning"]) + len(parsed["tool_calls"]),
+        "raw_trace_path": str(trace_path),
+        "session_id": parsed["session_id"],
+        "tokens": parsed["tokens"],
+    }
+
+    return {
+        "case_id": test_case["case_id"],
+        "run": run_record,
+        "assertions": assert_case(test_case, run_record, matcher_rules),
+        "exit_code": infer_exit_code_from_trace(lines),
+    }
+
+
 def main() -> None:
+    replay_mode = "--replay" in sys.argv[1:]
     case_pack = load_yaml_file(CASE_PACK)
     matcher_rules = load_matcher_rules(MATCHER_RULES)
     skills = {skill["skill_id"]: skill for skill in case_pack["skills"]}
     cases = [case for case in case_pack["cases"] if case["case_id"] in TARGET_CASE_IDS]
 
-    results = [run_case(test_case, skills[test_case["skill_id"]], matcher_rules) for test_case in cases]
+    if replay_mode:
+        results = [replay_case_from_trace(test_case, skills[test_case["skill_id"]], matcher_rules) for test_case in cases]
+    else:
+        results = [run_case(test_case, skills[test_case["skill_id"]], matcher_rules) for test_case in cases]
 
     artifact = {
         "artifact_type": "skill_regression_real_runs",

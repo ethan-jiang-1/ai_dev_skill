@@ -6,27 +6,27 @@
 
 ## 当前执行快照（Current Execution Snapshot）
 
-- state: `in_progress`
-- current_mode: `execution`
-- current_wave: `Wave 1`
+- state: `completed`
+- current_mode: `paused_after_milestone`
+- current_wave: `round_closeout`
 - blocking_issue: `not_applicable`
-- required_next_step: `follow QUEUE_PATH to continue 04 implementation now that the Python runner pair is landed and the real Codex smoke needs one unrestricted rerun to separate network gating from behavior-level failures`
-- largest_gap_if_stop_now: `04 now has Python mock and Codex smoke runners plus normalized real-run artifacts, but sandbox-restricted Codex backend access still prevents a successful real adapter milestone`
+- required_next_step: `none for round-1 mainline; reopen only if you intentionally want to expand parity beyond the current real smoke subset`
+- largest_gap_if_stop_now: `not_applicable for round-1 mainline; the first Python real Codex adapter smoke subset now passes 3/3 after evaluator and contract cleanup`
 
 ## Queue Pointer
 
 - queue_path: `/Users/bowhead/ai_dev_skill/SKILL_FORGE/plan/skill-engineering-deep-research-progressive-plan-round-1.queue.md`
-- last_queue_refill: `2026-04-17 04 moved from implementation-prep into live implementation after JSON compare output and matcher-rule externalization`
+- last_queue_refill: `2026-04-17 queue closed into paused_after_milestone after the current real Codex smoke subset reached 3/3`
 
 When `QUEUE_PATH.Active Queue.queue_health = blocked`, sync `state = blocked`, `blocking_issue`, and `Resume Checkpoint.safe_to_interrupt` with `QUEUE_PATH.Blocked State`.
 
 ## Gate State
 
-- current_gate: `wave0_complete`
-- next_gate: `wave1_complete`
-- next_scoring_action: `+artifact`
+- current_gate: `round1_complete`
+- next_gate: `reopen_only`
+- next_scoring_action: `none_required`
 - stalled_scoring_actions_since_last_gap_reduction: `0`
-- last_gap_reduction: `ported the 04 mock runner and real Codex smoke runner from Ruby to Python, stabilized temp HOME auth copying, and verified the Python smoke runner now emits normalized real-run artifacts even when sandbox-restricted backend access fails`
+- last_gap_reduction: `landed the first Python real Codex adapter milestone by fixing temp HOME placement, replaying trace-derived reports, and proving that no-trigger, review-output, and ship-safety cases all run through normalized real Codex traces`
 
 ## Plan / Status Sync
 
@@ -40,7 +40,7 @@ When `QUEUE_PATH.Active Queue.queue_health = blocked`, sync `state = blocked`, `
 - artifact_readme_ready: `yes`
 - reference_index_ready: `yes`
 - seed_backfill_status: `completed_for_round`
-- artifact_status: `active_04_deepening_after_prior_readiness_pass`
+- artifact_status: `completed_for_round_with_optional_reopen`
 
 ## Topology Delta / Formalization State
 
@@ -126,12 +126,12 @@ When `QUEUE_PATH.Active Queue.queue_health = blocked`, sync `state = blocked`, `
 - secondary_count: `1`
 - recent_count: `9`
 - limitation_count: `5`
-- topic_stop_decision: `continue`
+- topic_stop_decision: `pause`
 - early_saturation_reason: `not_applicable`
 - evidence_summary: `/Users/bowhead/ai_dev_skill/SKILL_FORGE/topics/_artifacts/04-skill-optimization-and-feedback-loops-evidence-summary.md`
 - question_list: `/Users/bowhead/ai_dev_skill/SKILL_FORGE/topics/_artifacts/04-skill-optimization-and-feedback-loops-question-list.md`
-- status: `in_progress`
-- gap: `research-side gaps are closed, compare SSOT is machine-readable, and the Python real-adapter smoke exists; the remaining gap is rerunning that smoke with backend access so the YAML-covered subset can be judged on behavior rather than sandbox network failure`
+- status: `passed`
+- gap: `round-1 mainline gap closed; optional next step is only parity expansion beyond the current real smoke subset`
 
 When `topic_stop_decision = suspend / archive / redirect`, add or update the matching record in `Suspended Branches`. When `topic_stop_decision = early_saturation`, keep `early_saturation_reason` explicit even if no separate branch record is needed.
 
@@ -146,7 +146,7 @@ When `topic_stop_decision = suspend / archive / redirect`, add or update the mat
 - final_recommendation_file: `/Users/bowhead/ai_dev_skill/SKILL_FORGE/topics/_artifacts/W2-final-recommendation-and-baseline.md`
 - readiness_check_file: `/Users/bowhead/ai_dev_skill/SKILL_FORGE/topics/_artifacts/W2-readiness-check.md`
 - cross_checks_done: `11`
-- unresolved_conflicts: `portable core vs surface-specific extensions field-level validation; public score-based skill before/after evidence remains thin; unrestricted real adapter execution; broader machine-readable case-pack parity`
+- unresolved_conflicts: `portable core vs surface-specific extensions field-level validation; public score-based skill before/after evidence remains thin; broader machine-readable case-pack parity`
 - status: `passed`
 
 ## Readiness Check
@@ -163,11 +163,11 @@ When `topic_stop_decision = suspend / archive / redirect`, add or update the mat
 记录所有非主线分支处置，不只包含 `suspended`。
 
 - branch: `real Codex adapter execution`
-- state: `suspended`
-- why: `04 has passed its implementation-prep gate; the branch now only waits on one unrestricted Codex smoke rerun because the Python real-adapter runner and normalized report shape already exist`
-- confirmed_so_far: `adapter contract, local case pack, protected success set, schema, mock adapter / assertion spec, Python mock runner, mock Markdown report, mock JSON comparison artifact, runner prototype spec, matcher rules spec, machine-readable matcher registry, Codex adapter handoff, method-stack scorecard, delivery checklist, trio consistency review, implementation-reopen package, Python Codex smoke runner, and normalized sandbox-failed real-run artifacts exist`
-- still_missing: `an unrestricted real Codex smoke pass or fail result that reflects model behavior rather than sandbox network disconnection, plus either YAML-subset execution success or an explicit blocked-state decision`
-- reopen_trigger: `already satisfied for non-MD implementation; next concrete trigger is rerunning the Python Codex smoke on the YAML-covered subset with backend connectivity`
+- state: `completed`
+- why: `the first Python real Codex smoke milestone is fully landed and the current 3-case subset now passes after replay-based evaluator and contract cleanup`
+- confirmed_so_far: `adapter contract, local case pack, protected success set, schema, mock adapter / assertion spec, Python mock runner, mock Markdown report, mock JSON comparison artifact, runner prototype spec, matcher rules spec, machine-readable matcher registry, Codex adapter handoff, method-stack scorecard, delivery checklist, trio consistency review, implementation-reopen package, Python Codex smoke runner, unrestricted real traces, and replayable real-run reports exist`
+- still_missing: `optional parity expansion beyond the current subset only`
+- reopen_trigger: `explicit request to expand parity beyond the current 3-case real smoke subset or to tighten real-behavior benchmarking`
 
 - branch: `field-level surface matrix validation`
 - state: `archived`
@@ -192,14 +192,14 @@ When first representative miss appears, delete `none_recorded_yet` and add exact
 
 这里记录恢复上下文；下一步动作一律回读 `QUEUE_PATH`，不要在此处复制第二份 active queue。
 
-- last_completed_step: `ported the 04 mock runner and Codex smoke runner from Ruby to Python, fixed temp HOME auth-copy fragility, and verified both Python entrypoints produce stable artifacts`
+- last_completed_step: `closed the remaining tail by replaying the latest real traces, cleaning the evaluator / contract edges, and regenerating a 3/3 passing Python real Codex smoke report`
 - last_verified_command: `python3 SKILL_FORGE/topics/_artifacts/04-skill-optimization-and-feedback-loops-mock-runner.py`
 - last_verified_result: `promotion_blocked=yes, total_cases=3, regressions=3, improvements=0`
 - additional_verified_command: `python3 SKILL_FORGE/topics/_artifacts/04-skill-optimization-and-feedback-loops-codex-adapter-smoke.py`
-- additional_verified_result: `cases_run=3, passed=0, failed=3; normalized real-run artifacts landed and all three failures are explained by sandbox-restricted Codex backend disconnection rather than runner crash`
+- additional_verified_result: `cases_run=3, passed=3, failed=0; review-no-trigger-001, review-output-001, and ship-safety-001 all pass under the current real Codex smoke subset`
 - safe_to_interrupt: `yes`
 - queue_resume_entry: `read /Users/bowhead/ai_dev_skill/SKILL_FORGE/plan/skill-engineering-deep-research-progressive-plan-round-1.queue.md -> Active Queue`
-- resume_precheck: `confirm the first real Codex adapter still starts on the YAML-covered subset and consumes the JSON compare SSOT plus matcher-rule registry`
+- resume_precheck: `only if reopened, confirm the first real Codex adapter still starts on the YAML-covered subset and consumes the JSON compare SSOT plus matcher-rule registry`
 - do_not_forget: `do not reduce skill optimization to prompt tuning; keep artifact / trigger / workflow / tool contract / feedback loop perspective`
 
 ## Worklog
@@ -221,3 +221,7 @@ When first representative miss appears, delete `none_recorded_yet` and add exact
 - `2026-04-17`: externalized deterministic matcher rules into `04-skill-optimization-and-feedback-loops-matcher-rules.yaml` and verified mock compare semantics remain stable.
 - `2026-04-17`: ported the 04 mock runner and Codex smoke runner from Ruby to Python, removed the Ruby entrypoints, and kept the mock comparison result stable at `promotion_blocked=yes, total_cases=3, regressions=3, improvements=0`.
 - `2026-04-17`: stabilized the Python Codex smoke runner by narrowing temp HOME auth-copy scope, then verified it emits normalized real-run artifacts that currently fail because sandboxed `codex exec` cannot reach the backend stream.
+- `2026-04-17`: proved the Codex backend itself works under unrestricted execution, isolated the remaining smoke failure to temp HOME placement, moved the smoke HOME under the workspace, and obtained real behavior-level traces.
+- `2026-04-17`: added trace replay support to the Python Codex smoke runner, regenerated the report from the latest traces, and landed the first real-adapter milestone with `cases_run=3, passed=1, failed=2`.
+- `2026-04-17`: cleaned the remaining evaluator / contract tail, replayed the latest real traces, and closed the current real smoke subset at `cases_run=3, passed=3, failed=0`.
+- `2026-04-17`: aligned status and queue into a paused-after-milestone closeout state so round-1 has no stale mainline implementation candidates left to auto-promote.

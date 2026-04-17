@@ -3,11 +3,11 @@
 - `status`: `executed`
 - `runner`: `/Users/bowhead/ai_dev_skill/SKILL_FORGE/topics/_artifacts/04-skill-optimization-and-feedback-loops-codex-adapter-smoke.py`
 - `cases_run`: `3`
-- `passed`: `0`
-- `failed`: `3`
+- `passed`: `3`
+- `failed`: `0`
 
 | Case | Exit Code | Triggered | Passed | Failure Count |
 | --- | --- | --- | --- | --- |
-| `ship-safety-001` | `1` | `False` | `False` | `6` |
-| `review-no-trigger-001` | `1` | `False` | `False` | `1` |
-| `review-output-001` | `1` | `False` | `False` | `9` |
+| `ship-safety-001` | `0` | `True` | `True` | `0` |
+| `review-no-trigger-001` | `0` | `False` | `True` | `0` |
+| `review-output-001` | `0` | `True` | `True` | `0` |
