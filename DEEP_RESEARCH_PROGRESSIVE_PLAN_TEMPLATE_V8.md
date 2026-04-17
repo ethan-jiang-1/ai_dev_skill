@@ -164,7 +164,7 @@
 | `topic registry` | `PLAN_PATH -> 研究线注册表（topic registry）` | 其他 section 只引用编号、slug 或计数 | topic 变化先更新 registry，再更新其他对象 |
 | `derived_topic_count` | `PLAN_PATH -> Instance Config`，且由 `topic registry` 派生 | 不允许在其他 section 维护第二份计数器 | registry 变化后同步修订该派生值 |
 | `topology baseline` | `PLAN_PATH -> 当前拓扑基线（Current Topology Baseline）` | `STATUS_PATH` 只记录 delta，不重写 baseline | 正式拓扑变化先改 `PLAN_PATH` |
-| `topology delta` | `STATUS_PATH -> Topology Delta / Formalization State` | `PLAN_PATH` 不记录实时变化日志 | 运行中只写增量、候选和同步状态 |
+| `topology delta` | `STATUS_PATH -> Topology Delta / Formalization State` | `PLAN_PATH` 不记录实时变化日志 | 运行中只写增量、候选与最近一次正式化说明；plan/status 同步摘要另写 `Plan / Status Sync` |
 | `gate model` | `PLAN_PATH -> Control Map -> Minimal Runtime Bindings` | `STATUS_PATH` 只写 `gate state` | `PLAN_PATH` 只定义 allowed values、默认路径与最小 gate 绑定 |
 | `gate state / next action` | `STATUS_PATH -> Gate State` | `PLAN_PATH` 只保留 allowed values，不写当前态 | 执行推进只更新 `STATUS_PATH` |
 | `execution queue` | `QUEUE_PATH` | `STATUS_PATH` 只保留 queue 摘要与指针；对话中可短引 | 每次完成当前任务前先补齐后续队列 |
