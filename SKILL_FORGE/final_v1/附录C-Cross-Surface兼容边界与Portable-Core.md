@@ -83,6 +83,24 @@ skill 也是一样。`portable core（可移植核心）` 就是那些"换个平
 
 ---
 
-## C7. 读完这份附录，下一步做什么
+## C7. 一个典型的跨 surface 失败案例
+
+你写了一个代码审查 skill，在 Claude CLI 上跑得很好。`SKILL.md` 的 frontmatter 里用了 `allowed-tools` 限制只能调用 `Read` 和 `Grep`，还用了 `hooks/session-start` 在启动时自动注入审查纪律。
+
+一个同事把这个 skill 复制到了 Codex 环境里。结果：`allowed-tools` 没生效（Codex 不认这个字段），agent 调用了不该调的工具；hooks 也没触发（Codex 没有对等的 hook 机制），审查纪律完全缺失。skill 的核心步骤其实是好的，但平台特有的约束全部失效了。
+
+问题出在哪？你把 Claude 特有的能力（`allowed-tools`、hooks）混在了 portable core 里，没有单独标记为平台扩展。如果当初写了一节 compatibility note，说明"工具限制依赖 Claude CLI 的 `allowed-tools`，在其他平台需要用其他方式实现"，这个问题就不会悄悄发生。
+
+---
+
+## C8. 写作层面之外：运行时差异
+
+这份附录聚焦的是**写作层面**的兼容策略——写 skill 时怎么区分 portable core 和平台扩展。但跨平台还有一层**运行时差异**是写作时看不到的：SDK 和 CLI 的行为不一致、API 通道的硬限制、各 surface 的 skill 发现路径不同等。
+
+如果你的 skill 需要在多个 surface 上实际运行（不只是"写完存着"），建议读完这份附录后继续看 [附录G-进阶话题与深度参考](./附录G-进阶话题与深度参考.md) 的 G6 节，那里详细讲了运行时层面的差异和限制。
+
+---
+
+## C9. 读完这份附录，下一步做什么
 
 拿你手头的一个 skill，做一件事：把它的内容分成两份——哪些是 portable core（换平台也不变的核心），哪些依赖特定平台。如果你发现分不清，那说明你在写的时候把两层混在了一起——这恰恰是最值得现在理清的。
