@@ -14,6 +14,22 @@
 
 这轮研究最终不是为了堆更多 skill 链接，而是为了支撑我们自己的 skill workflow 设计。
 
+这条线当前重新加重的核心诉求是：
+
+- 我们要的不是“再找一些 skill 样本”，而是找到让 skill 更稳定进入真实工作的优化方法学。
+- 重点不是继续人工来回调 prompt，而是找：
+  - 可复用的套路
+  - 可迁移的 regression harness
+  - feedback loop
+  - candidate revision 机制
+  - 自动化和人工 promotion 的边界
+- 真正想解决的问题是：
+  - skill 上线后怎么持续变稳
+  - skill 修改后怎么比较 baseline 和 candidate
+  - skill 什么时候可以交给自动化，什么时候必须保留人工把关
+
+因此，这个 topic 的优先级现在高，不是因为“skill optimization 听起来更高级”，而是因为它直接决定我们最后能不能形成一套可持续、可验证、不过度依赖作者手调的 skill workflow。
+
 原始研究想回答的几个核心问题里，其实一直隐含着一个后半程难题：
 
 - skill 写好之后怎么持续更新和验证
@@ -235,10 +251,22 @@
 
 - 当前最稳的判断是：这已经不是 `01/02/03` 内任何一条研究线的局部补件，而是一个独立问题簇，因此应作为 `04` 独立 topic 推进。
 - 当前最值得作为 `04` 起步样本的对象之一是 `skill-forge`，因为它已经把 skill 的 discoverability、executability、结构一致性和发布前治理视为可优化对象，而不只是把问题退化成 prompt 改写。
+- 当前能找到的“现成方法学”更像一套组合栈，而不是一个现成万能优化器：
+  - artifact governance / publish gate
+  - trigger / discoverability tuning
+  - trajectory / tool-use regression
+  - offline / online feedback loop
+  - candidate revision / optimizer pattern
+  - human promotion gate
+- 因此，`04` 的重点投资方向不应是继续泛搜 prompt optimization，而应是继续找：
+  - 更像真实 skill package before / after 的公开案例
+  - 可迁移的 regression harness / compare pattern
+  - 自动化生成候选修订与人工 promotion 的工作分界
 - `04` 的基础 research artifacts 已形成：
   - `/Users/bowhead/ai_dev_skill/SKILL_FORGE/topics/_artifacts/04-skill-optimization-and-feedback-loops-evidence-summary.md`
   - `/Users/bowhead/ai_dev_skill/SKILL_FORGE/topics/_artifacts/04-skill-optimization-and-feedback-loops-failure-taxonomy-draft.md`
   - `/Users/bowhead/ai_dev_skill/SKILL_FORGE/topics/_artifacts/04-skill-optimization-and-feedback-loops-eval-loop-baseline.md`
+  - `/Users/bowhead/ai_dev_skill/SKILL_FORGE/topics/_artifacts/04-skill-optimization-and-feedback-loops-existing-methodology-stack.md`
 
 ## 当前执行产物（runner 方向）
 
@@ -258,6 +286,8 @@
   - 收束为可实现 runner 规格：schema validation、mock adapter、deterministic assertions、real adapter、compare 与 promotion report。
 - `/Users/bowhead/ai_dev_skill/SKILL_FORGE/topics/_artifacts/04-skill-optimization-and-feedback-loops-mock-adapter-and-assertion-spec.md`
   - 固定 mock trace、deterministic assertion、compare status 与 promotion blocking 的第一版语义。
+- `/Users/bowhead/ai_dev_skill/SKILL_FORGE/topics/_artifacts/04-skill-optimization-and-feedback-loops-existing-methodology-stack.md`
+  - 把现成 skill optimization 方法学、自动化路径、人工 promotion gate 与投资顺序收束成组合栈，而不是继续把希望压在单一工具上。
 
 ## 当前判断（runner 规格后）
 

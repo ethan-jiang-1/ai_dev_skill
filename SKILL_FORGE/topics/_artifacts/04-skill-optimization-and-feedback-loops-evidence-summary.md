@@ -1,9 +1,9 @@
 # 04 / Skill 持续优化、评测闭环与反馈回流 / Evidence Summary
 
-- `status`: `done_for_round`
+- `status`: `reopened_for_methodology_and_automation_deepening`
 - `wave`: `Wave 1 + Wave 2 backfill + runner-spec extension`
 - `doc_count`: `9`
-- `current_focus`: `把 04 从 skill artifact 优化扩展到 trajectory regression、CI quality gate、offline / online feedback loop、program optimizer、eval-driven optimization flywheel 与本地 runner 实现模式。`
+- `current_focus`: `把 04 从 skill artifact 优化扩展到现成 optimization stack：trajectory regression、CI quality gate、offline / online feedback loop、program optimizer、eval-driven optimization flywheel 与本地 runner 实现模式。`
 
 ## 本轮新增证据栈
 
@@ -29,6 +29,13 @@
 ## 当前最稳的判断
 
 - `04` 的研究对象应从 skill artifact 级优化开始，而不是从通用 prompt optimization 开始。
+- 当前最实用的现成答案不是单一 `skill optimizer`，而是一套组合栈：
+  - artifact governance
+  - trigger / discoverability tuning
+  - trajectory / tool-use regression
+  - offline / online feedback loop
+  - candidate revision / optimizer pattern
+  - human promotion gate
 - `skill-forge` 代表的是一种 post-authoring optimization 路线：
   - 结构审计
   - discoverability 检查
@@ -65,6 +72,7 @@
 
 ## 当前缺口
 
+- 还缺公开 before / after 的 skill 优化案例，能把“修改了什么 artifact、为什么提升、如何验证”讲完整。
 - 还缺公开案例说明一次 skill 修订如何被量化比较。
 - `04` 的结论已回填到 W2 synthesis、workflow baseline、formal comparison、final recommendation 和 readiness check。
 - 已补出一版 `SKILL.md regression harness` 模板、tool config sketch、agent adapter contract、local case pack、机器可读 YAML、case pack JSON schema、mock adapter / assertion spec、mock runner、mock run report 与 runner prototype spec；后续缺口从“有没有 harness 样板”转为“是否把 mock runner 产品化为 JSON report、可配置 matcher，并接入真实 Codex adapter 跑 baseline / candidate 对比”。

@@ -36,6 +36,10 @@ Artifacts 可以综合 reference、维护问题清单、保存横向判断、记
 - `04-skill-optimization-and-feedback-loops-eval-loop-baseline.md`
 - `04-skill-optimization-and-feedback-loops-skill-regression-harness-template.md`
 - `04-skill-optimization-and-feedback-loops-agent-adapter-contract.md`
+- `04-skill-optimization-and-feedback-loops-json-comparison-output-spec.md`
+- `04-skill-optimization-and-feedback-loops-matcher-rules-spec.md`
+- `04-skill-optimization-and-feedback-loops-codex-adapter-first-pass-handoff.md`
+- `04-skill-optimization-and-feedback-loops-existing-methodology-stack.md`
 - `04-skill-optimization-and-feedback-loops-local-case-pack.md`
 - `04-skill-optimization-and-feedback-loops-local-case-pack.yaml`
 - `04-skill-optimization-and-feedback-loops-local-case-pack.schema.json`

@@ -10,24 +10,24 @@
 
 ### current_task
 
-- action: `add JSON comparison output to the 04 mock runner`
-- done_condition: `mock runner still emits the existing Markdown report and also emits machine-readable JSON comparison output with promotion status, case totals, per-case regression details, and blocking failures`
-- writes_to: `/Users/bowhead/ai_dev_skill/SKILL_FORGE/topics/_artifacts/04-skill-optimization-and-feedback-loops-mock-runner.rb; /Users/bowhead/ai_dev_skill/SKILL_FORGE/topics/_artifacts/04-skill-optimization-and-feedback-loops-mock-runner-report.md; optional new JSON report artifact; /Users/bowhead/ai_dev_skill/SKILL_FORGE/plan/skill-engineering-deep-research-progressive-plan-round-1.status.md`
-- status_sync: `update Resume Checkpoint.last_completed_step, last_verified_command, last_verified_result, and Worklog`
+- action: `find public before/after skill optimization or regression practice cases and land them into topic 04`
+- done_condition: `at least one new authoritative reference or one explicit failed-exploration record clarifies whether public skill-specific before/after optimization cases exist`
+- writes_to: `new 04 reference under /Users/bowhead/ai_dev_skill/SKILL_FORGE/topics/_reference if found; /Users/bowhead/ai_dev_skill/SKILL_FORGE/topics/_artifacts/04-skill-optimization-and-feedback-loops-evidence-summary.md; /Users/bowhead/ai_dev_skill/SKILL_FORGE/topics/_artifacts/04-skill-optimization-and-feedback-loops-question-list.md; /Users/bowhead/ai_dev_skill/SKILL_FORGE/plan/skill-engineering-deep-research-progressive-plan-round-1.status.md`
+- status_sync: `update topic 04 counts if evidence lands, or Failed Explorations if the search proves structurally thin`
 
 ### next_task
 
-- action: `extract hard-coded output matcher into configurable matcher rules`
-- done_condition: `runner reads matcher rules from a separate config artifact or clearly documented rules block, and mock comparison result remains promotion_blocked for the current candidate fixture`
-- writes_to: `new matcher rules artifact under /Users/bowhead/ai_dev_skill/SKILL_FORGE/topics/_artifacts; 04 mock runner; mock runner report; status`
-- status_sync: `update Suspended Branches if matcher work changes the real-adapter unblock conditions; otherwise update Resume Checkpoint`
+- action: `expand 04 failure taxonomy with promotion decision examples and artifact-layer mapping`
+- done_condition: `failure taxonomy includes concrete mappings from trigger, trajectory, safety, and regression failures to specific artifact-layer revisions`
+- writes_to: `/Users/bowhead/ai_dev_skill/SKILL_FORGE/topics/_artifacts/04-skill-optimization-and-feedback-loops-failure-taxonomy-draft.md; /Users/bowhead/ai_dev_skill/SKILL_FORGE/plan/skill-engineering-deep-research-progressive-plan-round-1.status.md`
+- status_sync: `update topic 04 gap and Resume Checkpoint`
 
 ### next_after_next
 
-- action: `prototype first real Codex adapter using the local gstack / codex exec pattern`
-- done_condition: `adapter contract has a first executable Codex adapter draft, or the branch is explicitly suspended with concrete blocker and reopen trigger`
-- writes_to: `new or updated adapter artifact under /Users/bowhead/ai_dev_skill/SKILL_FORGE/topics/_artifacts; runner prototype spec; status`
-- status_sync: `promote or update the real Codex adapter Suspended Branch record`
+- action: `expand the 04 local case pack at the MD level before reopening runner implementation`
+- done_condition: `local-case-pack.md covers a broader set of trigger, no-trigger, trajectory, tool-contract, and safety patterns aligned with the current methodology stack`
+- writes_to: `/Users/bowhead/ai_dev_skill/SKILL_FORGE/topics/_artifacts/04-skill-optimization-and-feedback-loops-local-case-pack.md; /Users/bowhead/ai_dev_skill/SKILL_FORGE/plan/skill-engineering-deep-research-progressive-plan-round-1.status.md`
+- status_sync: `update topic 04 gap and Resume Checkpoint`
 
 ## Blocked State
 
@@ -43,33 +43,33 @@ Repeat the following candidate block as needed. Do not collapse multiple candida
 
 ### Candidate Block
 
-- candidate: `validate field-level surface support matrix across Codex / GitHub / Claude`
-- done_condition: `field support matrix moves from draft claims to checked compatibility notes, or is archived with explicit reason`
-- writes_to: `/Users/bowhead/ai_dev_skill/SKILL_FORGE/topics/_artifacts/W2-field-support-matrix-codex-github-claude.md; status`
-- status_sync: `update Archived / Suspended Branches and Readiness residual risk summary`
-- why_next: `improves precision of portable core vs surface-specific extension claims`
-- prerequisite: `main JSON/matcher queue is complete or user prioritizes compatibility validation`
-- promotion_trigger: `current_task closes and queue becomes thin`
+- candidate: `implement JSON comparison output using the documented artifact contract`
+- done_condition: `mock runner emits the JSON comparison artifact defined by 04-skill-optimization-and-feedback-loops-json-comparison-output-spec.md and Markdown summary stays aligned`
+- writes_to: `/Users/bowhead/ai_dev_skill/SKILL_FORGE/topics/_artifacts/04-skill-optimization-and-feedback-loops-mock-runner.rb; /Users/bowhead/ai_dev_skill/SKILL_FORGE/topics/_artifacts/04-skill-optimization-and-feedback-loops-mock-runner-report.md; optional JSON report artifact; status`
+- status_sync: `update Resume Checkpoint.last_completed_step, last_verified_command, last_verified_result, and Worklog`
+- why_next: `converts the current 04 compare semantics into a machine-readable SSOT when non-MD implementation is in scope`
+- prerequisite: `non-MD implementation work is explicitly allowed`
+- promotion_trigger: `MD scaffolds are stable and user reopens implementation scope`
 
 ### Candidate Block
 
-- candidate: `expand mock regression case pack beyond the current three cases`
-- done_condition: `case pack includes additional representative failures and mock runner covers them without weakening existing promotion blocking`
-- writes_to: `/Users/bowhead/ai_dev_skill/SKILL_FORGE/topics/_artifacts/04-skill-optimization-and-feedback-loops-local-case-pack.yaml; schema if needed; mock runner report; status`
-- status_sync: `update Wave 1 topic 04 gap and Resume Checkpoint`
-- why_next: `increases confidence before real adapter execution`
-- prerequisite: `JSON output and configurable matcher are in place`
-- promotion_trigger: `runner work remains active after next_task`
+- candidate: `compare the current public optimization mechanisms into a compact 04 scorecard`
+- done_condition: `a scorecard makes it easier to compare governance, trigger tuning, regression, feedback loop, and candidate revision roles across the current method stack`
+- writes_to: `new or updated 04 artifact under /Users/bowhead/ai_dev_skill/SKILL_FORGE/topics/_artifacts; status`
+- status_sync: `update topic 04 gap and Resume Checkpoint`
+- why_next: `reduces the risk that 04 keeps drifting back into tool-name collection instead of stack design`
+- prerequisite: `current active 04 queue closes one of the evidence or taxonomy gaps`
+- promotion_trigger: `queue becomes thin after current active tasks`
 
 ### Candidate Block
 
-- candidate: `write AGENTS.md / Agent Skills standards supplement`
-- done_condition: `supplement explains how repo-level guidance, skill artifact structure, trigger descriptions, tool contracts, and regression loop fit together`
+- candidate: `draft skill workflow delivery checklist from the final recommendation`
+- done_condition: `a concise checklist turns the final recommendation into a handoff-ready authoring / install / trust / eval / rollback workflow`
 - writes_to: `new or updated artifact under /Users/bowhead/ai_dev_skill/SKILL_FORGE/topics/_artifacts; status`
-- status_sync: `update Wave 2 synthesis or final recommendation residual risk if adopted`
-- why_next: `turns research findings into a practical workflow supplement`
-- prerequisite: `current V8 migration and runner queue are stable`
-- promotion_trigger: `user shifts from research continuation to final delivery hardening`
+- status_sync: `update Wave 2 final recommendation residual risk if adopted`
+- why_next: `turns research conclusions into a reusable delivery surface without touching implementation code`
+- prerequisite: `04 methodology stack is stable enough that delivery hardening will not get ahead of the evidence`
+- promotion_trigger: `queue becomes thin after current active tasks`
 
 ## Promotion Rules
 

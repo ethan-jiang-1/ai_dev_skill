@@ -1,6 +1,6 @@
 # 04 / Skill 持续优化、评测闭环与反馈回流 / Question List
 
-- `status`: `active_backlog`
+- `status`: `reopened_for_methodology_and_automation_deepening`
 
 ## 拓扑迁移后的必做项
 
@@ -63,16 +63,50 @@
   - 已实现最小 mock runner：加载 YAML case pack、做 schema-like validation、执行 deterministic assertions、比较 baseline / candidate 并输出 Markdown promotion report。
 - `/Users/bowhead/ai_dev_skill/SKILL_FORGE/topics/_artifacts/04-skill-optimization-and-feedback-loops-mock-runner-report.md`
   - 已记录一次 mock baseline / candidate 对比，覆盖 no-trigger false positive、review output contract regression 与 unsafe ship behavior 三类 promotion blocker。
+- `/Users/bowhead/ai_dev_skill/SKILL_FORGE/topics/_artifacts/04-skill-optimization-and-feedback-loops-json-comparison-output-spec.md`
+  - 固定未来 JSON comparison artifact 的 top-level fields、case record shape、blocking failure shape 与 Markdown / status 派生规则。
+- `/Users/bowhead/ai_dev_skill/SKILL_FORGE/topics/_artifacts/04-skill-optimization-and-feedback-loops-matcher-rules-spec.md`
+  - 把 hard-coded deterministic matcher 语义提升成独立规则层，避免 output / tool / trajectory contract 漂移。
+- `/Users/bowhead/ai_dev_skill/SKILL_FORGE/topics/_artifacts/04-skill-optimization-and-feedback-loops-codex-adapter-first-pass-handoff.md`
+  - 固定第一个真实 Codex adapter 的实现边界、字段归一化要求、验收顺序与 suspend / reopen 判断口径。
+
+## 本轮新增文档化推进
+
+- 已把 JSON comparison output 从一句 TODO 提升成独立规范，不再只有“以后再加”的口头描述。
+- 已把 configurable matcher 的目标从抽象愿望提升成 rule-level 设计约束与初始 rule registry。
+- 已把第一个真实 Codex adapter 的实现前置问题、阶段顺序与验收面补成 handoff 文档。
+- 已把现成方法学收束成组合栈判断：当前最像现实答案的不是单一工具，而是 artifact governance、trigger tuning、trajectory regression、feedback loop、candidate revision 与 human promotion gate 的组合。
+
+## 当前优先继续研究
+
+- 找公开 before / after 的 skill 优化案例，最好能明确：
+  - 改了哪个 artifact 层
+  - 用什么 cases / traces 证明提升
+  - 是否引入了新的回归
+- 找更接近 `SKILL.md` package 的 regression harness / compare pattern，而不是只看一般 prompt eval。
+- 找 automation 真正能落在哪些局部部件：
+  - `description`
+  - examples
+  - workflow steps
+  - tool contract
+  - supporting file structure
+- 找自动 candidate revision 和 human promotion gate 的真实分界，而不是抽象地说 human-in-the-loop。
 
 ## 下一轮 TODO
 
-- 给 mock runner 增加 JSON comparison output。
-- 把 hard-coded output matcher 提取成可配置规则。
-- 选择 Codex adapter 作为第一个真实 adapter，因为本地 `gstack` 已有 temp HOME 安装和 `codex exec --json` parser 参考。
-- 至少跑一次 baseline / candidate 对比，哪怕 candidate 是一个小的 description 或 workflow contract 改动。
-- 把真实运行暴露的新失败类回填到 failure taxonomy。
+- 优先补公开 skill optimization / regression / feedback 真实案例，而不是再泛搜 prompt optimization 框架。
+- 优先补 `04` 的 failure taxonomy examples，尤其是 trigger / trajectory / safety / regression 之间的边界。
+- 优先把现有方法学栈进一步映射成一套最小 skill optimization baseline。
+- 在允许非 MD 改动时，再按 JSON comparison output spec、matcher rules spec 和 Codex adapter handoff 推进 runner implementation。
 
 ## 当前判断
 
 - `04` 当前不该从“再找几个 prompt 优化框架”起步，而应从 skill artifact 级对象和可迁移的评测闭环模式起步。
 - `skill-forge` 是当前最值得作为 `04` 起步样本之一的开源对象，因为它已经把 skill 的 discoverability、executability、结构一致性与发布前治理视为优化对象。
+- 对我们自己的 skill workflow 来说，最值得继续投的不是“找一个万能 optimizer”，而是把现成组合栈拼成稳定流程：
+  - governance
+  - trigger tuning
+  - regression harness
+  - feedback loop
+  - candidate revision
+  - human promotion gate

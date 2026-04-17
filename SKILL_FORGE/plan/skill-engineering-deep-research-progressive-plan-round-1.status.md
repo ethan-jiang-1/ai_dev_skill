@@ -6,27 +6,27 @@
 
 ## 当前执行快照（Current Execution Snapshot）
 
-- state: `completed`
+- state: `in_progress`
 - current_mode: `execution`
-- current_wave: `Readiness Check`
+- current_wave: `Wave 1`
 - blocking_issue: `not_applicable`
-- required_next_step: `continue via QUEUE_PATH optional deepening queue`
-- largest_gap_if_stop_now: `real adapter execution, JSON runner output, configurable matcher, and field-level surface validation remain optional deepening gaps`
+- required_next_step: `continue 04 methodology and automation deepening via QUEUE_PATH`
+- largest_gap_if_stop_now: `04 still lacks enough consolidated public practice evidence for stable skill optimization methodology, and real adapter execution / JSON compare / configurable matcher remain open implementation gaps`
 
 ## Queue Pointer
 
 - queue_path: `/Users/bowhead/ai_dev_skill/SKILL_FORGE/plan/skill-engineering-deep-research-progressive-plan-round-1.queue.md`
-- last_queue_refill: `2026-04-17 V8 migration`
+- last_queue_refill: `2026-04-17 04 methodology-and-automation reprioritization`
 
 When `QUEUE_PATH.Active Queue.queue_health = blocked`, sync `state = blocked`, `blocking_issue`, and `Resume Checkpoint.safe_to_interrupt` with `QUEUE_PATH.Blocked State`.
 
 ## Gate State
 
-- current_gate: `readiness_passed`
-- next_gate: `not_applicable`
-- next_scoring_action: `+artifact`
+- current_gate: `wave0_complete`
+- next_gate: `wave1_complete`
+- next_scoring_action: `+reference`
 - stalled_scoring_actions_since_last_gap_reduction: `0`
-- last_gap_reduction: `04 mock runner executed; readiness passed after 04 refresh and mock runner`
+- last_gap_reduction: `04 reopened as the current priority line after consolidating the existing optimization stack and automation boundary`
 
 ## Plan / Status Sync
 
@@ -40,7 +40,7 @@ When `QUEUE_PATH.Active Queue.queue_health = blocked`, sync `state = blocked`, `
 - artifact_readme_ready: `yes`
 - reference_index_ready: `yes`
 - seed_backfill_status: `completed_for_round`
-- artifact_status: `completed_for_round_with_optional_deepening_queue`
+- artifact_status: `active_04_deepening_after_prior_readiness_pass`
 
 ## Topology Delta / Formalization State
 
@@ -126,12 +126,12 @@ When `QUEUE_PATH.Active Queue.queue_health = blocked`, sync `state = blocked`, `
 - secondary_count: `1`
 - recent_count: `8`
 - limitation_count: `4`
-- topic_stop_decision: `early_saturation`
-- early_saturation_reason: `artifact optimization, trigger tuning, trajectory regression, CI quality gates, offline / online feedback loop, program optimizer pattern, eval flywheel, and local runner implementation pattern are sufficiently supported for round-1`
+- topic_stop_decision: `continue`
+- early_saturation_reason: `not_applicable`
 - evidence_summary: `/Users/bowhead/ai_dev_skill/SKILL_FORGE/topics/_artifacts/04-skill-optimization-and-feedback-loops-evidence-summary.md`
 - question_list: `/Users/bowhead/ai_dev_skill/SKILL_FORGE/topics/_artifacts/04-skill-optimization-and-feedback-loops-question-list.md`
-- status: `passed`
-- gap: `mock runner works; JSON output, configurable matcher, and real Codex adapter remain optional deepening`
+- status: `in_progress`
+- gap: `current evidence supports a composite optimization stack, but public before/after practice cases, automation boundary calibration, and a clearer minimum skill optimization baseline still need further consolidation`
 
 When `topic_stop_decision = suspend / archive / redirect`, add or update the matching record in `Suspended Branches`. When `topic_stop_decision = early_saturation`, keep `early_saturation_reason` explicit even if no separate branch record is needed.
 
@@ -146,7 +146,7 @@ When `topic_stop_decision = suspend / archive / redirect`, add or update the mat
 - final_recommendation_file: `/Users/bowhead/ai_dev_skill/SKILL_FORGE/topics/_artifacts/W2-final-recommendation-and-baseline.md`
 - readiness_check_file: `/Users/bowhead/ai_dev_skill/SKILL_FORGE/topics/_artifacts/W2-readiness-check.md`
 - cross_checks_done: `11`
-- unresolved_conflicts: `portable core vs surface-specific extensions field-level validation; real adapter execution; JSON runner output; configurable matcher`
+- unresolved_conflicts: `portable core vs surface-specific extensions field-level validation; 04 methodology stack still lacks enough public before/after practice evidence; real adapter execution; JSON comparison artifact implementation; configurable matcher implementation`
 - status: `passed`
 
 ## Readiness Check
@@ -164,10 +164,10 @@ When `topic_stop_decision = suspend / archive / redirect`, add or update the mat
 
 - branch: `real Codex adapter execution`
 - state: `suspended`
-- why: `requires adapter implementation and real local baseline / candidate execution; mock runner already reduced mainline uncertainty`
-- confirmed_so_far: `adapter contract, local case pack, schema, mock adapter / assertion spec, mock runner, mock run report, and runner prototype spec exist`
-- still_missing: `first real Codex adapter and real baseline / candidate comparison`
-- reopen_trigger: `JSON output and configurable matcher are available, or user explicitly prioritizes real adapter work`
+- why: `04 is currently prioritizing methodology and automation-path deepening; real adapter execution remains valuable but should follow a clearer skill optimization baseline and explicit implementation scope`
+- confirmed_so_far: `adapter contract, local case pack, schema, mock adapter / assertion spec, mock runner, mock run report, runner prototype spec, JSON comparison output spec, matcher rules spec, Codex adapter handoff, and an explicit existing-methodology stack artifact exist`
+- still_missing: `first real Codex adapter, JSON comparison artifact implementation, configurable matcher implementation, and real baseline / candidate comparison`
+- reopen_trigger: `04 methodology stack is considered stable enough for implementation, or user explicitly prioritizes real adapter work`
 
 - branch: `field-level surface matrix validation`
 - state: `archived`
@@ -188,12 +188,12 @@ When first representative miss appears, delete `none_recorded_yet` and add exact
 
 这里记录恢复上下文；下一步动作一律回读 `QUEUE_PATH`，不要在此处复制第二份 active queue。
 
-- last_completed_step: `V8 migration completed after 04 mock runner readiness pass`
+- last_completed_step: `reopened 04 as the current priority line and consolidated the existing skill optimization stack into a dedicated artifact`
 - last_verified_command: `ruby SKILL_FORGE/topics/_artifacts/04-skill-optimization-and-feedback-loops-mock-runner.rb`
 - last_verified_result: `promotion_blocked=yes, total_cases=3, regressions=3, improvements=0`
 - safe_to_interrupt: `yes`
 - queue_resume_entry: `read /Users/bowhead/ai_dev_skill/SKILL_FORGE/plan/skill-engineering-deep-research-progressive-plan-round-1.queue.md -> Active Queue`
-- resume_precheck: `confirm queue and README navigation surfaces are current before optional deepening`
+- resume_precheck: `confirm 04 methodology artifact, question list, and queue priority are aligned before landing more references`
 - do_not_forget: `do not reduce skill optimization to prompt tuning; keep artifact / trigger / workflow / tool contract / feedback loop perspective`
 
 ## Worklog
@@ -204,3 +204,5 @@ When first representative miss appears, delete `none_recorded_yet` and add exact
 - `2026-04-16`: completed topic 04 Wave 1, refreshed Wave 2 artifacts, produced final recommendation and readiness check, and added mock runner / case pack / schema / adapter contract artifacts.
 - `2026-04-16`: executed mock runner with `promotion_blocked=yes, total_cases=3, regressions=3, improvements=0`.
 - `2026-04-17`: migrated round-1 plan/status to V8 three-file runtime model and added explicit execution queue for optional deepening.
+- `2026-04-17`: added MD-only execution scaffolds for 04 JSON comparison output, deterministic matcher rules, and first-pass Codex adapter handoff without changing runner code.
+- `2026-04-17`: reopened round-1 around topic 04 methodology and automation deepening, added a dedicated existing-methodology stack artifact, and reprioritized the queue toward stable skill optimization research.

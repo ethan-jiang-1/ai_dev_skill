@@ -11,6 +11,9 @@
   - `/Users/bowhead/ai_dev_skill/SKILL_FORGE/topics/_artifacts/04-skill-optimization-and-feedback-loops-mock-adapter-and-assertion-spec.md`
   - `/Users/bowhead/ai_dev_skill/SKILL_FORGE/topics/_artifacts/04-skill-optimization-and-feedback-loops-mock-runner.rb`
   - `/Users/bowhead/ai_dev_skill/SKILL_FORGE/topics/_artifacts/04-skill-optimization-and-feedback-loops-mock-runner-report.md`
+  - `/Users/bowhead/ai_dev_skill/SKILL_FORGE/topics/_artifacts/04-skill-optimization-and-feedback-loops-json-comparison-output-spec.md`
+  - `/Users/bowhead/ai_dev_skill/SKILL_FORGE/topics/_artifacts/04-skill-optimization-and-feedback-loops-matcher-rules-spec.md`
+  - `/Users/bowhead/ai_dev_skill/SKILL_FORGE/topics/_artifacts/04-skill-optimization-and-feedback-loops-codex-adapter-first-pass-handoff.md`
   - `/Users/bowhead/ai_dev_skill/SKILL_FORGE/topics/_reference/04-skill-optimization-and-feedback-loops-local-gstack-eval-harness.md`
 
 ## Prototype Goal
@@ -223,17 +226,20 @@ Minimum first run:
 1. `done`: Wire schema validation into the mock runner using `04-skill-optimization-and-feedback-loops-local-case-pack.schema.json`.
 2. `done`: Implement mock fixtures and deterministic assertions for trigger, required / forbidden tools, output keywords and safety overrides.
 3. `done`: Produce a Markdown mock comparison and promotion decision report.
-4. `next`: Add JSON comparison output.
-5. `next`: Add one real adapter, preferably Codex because the local reference already shows temp HOME skill installation.
-6. `next`: Persist real run JSON and raw traces.
-7. `later`: Add LLM-as-judge only after deterministic assertions are stable.
-8. `later`: Add Claude and Gemini adapters after the shared schema proves stable.
+4. `doc_ready`: JSON comparison artifact contract is fixed in `04-skill-optimization-and-feedback-loops-json-comparison-output-spec.md`.
+5. `doc_ready`: deterministic matcher extraction target is fixed in `04-skill-optimization-and-feedback-loops-matcher-rules-spec.md`.
+6. `doc_ready`: first real Codex adapter handoff is fixed in `04-skill-optimization-and-feedback-loops-codex-adapter-first-pass-handoff.md`.
+7. `next`: Implement JSON comparison output.
+8. `next`: Add one real adapter, preferably Codex because the local reference already shows temp HOME skill installation.
+9. `next`: Persist real run JSON and raw traces.
+10. `later`: Add LLM-as-judge only after deterministic assertions are stable.
+11. `later`: Add Claude and Gemini adapters after the shared schema proves stable.
 
 ## TODO List For Next Execution Round
 
-- Add JSON comparison output to the mock runner.
+- Implement the JSON comparison output defined in `04-skill-optimization-and-feedback-loops-json-comparison-output-spec.md`.
 - Decide whether real-adapter `selected_skill` is explicit, inferred from trace, or approximated from output.
-- Convert deterministic output checks into configurable matcher rules instead of hard-coded runner branches.
-- Add Codex adapter using temp HOME installation and `codex exec --json`.
+- Convert deterministic output checks into configurable matcher rules using `04-skill-optimization-and-feedback-loops-matcher-rules-spec.md`.
+- Add Codex adapter using temp HOME installation and `codex exec --json`, following `04-skill-optimization-and-feedback-loops-codex-adapter-first-pass-handoff.md`.
 - Run at least one baseline / candidate pair on local sample skills with the Codex adapter.
 - Feed failures back into `04` failure taxonomy if new failure classes appear.
