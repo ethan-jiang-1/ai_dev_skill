@@ -44,7 +44,7 @@
 
 **日常类比：** 快递系统。它负责把东西送到你家，但它不负责这个东西好不好用——你拆包之后仍然要自己检查。
 
-**最小例子：** 你运行 `skills install code-review`，installer 把 skill 下载到 `.cursor/skills/code-review/` 里。安装成功了——但 skill 好不好用，你还没验证。
+**最小例子：** 你运行 `npx agent-skills-cli add code-review --agent cursor`，installer 把 skill 下载到 `.cursor/skills/code-review/` 里。安装成功了——但 skill 好不好用，你还没验证。各平台安装路径见 [附录H](./附录H-各平台Skill安装路径与发现机制速查.md)。
 
 **最容易混淆：** 和治理层混淆（"能装进去说明质量没问题"——不对，快递员不负责质量检查）；和样板库混淆（"从这里安装的 skill 结构一定好"——不一定）。
 
